@@ -9,7 +9,6 @@
  * */
 
 using System;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace ClientsDLL
 {
@@ -151,6 +150,8 @@ namespace ClientsDLL
             return (false);
         }
 
+
+
         #endregion
 
         #region Overrides
@@ -179,6 +180,11 @@ namespace ClientsDLL
                     return (true);
             }
             return (false);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
 
         #endregion

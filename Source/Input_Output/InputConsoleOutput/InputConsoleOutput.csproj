@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{84F1B034-D802-420C-9B65-A4313620C3F4}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{EE2E0A67-5F3A-4C61-AC76-3B7ED4663645}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>InputConsoleOutput</RootNamespace>
     <AssemblyName>InputConsoleOutput</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,6 +31,30 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BrandsDLL">
+      <HintPath>..\..\Classes\BrandsDLL\bin\Debug\BrandsDLL.dll</HintPath>
+    </Reference>
+    <Reference Include="CampaignsDLL">
+      <HintPath>..\..\Classes\CampaignsDLL\bin\Debug\CampaignsDLL.dll</HintPath>
+    </Reference>
+    <Reference Include="CategoriesDLL">
+      <HintPath>..\..\Classes\CategoriesDLL\bin\Debug\CategoriesDLL.dll</HintPath>
+    </Reference>
+    <Reference Include="ClientsDLL">
+      <HintPath>..\..\Classes\ClientsDLL\bin\Debug\ClientsDLL.dll</HintPath>
+    </Reference>
+    <Reference Include="GuaranteesDLL">
+      <HintPath>..\..\Classes\GuaranteesDLL\bin\Debug\GuaranteesDLL.dll</HintPath>
+    </Reference>
+    <Reference Include="ProductsDLL">
+      <HintPath>..\..\Classes\ProductsDLL\bin\Debug\ProductsDLL.dll</HintPath>
+    </Reference>
+    <Reference Include="SalesDLL">
+      <HintPath>..\..\Classes\SalesDLL\bin\Debug\SalesDLL.dll</HintPath>
+    </Reference>
+    <Reference Include="StocksDLL">
+      <HintPath>..\..\Classes\StocksDLL\bin\Debug\StocksDLL.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,9 +67,6 @@
   <ItemGroup>
     <Compile Include="IO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
