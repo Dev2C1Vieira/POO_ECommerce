@@ -3,7 +3,7 @@
  * Copyright (c) 2023 All Rights Reserved
  * </copyright>
  * <author> Pedro Vieira </author>
- * <date> [Write the date of the project creation] </date>
+ * <date> 11/8/2023 11:56:43 AM </date>
  * <description></description>
  * 
  * */
@@ -15,7 +15,7 @@ namespace RevenueEngine
     /// <summary>
     /// Purpose: [Write the purpose of the class!]
     /// Created By: Pedro Vieira
-    /// Created On: [Write the date of the project creation]
+    /// Created On: 11/8/2023 11:56:43 AM
     /// Email: a25626@alunos.ipca.pt
     /// </summary>
     /// <remarks></remarks>

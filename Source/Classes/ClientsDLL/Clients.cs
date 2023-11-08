@@ -25,6 +25,7 @@ namespace ClientsDLL
         /// <summary>
         /// Creation of the Clients class atributes
         /// </summary>
+        private int clientID;
         private string name;
         private DateTime birth_date;
         private int gender;
@@ -32,7 +33,7 @@ namespace ClientsDLL
         private int phone_number;
         private string email_address;
 
-        private static int Qtd_Clients;
+        private static int QtdClients;
 
         #endregion
 
@@ -50,7 +51,7 @@ namespace ClientsDLL
             address = "";
             phone_number = -1;
             email_address = "";
-            Qtd_Clients = 0;
+            QtdClients = 0;
         }
 
         /// <summary>
@@ -69,6 +70,7 @@ namespace ClientsDLL
             this.address = External_address;
             this.phone_number = External_phone_number;
             this.email_address = External_email_address;
+            QtdClients++;
         }
 
         #endregion
