@@ -3,7 +3,7 @@
  * Copyright (c) 2023 All Rights Reserved
  * </copyright>
  * <author> Pedro Vieira </author>
- * <date> 10/28/2023 8:01:25 PM </date>
+ * <date> 11/8/2023 7:07:33 PM </date>
  * <description> [Write the description of the project!] </description>
  * 
  * */
@@ -17,7 +17,7 @@ namespace InputConsoleOutput
     /// <summary>
     /// Purpose: [Write the purpose of the class!]
     /// Created By: Pedro Vieira
-    /// Created On: 10/28/2023 8:01:25 PM
+    /// Created On: 11/8/2023 7:07:33 PM
     /// Email: a25626@alunos.ipca.pt
     /// </summary>
     public class IO
@@ -44,9 +44,9 @@ namespace InputConsoleOutput
         public static void ShowClientInformation(Clients client)
         {
             if (client.Gender == 1)
-                Console.WriteLine("\nID: {0}" + "\n" + "Name: {1}" + "\n" + "Gender: Male" + "\n" + 
-                    "Birth Date: {2}" + "\n" + "Address: {3}" + "\n" + "Phone Number: {4}" + "\n" + 
-                    "Email Address: {5}", client.ID.ToString(), client.Name, client.BirthDate.ToString(), 
+                Console.WriteLine("\nID: {0}" + "\n" + "Name: {1}" + "\n" + "Gender: Male" + "\n" +
+                    "Birth Date: {2}" + "\n" + "Address: {3}" + "\n" + "Phone Number: {4}" + "\n" +
+                    "Email Address: {5}", client.ID.ToString(), client.Name, client.BirthDate.ToString(),
                     client.Address, client.PhoneNumber.ToString(), client.EmailAddress);
             else
                 Console.WriteLine("\nID: {0}" + "\n" + "Name: {1}" + "\n" + "Gender: Female" + "\n" +
@@ -79,8 +79,8 @@ namespace InputConsoleOutput
         /// <param name="product"></param>
         public static void ShowProductInformation(Products product)
         {
-            Console.WriteLine("\nProduct ID: {0}" + "\n" + "Product Name: {1}" + "\n" + "Price: {2}" + "\n" + 
-                "Launch Date: {3}", product.ProductID.ToString(), product.ProductName, 
+            Console.WriteLine("\nProduct ID: {0}" + "\n" + "Product Name: {1}" + "\n" + "Price: {2}" + "\n" +
+                "Launch Date: {3}", product.ProductID.ToString(), product.ProductName,
                 product.Price.ToString(), product.LauchDate.ToString());
         }
 

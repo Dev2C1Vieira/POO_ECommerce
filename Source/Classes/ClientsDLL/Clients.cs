@@ -33,7 +33,7 @@ namespace ClientsDLL
         private int phone_number;
         private string email_address;
 
-        private static int qtdClients;
+        private static int qtdClients = 1;
 
         #endregion
 
@@ -46,14 +46,14 @@ namespace ClientsDLL
         /// </summary>
         public Clients()
         {
-            id = -1;
+            id = qtdClients;// a way to create an auto increment field
+            qtdClients++;
             name = "";
             gender = -1;
             birthdate = DateTime.Now;
             address = "";
             phone_number = -1;
             email_address = "";
-            qtdClients = 0;
         }
 
         /// <summary>
@@ -64,17 +64,17 @@ namespace ClientsDLL
         /// <param name="External_address"></param>
         /// <param name="External_phone_number"></param>
         /// <param name="External_email_address"></param>
-        public Clients(int id, string name, int gender, DateTime birthdate, 
+        public Clients(string name, int gender, DateTime birthdate, 
             string address, int phone_number, string email_address)
         {
-            this.id = id;
+            id = qtdClients;
+            qtdClients++;
             this.name = name;
             this.gender = gender;
             this.birthdate = birthdate;
             this.address = address;
             this.phone_number = phone_number;
             this.email_address = email_address;
-            qtdClients++;
         }
 
         #endregion

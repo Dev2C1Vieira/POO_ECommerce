@@ -28,6 +28,10 @@ namespace ECommerce
     {
         static void Main(string[] args)
         {
+            #region Inicial_Trial
+
+            #region Clients
+
             Clients client1 = new Clients();
             Clients client2 = new Clients();
 
@@ -45,12 +49,16 @@ namespace ECommerce
 
             Console.WriteLine("Welcome to ECommerce Application!");
             IO.ShowClientInformation(client1);
-            IO.ShowClientInformation(client2);
+            IO.ShowClientInformation(client1);
 
-            if (IO.CompareClients(client1, client2) == true)
+            if (IO.CompareClients(client1, client2) == true)//not working properly
                 Console.WriteLine("\nThe clientes are equal!\n");
             else
                 Console.WriteLine("\nThe clientes are not equal!\n");
+
+            #endregion
+
+            #region Products
 
             Products product1 = new Products();
             Products product2 = new Products();
@@ -63,13 +71,18 @@ namespace ECommerce
             product2.Price = 189.99;
             product2.LauchDate = new DateTime(2022, 9, 17);
 
-            //IO.ShowProductInformation(product1);
-            //IO.ShowProductInformation(product2);
+            IO.ShowProductInformation(product1);
+            IO.ShowProductInformation(product2);
 
-            //if (IO.CompareProducts(product1, product2) == true)
-            //    Console.WriteLine("\nThe products are equal!\n");
-            //else
-            //    Console.WriteLine("\nThe products are not equal!\n");
+            if (IO.CompareProducts(product1, product2) == true)
+                Console.WriteLine("\nThe products are equal!\n");
+            else
+                Console.WriteLine("\nThe products are not equal!\n");
+
+            #endregion
+
+            #endregion
+
         }
     }
 }

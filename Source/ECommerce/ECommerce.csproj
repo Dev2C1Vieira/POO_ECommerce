@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4AFC15BC-E5F7-4EED-AE9A-CA9CE083D20D}</ProjectGuid>
+    <ProjectGuid>{6E801DCB-55DF-4E96-89AF-DB4A9B8FF2C0}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>ECommerce</RootNamespace>
     <AssemblyName>ECommerce</AssemblyName>
@@ -33,35 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BrandsDLL">
-      <HintPath>..\Classes\BrandsDLL\bin\Debug\BrandsDLL.dll</HintPath>
-    </Reference>
-    <Reference Include="CampaignsDLL">
-      <HintPath>..\Classes\CampaignsDLL\bin\Debug\CampaignsDLL.dll</HintPath>
-    </Reference>
-    <Reference Include="CategoriesDLL">
-      <HintPath>..\Classes\CategoriesDLL\bin\Debug\CategoriesDLL.dll</HintPath>
-    </Reference>
     <Reference Include="ClientsDLL">
       <HintPath>..\Classes\ClientsDLL\bin\Debug\ClientsDLL.dll</HintPath>
-    </Reference>
-    <Reference Include="GuaranteesDLL">
-      <HintPath>..\Classes\GuaranteesDLL\bin\Debug\GuaranteesDLL.dll</HintPath>
     </Reference>
     <Reference Include="InputConsoleOutput">
       <HintPath>..\Input_Output\InputConsoleOutput\bin\Debug\InputConsoleOutput.dll</HintPath>
     </Reference>
     <Reference Include="ProductCatalog">
       <HintPath>..\Classes\ProductCatalog\bin\Debug\ProductCatalog.dll</HintPath>
-    </Reference>
-    <Reference Include="ProductsDLL">
-      <HintPath>..\Classes\ProductsDLL\bin\Debug\ProductsDLL.dll</HintPath>
-    </Reference>
-    <Reference Include="SalesDLL">
-      <HintPath>..\Classes\SalesDLL\bin\Debug\SalesDLL.dll</HintPath>
-    </Reference>
-    <Reference Include="StocksDLL">
-      <HintPath>..\Classes\StocksDLL\bin\Debug\StocksDLL.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

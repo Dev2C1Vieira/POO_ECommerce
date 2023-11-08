@@ -28,7 +28,7 @@ namespace ProductCatalog
         /// 
         /// </summary>
 
-        private static int productID;
+        private int productID;
         private string productName;
         //private string productDescription; Caso queira utilizar!
         private double price;
@@ -38,7 +38,7 @@ namespace ProductCatalog
         //private string brand;
         //private string promotions;
 
-        private static int qtdProducts;
+        private static int qtdProducts = 1;
 
         #endregion
 
@@ -51,11 +51,11 @@ namespace ProductCatalog
         /// </summary>
         public Products()
         {
-            productID = 0;
+            productID = qtdProducts;
+            qtdProducts++;
             productName = "";
             price = -1.0;
             launchDate = DateTime.Now;
-            qtdProducts = 0;
         }
 
         /// <summary>
@@ -67,11 +67,11 @@ namespace ProductCatalog
         /// <param name="External_launchDate"></param>
         public Products(string productName, double price, DateTime launchDate)
         {
-            productID++; // a way to create an auto increment field
+            productID = qtdProducts;
+            qtdProducts++;
             this.productName = productName;
             this.price = price;
             this.launchDate = launchDate;
-            qtdProducts++;
         }
 
         #endregion
