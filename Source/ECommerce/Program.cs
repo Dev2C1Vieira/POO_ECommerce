@@ -10,6 +10,7 @@
 
 using System;
 using ClientsDLL;
+using ProductCatalog;
 using InputConsoleOutput;
 
 namespace ECommerce
@@ -50,6 +51,25 @@ namespace ECommerce
                 Console.WriteLine("\nThe clientes are equal!\n");
             else
                 Console.WriteLine("\nThe clientes are not equal!\n");
+
+            Products product1 = new Products();
+            Products product2 = new Products();
+
+            product1.ProductName = "Rato Logitech Pro X Superlight";
+            product1.Price = 120.39;
+            product1.LauchDate = new DateTime(2022, 12, 3);
+
+            product2.ProductName = "Auscultadores Logitech Pro X Wireless";
+            product2.Price = 189.99;
+            product2.LauchDate = new DateTime(2022, 9, 17);
+
+            //IO.ShowProductInformation(product1);
+            //IO.ShowProductInformation(product2);
+
+            //if (IO.CompareProducts(product1, product2) == true)
+            //    Console.WriteLine("\nThe products are equal!\n");
+            //else
+            //    Console.WriteLine("\nThe products are not equal!\n");
         }
     }
 }

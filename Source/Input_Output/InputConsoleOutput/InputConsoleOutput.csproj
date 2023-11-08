@@ -40,20 +40,18 @@
     <Reference Include="CategoriesDLL">
       <HintPath>..\..\Classes\CategoriesDLL\bin\Debug\CategoriesDLL.dll</HintPath>
     </Reference>
-    <Reference Include="ClientsDLL">
+    <Reference Include="ClientsDLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Classes\ClientsDLL\bin\Debug\ClientsDLL.dll</HintPath>
     </Reference>
-    <Reference Include="GuaranteesDLL">
-      <HintPath>..\..\Classes\GuaranteesDLL\bin\Debug\GuaranteesDLL.dll</HintPath>
+    <Reference Include="ProductCatalog">
+      <HintPath>..\..\Classes\ProductCatalog\bin\Debug\ProductCatalog.dll</HintPath>
     </Reference>
     <Reference Include="ProductsDLL">
       <HintPath>..\..\Classes\ProductsDLL\bin\Debug\ProductsDLL.dll</HintPath>
     </Reference>
     <Reference Include="SalesDLL">
       <HintPath>..\..\Classes\SalesDLL\bin\Debug\SalesDLL.dll</HintPath>
-    </Reference>
-    <Reference Include="StocksDLL">
-      <HintPath>..\..\Classes\StocksDLL\bin\Debug\StocksDLL.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

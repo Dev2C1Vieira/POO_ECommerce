@@ -9,14 +9,8 @@
  * */
 
 using System;
-using BrandsDLL;
-using CampaignsDLL;
-using CategoriesDLL;
 using ClientsDLL;
-using GuaranteesDLL;
-using ProductsDLL;
-using SalesDLL;
-using StocksDLL;
+using ProductCatalog;
 
 namespace InputConsoleOutput
 {
@@ -50,12 +44,14 @@ namespace InputConsoleOutput
         public static void ShowClientInformation(Clients client)
         {
             if (client.Gender == 1)
-                Console.WriteLine("\nName: {0}" + "\n" + "Gender: Male" + "\n" + "Address: {1}" + "\n" + 
-                    "Phone Number: {2}" + "\n" + "Email Address: {3}", client.Name, 
-                    client.Address, client.PhoneNumber.ToString(),client.EmailAddress);
+                Console.WriteLine("\nID: {0}" + "\n" + "Name: {1}" + "\n" + "Gender: Male" + "\n" + 
+                    "Birth Date: {2}" + "\n" + "Address: {3}" + "\n" + "Phone Number: {4}" + "\n" + 
+                    "Email Address: {5}", client.ID.ToString(), client.Name, client.BirthDate.ToString(), 
+                    client.Address, client.PhoneNumber.ToString(), client.EmailAddress);
             else
-                Console.WriteLine("\nName: {0}" + "\n" + "Gender: Female" + "\n" + "Address: {1}" + "\n" +
-                    "Phone Number: {2}" + "\n" + "Email Address: {3}", client.Name,
+                Console.WriteLine("\nID: {0}" + "\n" + "Name: {1}" + "\n" + "Gender: Female" + "\n" +
+                    "Birth Date: {2}" + "\n" + "Address: {3}" + "\n" + "Phone Number: {4}" + "\n" +
+                    "Email Address: {5}", client.ID.ToString(), client.Name, client.BirthDate.ToString(),
                     client.Address, client.PhoneNumber.ToString(), client.EmailAddress);
         }
 
@@ -70,6 +66,37 @@ namespace InputConsoleOutput
             if (client1.Equals(client2)) return (true);
             else return (false);
         }
+
+        #endregion
+
+        #region ProductCatalogMethods
+
+        #region ProductsMethods
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="product"></param>
+        public static void ShowProductInformation(Products product)
+        {
+            Console.WriteLine("\nProduct ID: {0}" + "\n" + "Product Name: {1}" + "\n" + "Price: {2}" + "\n" + 
+                "Launch Date: {3}", product.ProductID.ToString(), product.ProductName, 
+                product.Price.ToString(), product.LauchDate.ToString());
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="product1"></param>
+        /// <param name="product2"></param>
+        /// <returns></returns>
+        public static bool CompareProducts(Products product1, Products product2)
+        {
+            if (product1.Equals(product2)) return (true);
+            else return (false);
+        }
+
+        #endregion
 
         #endregion
 

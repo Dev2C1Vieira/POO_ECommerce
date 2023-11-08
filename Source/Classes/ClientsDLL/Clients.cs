@@ -25,15 +25,15 @@ namespace ClientsDLL
         /// <summary>
         /// Creation of the Clients class atributes
         /// </summary>
-        private int clientID;
+        private int id;
         private string name;
-        private DateTime birth_date;
         private int gender;
+        private DateTime birthdate;
         private string address;
         private int phone_number;
         private string email_address;
 
-        private static int QtdClients;
+        private static int qtdClients;
 
         #endregion
 
@@ -46,12 +46,14 @@ namespace ClientsDLL
         /// </summary>
         public Clients()
         {
+            id = -1;
             name = "";
             gender = -1;
+            birthdate = DateTime.Now;
             address = "";
             phone_number = -1;
             email_address = "";
-            QtdClients = 0;
+            qtdClients = 0;
         }
 
         /// <summary>
@@ -62,20 +64,32 @@ namespace ClientsDLL
         /// <param name="External_address"></param>
         /// <param name="External_phone_number"></param>
         /// <param name="External_email_address"></param>
-        public Clients(string External_name, int External_gender, string External_address,
-            int External_phone_number, string External_email_address)
+        public Clients(int id, string name, int gender, DateTime birthdate, 
+            string address, int phone_number, string email_address)
         {
-            this.name = External_name;
-            this.gender = External_gender;
-            this.address = External_address;
-            this.phone_number = External_phone_number;
-            this.email_address = External_email_address;
-            QtdClients++;
+            this.id = id;
+            this.name = name;
+            this.gender = gender;
+            this.birthdate = birthdate;
+            this.address = address;
+            this.phone_number = phone_number;
+            this.email_address = email_address;
+            qtdClients++;
         }
 
         #endregion
 
         #region Properties
+
+        /// <summary>
+        /// Property related to the id attribute
+        /// </summary>
+        public int ID
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
         /// <summary>
         /// Property related to the name attribute
         /// </summary>
@@ -92,6 +106,15 @@ namespace ClientsDLL
         {
             get { return gender; }
             set { gender = value; }
+        }
+
+        /// <summary>
+        /// Property related to the birthdate attribute
+        /// </summary>
+        public DateTime BirthDate
+        {
+            get { return birthdate; } 
+            set { birthdate = value; }
         }
 
         /// <summary>
@@ -121,6 +144,15 @@ namespace ClientsDLL
             set { email_address = value; }
         }
 
+        /// <summary>
+        /// Property related to the qtdClients attribute
+        /// </summary>
+        public int QtdClients
+        {
+            get { return qtdClients; }
+            set { qtdClients = value; }
+        }
+
         #endregion
 
         #region Operators
@@ -133,11 +165,11 @@ namespace ClientsDLL
         /// <returns></returns>
         public static bool operator ==(Clients left, Clients right) 
         {
-            if ((left.Name == right.Name) && (left.Gender == right.Gender) 
-                && (left.Address == right.Address) && (left.PhoneNumber == right.PhoneNumber) 
-                && (left.EmailAddress == right.EmailAddress)) return (true);
+            if ((left.ID == right.ID) && (left.Name == right.Name) && (left.Gender == right.Gender) && 
+                (left.BirthDate == right.BirthDate) && (left.Address == right.Address) && 
+                (left.PhoneNumber == right.PhoneNumber) && (left.EmailAddress == right.EmailAddress)) 
+                return (true);
             return (false);
-
         }
 
         /// <summary>
@@ -164,8 +196,9 @@ namespace ClientsDLL
         /// <returns></returns>
         public override string ToString()
         {
-            return (String.Format("Name: {0} - Gender: {1} - Address: {2} - Phone Number: {3} " +
-                "- Email Address: {4}", Name, Gender.ToString(), Address, PhoneNumber.ToString(), EmailAddress));
+            return (String.Format("ID: {0} - Name: {1} - Gender: {2} - Birth Date: {3} - " +
+                "Address: {4} - Phone Number: {5} - Email Address: {6}", ID.ToString(), Name, 
+                Gender.ToString(), BirthDate.ToString(), Address, PhoneNumber.ToString(), EmailAddress));
         }
 
         /// <summary>
@@ -184,6 +217,10 @@ namespace ClientsDLL
             return (false);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
             return base.GetHashCode();

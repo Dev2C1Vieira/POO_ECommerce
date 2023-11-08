@@ -51,6 +51,9 @@
     <Reference Include="InputConsoleOutput">
       <HintPath>..\Input_Output\InputConsoleOutput\bin\Debug\InputConsoleOutput.dll</HintPath>
     </Reference>
+    <Reference Include="ProductCatalog">
+      <HintPath>..\Classes\ProductCatalog\bin\Debug\ProductCatalog.dll</HintPath>
+    </Reference>
     <Reference Include="ProductsDLL">
       <HintPath>..\Classes\ProductsDLL\bin\Debug\ProductsDLL.dll</HintPath>
     </Reference>
