@@ -10,7 +10,7 @@
 
 using System;
 
-namespace SalesDLL
+namespace ProductCatalog
 {
     /// <summary>
     /// Purpose: [Write the purpose of the class!]
@@ -20,7 +20,7 @@ namespace SalesDLL
     /// </summary>
     /// <remarks></remarks>
     /// <example></example>
-    public class Sales
+    public class Products
     {
         #region Attributes
         #endregion

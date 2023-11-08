@@ -10,7 +10,7 @@
 
 using System;
 
-namespace BrandsDLL
+namespace RevenueEngine
 {
     /// <summary>
     /// Purpose: [Write the purpose of the class!]
@@ -20,7 +20,7 @@ namespace BrandsDLL
     /// </summary>
     /// <remarks></remarks>
     /// <example></example>
-    public class Brands
+    public class Campaigns
     {
         #region Attributes
         #endregion

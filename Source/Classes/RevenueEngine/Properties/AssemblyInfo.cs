@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CampaignsDLL")]
+[assembly: AssemblyTitle("RevenueEngine")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CampaignsDLL")]
+[assembly: AssemblyProduct("RevenueEngine")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("579693a9-15e9-4781-9cb7-5124e30e59de")]
+[assembly: Guid("54cab709-0be6-4b36-a1a7-497497ffcb8b")]
 
 // Version information for an assembly consists of the following four values:
 //

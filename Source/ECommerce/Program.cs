@@ -9,14 +9,7 @@
  * */
 
 using System;
-using BrandsDLL;
-using CampaignsDLL;
-using CategoriesDLL;
 using ClientsDLL;
-using GuaranteesDLL;
-using ProductsDLL;
-using SalesDLL;
-using StocksDLL;
 using InputConsoleOutput;
 
 namespace ECommerce
