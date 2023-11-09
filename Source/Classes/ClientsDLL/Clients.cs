@@ -25,15 +25,15 @@ namespace ClientsDLL
         /// <summary>
         /// Creation of the Clients class atributes
         /// </summary>
-        private int id;
-        private string name;
-        private int gender;
-        private DateTime birthdate;
-        private string address;
-        private int phone_number;
-        private string email_address;
+        private int id; //
+        private string name; //
+        private bool gender; //
+        private DateTime birthdate; //
+        private string address; //
+        private int phone_number; //
+        private string email_address; //
 
-        private static int qtdClients = 1;
+        private static int qtdClients = 1; //
 
         #endregion
 
@@ -48,23 +48,24 @@ namespace ClientsDLL
         {
             id = qtdClients;// a way to create an auto increment field
             qtdClients++;
-            name = "";
-            gender = -1;
+            name = string.Empty;
+            gender = true;
             birthdate = DateTime.Now;
-            address = "";
+            address = string.Empty;
             phone_number = -1;
-            email_address = "";
+            email_address = string.Empty;
         }
 
         /// <summary>
         /// Constructor passed by parameters
         /// </summary>
-        /// <param name="External_name"></param>
-        /// <param name="External_gender"></param>
-        /// <param name="External_address"></param>
-        /// <param name="External_phone_number"></param>
-        /// <param name="External_email_address"></param>
-        public Clients(string name, int gender, DateTime birthdate, 
+        /// <param name="name"></param>
+        /// <param name="gender"></param>
+        /// <param name="birthdate"></param>
+        /// <param name="address"></param>
+        /// <param name="phone_number"></param>
+        /// <param name="email_address"></param>
+        public Clients(string name, bool gender, DateTime birthdate, 
             string address, int phone_number, string email_address)
         {
             id = qtdClients;
@@ -102,7 +103,7 @@ namespace ClientsDLL
         /// <summary>
         /// Property related to the gender attribute
         /// </summary>
-        public int Gender
+        public bool Gender
         {
             get { return gender; }
             set { gender = value; }
@@ -158,7 +159,7 @@ namespace ClientsDLL
         #region Operators
 
         /// <summary>
-        /// Creating/Rewriting this method, to be able to compare 2 different objects.
+        /// Creating/Rewriting this method, to be able to compare 2 different Clients objects.
         /// </summary>
         /// <param name="left"></param>
         /// <param name="right"></param>
@@ -166,14 +167,14 @@ namespace ClientsDLL
         public static bool operator ==(Clients left, Clients right) 
         {
             if ((left.ID == right.ID) && (left.Name == right.Name) && (left.Gender == right.Gender) && 
-                (left.BirthDate == right.BirthDate) && (left.Address == right.Address) && 
+                (left.BirthDate.Date == right.BirthDate.Date) && (left.Address == right.Address) && 
                 (left.PhoneNumber == right.PhoneNumber) && (left.EmailAddress == right.EmailAddress)) 
                 return (true);
             return (false);
         }
 
         /// <summary>
-        /// Creating/Rewriting this method, to be able to compare 2 different objects.
+        /// Creating/Rewriting this method, to be able to compare 2 different Clients objects.
         /// </summary>
         /// <param name="left"></param>
         /// <param name="right"></param>
@@ -218,7 +219,7 @@ namespace ClientsDLL
         }
 
         /// <summary>
-        /// 
+        /// Rewriting the GetHashCode method, to ensure efficient access to elements.
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()

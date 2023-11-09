@@ -25,20 +25,19 @@ namespace ProductCatalog
         #region Attributes
 
         /// <summary>
-        /// 
+        /// Creation of the Prroducts class atributes
         /// </summary>
-
-        private int productID;
-        private string productName;
+        private int productID; //
+        private string productName; //
         //private string productDescription; Caso queira utilizar!
-        private double price;
-        private DateTime launchDate;
-        //private int stock;
-        //private string category; para implementar depois quando tiver as classes devidamente implementadas. Provavelmente serao arrays!
-        //private string brand;
-        //private string promotions;
+        private double price; //
+        private DateTime launchDate; //
+        //private int stock; //
+        //private string category; // para implementar depois quando tiver as classes devidamente implementadas. Provavelmente serao arrays!
+        //private string brand; //
+        //private string promotions; //
 
-        private static int qtdProducts = 1;
+        private static int qtdProducts = 1; //
 
         #endregion
 
@@ -47,24 +46,23 @@ namespace ProductCatalog
         #region Constructors
 
         /// <summary>
-        /// 
+        /// Default constructor
         /// </summary>
         public Products()
         {
             productID = qtdProducts;
             qtdProducts++;
-            productName = "";
+            productName = string.Empty;
             price = -1.0;
             launchDate = DateTime.Now;
         }
 
         /// <summary>
-        /// 
+        /// Constructor passed by parameters
         /// </summary>
-        /// <param name="External_productID"></param>
-        /// <param name="External_productName"></param>
-        /// <param name="External_price"></param>
-        /// <param name="External_launchDate"></param>
+        /// <param name="productName"></param>
+        /// <param name="price"></param>
+        /// <param name="launchDate"></param>
         public Products(string productName, double price, DateTime launchDate)
         {
             productID = qtdProducts;
@@ -128,7 +126,7 @@ namespace ProductCatalog
         #region Operators
 
         /// <summary>
-        /// 
+        /// Creating/Rewriting this method, to be able to compare 2 different Products objects.
         /// </summary>
         /// <param name="left"></param>
         /// <param name="right"></param>
@@ -142,7 +140,7 @@ namespace ProductCatalog
         }
 
         /// <summary>
-        /// 
+        /// Creating/Rewriting this method, to be able to compare 2 different Products objects.
         /// </summary>
         /// <param name="left"></param>
         /// <param name="right"></param>
@@ -158,7 +156,7 @@ namespace ProductCatalog
         #region Overrides
 
         /// <summary>
-        /// 
+        /// Rewriting the ToString method, to be able to write on the console.
         /// </summary>
         /// <returns></returns>
         public override string ToString()
@@ -168,7 +166,7 @@ namespace ProductCatalog
         }
 
         /// <summary>
-        /// 
+        /// Rewriting the Equals method, to be able to compare 2 different objects.
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
@@ -184,7 +182,7 @@ namespace ProductCatalog
         }
 
         /// <summary>
-        /// 
+        /// Rewriting the GetHashCode method, to ensure efficient access to elements.
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
@@ -195,8 +193,6 @@ namespace ProductCatalog
         #endregion
 
         #region OtherMethods
-
-
         #endregion
 
         #region Destructor
