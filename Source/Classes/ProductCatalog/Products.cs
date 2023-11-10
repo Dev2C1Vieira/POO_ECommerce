@@ -32,6 +32,7 @@ namespace ProductCatalog
         //private string productDescription; Caso queira utilizar!
         private double price; //
         private DateTime launchDate; //
+        private bool visibilityStatus; // An indicator of whether the product is visible to users.
         //private int stock; //
         //private string category; // para implementar depois quando tiver as classes devidamente implementadas. Provavelmente serao arrays!
         //private string brand; //
@@ -55,6 +56,7 @@ namespace ProductCatalog
             productName = string.Empty;
             price = -1.0;
             launchDate = DateTime.Now;
+            visibilityStatus = false;
         }
 
         /// <summary>
@@ -63,13 +65,14 @@ namespace ProductCatalog
         /// <param name="productName"></param>
         /// <param name="price"></param>
         /// <param name="launchDate"></param>
-        public Products(string productName, double price, DateTime launchDate)
+        public Products(string productName, double price, DateTime launchDate, bool visibilityStatus)
         {
             productID = qtdProducts;
             qtdProducts++;
             this.productName = productName;
             this.price = price;
             this.launchDate = launchDate;
+            this.visibilityStatus = visibilityStatus;
         }
 
         #endregion
@@ -111,6 +114,15 @@ namespace ProductCatalog
             get { return launchDate; }
             set { launchDate = value; }
         }
+        
+        /// <summary>
+        /// Property related to the visibilityStatus attribute
+        /// </summary>
+        public bool VisibilityStatus
+        {
+            get { return visibilityStatus; } 
+            set { visibilityStatus = value; }
+        }
 
         /// <summary>
         /// Property related to the qtdProducts attribute
@@ -133,8 +145,8 @@ namespace ProductCatalog
         /// <returns></returns>
         public static bool operator ==(Products left, Products right)
         {
-            if ((left.ProductID == right.ProductID) && (left.ProductName == right.ProductName) 
-                && (left.Price == right.Price) && (left.LauchDate == right.LauchDate)) 
+            if ((left.ProductID == right.ProductID) && (left.ProductName == right.ProductName) && (left.Price == right.Price) 
+                && (left.LauchDate == right.LauchDate) && (left.visibilityStatus == right.VisibilityStatus)) 
                 return (true);
             return (false);
         }
@@ -161,8 +173,8 @@ namespace ProductCatalog
         /// <returns></returns>
         public override string ToString()
         {
-            return (String.Format("Product ID: {0} - Product Name: {1} - Price: {2} - Launch Date: {3}", 
-                ProductID.ToString(), ProductName, Price.ToString(), LauchDate.ToString()));
+            return (String.Format("Product ID: {0} - Product Name: {1} - Price: {2} - Launch Date: {3} - Visibility Status: {4}", 
+                ProductID.ToString(), ProductName, Price.ToString(), LauchDate.ToString(), VisibilityStatus.ToString()));
         }
 
         /// <summary>

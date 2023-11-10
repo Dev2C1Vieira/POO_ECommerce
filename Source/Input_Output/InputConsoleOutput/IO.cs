@@ -74,14 +74,28 @@ namespace InputConsoleOutput
         #region ProductsMethods
 
         /// <summary>
+        /// This method verifies if the visibility status of the given product is visible or not.
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
+        public static bool IsProductAvailable(Products product)
+        {
+            if (product.VisibilityStatus == true) return (true);
+            else return (false);
+        }
+
+        /// <summary>
         /// This method lists the indicated product's information in the console.
         /// </summary>
         /// <param name="product"></param>
         public static void ShowProductInformation(Products product)
         {
-            Console.WriteLine("\nProduct ID: {0}" + "\n" + "Product Name: {1}" + "\n" + "Price: {2}" + "\n" +
-                "Launch Date: {3}", product.ProductID.ToString(), product.ProductName,
-                product.Price.ToString(), product.LauchDate.ToString());
+            if (IsProductAvailable(product) == true)
+                Console.WriteLine("\nProduct ID: {0}" + "\n" + "Product Name: {1}" + "\n" + "Price: {2}" + "\n" +
+                    "Launch Date: {3}", product.ProductID.ToString(), product.ProductName,
+                    product.Price.ToString(), product.LauchDate.ToString());
+            else
+                Console.WriteLine("\nThe {0} product is currently unavailable.", product.ProductName);
         }
 
         /// <summary>
@@ -101,17 +115,28 @@ namespace InputConsoleOutput
         #region CategoriesMethods
 
         /// <summary>
+        /// This method verifies if the visibility status of the given category is visible or not.
+        /// </summary>
+        /// <param name="category"></param>
+        /// <returns></returns>
+        public static bool IsCategoryAvailable(Categories category)
+        {
+            if (category.VisibilityStatus == true) return (true);
+            else return (false);
+        }
+
+        /// <summary>
         /// This method lists the indicated Category's information in the console.
         /// </summary>
         /// <param name="category"></param>
         public static void ShowCategoryInformation(Categories category)
         {
-            if (category.VisibilityStatus == true)
-                Console.WriteLine("\nCategory ID: {0}" + "\n" + "Category Name: {1}" + "\n" + "Visibility Status: {2}" + "\n" +
-                "Creation Date: {3}" + "\n" + "Display Order: {4}", category.CategoryID.ToString(), category.CategoryName,
-                category.VisibilityStatus.ToString(), category.CreationDate.ToString(), category.DisplayOrder.ToString());
+            if (IsCategoryAvailable(category) == true)
+                Console.WriteLine("\nCategory ID: {0}" + "\n" + "Category Name: {1}" + "\n" + "Creation Date: {2}"
+                    + "\n" + "Display Order: {3}", category.CategoryID.ToString(), category.CategoryName, 
+                    category.CreationDate.ToString(), category.DisplayOrder.ToString());
             else
-                Console.WriteLine("\nIt was not possible to list this category as its visibility status is unavailable.");
+                Console.WriteLine("\nThe {0} category is currently unavailable.", category.CategoryName);
         }
 
         /// <summary>
@@ -123,6 +148,47 @@ namespace InputConsoleOutput
         public static bool CompareCategories(Categories category1, Categories category2)
         {
             if (category1.Equals(category2)) return (true);
+            else return (false);
+        }
+
+        #endregion
+
+        #region BrandsMethods
+
+        /// <summary>
+        /// This method verifies if the visibility status of the given brand is visible or not.
+        /// </summary>
+        /// <param name="brand"></param>
+        /// <returns></returns>
+        public static bool IsBrandAvailable(Brands brand)
+        {
+            if (brand.VisibilityStatus == true) return (true);
+            else return (false);
+        }
+
+        /// <summary>
+        /// This method lists the indicated Brand's information in the console.
+        /// </summary>
+        /// <param name="brand"></param>
+        public static void ShowBrandInformation(Brands brand)
+        {
+            if (IsBrandAvailable(brand) == true)
+                Console.WriteLine("\nBrand ID: {0}" + "\n" + "Brand Name: {1}" + "\n" + "Origin Country: {2}" + "\n" + 
+                    "Fundation Date: {3}" + "\n" + "Creation Date: {4}", brand.BrandID.ToString(), brand.BrandName, 
+                    brand.OriginCountry, brand.FundationDate.ToString(), brand.CreationDate.ToString());
+            else
+                Console.WriteLine("\nThe {0} brand is currently unavailable.", brand.BrandName);
+        }
+
+        /// <summary>
+        /// This method lists in the console the result of the comparison between two Brands, indicated by parameter.
+        /// </summary>
+        /// <param name="brand1"></param>
+        /// <param name="brand2"></param>
+        /// <returns></returns>
+        public static bool CompareBrands(Brands brand1, Brands brand2)
+        {
+            if (brand1.Equals(brand2)) return (true);
             else return (false);
         }
 

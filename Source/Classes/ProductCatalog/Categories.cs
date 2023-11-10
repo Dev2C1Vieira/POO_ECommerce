@@ -9,7 +9,6 @@
  * */
 
 using System;
-using System.Diagnostics;
 
 namespace ProductCatalog
 {
@@ -28,8 +27,8 @@ namespace ProductCatalog
         /// <summary>
         /// Creation of the Categories class atributes
         /// </summary>
-        private int categoryID;
-        private string categoryName;
+        private int categoryID; // 
+        private string categoryName; // 
         //private string categoryDescription; // A brief description that provides more information about the content or purpose of the category.
         //Categories categoryParent; // If the category system has a hierarchy, i can therefore include a reference to the 'Parent' category. Allowing the creation of subordinate categories.
         //Products[] productsList; // A list of products that belong to this category.
