@@ -138,7 +138,7 @@ namespace ProductCatalog
         #region Operators
 
         /// <summary>
-        /// Creating/Rewriting this method, to be able to compare 2 different Products objects.
+        /// Creating/Rewriting this method, to be able to check whether two indicated Products are the same.
         /// </summary>
         /// <param name="left"></param>
         /// <param name="right"></param>
@@ -152,7 +152,7 @@ namespace ProductCatalog
         }
 
         /// <summary>
-        /// Creating/Rewriting this method, to be able to compare 2 different Products objects.
+        /// Creating/Rewriting this method, to be able to check whether two indicated Products are different.
         /// </summary>
         /// <param name="left"></param>
         /// <param name="right"></param>

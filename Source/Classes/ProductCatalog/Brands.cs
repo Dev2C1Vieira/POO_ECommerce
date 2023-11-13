@@ -30,7 +30,7 @@ namespace ProductCatalog
         private int brandID; //
         private string brandName; //
         //private string brandDescription; //
-        //Categories categoriesList; //
+        //Categories[] categoriesList; //
         private string originCountry; //
         private DateTime fundationDate; //
         private bool visibilityStatus; // An indicator of whether the brand is visible to users.
@@ -140,7 +140,7 @@ namespace ProductCatalog
         #region Operators
 
         /// <summary>
-        /// Creating/Rewriting this method, to be able to compare 2 different Brands objects.
+        /// Creating/Rewriting this method, to be able to check whether two indicated Brands are the same
         /// </summary>
         /// <param name="left"></param>
         /// <param name="right"></param>
@@ -155,7 +155,7 @@ namespace ProductCatalog
         }
 
         /// <summary>
-        /// Creating/Rewriting this method, to be able to compare 2 different Brands objects.
+        /// Creating/Rewriting this method, to be able to check whether two indicated Bampaigns are different.
         /// </summary>
         /// <param name="left"></param>
         /// <param name="right"></param>

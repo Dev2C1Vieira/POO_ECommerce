@@ -159,7 +159,7 @@ namespace ClientsDLL
         #region Operators
 
         /// <summary>
-        /// Creating/Rewriting this method, to be able to compare 2 different Clients objects.
+        /// Creating/Rewriting this method, to be able to check whether two indicated Clients are the same.
         /// </summary>
         /// <param name="left"></param>
         /// <param name="right"></param>
@@ -174,7 +174,7 @@ namespace ClientsDLL
         }
 
         /// <summary>
-        /// Creating/Rewriting this method, to be able to compare 2 different Clients objects.
+        /// Creating/Rewriting this method, to be able to check whether two indicated Clients are different.
         /// </summary>
         /// <param name="left"></param>
         /// <param name="right"></param>
