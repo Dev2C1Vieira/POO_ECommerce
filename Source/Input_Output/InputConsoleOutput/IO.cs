@@ -9,6 +9,7 @@
  * */
 
 using System;
+using System.Security.Cryptography;
 using ClientsDLL;
 using ProductCatalog;
 
@@ -193,6 +194,97 @@ namespace InputConsoleOutput
         }
 
         #endregion
+
+        #endregion
+
+        #region RevenueEngineMethods
+
+        #region CampaignsMethods
+        #endregion
+
+        #region WarrantiesMethods
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="warranty"></param>
+        /// <returns></returns>
+        public static bool IsWarrantyAvailable(Warranties warranty)
+        {
+            if (warranty.VisibilityStatus == true) return (true);
+            else return (false);
+        }
+
+        /// <summary>
+        /// This method lists the indicated Warranty's information in the console.
+        /// </summary>
+        /// <param name="warranty"></param>
+        public static void ShowWarrantyInformation(Warranties warranty)
+        {
+            if (IsWarrantyAvailable(warranty) == true)
+                Console.WriteLine("\nWarranty ID: {0}" + "\n" + "Warranty Description: {1}" + "\n" + "Warranty Type: {2}" + "\n" +
+                    "Warranty Period: {3}" + "\n" + "Warranty Coverage: {4}", warranty.WarrantyID.ToString(), warranty.WarrantyDescription,
+                    warranty.WarrantyType.ToString(), warranty.WarrantyPeriod.ToString(), warranty.WarrantyCoverage.ToString());
+            else
+                Console.WriteLine("\nThe {0} warranty is currently unavailable.", warranty.WarrantyID.ToString());
+        }
+
+        /// <summary>
+        /// This method lists in the console the result of the comparison between two Sales, indicated by parameter.
+        /// </summary>
+        /// <param name="warranty1"></param>
+        /// <param name="warranty2"></param>
+        /// <returns></returns>
+        public static bool CompareWarranty(Warranties warranty1, Warranties warranty2)
+        {
+            if (warranty1.Equals(warranty2)) return (true);
+            else return (false);
+        }
+
+        #endregion
+
+        #region SalesMethods
+
+        /// <summary>
+        /// This method verifies if the visibility status of the given sale is visible or not.
+        /// </summary>
+        /// <param name="sale"></param>
+        /// <returns></returns>
+        public static bool IsSaleAvailable(Sales sale)
+        {
+            if (sale.VisibilityStatus == true) return (true);
+            else return (false);
+        }
+
+        /// <summary>
+        /// This method lists the indicated Sale's information in the console.
+        /// </summary>
+        /// <param name="sale"></param>
+        public static void ShowSaleInformation(Sales sale)
+        {
+            if (IsSaleAvailable(sale) == true)
+                Console.WriteLine("\nSale ID: {0}" + "\n" + "Sale Description: {1}" + "\n" + "Sale Date: {2}" + "\n" +
+                    "Total Transaction Amount: {3}", sale.SaleID.ToString(), sale.SaleDescription,
+                    sale.SaleDate.ToString(), sale.TotalTransactionAmount.ToString());
+            else
+                Console.WriteLine("\nThe {0} sale is currently unavailable.", sale.SaleID.ToString());
+        }
+
+        /// <summary>
+        /// This method lists in the console the result of the comparison between two Sales, indicated by parameter.
+        /// </summary>
+        /// <param name="sale1"></param>
+        /// <param name="sale2"></param>
+        /// <returns></returns>
+        public static bool CompareSales(Sales sale1, Sales sale2)
+        {
+            if (sale1.Equals(sale2)) return (true);
+            else return (false);
+        }
+
+        #endregion
+
+        #region
 
         #endregion
 
