@@ -37,6 +37,12 @@
     <Reference Include="ProductCatalog">
       <HintPath>..\..\Classes\ProductCatalog\bin\Debug\ProductCatalog.dll</HintPath>
     </Reference>
+    <Reference Include="RevenueEngine">
+      <HintPath>..\..\Classes\RevenueEngine\bin\Debug\RevenueEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="StaffClientSystem">
+      <HintPath>..\..\Classes\StaffClientSystem\bin\Debug\StaffClientSystem.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />

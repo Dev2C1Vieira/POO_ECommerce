@@ -20,17 +20,17 @@ namespace ProductCatalog
     /// </summary>
     /// <remarks></remarks>
     /// <example></example>
-    public class Brands
+    public class Brand
     {
         #region Attributes
 
         /// <summary>
-        /// Creation of the Brands class atributes
+        /// Creation of the Brand class atributes
         /// </summary>
         private int brandID; //
         private string brandName; //
         //private string brandDescription; //
-        //Categories[] categoriesList; //
+        //Category[] categoriesList; //
         private string originCountry; //
         private DateTime fundationDate; //
         private bool visibilityStatus; // An indicator of whether the brand is visible to users.
@@ -47,7 +47,7 @@ namespace ProductCatalog
         /// <summary>
         /// Default constructor
         /// </summary>
-        public Brands()
+        public Brand()
         {
             brandID = qtdBrands;
             qtdBrands++;
@@ -66,7 +66,7 @@ namespace ProductCatalog
         /// <param name="fundationDate"></param>
         /// <param name="visibilityStatus"></param>
         /// <param name="creationDate"></param>
-        public Brands(string brandName, string originCountry, DateTime fundationDate, bool visibilityStatus, DateTime creationDate)
+        public Brand(string brandName, string originCountry, DateTime fundationDate, bool visibilityStatus, DateTime creationDate)
         {
             brandID = qtdBrands;
             qtdBrands++;
@@ -140,12 +140,12 @@ namespace ProductCatalog
         #region Operators
 
         /// <summary>
-        /// Creating/Rewriting this method, to be able to check whether two indicated Brands are the same
+        /// Creating/Rewriting this method, to be able to check whether two indicated Brand are the same
         /// </summary>
         /// <param name="left"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public static bool operator ==(Brands left, Brands right)
+        public static bool operator ==(Brand left, Brand right)
         {
             if ((left.BrandID == right.BrandID) && (left.BrandName == right.BrandName) && 
                 (left.OriginCountry == right.OriginCountry) && (left.FundationDate == right.FundationDate) && 
@@ -160,7 +160,7 @@ namespace ProductCatalog
         /// <param name="left"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public static bool operator !=(Brands left, Brands right)
+        public static bool operator !=(Brand left, Brand right)
         {
             if (!(left == right)) return (true);
             return (false);
@@ -188,9 +188,9 @@ namespace ProductCatalog
         /// <returns></returns>
         public override bool Equals(object obj)
         {
-            if (obj is Brands)
+            if (obj is Brand)
             {
-                Brands brand = (Brands)obj;
+                Brand brand = (Brand)obj;
                 if (this == brand)
                     return (true);
             }

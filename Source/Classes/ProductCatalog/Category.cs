@@ -20,18 +20,18 @@ namespace ProductCatalog
     /// </summary>
     /// <remarks></remarks>
     /// <example></example>
-    public class Categories
+    public class Category
     {
         #region Attributes
 
         /// <summary>
-        /// Creation of the Categories class atributes
+        /// Creation of the Category class atributes
         /// </summary>
         private int categoryID; // 
         private string categoryName; // 
         //private string categoryDescription; // A brief description that provides more information about the content or purpose of the category.
-        //Categories categoryParent; // If the category system has a hierarchy, i can therefore include a reference to the 'Parent' category. Allowing the creation of subordinate categories.
-        //Products[] productsList; // A list of products that belong to this category.
+        //Category categoryParent; // If the category system has a hierarchy, i can therefore include a reference to the 'Parent' category. Allowing the creation of subordinate categories.
+        //Product[] productsList; // A list of products that belong to this category.
         private bool visibilityStatus; // An indicator of whether the category is visible to users.
         private DateTime creationDate; // The date the category was created.
         //private DateTime latestUpdate; // The date the category was last updated.
@@ -48,7 +48,7 @@ namespace ProductCatalog
         /// <summary>
         /// Default constructor
         /// </summary>
-        public Categories()
+        public Category()
         {
             categoryID = qtdCategories;
             qtdCategories++;
@@ -65,7 +65,7 @@ namespace ProductCatalog
         /// <param name="visibilityStatus"></param>
         /// <param name="creationDate"></param>
         /// <param name="displayOrder"></param>
-        public Categories(string categoryName, bool visibilityStatus, DateTime creationDate, int displayOrder)
+        public Category(string categoryName, bool visibilityStatus, DateTime creationDate, int displayOrder)
         {
             categoryID = qtdCategories;
             qtdCategories++;
@@ -129,12 +129,12 @@ namespace ProductCatalog
         #region Operators
 
         /// <summary>
-        /// Creating/Rewriting this method, to be able to check whether two indicated Categories are the same.
+        /// Creating/Rewriting this method, to be able to check whether two indicated Category are the same.
         /// </summary>
         /// <param name="left"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public static bool operator ==(Categories left, Categories right)
+        public static bool operator ==(Category left, Category right)
         {
             if ((left.CategoryID == right.CategoryID) && (left.CategoryName == right.CategoryName)
                 && (left.VisibilityStatus == right.VisibilityStatus) && (left.CreationDate == right.CreationDate)
@@ -144,12 +144,12 @@ namespace ProductCatalog
         }
 
         /// <summary>
-        /// Creating/Rewriting this method, to be able to check whether two indicated Categories are different.
+        /// Creating/Rewriting this method, to be able to check whether two indicated Category are different.
         /// </summary>
         /// <param name="left"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public static bool operator !=(Categories left, Categories right)
+        public static bool operator !=(Category left, Category right)
         {
             if (!(left == right)) return (true);
             return (false);
@@ -176,9 +176,9 @@ namespace ProductCatalog
         /// <returns></returns>
         public override bool Equals(object obj)
         {
-            if (obj is Categories)
+            if (obj is Category)
             {
-                Categories category = (Categories)obj;
+                Category category = (Category)obj;
                 if (this == category)
                     return (true);
             }

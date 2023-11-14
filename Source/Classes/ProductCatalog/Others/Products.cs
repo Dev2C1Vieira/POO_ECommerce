@@ -3,24 +3,24 @@
  * Copyright (c) 2023 All Rights Reserved
  * </copyright>
  * <author> Pedro Vieira </author>
- * <date> [Write the date of the project creation] </date>
+ * <date> 11/14/2023 10:34:51 PM </date>
  * <description></description>
  * 
  * */
 
 using System;
 
-namespace StocksDLL
+namespace ProductCatalog.Others
 {
     /// <summary>
     /// Purpose: [Write the purpose of the class!]
     /// Created By: Pedro Vieira
-    /// Created On: [Write the date of the project creation]
+    /// Created On: 11/14/2023 10:34:51 PM
     /// Email: a25626@alunos.ipca.pt
     /// </summary>
     /// <remarks></remarks>
     /// <example></example>
-    public class Stocks
+    public class Products
     {
         #region Attributes
         #endregion
@@ -43,5 +43,7 @@ namespace StocksDLL
         #endregion
 
         #endregion
+
+        //Still in progress...
     }
 }

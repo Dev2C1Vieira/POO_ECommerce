@@ -9,7 +9,7 @@
  * */
 
 using System;
-using ClientsDLL;
+using StaffClientSystem;
 using ProductCatalog;
 using InputConsoleOutput;
 
@@ -34,10 +34,10 @@ namespace ECommerce
 
             #region Clients
 
-            Console.WriteLine("\n------------------ Clients Section ------------------\n");
+            Console.WriteLine("\n------------------ Client Section ------------------\n");
 
-            Clients client1 = new Clients();
-            Clients client2 = new Clients();
+            Client client1 = new Client();
+            Client client2 = new Client();
 
             client1.Name = "Pedro Vieira";
             client1.Gender = true;
@@ -67,11 +67,11 @@ namespace ECommerce
 
             #region Products
 
-            Console.WriteLine("\n------------------ Products Section ------------------\n");
+            Console.WriteLine("\n------------------ Product Section ------------------\n");
 
-            Products product1 = new Products();
-            Products product2 = new Products();
-            Products product3 = new Products();
+            Product product1 = new Product();
+            Product product2 = new Product();
+            Product product3 = new Product();
 
             product1.ProductName = "Rato Logitech Pro X Superlight";
             product1.Price = 120.39;
@@ -101,18 +101,18 @@ namespace ECommerce
                     Console.WriteLine("\nThe {0} and {1} products whose IDs are respectively {2} and {3} are not equal.\n",
                         product1.ProductName, product3.ProductName, product1.ProductID, product3.ProductID);
             }
-            else Console.WriteLine("\nUnable to compare Products!\n");
+            else Console.WriteLine("\nUnable to compare Product!\n");
 
             #endregion
 
             #region Categories
 
-            Console.WriteLine("\n------------------ Categories Section ------------------\n");
+            Console.WriteLine("\n------------------ Category Section ------------------\n");
 
             DateTime c1_creationDate = new DateTime(2018, 07, 25);
-            Categories category1 = new Categories("Gaming Mouse", true, c1_creationDate, 1);
+            Category category1 = new Category("Gaming Mouse", true, c1_creationDate, 1);
             DateTime c2_creationDate = new DateTime(2019, 03, 17);
-            Categories category2 = new Categories("Gaming Keyboard", false, c2_creationDate, 2);
+            Category category2 = new Category("Gaming Keyboard", false, c2_creationDate, 2);
 
             IO.ShowCategoryInformation(category1);
             IO.ShowCategoryInformation(category2);
@@ -126,20 +126,20 @@ namespace ECommerce
                     Console.WriteLine("\nThe {0} and {1} categories whose IDs are respectively {2} and {3} are not equal.\n",
                         category1.CategoryName, category2.CategoryName, category1.CategoryID, category2.CategoryID);
             }
-            else Console.WriteLine("\nUnable to compare Categories!\n");
+            else Console.WriteLine("\nUnable to compare Category!\n");
 
             #endregion
 
             #region Brands
 
-            Console.WriteLine("\n------------------ Brands Section ------------------\n");
+            Console.WriteLine("\n------------------ Brand Section ------------------\n");
 
             DateTime b1_fundationDate = new DateTime(2017, 03, 21);
             DateTime b1_creationDate = new DateTime(2023, 11, 10);
-            Brands brand1 = new Brands("Logitech", "Lausanne, Suíça", b1_fundationDate, true, b1_creationDate);
+            Brand brand1 = new Brand("Logitech", "Lausanne, Suíça", b1_fundationDate, true, b1_creationDate);
             DateTime b2_fundationDate = new DateTime(2013, 07, 03);
             DateTime b2_creationDate = new DateTime(2023, 11, 10);
-            Brands brand2 = new Brands("Sony", "Tóquio, Japão", b2_fundationDate, true, b2_creationDate);
+            Brand brand2 = new Brand("Sony", "Tóquio, Japão", b2_fundationDate, true, b2_creationDate);
 
             IO.ShowBrandInformation(brand1);
             IO.ShowBrandInformation(brand2);
@@ -153,7 +153,7 @@ namespace ECommerce
                     Console.WriteLine("\nThe {0} and {1} brands whose IDs are respectively {2} and {3} are not equal.\n", 
                         brand1.BrandName, brand2.BrandName, brand1.BrandID, brand2.BrandID);
             }
-            else Console.WriteLine("\nUnable to compare Brands!\n");
+            else Console.WriteLine("\nUnable to compare Brand!\n");
 
             #endregion
 

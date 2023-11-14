@@ -1,24 +1,27 @@
 ﻿/*
- * <copyright file = "Clients.cs" company = "IPCA">
+ * <copyright file = "Aula_1___Turno_2.cs" company = "IPCA">
  * Copyright (c) 2023 All Rights Reserved
  * </copyright>
  * <author> Pedro Vieira </author>
- * <date> 26/10/2023 - 20:30:13 </date>
- * <description> [Write the description of the project!] </description>
+ * <date> 11/14/2023 9:49:13 PM </date>
+ * <description></description>
  * 
  * */
 
 using System;
+using StaffClientSystem.Interfaces;
 
-namespace ClientsDLL
+namespace StaffClientSystem
 {
     /// <summary>
     /// Purpose: [Write the purpose of the class!]
     /// Created By: Pedro Vieira
-    /// Created On: 26/10/2023 - 20:30:13
+    /// Created On: 11/14/2023 9:49:13 PM
     /// Email: a25626@alunos.ipca.pt
     /// </summary>
-    public class Clients
+    /// <remarks></remarks>
+    /// <example></example>
+    public class Client : Person, IClient
     {
         #region Attributes
 
@@ -44,7 +47,7 @@ namespace ClientsDLL
         /// <summary>
         /// Default constructor
         /// </summary>
-        public Clients()
+        public Client()
         {
             id = qtdClients;// a way to create an auto increment field
             qtdClients++;
@@ -65,7 +68,7 @@ namespace ClientsDLL
         /// <param name="address"></param>
         /// <param name="phone_number"></param>
         /// <param name="email_address"></param>
-        public Clients(string name, bool gender, DateTime birthdate, 
+        public Client(string name, bool gender, DateTime birthdate,
             string address, int phone_number, string email_address)
         {
             id = qtdClients;
@@ -114,7 +117,7 @@ namespace ClientsDLL
         /// </summary>
         public DateTime BirthDate
         {
-            get { return birthdate; } 
+            get { return birthdate; }
             set { birthdate = value; }
         }
 
@@ -154,6 +157,7 @@ namespace ClientsDLL
             set { qtdClients = value; }
         }
 
+
         #endregion
 
         #region Operators
@@ -164,11 +168,11 @@ namespace ClientsDLL
         /// <param name="left"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public static bool operator ==(Clients left, Clients right) 
+        public static bool operator ==(Client left, Client right)
         {
-            if ((left.ID == right.ID) && (left.Name == right.Name) && (left.Gender == right.Gender) && 
-                (left.BirthDate.Date == right.BirthDate.Date) && (left.Address == right.Address) && 
-                (left.PhoneNumber == right.PhoneNumber) && (left.EmailAddress == right.EmailAddress)) 
+            if ((left.ID == right.ID) && (left.Name == right.Name) && (left.Gender == right.Gender) &&
+                (left.BirthDate.Date == right.BirthDate.Date) && (left.Address == right.Address) &&
+                (left.PhoneNumber == right.PhoneNumber) && (left.EmailAddress == right.EmailAddress))
                 return (true);
             return (false);
         }
@@ -179,13 +183,11 @@ namespace ClientsDLL
         /// <param name="left"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public static bool operator !=(Clients left, Clients right)
+        public static bool operator !=(Client left, Client right)
         {
             if (!(left == right)) return (true);
             return (false);
         }
-
-
 
         #endregion
 
@@ -198,7 +200,7 @@ namespace ClientsDLL
         public override string ToString()
         {
             return (String.Format("ID: {0} - Name: {1} - Gender: {2} - Birth Date: {3} - " +
-                "Address: {4} - Phone Number: {5} - Email Address: {6}", ID.ToString(), Name, 
+                "Address: {4} - Phone Number: {5} - Email Address: {6}", ID.ToString(), Name,
                 Gender.ToString(), BirthDate.ToString(), Address, PhoneNumber.ToString(), EmailAddress));
         }
 
@@ -209,9 +211,9 @@ namespace ClientsDLL
         /// <returns></returns>
         public override bool Equals(object obj)
         {
-            if (obj is Clients)
+            if (obj is Client)
             {
-                Clients client = (Clients)obj;
+                Client client = (Client)obj;
                 if (this == client)
                     return (true);
             }
@@ -230,11 +232,19 @@ namespace ClientsDLL
         #endregion
 
         #region OtherMethods
+
+        public void InsertClient(Client client)
+        {
+            //Still in progress...
+        }
+
         #endregion
 
         #region Destructor
         #endregion
 
         #endregion
+
+        //Still in progress...
     }
 }

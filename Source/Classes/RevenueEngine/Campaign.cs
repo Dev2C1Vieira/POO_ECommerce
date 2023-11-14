@@ -21,19 +21,19 @@ namespace RevenueEngine
     /// </summary>
     /// <remarks></remarks>
     /// <example></example>
-    public class Campaigns
+    public class Campaign
     {
         #region Attributes
 
         /// <summary>
-        /// Creation of the Brands class atributes
+        /// Creation of the Brand class atributes
         /// </summary>
         private int campaignID; // A unique identifier for each campaign.
         private string campaignName; // The descriptive name of the campaign.
         //private string campaignDescription; // A brief description of the campaign and its objectives.
         private DateTime startCampaingn; // The dates the campaign starts.
         private DateTime endCampaingn; // The dates the campaign ends.
-        //private Products[] productsList; // A list of products associated with the campaign.
+        //private Product[] productsList; // A list of products associated with the campaign.
         private bool visibilityStatus; // An indicator of whether the campaign is visible to users.
         private int campaignType; // Indicator whether it is a promotion, seasonal discount, etc.
         private float campaingBudget; // The budget assigned to the campaign.
@@ -49,7 +49,7 @@ namespace RevenueEngine
         /// <summary>
         /// Default constructor
         /// </summary>
-        public Campaigns()
+        public Campaign()
         {
             campaignID = qtdCampaigns;
             qtdCampaigns++;
@@ -69,7 +69,7 @@ namespace RevenueEngine
         /// <param name="endCampaingn"></param>
         /// <param name="campaignType"></param>
         /// <param name="campaingBudget"></param>
-        public Campaigns(string campaignName, DateTime startCampaingn, DateTime endCampaingn, bool visibilityStatus, int campaignType, float campaingBudget)
+        public Campaign(string campaignName, DateTime startCampaingn, DateTime endCampaingn, bool visibilityStatus, int campaignType, float campaingBudget)
         {
             campaignID = qtdCampaigns;
             qtdCampaigns++;
@@ -153,12 +153,12 @@ namespace RevenueEngine
         #region Operators
 
         /// <summary>
-        /// Creating/Rewriting this method, to be able to check whether two indicated Campaigns are the same.
+        /// Creating/Rewriting this method, to be able to check whether two indicated Campaign are the same.
         /// </summary>
         /// <param name="left"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public static bool operator ==(Campaigns left, Campaigns right)
+        public static bool operator ==(Campaign left, Campaign right)
         {
             if ((left.CampaignID == right.CampaignID) && (left.CampaignName == right.CampaignName)
                 && (left.StartCampaingn == right.StartCampaingn) && (left.EndCampaingn == right.EndCampaingn)
@@ -168,12 +168,12 @@ namespace RevenueEngine
         }
 
         /// <summary>
-        /// Creating/Rewriting this method, to be able to check whether two indicated Campaigns are different.
+        /// Creating/Rewriting this method, to be able to check whether two indicated Campaign are different.
         /// </summary>
         /// <param name="left"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public static bool operator !=(Campaigns left, Campaigns right)
+        public static bool operator !=(Campaign left, Campaign right)
         {
             if (!(left == right)) return (true);
             return (false);
@@ -201,9 +201,9 @@ namespace RevenueEngine
         /// <returns></returns>
         public override bool Equals(object obj)
         {
-            if (obj is Campaigns)
+            if (obj is Campaign)
             {
-                Campaigns campaign = (Campaigns)obj;
+                Campaign campaign = (Campaign)obj;
                 if (this == campaign)
                     return (true);
             }

@@ -3,24 +3,24 @@
  * Copyright (c) 2023 All Rights Reserved
  * </copyright>
  * <author> Pedro Vieira </author>
- * <date> 11/8/2023 12:13:28 PM </date>
+ * <date> 11/14/2023 10:34:03 PM </date>
  * <description></description>
  * 
  * */
 
 using System;
 
-namespace RevenueEngine
+namespace RevenueEngine.Others
 {
     /// <summary>
     /// Purpose: [Write the purpose of the class!]
     /// Created By: Pedro Vieira
-    /// Created On: 11/8/2023 12:13:28 PM
+    /// Created On: 11/14/2023 10:34:03 PM
     /// Email: a25626@alunos.ipca.pt
     /// </summary>
     /// <remarks></remarks>
     /// <example></example>
-    public class Sales
+    public class Campaigns
     {
         #region Attributes
         #endregion
@@ -43,5 +43,7 @@ namespace RevenueEngine
         #endregion
 
         #endregion
+
+        //Still in progress...
     }
 }

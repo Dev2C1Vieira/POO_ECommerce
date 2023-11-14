@@ -9,6 +9,7 @@
  * */
 
 using System;
+using ProductCatalog.Interfaces;
 
 namespace ProductCatalog
 {
@@ -20,7 +21,7 @@ namespace ProductCatalog
     /// </summary>
     /// <remarks></remarks>
     /// <example></example>
-    public class Products
+    public class Product : IProduct
     {
         #region Attributes
 
@@ -49,7 +50,7 @@ namespace ProductCatalog
         /// <summary>
         /// Default constructor
         /// </summary>
-        public Products()
+        public Product()
         {
             productID = qtdProducts;
             qtdProducts++;
@@ -65,7 +66,7 @@ namespace ProductCatalog
         /// <param name="productName"></param>
         /// <param name="price"></param>
         /// <param name="launchDate"></param>
-        public Products(string productName, double price, DateTime launchDate, bool visibilityStatus)
+        public Product(string productName, double price, DateTime launchDate, bool visibilityStatus)
         {
             productID = qtdProducts;
             qtdProducts++;
@@ -138,12 +139,12 @@ namespace ProductCatalog
         #region Operators
 
         /// <summary>
-        /// Creating/Rewriting this method, to be able to check whether two indicated Products are the same.
+        /// Creating/Rewriting this method, to be able to check whether two indicated Product are the same.
         /// </summary>
         /// <param name="left"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public static bool operator ==(Products left, Products right)
+        public static bool operator ==(Product left, Product right)
         {
             if ((left.ProductID == right.ProductID) && (left.ProductName == right.ProductName) && (left.Price == right.Price) 
                 && (left.LauchDate == right.LauchDate) && (left.visibilityStatus == right.VisibilityStatus)) 
@@ -152,12 +153,12 @@ namespace ProductCatalog
         }
 
         /// <summary>
-        /// Creating/Rewriting this method, to be able to check whether two indicated Products are different.
+        /// Creating/Rewriting this method, to be able to check whether two indicated Product are different.
         /// </summary>
         /// <param name="left"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public static bool operator !=(Products left, Products right)
+        public static bool operator !=(Product left, Product right)
         {
             if (!(left == right)) return (true);
             return (false);
@@ -184,9 +185,9 @@ namespace ProductCatalog
         /// <returns></returns>
         public override bool Equals(object obj)
         {
-            if (obj is Products)
+            if (obj is Product)
             {
-                Products product = (Products)obj;
+                Product product = (Product)obj;
                 if (this == product)
                     return (true);
             }
@@ -205,11 +206,19 @@ namespace ProductCatalog
         #endregion
 
         #region OtherMethods
+
+        public void InsertProduct(Product product)
+        {
+            //Still in progress...
+        }
+
         #endregion
 
         #region Destructor
         #endregion
 
         #endregion
+
+        //Still in progress...
     }
 }
