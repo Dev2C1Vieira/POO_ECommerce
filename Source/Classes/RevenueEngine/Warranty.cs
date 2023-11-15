@@ -10,6 +10,7 @@
 
 using System;
 using ProductCatalog;
+using RevenueEngine.Interfaces;
 
 namespace RevenueEngine
 {
@@ -215,5 +216,7 @@ namespace RevenueEngine
         #endregion
 
         #endregion
+
+        //Still in progress...
     }
 }

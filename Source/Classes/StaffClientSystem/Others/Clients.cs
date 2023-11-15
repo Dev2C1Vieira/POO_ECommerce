@@ -3,7 +3,7 @@
  * Copyright (c) 2023 All Rights Reserved
  * </copyright>
  * <author> Pedro Vieira </author>
- * <date> 11/14/2023 10:33:12 PM </date>
+ * <date> 11/15/2023 4:03:21 PM </date>
  * <description></description>
  * 
  * */
@@ -15,7 +15,7 @@ namespace StaffClientSystem.Others
     /// <summary>
     /// Purpose: [Write the purpose of the class!]
     /// Created By: Pedro Vieira
-    /// Created On: 11/14/2023 10:33:12 PM
+    /// Created On: 11/15/2023 4:03:21 PM
     /// Email: a25626@alunos.ipca.pt
     /// </summary>
     /// <remarks></remarks>
@@ -43,7 +43,5 @@ namespace StaffClientSystem.Others
         #endregion
 
         #endregion
-
-        //Still in progress...
     }
 }

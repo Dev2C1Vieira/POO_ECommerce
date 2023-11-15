@@ -2,9 +2,9 @@
 
 namespace ProductCatalog.Interfaces
 {
-    public interface IProduct
+    public interface ICategory
     {
-        void InsertProduct(Product product);
+        void InsertCategory(Category category);
 
         //Still in progress...
     }

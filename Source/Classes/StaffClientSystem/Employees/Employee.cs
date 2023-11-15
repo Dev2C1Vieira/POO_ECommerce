@@ -9,6 +9,7 @@
  * */
 
 using System;
+using StaffClientSystem.Interfaces;
 
 namespace StaffClientSystem.Employees
 {
@@ -20,7 +21,7 @@ namespace StaffClientSystem.Employees
     /// </summary>
     /// <remarks></remarks>
     /// <example></example>
-    public class Employee : Person
+    public class Employee : Person, IEmployee
     {
         #region Attributes
         #endregion
@@ -37,13 +38,17 @@ namespace StaffClientSystem.Employees
         #endregion
 
         #region OtherMethods
+
+        public void InsertEmployee(Employee employee)
+        {
+            //Still in progress...
+        }
+
         #endregion
 
         #region Destructor
         #endregion
 
         #endregion
-
-        //Still in progress...
     }
 }

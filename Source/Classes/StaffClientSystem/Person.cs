@@ -25,7 +25,7 @@ namespace StaffClientSystem
         #region Attributes
 
         public string name;
-        private DateTime birthdate;
+        //private DateTime birthdate;
 
         #endregion
 

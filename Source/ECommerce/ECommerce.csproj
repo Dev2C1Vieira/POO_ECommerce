@@ -33,14 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ClientsDLL">
-      <HintPath>..\Classes\ClientsDLL\bin\Debug\ClientsDLL.dll</HintPath>
-    </Reference>
     <Reference Include="InputConsoleOutput">
       <HintPath>..\Input_Output\InputConsoleOutput\bin\Debug\InputConsoleOutput.dll</HintPath>
     </Reference>
     <Reference Include="ProductCatalog">
       <HintPath>..\Classes\ProductCatalog\bin\Debug\ProductCatalog.dll</HintPath>
+    </Reference>
+    <Reference Include="RevenueEngine">
+      <HintPath>..\Classes\RevenueEngine\bin\Debug\RevenueEngine.dll</HintPath>
     </Reference>
     <Reference Include="StaffClientSystem">
       <HintPath>..\Classes\StaffClientSystem\bin\Debug\StaffClientSystem.dll</HintPath>
@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

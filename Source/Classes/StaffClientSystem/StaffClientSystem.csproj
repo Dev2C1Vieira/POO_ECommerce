@@ -45,6 +45,7 @@
     <Compile Include="Employees\Employee.cs" />
     <Compile Include="Employees\Manager.cs" />
     <Compile Include="Interfaces\IClient.cs" />
+    <Compile Include="Interfaces\IEmployee.cs" />
     <Compile Include="Others\Clients.cs" />
     <Compile Include="Others\Employees.cs" />
     <Compile Include="Person.cs" />
