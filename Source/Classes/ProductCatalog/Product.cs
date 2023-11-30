@@ -9,7 +9,6 @@
  * */
 
 using System;
-using ProductCatalog.Interfaces;
 
 namespace ProductCatalog
 {
@@ -21,7 +20,7 @@ namespace ProductCatalog
     /// </summary>
     /// <remarks></remarks>
     /// <example></example>
-    public class Product : IProduct
+    public class Product
     {
         #region Attributes
 
@@ -206,12 +205,6 @@ namespace ProductCatalog
         #endregion
 
         #region OtherMethods
-
-        public void InsertProduct(Product product)
-        {
-            //Still in progress...
-        }
-
         #endregion
 
         #region Destructor

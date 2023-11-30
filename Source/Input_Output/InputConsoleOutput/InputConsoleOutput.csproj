@@ -31,9 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ClientsDLL">
-      <HintPath>..\..\Classes\ClientsDLL\bin\Debug\ClientsDLL.dll</HintPath>
-    </Reference>
     <Reference Include="ProductCatalog">
       <HintPath>..\..\Classes\ProductCatalog\bin\Debug\ProductCatalog.dll</HintPath>
     </Reference>

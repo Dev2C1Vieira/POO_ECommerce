@@ -13,6 +13,7 @@ using StaffClientSystem;
 using RevenueEngine;
 using ProductCatalog;
 using InputConsoleOutput;
+using ProductCatalog.Others;
 
 namespace ECommerce
 {
@@ -70,39 +71,47 @@ namespace ECommerce
 
             Console.WriteLine("\n------------------ Product Section ------------------\n");
 
+            Products storage = new Products();
             Product product1 = new Product();
-            Product product2 = new Product();
-            Product product3 = new Product();
+            //Product product2 = new Product();
+            //Product product3 = new Product();
 
             product1.ProductName = "Rato Logitech Pro X Superlight";
             product1.Price = 120.39;
             product1.LauchDate = new DateTime(2022, 12, 03);
             product1.VisibilityStatus = true;
 
-            product2.ProductName = "Auscultadores Logitech Pro X Wireless";
-            product2.Price = 189.99;
-            product2.LauchDate = new DateTime(2022, 09, 17);
-            product2.VisibilityStatus = false;
+            //product2.ProductName = "Auscultadores Logitech Pro X Wireless";
+            //product2.Price = 189.99;
+            //product2.LauchDate = new DateTime(2022, 09, 17);
+            //product2.VisibilityStatus = false;
 
-            product3.ProductName = "Teclado Logitech X Pro Wireless";
-            product3.Price = 221.79;
-            product3.LauchDate = new DateTime(2022, 11, 21);
-            product3.VisibilityStatus = true;
+            //product3.ProductName = "Teclado Logitech X Pro Wireless";
+            //product3.Price = 221.79;
+            //product3.LauchDate = new DateTime(2022, 11, 21);
+            //product3.VisibilityStatus = true;
 
-            IO.ShowProductInformation(product1);
-            IO.ShowProductInformation(product2);
-            IO.ShowProductInformation(product3);
 
-            if ((IO.IsProductAvailable(product1) == true) && (IO.IsProductAvailable(product3) == true))
-            {
-                if (IO.CompareProducts(product1, product3))
-                    Console.WriteLine("\nThe {0} and {1} products whose IDs are respectively {2} and {3} are equal.\n",
-                        product1.ProductName, product3.ProductName, product1.ProductID, product3.ProductID);
-                else
-                    Console.WriteLine("\nThe {0} and {1} products whose IDs are respectively {2} and {3} are not equal.\n",
-                        product1.ProductName, product3.ProductName, product1.ProductID, product3.ProductID);
-            }
-            else Console.WriteLine("\nUnable to compare Product!\n");
+            storage.InsertProduct(product1);
+
+
+            IO.ShowProductInformation(storage, product1);
+            //IO.ShowProductInformation(product2);
+            //IO.ShowProductInformation(product3);
+
+            //if ((IO.IsProductAvailable(product1) == true) && (IO.IsProductAvailable(product3) == true))
+            //{
+            //    if (IO.CompareProducts(product1, product3))
+            //        Console.WriteLine("\nThe {0} and {1} products whose IDs are respectively {2} and {3} are equal.\n",
+            //            product1.ProductName, product3.ProductName, product1.ProductID, product3.ProductID);
+            //    else
+            //        Console.WriteLine("\nThe {0} and {1} products whose IDs are respectively {2} and {3} are not equal.\n",
+            //            product1.ProductName, product3.ProductName, product1.ProductID, product3.ProductID);
+            //}
+            //else Console.WriteLine("\nUnable to compare Product!\n");
+
+
+
 
             #endregion
 

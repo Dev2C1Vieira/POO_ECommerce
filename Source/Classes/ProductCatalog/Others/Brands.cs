@@ -9,6 +9,7 @@
  * */
 
 using System;
+using ProductCatalog.Interfaces;
 
 namespace ProductCatalog.Others
 {
@@ -20,7 +21,7 @@ namespace ProductCatalog.Others
     /// </summary>
     /// <remarks></remarks>
     /// <example></example>
-    public class Brands
+    public class Brands : IBrand
     {
         #region Attributes
         #endregion
@@ -37,6 +38,12 @@ namespace ProductCatalog.Others
         #endregion
 
         #region OtherMethods
+
+        public void InsertBrand(Brand brand)
+        {
+            //Still in progress...
+        }
+
         #endregion
 
         #region Destructor

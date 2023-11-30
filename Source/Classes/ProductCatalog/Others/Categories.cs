@@ -8,6 +8,7 @@
  * 
  * */
 
+using ProductCatalog.Interfaces;
 using System;
 
 namespace ProductCatalog.Others
@@ -20,7 +21,7 @@ namespace ProductCatalog.Others
     /// </summary>
     /// <remarks></remarks>
     /// <example></example>
-    public class Categories
+    public class Categories : ICategory
     {
         #region Attributes
         #endregion
@@ -37,6 +38,12 @@ namespace ProductCatalog.Others
         #endregion
 
         #region OtherMethods
+
+        public void InsertCategory(Category category)
+        {
+            //Still in progress...
+        }
+
         #endregion
 
         #region Destructor

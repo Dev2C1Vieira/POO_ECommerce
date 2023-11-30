@@ -28,6 +28,12 @@ namespace StaffClientSystem.Employees
         #region Methods
 
         #region Constructors
+
+        public Manager()
+        {
+
+        }
+
         #endregion
 
         #region Properties

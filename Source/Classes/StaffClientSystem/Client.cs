@@ -29,7 +29,6 @@ namespace StaffClientSystem
         /// Creation of the Clients class atributes
         /// </summary>
         private int id; //
-        //private string name; //
         private bool gender; //
         private DateTime birthdate; //
         private string address; //

@@ -9,6 +9,9 @@
  * */
 
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using ProductCatalog.Interfaces;
 
 namespace ProductCatalog.Others
 {
@@ -20,23 +23,83 @@ namespace ProductCatalog.Others
     /// </summary>
     /// <remarks></remarks>
     /// <example></example>
-    public class Products
+    public class Products : IProduct
     {
         #region Attributes
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private static List<Product> productsList = new List<Product>(); //
+
         #endregion
 
         #region Methods
 
         #region Constructors
+
+        /// <summary>
+        /// 
+        /// </summary>
+        static Products()
+        {
+            productsList = new List<Product>();
+        }
+
         #endregion
 
         #region Properties
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<Product> ProductsList
+        {
+            get { return productsList; }
+            set { productsList = value; }
+        }
+
         #endregion
 
         #region Overrides
         #endregion
 
         #region OtherMethods
+
+        //
+        public bool ExistProduct(Product product)
+        {
+            if (productsList.Exists(p => p.ProductID == product.ProductID))
+                return true;
+            return false;
+        }
+
+        public bool InsertProduct(Product product)
+        {
+            if (ExistProduct(product) == true)
+            {
+                productsList.Add(product);
+                return (true);
+            }
+            return (false);
+
+            //Still in progress...
+        }
+
+        public bool UpdateProduct(Product product)
+        {
+            return (false);
+
+            //Still in progress...
+        }
+
+        public bool DeleteProduct(Product product)
+        {
+            return (false);
+
+            //Still in progress...
+        }
+
         #endregion
 
         #region Destructor

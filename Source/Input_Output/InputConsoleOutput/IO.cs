@@ -12,6 +12,7 @@ using System;
 using StaffClientSystem;
 using ProductCatalog;
 using RevenueEngine;
+using ProductCatalog.Others;
 
 namespace InputConsoleOutput
 {
@@ -88,15 +89,20 @@ namespace InputConsoleOutput
         /// <summary>
         /// This method lists the indicated product's information in the console.
         /// </summary>
+        /// <param name="storage"></param>
         /// <param name="product"></param>
-        public static void ShowProductInformation(Product product)
+        public static void ShowProductInformation(Products storage, Product product)
         {
-            if (IsProductAvailable(product) == true)
-                Console.WriteLine("\nProduct ID: {0}" + "\n" + "Product Name: {1}" + "\n" + "Price: {2}" + "\n" +
-                    "Launch Date: {3}", product.ProductID.ToString(), product.ProductName,
-                    product.Price.ToString(), product.LauchDate.ToString());
-            else
-                Console.WriteLine("\nThe {0} product is currently unavailable.", product.ProductName);
+            if (storage.ExistProduct(product))
+            {
+                if (IsProductAvailable(product) == true)
+                    Console.WriteLine("\nProduct ID: {0}" + "\n" + "Product Name: {1}" + "\n" + "Price: {2}" + "\n" +
+                        "Launch Date: {3}", product.ProductID.ToString(), product.ProductName,
+                        product.Price.ToString(), product.LauchDate.ToString());
+                else
+                    Console.WriteLine("\nThe {0} product is currently unavailable.", product.ProductName);
+            }
+            else Console.WriteLine("\nThe {0} product does not exist!.", product.ProductName);
         }
 
         /// <summary>
