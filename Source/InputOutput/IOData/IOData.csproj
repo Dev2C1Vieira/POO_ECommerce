@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6E801DCB-55DF-4E96-89AF-DB4A9B8FF2C0}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>ECommerce</RootNamespace>
-    <AssemblyName>ECommerce</AssemblyName>
+    <ProjectGuid>{08D94A08-D31A-49F8-AD02-E1206EBE6B96}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>InputConsoleOutput</RootNamespace>
+    <AssemblyName>InputConsoleOutput</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,8 +31,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="InputConsoleOutput">
-      <HintPath>..\Input_Output\InputConsoleOutput\bin\Debug\InputConsoleOutput.dll</HintPath>
+    <Reference Include="ProductCatalog">
+      <HintPath>..\..\BusinessObjects\ProductCatalog\bin\Debug\ProductCatalog.dll</HintPath>
+    </Reference>
+    <Reference Include="ProductCatalogs">
+      <HintPath>..\..\Data\ProductCatalogs\bin\Debug\ProductCatalogs.dll</HintPath>
+    </Reference>
+    <Reference Include="RevenueEngine">
+      <HintPath>..\..\BusinessObjects\RevenueEngine\bin\Debug\RevenueEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="RevenueEngines">
+      <HintPath>..\..\Data\RevenueEngines\bin\Debug\RevenueEngines.dll</HintPath>
+    </Reference>
+    <Reference Include="StaffClientSystem">
+      <HintPath>..\..\BusinessObjects\StaffClientSystem\bin\Debug\StaffClientSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="StaffClientSystems">
+      <HintPath>..\..\Data\StaffClientSystems\bin\Debug\StaffClientSystems.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,12 +59,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="IO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
