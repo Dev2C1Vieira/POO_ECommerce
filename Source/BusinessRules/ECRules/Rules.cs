@@ -9,6 +9,7 @@
  * */
 
 using System;
+using System.Collections.Generic;
 using ProductCatalog;
 using ProductCatalogs;
 
@@ -27,6 +28,7 @@ namespace ECRules
 
         public static bool InsertProduct(Product produto)
         {
+            if (produto.Price > 100) return false;
             try
             {
                 Products.InsertProduct(produto);
@@ -37,33 +39,38 @@ namespace ECRules
                 throw new Exception("Failed to insert a new product!\r\n" + "-" + E.Message);
             }
         }
-
-        public static Product ShowProduct(Product produto)
+        
+        public static List<Product> ReturnProductsList()
         {
-            try
-            {
-                return Products.ReturnProduct(produto);
-            }
-            catch (Exception E)
-            {
-                throw new Exception("Failed to Show the product!\r\n" + "-" + E.Message);
-            }
+            return Products.ProductsList;
         }
 
-        public static bool DeleteProduct(Product produto)
-        {
-            try
-            {
-                Products.InsertProduct(produto);
-                return true; 
-                // talvez um campo available que passe para 0
-                // ou uma nova lista que receba apenas os produtos 'eliminados'
-            }
-            catch (Exception E)
-            {
-                throw new Exception("Failed to insert a new product!\r\n" + "-" + E.Message);
-            }
-        }
+        //public static Product ShowProduct(Product produto)
+        //{
+        //    try
+        //    {
+        //        return Products.ReturnProduct(produto);
+        //    }
+        //    catch (Exception E)
+        //    {
+        //        throw new Exception("Failed to Show the product!\r\n" + "-" + E.Message);
+        //    }
+        //}
+
+        //public static bool DeleteProduct(Product produto)
+        //{
+        //    try
+        //    {
+        //        Products.InsertProduct(produto);
+        //        return true;
+        //        // talvez um campo available que passe para 0
+        //        // ou uma nova lista que receba apenas os produtos 'eliminados'
+        //    }
+        //    catch (Exception E)
+        //    {
+        //        throw new Exception("Failed to insert a new product!\r\n" + "-" + E.Message);
+        //    }
+        //}
 
         #endregion
     }

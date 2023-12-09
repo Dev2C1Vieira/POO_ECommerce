@@ -10,6 +10,11 @@
 
 using System;
 
+//External
+using ProductCatalog;
+using ECRules;
+using IOData;
+
 namespace ECommerce
 {
     /// <summary>
@@ -23,172 +28,127 @@ namespace ECommerce
     /// <example></example>
     internal class Program
     {
-        static void Main(string[] args)
+        public static void Red() { Console.ForegroundColor = ConsoleColor.Red; }
+
+        public static void Green() { Console.ForegroundColor = ConsoleColor.Green; }
+
+        public static void Yellow() { Console.ForegroundColor = ConsoleColor.Yellow; }
+
+        public static void Blue() { Console.ForegroundColor = ConsoleColor.Blue; }
+
+        public static void Reset() { Console.ResetColor(); }
+
+        public static void Clear() { Console.Clear(); }
+
+        public static void Flushtdin() { while (Console.In.Peek() != -1 && Console.In.ReadLine() != null) { } }
+
+        public static void Pause()
         {
-            Console.WriteLine("Welcome to ECommerce Application!");
+            Flushtdin();
+            Console.WriteLine("\n\nPress ");
+            Red();
+            Console.WriteLine("any key ");
+            Reset();
+            Console.WriteLine("to continue...");
+            Console.ReadKey(true);
+        }
 
-            #region Inicial_Trial
+        public static void Menu(Product product)
+        {
+            int op = -1;
 
-            #region Clients
+            try
+            {
+                while (true)
+                {
+                    do
+                    {
+                        Clear();
+                        Reset();
+                        Red();
+                        Console.WriteLine("  --------- Welcome to ECommerce Application ---------\n");
+                        Reset();
+                        if (op < 1 || op > 3)
+                        {
+                            Red();
+                            Console.WriteLine("\n  Invalid Option! [1-3]\n");
+                        }
+                        Yellow();
+                        Console.WriteLine("\n  +-------------------------------------------+");
+                        Console.WriteLine("  |  1. List the existing products!           |");
+                        Console.WriteLine("  |  2. Insert a new product!                 |");
+                        Console.WriteLine("  |  3. Exit Application!                     |");
+                        Console.WriteLine("  +-------------------------------------------+\n");
+                        Red();
+                        Console.WriteLine("\n\n Option: ");
+                        op = Convert.ToInt16(Console.ReadLine());
+                        Reset();
+                    } while (op < 1 || op > 3);
+                    Clear();
+                    switch (op)
+                    {
+                        case 1:
+                            Red();
+                            Console.WriteLine("\nTable containing the information of the existing products.\n");
+                            // Table Construction
+                            Yellow();
+                            Console.WriteLine("\n+---------------------------------------------------------------+");
+                            Console.WriteLine("|    CODE      NAME                 PRICE      LAUNCH DATE       |");
+                            Console.WriteLine("+---------------------------------------------------------------+\n");
+                            Reset();
+                            IO.ListProductsInformation(Rules.ReturnProductsList());
+                            //printf("\n+-----------------------------------------------------------------------------------------------+");
+                            //printf("\n\nTotal sum of accessible records:");
+                            //red();
+                            //// this function return the amount of records in the Linked List Meios
+                            //printf(" %d\n", countNonBookingRecords(meios));
+                            //reset();
+                            Pause();
+                            break;
+                        case 2:
+                            IO.InsertProduct(product);
+                            break;
+                        case 3:
+                            Environment.Exit(0);
+                            break;
+                    }
+                }
+            }
+            catch (FormatException E)
+            {
+                Console.WriteLine(E.Message);
+                Pause();
+            }
+            catch (Exception E)
+            {
+                Console.WriteLine(E.Message);
+                Pause();
+            }
+            finally
+            {
+                Menu(product);
+            }
+        }
 
-            //Console.WriteLine("\n------------------ Client Section ------------------\n");
+        static void Main()
+        {
+            Product product1 = new Product();
 
-            //Client client1 = new Client();
-            //Client client2 = new Client();
+            product1.ProductName = "Logitech Pro X Superlight";
+            product1.Price = 135.54;
+            product1.LauchDate = new DateTime(2021, 09, 11);
+            product1.VisibilityStatus = true;
 
-            //client1.Name = "Pedro Vieira";
-            //client1.Gender = true;
-            //client1.BirthDate = new DateTime(2004, 09, 15, 02, 34, 54);
-            //client1.Address = "Rua das Flores, 123";
-            //client1.PhoneNumber = 916735615;
-            //client1.EmailAddress = "a25626@alunos.ipca.pt";
-
-            //client2.Name = "Albina Soares";
-            //client2.Gender = false;
-            //client2.BirthDate = new DateTime(1993, 03, 07, 14, 13, 39);
-            //client2.Address = "Rua das Crostacios, 231";
-            //client2.PhoneNumber = 914826352;
-            //client2.EmailAddress = "a28514@alunos.ipca.pt";
-
-            //IO.ShowClientInformation(client1);
-            //IO.ShowClientInformation(client2);
-
-            //if (IO.CompareClients(client1, client2) == true)//not working properly
-            //    Console.WriteLine("\nThe clientes are equal!\n");
-            //else
-            //    Console.WriteLine("\nThe clientes are not equal!\n");
-
-            #endregion
-
-            #region ProductCatalog
-
-            #region Products
-
-            //Console.WriteLine("\n------------------ Product Section ------------------\n");
-
-            //Products storage = new Products();
-            //Product product1 = new Product();
-            ////Product product2 = new Product();
-            ////Product product3 = new Product();
-
-            //product1.ProductName = "Rato Logitech Pro X Superlight";
-            //product1.Price = 120.39;
-            //product1.LauchDate = new DateTime(2022, 12, 03);
-            //product1.VisibilityStatus = true;
-
-            ////product2.ProductName = "Auscultadores Logitech Pro X Wireless";
-            ////product2.Price = 189.99;
-            ////product2.LauchDate = new DateTime(2022, 09, 17);
-            ////product2.VisibilityStatus = false;
-
-            ////product3.ProductName = "Teclado Logitech X Pro Wireless";
-            ////product3.Price = 221.79;
-            ////product3.LauchDate = new DateTime(2022, 11, 21);
-            ////product3.VisibilityStatus = true;
-
-
-            //storage.InsertProduct(product1);
-
-
-            //IO.ShowProductInformation(storage, product1);
-            ////IO.ShowProductInformation(product2);
-            ////IO.ShowProductInformation(product3);
-
-            ////if ((IO.IsProductAvailable(product1) == true) && (IO.IsProductAvailable(product3) == true))
-            ////{
-            ////    if (IO.CompareProducts(product1, product3))
-            ////        Console.WriteLine("\nThe {0} and {1} products whose IDs are respectively {2} and {3} are equal.\n",
-            ////            product1.ProductName, product3.ProductName, product1.ProductID, product3.ProductID);
-            ////    else
-            ////        Console.WriteLine("\nThe {0} and {1} products whose IDs are respectively {2} and {3} are not equal.\n",
-            ////            product1.ProductName, product3.ProductName, product1.ProductID, product3.ProductID);
-            ////}
-            ////else Console.WriteLine("\nUnable to compare Product!\n");
-
-            #endregion
-
-            #region Categories
-
-            //Console.WriteLine("\n------------------ Category Section ------------------\n");
-
-            //DateTime c1_creationDate = new DateTime(2018, 07, 25);
-            //Category category1 = new Category("Gaming Mouse", true, c1_creationDate, 1);
-            //DateTime c2_creationDate = new DateTime(2019, 03, 17);
-            //Category category2 = new Category("Gaming Keyboard", false, c2_creationDate, 2);
-
-            //IO.ShowCategoryInformation(category1);
-            //IO.ShowCategoryInformation(category2);
-
-            //if ((IO.IsCategoryAvailable(category1) == true) && (IO.IsCategoryAvailable(category2) == true))
+            //try
             //{
-            //    if (IO.CompareCategories(category1, category2))
-            //        Console.WriteLine("\nThe {0} and {1} categories whose IDs are respectively {2} and {3} are equal.\n",
-            //            category1.CategoryName, category2.CategoryName, category1.CategoryID, category2.CategoryID);
-            //    else
-            //        Console.WriteLine("\nThe {0} and {1} categories whose IDs are respectively {2} and {3} are not equal.\n",
-            //            category1.CategoryName, category2.CategoryName, category1.CategoryID, category2.CategoryID);
+            //    IO.InsertProduct(product1);
             //}
-            //else Console.WriteLine("\nUnable to compare Category!\n");
-
-            //#endregion
-
-            //#region Brands
-
-            //Console.WriteLine("\n------------------ Brand Section ------------------\n");
-
-            //DateTime b1_fundationDate = new DateTime(2017, 03, 21);
-            //DateTime b1_creationDate = new DateTime(2023, 11, 10);
-            //Brand brand1 = new Brand("Logitech", "Lausanne, Suíça", b1_fundationDate, true, b1_creationDate);
-            //DateTime b2_fundationDate = new DateTime(2013, 07, 03);
-            //DateTime b2_creationDate = new DateTime(2023, 11, 10);
-            //Brand brand2 = new Brand("Sony", "Tóquio, Japão", b2_fundationDate, true, b2_creationDate);
-
-            //IO.ShowBrandInformation(brand1);
-            //IO.ShowBrandInformation(brand2);
-
-            //if ((IO.IsBrandAvailable(brand1) == true) && (IO.IsBrandAvailable(brand2) == true))
+            //catch (Exception E)
             //{
-            //    if (IO.CompareBrands(brand1, brand2))
-            //        Console.WriteLine("\nThe {0} and {1} brands whose IDs are respectively {2} and {3} are equal.\n", 
-            //            brand1.BrandName, brand2.BrandName, brand1.BrandID, brand2.BrandID);
-            //    else
-            //        Console.WriteLine("\nThe {0} and {1} brands whose IDs are respectively {2} and {3} are not equal.\n", 
-            //            brand1.BrandName, brand2.BrandName, brand1.BrandID, brand2.BrandID);
+            //    Console.WriteLine(E.Message);
             //}
-            //else Console.WriteLine("\nUnable to compare Brand!\n");
 
-            #endregion
-
-            #region Brands
-
-            //Console.WriteLine("\n------------------ Brand Section ------------------\n");
-
-            //DateTime b1_fundationDate = new DateTime(2017, 03, 21);
-            //DateTime b1_creationDate = new DateTime(2023, 11, 10);
-            //Brand brand1 = new Brand("Logitech", "Lausanne, Suíça", b1_fundationDate, true, b1_creationDate);
-            //DateTime b2_fundationDate = new DateTime(2013, 07, 03);
-            //DateTime b2_creationDate = new DateTime(2023, 11, 10);
-            //Brand brand2 = new Brand("Sony", "Tóquio, Japão", b2_fundationDate, true, b2_creationDate);
-
-            //IO.ShowBrandInformation(brand1);
-            //IO.ShowBrandInformation(brand2);
-
-            //if ((IO.IsBrandAvailable(brand1) == true) && (IO.IsBrandAvailable(brand2) == true))
-            //{
-            //    if (IO.CompareBrands(brand1, brand2))
-            //        Console.WriteLine("\nThe {0} and {1} brands whose IDs are respectively {2} and {3} are equal.\n",
-            //            brand1.BrandName, brand2.BrandName, brand1.BrandID, brand2.BrandID);
-            //    else
-            //        Console.WriteLine("\nThe {0} and {1} brands whose IDs are respectively {2} and {3} are not equal.\n",
-            //            brand1.BrandName, brand2.BrandName, brand1.BrandID, brand2.BrandID);
-            //}
-            //else Console.WriteLine("\nUnable to compare Brand!\n");
-
-            #endregion
-
-            #endregion
-
-            #endregion
+            Menu(product1);
         }
     }
 }

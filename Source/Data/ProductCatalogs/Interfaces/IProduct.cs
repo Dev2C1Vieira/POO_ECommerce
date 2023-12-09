@@ -10,13 +10,15 @@ namespace ProductCatalogs.Interfaces
 
         bool ExistProduct(Product product);
 
+        bool IsProductAvailable(Product product);
+
         bool InsertProduct(Product product);
 
         Product ReturnProduct(Product given_product);
 
-        bool UpdateProduct(Product product);
+        //bool UpdateProduct(Product product);
 
-        bool DeleteProduct(Product product);
+        //bool DeleteProduct(Product product);
 
         //Still in progress...
     }

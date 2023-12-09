@@ -11,6 +11,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+
+//External
 using ProductCatalog;
 using ProductCatalogs.Interfaces;
 
@@ -24,7 +26,7 @@ namespace ProductCatalogs
     /// </summary>
     /// <remarks></remarks>
     /// <example></example>
-    public class Products /*: IProduct*/
+    public class Products //: IProduct
     {
         #region Attributes
 
@@ -88,6 +90,17 @@ namespace ProductCatalogs
         }
 
         /// <summary>
+        /// This method verifies if the visibility status of the given product is visible or not.
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
+        public static bool IsProductAvailable(Product product)
+        {
+            if (product.VisibilityStatus == true) return (true);
+            else return (false);
+        }
+
+        /// <summary>
         /// This function inserts a product passed as a List parameter.
         /// </summary>
         /// <param name="product"></param>
@@ -104,51 +117,49 @@ namespace ProductCatalogs
             //Still in progress...
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="given_product"></param>
-        /// <returns></returns>
-        public static Product ReturnProduct(Product given_product)
-        {
-            foreach (var product in productsList)
-            {
-                if (ExistProduct(given_product))
-                {
-                    return product;
-                }
-                continue;
-            }
-            return new Product(); // still checking if it works correctly
-        }
+        //public static Product ReturnProduct(Product given_product)
+        //{
+        //    foreach (var product in productsList)
+        //    {
+        //        if (ExistProduct(given_product))
+        //        {
+        //            return product;
+        //        }
+        //        continue;
+        //    }
+        //    return new Product(); // still checking if it works correctly
+        //}
 
         /// <summary>
-        /// 
+        /// This method lists in the console the result of the comparison between two Product, indicated by parameter.
         /// </summary>
-        /// <param name="product"></param>
+        /// <param name="product1"></param>
+        /// <param name="product2"></param>
         /// <returns></returns>
-        public static bool UpdateProduct(Product product)
+        public static bool CompareProducts(Product product1, Product product2)
         {
-            return (false);
-
-            //Still in progress...
+            if (product1.Equals(product2)) return (true);
+            else return (false);
         }
 
-        /// <summary>
-        /// This function eliminates a product passed as a parameter from the List.
-        /// </summary>
-        /// <param name="product"></param>
-        /// <returns></returns>
-        public static bool DeleteProduct(Product product)
-        {
-            // Checks if the product exists in the list before trying to remove it.
-            if (ExistProduct(product) == true)
-            {
-                productsList.Remove(product); // Remove the product from the list.
-                return true; // Indicates that the product was successfully removed.
-            }
-            return false; // Product not found in the list.
-        }
+
+        //public static bool UpdateProduct(Product product)
+        //{
+        //    return (false);
+
+        //    //Still in progress...
+        //}
+
+        //public static bool DeleteProduct(Product product)
+        //{
+        //    // Checks if the product exists in the list before trying to remove it.
+        //    if (ExistProduct(product) == true)
+        //    {
+        //        productsList.Remove(product); // Remove the product from the list.
+        //        return true; // Indicates that the product was successfully removed.
+        //    }
+        //    return false; // Product not found in the list.
+        //}
 
         #endregion
 
