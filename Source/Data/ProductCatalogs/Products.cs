@@ -11,6 +11,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
+
 
 //External
 using ProductCatalog;
@@ -131,7 +133,7 @@ namespace ProductCatalogs
         public static bool InsertProduct(Product product)
         {
             if (ExistProduct(product) == true)
-                throw new ProductException("\nUnable to insert new product... Product is already inserted!");
+                throw new ProductException("\nUnable to insert new product ... Product is already inserted!");
 
             ProductsList.Add(product);
             return true;
@@ -168,6 +170,116 @@ namespace ProductCatalogs
                 count++;
             }
             return count;
+        }
+
+        /// <summary>
+        /// Method that checks if there is a product that has the id indicated by the user.
+        /// </summary>
+        /// <param name="productID"></param>
+        /// <returns></returns>
+        public static bool IsProductIDAvailable(int productID)
+        {
+            foreach (Product product in ProductsList)
+            {
+                if (product.ProductID == productID)
+                    return true;
+                else continue;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Method that returns an object of type Product, using its ID.
+        /// </summary>
+        /// <param name="productID"></param>
+        /// <returns></returns>
+        public static Product ReturnProductFromID(int productID)
+        {
+            Product auxProduct = new Product();
+            foreach (Product product in ProductsList)
+            {
+                if (product.ProductID == productID)
+                    auxProduct = product;
+                else continue;
+            }
+            return auxProduct;
+        }
+
+        /// <summary>
+        /// This function deletes a product by passing its ID as a parameter.
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
+        public static bool DeleteProduct(int productID)
+        {
+            if (ExistProduct(ReturnProductFromID(productID)) == false)
+                throw new ProductException("\nUnable to delete product ... Product does not exist!");
+
+            foreach (Product product in ProductsList)
+            {
+                if (product.Equals(ReturnProductFromID(productID)))
+                {
+                    ProductsList.Remove(product);
+                    return true;
+                }
+                else continue;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Method that, depending on the field indicated to be changed, receives a 
+        /// string and converts it to the data type that the attribute to be changed is.
+        /// </summary>
+        /// <param name="fieldToUpdate"></param>
+        /// <param name="atribute"></param>
+        /// <param name="productID"></param>
+        /// <returns></returns>
+        /// <exception cref="ProductException"></exception>
+        public static bool UpdateProduct(int fieldToUpdate, string atribute, int productID)
+        {
+            Product product = ReturnProductFromID(productID);
+            if (ExistProduct(product) == false)
+                throw new ProductException("\nUnable to update product ... Product does not exist!");
+
+            foreach (Product p in ProductsList)
+            {
+                if (p.Equals(product))
+                {
+                    if (fieldToUpdate == 1)
+                    {
+                        product.ProductName = atribute;
+                        return true;
+                    }
+                    else if (fieldToUpdate == 2)
+                    {
+                        product.ProductDescription = atribute;
+                        return true;
+                    }
+                    else if (fieldToUpdate == 3)
+                    {
+                        product.Price = float.Parse(atribute);
+                        return true;
+                    }
+                    else if (fieldToUpdate == 4)
+                    {
+                        product.LauchDate = DateTime.ParseExact(atribute, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+                        return true;
+                    }
+                    else if (fieldToUpdate == 5)
+                    {
+                        product.WarrantyDuration = int.Parse(atribute);
+                        return true;
+                    }
+                    else if (fieldToUpdate == 6)
+                    {
+                        product.AmountInStock = int.Parse(atribute);
+                        return true;
+                    }
+                }
+                else continue;
+            }
+            return false;
         }
 
         #endregion

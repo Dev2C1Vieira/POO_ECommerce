@@ -43,8 +43,11 @@ namespace ECRules
         /// <exception cref="Exception"></exception>
         public static bool InsertProduct(Product produto)
         {
-            if ((produto.Price > 1000) || (produto.WarrantyDuration < 2))
-                return false;
+            if (produto.Price > 1000)
+                throw new ProductException("\nFailure of Business Rules ... Product price cannot exceed 1000!");
+
+            if (produto.WarrantyDuration < 2)
+                throw new ProductException("\nFailure of Business Rules ... Product warranty duration cannot be less than 2 years!");
 
             try
             {
@@ -95,7 +98,85 @@ namespace ECRules
             }
             catch (Exception E)
             {
-                throw new Exception(E.Message);
+                throw new Exception("\nFailed to return the amount of products present in the list!" + "-" + E.Message);
+            }
+        }
+
+        /// <summary>
+        /// Method that returns the number of elements present in the product list.
+        /// </summary>
+        /// <returns></returns>
+        public static bool IsProductIDAvailable(int productID)
+        {
+            try
+            {
+                return Products.IsProductIDAvailable(productID);
+            }
+            catch (Exception E)
+            {
+                throw new Exception("\nFailed to verify if the indicated product ID is available!" + "-" + E.Message);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fieldToUpdate"></param>
+        /// <param name="atribute"></param>
+        /// <param name="productID"></param>
+        /// <returns></returns>
+        /// <exception cref="ProductException"></exception>
+        /// <exception cref="Exception"></exception>
+        public static bool UpdateProduct(int fieldToUpdate, string atribute, int productID)
+        {
+            if (fieldToUpdate == 3)
+            {
+                float price = float.Parse(atribute);
+
+                if (price > 1000)
+                    throw new ProductException("\nFailure of Business Rules ... Product price cannot exceed 1000!");
+            }
+            if (fieldToUpdate == 3)
+            {
+                int warrantyDuration = int.Parse(atribute);
+
+                if (warrantyDuration < 2)
+                    throw new ProductException("\nFailure of Business Rules ... Product warranty duration cannot be less than 2 years!");
+            }
+
+            try
+            {
+                return Products.UpdateProduct(fieldToUpdate, atribute, productID);
+            }
+            catch (ProductException PE)
+            {
+                throw new ProductException("\nFailure of Business Rules!" + "-" + PE.Message);
+            }
+            catch (Exception E)
+            {
+                throw new Exception("\nFailed to update the indicated product!" + "-" + E.Message);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="productID"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public static bool DeleteProduct(int productID)
+        {
+            try
+            {
+                return Products.DeleteProduct(productID);
+            }
+            catch (ProductException PE)
+            {
+                throw new Exception(PE.Message);
+            }
+            catch (Exception E)
+            {
+                throw new Exception("\nFailed to remove the indicated product!" + "-" + E.Message);
             }
         }
 

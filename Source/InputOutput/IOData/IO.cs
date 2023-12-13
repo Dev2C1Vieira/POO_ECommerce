@@ -49,16 +49,16 @@ namespace IOData
         /// <returns></returns>
         public static Product GetNewProductInformation(Product product)
         {
-            Console.WriteLine("\nEnter Product Name:");
+            Console.WriteLine("\nEnter product Name:");
             product.ProductName = Console.ReadLine();
 
-            Console.WriteLine("\nEnter Product Description:");
+            Console.WriteLine("\nEnter product Description:");
             product.ProductDescription = Console.ReadLine();
 
-            Console.WriteLine("\nEnter Product Price:");
+            Console.WriteLine("\nEnter product Price:");
             product.Price = float.Parse(Console.ReadLine());
 
-            Console.WriteLine("\nEnter Product Launch Date (dd-MM-yyyy):");
+            Console.WriteLine("\nEnter product Launch Date (dd-MM-yyyy):");
             string launchDateInput = Console.ReadLine();
 
             // Convert the input string to a DateTime object
@@ -66,10 +66,10 @@ namespace IOData
 
             product.LauchDate = launchDate;
 
-            Console.WriteLine("\nEnter Product Warranty Duration:");
+            Console.WriteLine("\nEnter product Warranty Duration:");
             product.WarrantyDuration = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("\nEnter Product Amount in Stock:");
+            Console.WriteLine("\nEnter product Amount in Stock:");
             product.AmountInStock = int.Parse(Console.ReadLine());
 
             product.VisibilityStatus = true;
@@ -84,13 +84,73 @@ namespace IOData
         /// <returns></returns>
         public static bool ListProductsInformation(List<Product> productsList)
         {
+            if (productsList.Count == 0)
+            {
+                Console.WriteLine("\n|     The product list is empty!   |");
+                return false;
+            }
             foreach (Product po in productsList)
             {
                 if (po.VisibilityStatus == true)
-                    Console.WriteLine($"\n|     {po.ProductID} {po.ProductName} {po.Price} {po.LauchDate.ToShortDateString()}   |");
+                    Console.WriteLine($"|  {po.ProductID}  |  {po.ProductName}  |  {po.ProductDescription}  |  {po.Price.ToString("F2")}  |  {po.LauchDate.ToShortDateString()}  |  {po.WarrantyDuration}  |  {po.AmountInStock}");
                 continue;
             }
             return true;
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static int GetProductID()
+        {
+            Console.WriteLine("\nEnter Product ID:");
+            int productID = int.Parse(Console.ReadLine());
+
+            return productID;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fieldToUpdate"></param>
+        /// <returns></returns>
+        public static string GetAttributeToUpdate(int fieldToUpdate)
+        {
+            string newAttribute = string.Empty;
+            if (fieldToUpdate == 1)
+            {
+                Console.WriteLine("\nEnter product new Name:");
+                newAttribute = Console.ReadLine();
+            }
+            else if (fieldToUpdate == 2)
+            {
+                Console.WriteLine("\nEnter product new Description:");
+                newAttribute = Console.ReadLine();
+            }
+            else if (fieldToUpdate == 3)
+            {
+                Console.WriteLine("\nEnter product new Price:");
+                newAttribute = Console.ReadLine();
+            }
+            else if (fieldToUpdate == 4)
+            {
+                Console.WriteLine("\nEnter product new Launch Date (dd-MM-yyyy):");
+                newAttribute = Console.ReadLine();
+            }
+            else if (fieldToUpdate == 5)
+            {
+                Console.WriteLine("\nEnter product new Warranty Duration:");
+                newAttribute = Console.ReadLine();
+            }
+            else if (fieldToUpdate == 6)
+            {
+                Console.WriteLine("\nEnter product new Amount in Stock:");
+                newAttribute = Console.ReadLine();
+            }
+
+            return newAttribute;
         }
 
         #endregion
