@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StaffClientSystems", "Sourc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECRules", "Source\BusinessRules\ECRules\ECRules.csproj", "{49DAD62C-91D4-462C-A68B-221C96C953CF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductCatalogE", "Source\Exceptions\ProductCatalogE\ProductCatalogE.csproj", "{C507CC10-D8BE-4ABF-A55E-7ACC571A21F8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{49DAD62C-91D4-462C-A68B-221C96C953CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49DAD62C-91D4-462C-A68B-221C96C953CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49DAD62C-91D4-462C-A68B-221C96C953CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C507CC10-D8BE-4ABF-A55E-7ACC571A21F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C507CC10-D8BE-4ABF-A55E-7ACC571A21F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C507CC10-D8BE-4ABF-A55E-7ACC571A21F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C507CC10-D8BE-4ABF-A55E-7ACC571A21F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,6 +103,7 @@ Global
 		{D5BAE037-F6EF-494A-BF23-A8D0EC5FCC2F} = {BEBFA013-52B9-447D-A55D-BC49AD105817}
 		{CD3EDB87-EDA0-409B-AAAD-E4247B1C3E19} = {BEBFA013-52B9-447D-A55D-BC49AD105817}
 		{49DAD62C-91D4-462C-A68B-221C96C953CF} = {5F7A3C66-DC5A-4F64-8FA3-9A4D2C19D791}
+		{C507CC10-D8BE-4ABF-A55E-7ACC571A21F8} = {D44954D1-90B2-45AB-B552-A0E8B8C74C9D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D8E77007-63C3-4DCC-BC36-7642747AFB50}

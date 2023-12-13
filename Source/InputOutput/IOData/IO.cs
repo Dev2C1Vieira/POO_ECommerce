@@ -9,10 +9,11 @@
  * */
 
 using System;
-using ProductCatalog;
-using ProductCatalogs;
-using ECRules;
 using System.Collections.Generic;
+using System.Globalization;
+
+// External
+using ProductCatalog;
 
 namespace IOData
 {
@@ -41,31 +42,46 @@ namespace IOData
 
         #region ProductsMethods
 
-        public static bool InsertProduct(Product product)
+        /// <summary>
+        /// Method that assigns the values ​​entered by the user to their respective attributes.
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
+        public static Product GetNewProductInformation(Product product)
         {
-            Console.WriteLine("\nEnter Product Name: ");
+            Console.WriteLine("\nEnter Product Name:");
             product.ProductName = Console.ReadLine();
+
+            Console.WriteLine("\nEnter Product Description:");
+            product.ProductDescription = Console.ReadLine();
 
             Console.WriteLine("\nEnter Product Price:");
             product.Price = float.Parse(Console.ReadLine());
 
-            Console.WriteLine("\nEnter Product Launch Date:");
-            Console.WriteLine("\nEnter Day (dd):");
-            int launchday = Convert.ToInt16(Console.ReadLine());
-            Console.WriteLine("\nEnter Month (mm):");
-            int launchmonth = Convert.ToInt16(Console.ReadLine());
-            Console.WriteLine("\nEnter Year (yyyy):");
-            int launchyear = Convert.ToInt16(Console.ReadLine());
+            Console.WriteLine("\nEnter Product Launch Date (dd-MM-yyyy):");
+            string launchDateInput = Console.ReadLine();
 
-            product.LauchDate = new DateTime(launchyear, launchmonth, launchday);
+            // Convert the input string to a DateTime object
+            DateTime launchDate = DateTime.ParseExact(launchDateInput, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+
+            product.LauchDate = launchDate;
+
+            Console.WriteLine("\nEnter Product Warranty Duration:");
+            product.WarrantyDuration = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("\nEnter Product Amount in Stock:");
+            product.AmountInStock = int.Parse(Console.ReadLine());
 
             product.VisibilityStatus = true;
 
-            Rules.InsertProduct(product);
-
-            return true;
+            return product;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="productsList"></param>
+        /// <returns></returns>
         public static bool ListProductsInformation(List<Product> productsList)
         {
             foreach (Product po in productsList)

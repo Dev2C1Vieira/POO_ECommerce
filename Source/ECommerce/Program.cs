@@ -9,6 +9,7 @@
  * */
 
 using System;
+using System.Collections.Generic;
 
 //External
 using ProductCatalog;
@@ -53,7 +54,7 @@ namespace ECommerce
             Console.ReadKey(true);
         }
 
-        public static void Menu(Product product)
+        public static void Menu()
         {
             int op = -1;
 
@@ -88,6 +89,7 @@ namespace ECommerce
                     switch (op)
                     {
                         case 1:
+                            List<Product> listingProdutcs = new List<Product>();
                             Red();
                             Console.WriteLine("\nTable containing the information of the existing products.\n");
                             // Table Construction
@@ -96,17 +98,23 @@ namespace ECommerce
                             Console.WriteLine("|    CODE      NAME                 PRICE      LAUNCH DATE       |");
                             Console.WriteLine("+---------------------------------------------------------------+\n");
                             Reset();
-                            IO.ListProductsInformation(Rules.ReturnProductsList());
-                            //printf("\n+-----------------------------------------------------------------------------------------------+");
-                            //printf("\n\nTotal sum of accessible records:");
-                            //red();
-                            //// this function return the amount of records in the Linked List Meios
-                            //printf(" %d\n", countNonBookingRecords(meios));
-                            //reset();
+                            listingProdutcs = Rules.ReturnProductsList();
+                            IO.ListProductsInformation(listingProdutcs);
+                            Console.WriteLine("\n+---------------------------------------------------------------+");
+                            Console.WriteLine($"\n\nTotal sum of accessible records: {Rules.ReturnAmountListRecords()}");
                             Pause();
                             break;
                         case 2:
-                            IO.InsertProduct(product);
+                            Product product = new Product();
+                            product = IO.GetNewProductInformation(product);
+
+                            Console.WriteLine("\nLets Insert new Product!");
+
+                            bool result = Rules.InsertProduct(product);
+                            if (result == true)
+                                Console.WriteLine("\nNew product inserted successfully!");
+                            else
+                                Console.WriteLine("\nUnable to add new product!");
                             break;
                         case 3:
                             Environment.Exit(0);
@@ -126,29 +134,13 @@ namespace ECommerce
             }
             finally
             {
-                Menu(product);
+                Menu();
             }
         }
 
         static void Main()
         {
-            Product product1 = new Product();
-
-            product1.ProductName = "Logitech Pro X Superlight";
-            product1.Price = 135.54;
-            product1.LauchDate = new DateTime(2021, 09, 11);
-            product1.VisibilityStatus = true;
-
-            //try
-            //{
-            //    IO.InsertProduct(product1);
-            //}
-            //catch (Exception E)
-            //{
-            //    Console.WriteLine(E.Message);
-            //}
-
-            Menu(product1);
+            Menu();
         }
     }
 }

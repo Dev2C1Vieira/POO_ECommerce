@@ -10,8 +10,17 @@
 
 using System;
 using System.Collections.Generic;
+
+// External
+// Product Catalog
 using ProductCatalog;
 using ProductCatalogs;
+using ProductCatalogE;
+
+// Revenue Engine
+
+
+// Staff Client System
 
 
 namespace ECRules
@@ -26,51 +35,69 @@ namespace ECRules
     {
         #region ProductsMethods
 
+        /// <summary>
+        /// Method that checks, before inserting the product, whether it respects business rules.
+        /// </summary>
+        /// <param name="produto"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public static bool InsertProduct(Product produto)
         {
-            if (produto.Price > 100) return false;
+            if ((produto.Price > 1000) || (produto.WarrantyDuration < 2))
+                return false;
+
             try
             {
                 Products.InsertProduct(produto);
                 return true;
             }
+            catch (ProductException PE)
+            {
+                throw new ProductException("\nFailure of Business Rules!" + "-" + PE.Message);
+            }
             catch (Exception E)
             {
-                throw new Exception("Failed to insert a new product!\r\n" + "-" + E.Message);
+                throw new Exception("\nFailed to insert a new product!" + "-" + E.Message);
             }
         }
         
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public static List<Product> ReturnProductsList()
         {
-            return Products.ProductsList;
+            try
+            {
+                return Products.ReturnProductsList();
+            }
+            catch (ProductException PE)
+            {
+                throw new Exception(PE.Message);
+            }
+            catch (Exception E)
+            {
+                throw new Exception("\nFailed to list the products present in the list!" + "-" + E.Message);
+            }
         }
 
-        //public static Product ShowProduct(Product produto)
-        //{
-        //    try
-        //    {
-        //        return Products.ReturnProduct(produto);
-        //    }
-        //    catch (Exception E)
-        //    {
-        //        throw new Exception("Failed to Show the product!\r\n" + "-" + E.Message);
-        //    }
-        //}
-
-        //public static bool DeleteProduct(Product produto)
-        //{
-        //    try
-        //    {
-        //        Products.InsertProduct(produto);
-        //        return true;
-        //        // talvez um campo available que passe para 0
-        //        // ou uma nova lista que receba apenas os produtos 'eliminados'
-        //    }
-        //    catch (Exception E)
-        //    {
-        //        throw new Exception("Failed to insert a new product!\r\n" + "-" + E.Message);
-        //    }
-        //}
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public static int ReturnAmountListRecords()
+        {
+            try
+            {
+                return Products.ReturnAmountListRecords();
+            }
+            catch (Exception E)
+            {
+                throw new Exception(E.Message);
+            }
+        }
 
         #endregion
     }

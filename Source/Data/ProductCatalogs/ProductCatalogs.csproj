@@ -34,6 +34,9 @@
     <Reference Include="ProductCatalog">
       <HintPath>..\..\BusinessObjects\ProductCatalog\bin\Debug\ProductCatalog.dll</HintPath>
     </Reference>
+    <Reference Include="ProductCatalogE">
+      <HintPath>..\..\Exceptions\ProductCatalogE\bin\Debug\ProductCatalogE.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />

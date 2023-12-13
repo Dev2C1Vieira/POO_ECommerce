@@ -14,7 +14,7 @@ using System.Collections.Generic;
 
 //External
 using ProductCatalog;
-using ProductCatalogs.Interfaces;
+using ProductCatalogE;
 
 namespace ProductCatalogs
 {
@@ -31,10 +31,10 @@ namespace ProductCatalogs
         #region Attributes
 
         /// <summary>
-        /// 
+        /// Atributes creation
         /// </summary>
         private static string name; //
-        private static List<Product> productsList = new List<Product>(); //
+        private static List<Product> productsList; //
 
         #endregion
 
@@ -43,7 +43,7 @@ namespace ProductCatalogs
         #region Constructors
 
         /// <summary>
-        /// 
+        /// Default Constructor
         /// </summary>
         static Products()
         {
@@ -101,36 +101,6 @@ namespace ProductCatalogs
         }
 
         /// <summary>
-        /// This function inserts a product passed as a List parameter.
-        /// </summary>
-        /// <param name="product"></param>
-        /// <returns></returns>
-        public static bool InsertProduct(Product product)
-        {
-            if (ExistProduct(product) == false)
-            {
-                productsList.Add(product);
-                return (true);
-            }
-            return (false);
-
-            //Still in progress...
-        }
-
-        //public static Product ReturnProduct(Product given_product)
-        //{
-        //    foreach (var product in productsList)
-        //    {
-        //        if (ExistProduct(given_product))
-        //        {
-        //            return product;
-        //        }
-        //        continue;
-        //    }
-        //    return new Product(); // still checking if it works correctly
-        //}
-
-        /// <summary>
         /// This method lists in the console the result of the comparison between two Product, indicated by parameter.
         /// </summary>
         /// <param name="product1"></param>
@@ -142,24 +112,63 @@ namespace ProductCatalogs
             else return (false);
         }
 
+        /// <summary>
+        /// Method that checks whether the product list is empty or not.
+        /// </summary>
+        /// <returns></returns>
+        public static bool IsProductsListEmpty()
+        {
+            if (ProductsList.Count == 0)
+                return true;
+            else return (false);
+        }
 
-        //public static bool UpdateProduct(Product product)
-        //{
-        //    return (false);
+        /// <summary>
+        /// This function inserts a product passed as a List parameter.
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
+        public static bool InsertProduct(Product product)
+        {
+            if (ExistProduct(product) == true)
+                throw new ProductException("\nUnable to insert new product... Product is already inserted!");
 
-        //    //Still in progress...
-        //}
+            ProductsList.Add(product);
+            return true;
+        }
 
-        //public static bool DeleteProduct(Product product)
-        //{
-        //    // Checks if the product exists in the list before trying to remove it.
-        //    if (ExistProduct(product) == true)
-        //    {
-        //        productsList.Remove(product); // Remove the product from the list.
-        //        return true; // Indicates that the product was successfully removed.
-        //    }
-        //    return false; // Product not found in the list.
-        //}
+        /// <summary>
+        /// Method that returns an auxiliary list that contains the elements present in the product list.
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="ProductException"></exception>
+        public static List<Product> ReturnProductsList()
+        {
+            List<Product> listaAux = new List<Product>();
+
+            if (IsProductsListEmpty() == true)
+                throw new ProductException("\nThe product list is empty!");
+
+            foreach (Product product in ProductsList)
+            {
+                listaAux.Add(product);
+            }
+            return listaAux;
+        }
+
+        /// <summary>
+        /// Method that returns the number of elements present in the product list.
+        /// </summary>
+        /// <returns></returns>
+        public static int ReturnAmountListRecords()
+        {
+            int count = 0;
+            foreach (Product product in ProductsList)
+            {
+                count++;
+            }
+            return count;
+        }
 
         #endregion
 

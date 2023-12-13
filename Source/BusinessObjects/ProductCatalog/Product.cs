@@ -20,7 +20,7 @@ namespace ProductCatalog
     /// </summary>
     /// <remarks></remarks>
     /// <example></example>
-    public class Product
+    public class Product : IComparable<Product>
     {
         #region Attributes
 
@@ -29,14 +29,12 @@ namespace ProductCatalog
         /// </summary>
         private int productID; //
         private string productName; //
-        //private string productDescription; Caso queira utilizar!
+        private string productDescription;
         private double price; //
         private DateTime launchDate; //
+        private int warrantyDuration; // 
+        private int amountInStock; //
         private bool visibilityStatus; // An indicator of whether the product is visible to users.
-        //private int stock; //
-        //private string category; // para implementar depois quando tiver as classes devidamente implementadas. Provavelmente serao arrays!
-        //private string brand; //
-        //private string promotions; //
 
         private static int qtdProducts = 1; //
 
@@ -54,8 +52,11 @@ namespace ProductCatalog
             productID = qtdProducts;
             qtdProducts++;
             productName = string.Empty;
+            productDescription = string.Empty;
             price = -1.0;
             launchDate = DateTime.Now;
+            warrantyDuration = 0;
+            amountInStock = 0;
             visibilityStatus = false;
         }
 
@@ -63,15 +64,23 @@ namespace ProductCatalog
         /// Constructor passed by parameters
         /// </summary>
         /// <param name="productName"></param>
+        /// <param name="productDescription"></param>
         /// <param name="price"></param>
         /// <param name="launchDate"></param>
-        public Product(string productName, double price, DateTime launchDate, bool visibilityStatus)
+        /// <param name="warrantyDuration"></param>
+        /// <param name="amountInStock"></param>
+        /// <param name="visibilityStatus"></param>
+        public Product(string productName, string productDescription, double price, DateTime launchDate,
+            int warrantyDuration, int amountInStock, bool visibilityStatus)
         {
             productID = qtdProducts;
             qtdProducts++;
             this.productName = productName;
+            this.productDescription = productDescription;
             this.price = price;
             this.launchDate = launchDate;
+            this.warrantyDuration = warrantyDuration;
+            this.amountInStock = amountInStock;
             this.visibilityStatus = visibilityStatus;
         }
 
@@ -80,7 +89,7 @@ namespace ProductCatalog
         #region Properties
 
         /// <summary>
-        /// Property related to the productID attribute
+        /// Property related to the 'productID' attribute
         /// </summary>
         public int ProductID 
         { 
@@ -89,7 +98,7 @@ namespace ProductCatalog
         }
 
         /// <summary>
-        /// Property related to the productName attribute
+        /// Property related to the 'productName' attribute
         /// </summary>
         public string ProductName
         {
@@ -98,7 +107,16 @@ namespace ProductCatalog
         }
 
         /// <summary>
-        /// Property related to the price attribute
+        /// Property related to the 'productDescription' attribute
+        /// </summary>
+        public string ProductDescription
+        {
+            get { return productDescription; }
+            set { productDescription = value; }
+        }
+
+        /// <summary>
+        /// Property related to the 'price' attribute
         /// </summary>
         public double Price
         {
@@ -107,16 +125,34 @@ namespace ProductCatalog
         }
 
         /// <summary>
-        /// Property related to the lauchDate attribute
+        /// Property related to the 'lauchDate' attribute
         /// </summary>
         public DateTime LauchDate
         {
             get { return launchDate; }
             set { launchDate = value; }
         }
-        
+
         /// <summary>
-        /// Property related to the visibilityStatus attribute
+        /// Property related to the 'warrantyDuration' attribute
+        /// </summary>
+        public int WarrantyDuration
+        {
+            get { return warrantyDuration; }
+            set { warrantyDuration = value; }
+        }
+
+        /// <summary>
+        /// Property related to the 'amountInStock' attribute
+        /// </summary>
+        public int AmountInStock
+        {
+            get { return amountInStock; }
+            set { amountInStock = value; }
+        }
+
+        /// <summary>
+        /// Property related to the 'visibilityStatus' attribute
         /// </summary>
         public bool VisibilityStatus
         {
@@ -125,7 +161,7 @@ namespace ProductCatalog
         }
 
         /// <summary>
-        /// Property related to the qtdProducts attribute
+        /// Property related to the 'qtdProducts' attribute
         /// </summary>
         public int QtdProducts
         {
@@ -145,8 +181,10 @@ namespace ProductCatalog
         /// <returns></returns>
         public static bool operator ==(Product left, Product right)
         {
-            if ((left.ProductID == right.ProductID) && (left.ProductName == right.ProductName) && (left.Price == right.Price) 
-                && (left.LauchDate == right.LauchDate) && (left.visibilityStatus == right.VisibilityStatus)) 
+            if ((left.ProductID == right.ProductID) && (left.ProductName == right.ProductName)
+                && (left.ProductDescription == right.ProductDescription) && (left.Price == right.Price)
+                && (left.LauchDate == right.LauchDate) && (left.WarrantyDuration == right.WarrantyDuration)
+                && (left.AmountInStock == right.AmountInStock) && (left.visibilityStatus == right.VisibilityStatus)) 
                 return (true);
             return (false);
         }
@@ -173,8 +211,10 @@ namespace ProductCatalog
         /// <returns></returns>
         public override string ToString()
         {
-            return (String.Format("Product ID: {0} - Product Name: {1} - Price: {2} - Launch Date: {3} - Visibility Status: {4}", 
-                ProductID.ToString(), ProductName, Price.ToString(), LauchDate.ToString(), VisibilityStatus.ToString()));
+            return (String.Format("Product ID: {0} - Product Name: {1} - Product Description: {2} " +
+                "- Price: {3} - Launch Date: {4} - Warranty Duration: {5} - Amount in Stock: {6}", 
+                ProductID.ToString(), ProductName, ProductDescription, Price.ToString(), 
+                LauchDate.ToString(), WarrantyDuration.ToString(), AmountInStock.ToString()));
         }
 
         /// <summary>
@@ -205,6 +245,17 @@ namespace ProductCatalog
         #endregion
 
         #region OtherMethods
+
+        /// <summary>
+        /// Method that orders based on the cost of the product.
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
+        public int CompareTo(Product product)
+        {
+            return this.Price.CompareTo(product.Price);
+        }
+
         #endregion
 
         #region Destructor
