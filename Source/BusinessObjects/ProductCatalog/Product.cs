@@ -20,6 +20,8 @@ namespace ProductCatalog
     /// </summary>
     /// <remarks></remarks>
     /// <example></example>
+
+    [Serializable]
     public class Product : IComparable<Product>
     {
         #region Attributes
@@ -29,14 +31,12 @@ namespace ProductCatalog
         /// </summary>
         private int productID; //
         private string productName; //
-        private string productDescription;
+        private string productDescription; //
         private double price; //
         private DateTime launchDate; //
         private int warrantyDuration; // 
         private int amountInStock; //
         private bool visibilityStatus; // An indicator of whether the product is visible to users.
-
-        private static int qtdProducts = 1; //
 
         #endregion
 
@@ -49,8 +49,7 @@ namespace ProductCatalog
         /// </summary>
         public Product()
         {
-            productID = qtdProducts;
-            qtdProducts++;
+            productID = 0;
             productName = string.Empty;
             productDescription = string.Empty;
             price = -1.0;
@@ -73,8 +72,7 @@ namespace ProductCatalog
         public Product(string productName, string productDescription, double price, DateTime launchDate,
             int warrantyDuration, int amountInStock, bool visibilityStatus)
         {
-            productID = qtdProducts;
-            qtdProducts++;
+            productID = 0;
             this.productName = productName;
             this.productDescription = productDescription;
             this.price = price;
@@ -158,15 +156,6 @@ namespace ProductCatalog
         {
             get { return visibilityStatus; } 
             set { visibilityStatus = value; }
-        }
-
-        /// <summary>
-        /// Property related to the 'qtdProducts' attribute
-        /// </summary>
-        public int QtdProducts
-        {
-            get { return qtdProducts; }
-            set { qtdProducts = value; }
         }
 
         #endregion
@@ -259,6 +248,15 @@ namespace ProductCatalog
         #endregion
 
         #region Destructor
+
+        /// <summary>
+        /// 
+        /// </summary>
+        ~Product()
+        {
+            GC.SuppressFinalize(this);
+        }
+
         #endregion
 
         #endregion

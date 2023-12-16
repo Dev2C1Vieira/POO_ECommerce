@@ -54,7 +54,7 @@ namespace ECommerce
             Console.ReadKey(true);
         }
 
-        public static void Menu()
+        public static void Menu(string fileName)
         {
             int op = 1, field = 0, productID = 0;
             bool result = false;
@@ -70,24 +70,26 @@ namespace ECommerce
                         //Red();
                         Console.WriteLine("  --------- Welcome to ECommerce Application ---------\n");
                         Reset();
-                        if (op < 1 || op > 5)
+                        if (op < 1 || op > 7)
                         {
                             //Red();
-                            Console.WriteLine("\n  Invalid Option! [1-5]\n");
+                            Console.WriteLine("\n  Invalid Option! [1-7]\n");
                         }
                         //Yellow();
                         Console.WriteLine("\n  +-------------------------------------------+");
-                        Console.WriteLine("  |  1. List the existing products!           |");
-                        Console.WriteLine("  |  2. Insert a new product!                 |");
-                        Console.WriteLine("  |  3. Update product information!           |");
-                        Console.WriteLine("  |  4. Remove a product!                     |");
-                        Console.WriteLine("  |  5. Exit Application!                     |");
+                        Console.WriteLine("  |  1. List the existing products.           |");
+                        Console.WriteLine("  |  2. Insert a new product.                 |");
+                        Console.WriteLine("  |  3. Update product information.           |");
+                        Console.WriteLine("  |  4. Remove a product.                     |");
+                        Console.WriteLine("  |  5. Save Data in a File.                  |");
+                        Console.WriteLine("  |  6. Load Data from a File.                |");
+                        Console.WriteLine("  |  7. Exit Application!                     |");
                         Console.WriteLine("  +-------------------------------------------+\n");
                         //Red();
                         Console.WriteLine("\n\n Option: ");
                         op = int.Parse(Console.ReadLine());
                         Reset();
-                    } while (op < 1 || op > 5);
+                    } while (op < 1 || op > 7);
                     Clear();
                     switch (op)
                     {
@@ -114,10 +116,16 @@ namespace ECommerce
                             product = IO.GetNewProductInformation(product);
 
                             result = Rules.InsertProduct(product);
+
                             if (result == true)
                                 Console.WriteLine("\nNew product inserted successfully!");
                             else
-                                Console.WriteLine("\nUnable to add new product!");
+                            {
+                                //~product();
+                                Console.WriteLine("\nUnable to add new product!"); 
+                            }
+
+                            Rules.SaveProductsDataBin(fileName);
 
                             Pause();
                             break;
@@ -130,7 +138,7 @@ namespace ECommerce
                             {
                                 Console.WriteLine("\nProduct does not exist! ... Please enter an ID of an existing product.");
                                 Pause();
-                                Menu();
+                                Menu(fileName);
                             }
 
                             Clear();
@@ -151,7 +159,7 @@ namespace ECommerce
                             Console.WriteLine("\n\n Option: ");
                             field = int.Parse(Console.ReadLine());
 
-                            if (field == 7) { Menu(); }
+                            if (field == 7) { Menu(fileName); }
 
                             Clear();
 
@@ -162,6 +170,8 @@ namespace ECommerce
                                 Console.WriteLine("\nProduct was successfully updated!");
                             else
                                 Console.WriteLine("\nUnable to update the product!");
+
+                            Rules.SaveProductsDataBin(fileName);
 
                             Pause();
                             break;
@@ -176,9 +186,21 @@ namespace ECommerce
                             else
                                 Console.WriteLine("\nUnable to remove the product!");
 
+                            Rules.SaveProductsDataBin(fileName);
+
                             Pause();
                             break;
                         case 5:
+                            Clear();
+                            Console.WriteLine("\nDoesn't work anymore!");
+                            Pause();
+                            break;
+                        case 6:
+                            Clear();
+                            Console.WriteLine("\nDoesn't work anymore!");
+                            Pause();
+                            break;
+                        case 7:
                             Environment.Exit(0);
                             break;
                     }
@@ -196,13 +218,15 @@ namespace ECommerce
             }
             finally
             {
-                Menu();
+                Menu(fileName);
             }
         }
 
         static void Main()
         {
-            Menu();
+            string fileName = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\Bin\\ProductsList.bin";
+            Rules.LoadProductsDataBin(fileName);
+            Menu(fileName);
         }
     }
 }

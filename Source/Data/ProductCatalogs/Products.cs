@@ -12,11 +12,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
-
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
 
 //External
 using ProductCatalog;
 using ProductCatalogE;
+using System.Linq;
 
 namespace ProductCatalogs
 {
@@ -79,6 +82,8 @@ namespace ProductCatalogs
 
         #region OtherMethods
 
+        #region ManagingProductsMethods
+
         /// <summary>
         /// This function checks whether a given product already exists in the List.
         /// </summary>
@@ -123,6 +128,20 @@ namespace ProductCatalogs
             if (ProductsList.Count == 0)
                 return true;
             else return (false);
+        }
+
+        /// <summary>
+        /// An "Auto_Increment" type function, that is, it adds the id of 
+        /// the last element in the list to the new element, incrementing by 1.
+        /// </summary>
+        /// <returns></returns>
+        public static int ReturnIDNewProduct()
+        {
+            if (IsProductsListEmpty() == true)
+                return 1;
+
+            Product aux = ProductsList.Last();
+            return aux.ProductID + 1;
         }
 
         /// <summary>
@@ -281,6 +300,68 @@ namespace ProductCatalogs
             }
             return false;
         }
+
+        #endregion
+
+        #region FileManagement
+
+        // Read data from a text file
+
+        // Code here ...
+
+        // Read data from a binary file
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public static bool LoadProductsDataBin(string fileName)
+        {
+            if (File.Exists(fileName))
+            {
+                using (FileStream fileStream = new FileStream(fileName, FileMode.Open))
+                {
+                    BinaryFormatter formatter = new BinaryFormatter();
+                    List<Product> loadedProducts = (List<Product>)formatter.Deserialize(fileStream);
+
+                    foreach (Product product in loadedProducts)
+                    {
+                        ProductsList.Add(product);
+                    }
+                    return true;
+                }
+            }
+            else
+                throw new Exception("\nFile doesn't exist!");
+        }
+
+        // Save data in a text file
+
+        // Code here ...
+
+        // Save data in a binary file
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="products"></param>
+        public static bool SaveProductsDataBin(string fileName)
+        {
+            if (IsProductsListEmpty() == true)
+                throw new ProductException("\nThe product list is empty!");
+
+            // Cria um FileStream para gravar os dados dos produtos no arquivo
+            using (FileStream fileStream = new FileStream(fileName, FileMode.Create))
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(fileStream, ProductsList);
+            }
+            return true;
+        }
+
+        #endregion
 
         #endregion
 

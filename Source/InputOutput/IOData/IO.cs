@@ -49,16 +49,16 @@ namespace IOData
         /// <returns></returns>
         public static Product GetNewProductInformation(Product product)
         {
-            Console.WriteLine("\nEnter product Name:");
+            Console.Write("\nEnter product Name: ");
             product.ProductName = Console.ReadLine();
 
-            Console.WriteLine("\nEnter product Description:");
+            Console.Write("\nEnter product Description: ");
             product.ProductDescription = Console.ReadLine();
 
-            Console.WriteLine("\nEnter product Price:");
+            Console.Write("\nEnter product Price: ");
             product.Price = float.Parse(Console.ReadLine());
 
-            Console.WriteLine("\nEnter product Launch Date (dd-MM-yyyy):");
+            Console.Write("\nEnter product Launch Date (dd-MM-yyyy): ");
             string launchDateInput = Console.ReadLine();
 
             // Convert the input string to a DateTime object
@@ -66,10 +66,10 @@ namespace IOData
 
             product.LauchDate = launchDate;
 
-            Console.WriteLine("\nEnter product Warranty Duration:");
+            Console.Write("\nEnter product Warranty Duration:");
             product.WarrantyDuration = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("\nEnter product Amount in Stock:");
+            Console.Write("\nEnter product Amount in Stock:");
             product.AmountInStock = int.Parse(Console.ReadLine());
 
             product.VisibilityStatus = true;
@@ -93,7 +93,7 @@ namespace IOData
             {
                 if (po.VisibilityStatus == true)
                     Console.WriteLine($"|  {po.ProductID}  |  {po.ProductName}  |  {po.ProductDescription}  |  {po.Price.ToString("F2")}  |  {po.LauchDate.ToShortDateString()}  |  {po.WarrantyDuration}  |  {po.AmountInStock}");
-                continue;
+                else continue;
             }
             return true;
         }

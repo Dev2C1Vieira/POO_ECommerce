@@ -16,6 +16,8 @@ using System.Collections.Generic;
 using ProductCatalog;
 using ProductCatalogs;
 using ProductCatalogE;
+using System.IO;
+using System.Runtime.Serialization;
 
 // Revenue Engine
 
@@ -51,6 +53,7 @@ namespace ECRules
 
             try
             {
+                produto.ProductID = Products.ReturnIDNewProduct();
                 Products.InsertProduct(produto);
                 return true;
             }
@@ -179,6 +182,61 @@ namespace ECRules
                 throw new Exception("\nFailed to remove the indicated product!" + "-" + E.Message);
             }
         }
+
+        #region File Management
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
+        /// <exception cref="SerializationException"></exception>
+        public static bool LoadProductsDataBin(string fileName)
+        {
+            try
+            {
+                return Products.LoadProductsDataBin(fileName);
+            }
+            catch (SerializationException SE)
+            {
+                throw new SerializationException("\nError serializing product data!" + SE.Message);
+            }
+            catch (IOException IOE)
+            {
+                throw new SerializationException("\nIO error when trying to save product data!" + IOE.Message);
+            }
+            catch (Exception E)
+            {
+                throw new SerializationException("\nUnable to load products data from file!" + E.Message);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
+        public static bool SaveProductsDataBin(string fileName)
+        {
+            try
+            {
+                return Products.SaveProductsDataBin(fileName);
+            }
+            catch (SerializationException SE)
+            {
+                throw new SerializationException("\nError serializing product data!" + SE.Message);
+            }
+            catch (IOException IOE)
+            {
+                throw new SerializationException("\nIO error when trying to save product data!" + IOE.Message);
+            }
+            catch (Exception E)
+            {
+                throw new SerializationException("\nUnable to save the data in the file!" + E.Message);
+            }
+        }
+
+        #endregion
 
         #endregion
     }
