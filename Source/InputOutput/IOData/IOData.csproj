@@ -31,9 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ECRules">
-      <HintPath>..\..\BusinessRules\ECRules\bin\Debug\ECRules.dll</HintPath>
-    </Reference>
     <Reference Include="ProductCatalog">
       <HintPath>..\..\BusinessObjects\ProductCatalog\bin\Debug\ProductCatalog.dll</HintPath>
     </Reference>

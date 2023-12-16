@@ -1,39 +1,32 @@
 ﻿/*
- * <copyright file = "Rules.cs" company = "IPCA">
+ * <copyright file = "ProductsRules.cs" company="IPCA">
  * Copyright (c) 2023 All Rights Reserved
  * </copyright>
  * <author> Pedro Vieira </author>
- * <date> 12/3/2023 7:23:12 PM </date>
+ * <date> 12/16/2023 9:01:30 PM </date>
  * <description> [Write the description of the project!] </description>
  * 
  * */
 
 using System;
 using System.Collections.Generic;
-
-// External
-// Product Catalog
-using ProductCatalog;
-using ProductCatalogs;
-using ProductCatalogE;
 using System.IO;
 using System.Runtime.Serialization;
 
-// Revenue Engine
+// External
+using ProductCatalog;
+using ProductCatalogs;
+using ProductCatalogE;
 
-
-// Staff Client System
-
-
-namespace ECRules
+namespace ProductCatalogR
 {
     /// <summary>
     /// Purpose: [Write the purpose of the class!]
     /// Created By: Pedro Vieira
-    /// Created On: 12/3/2023 7:23:12 PM
+    /// Created On: 12/16/2023 9:01:30 PM
     /// Email: a25626@alunos.ipca.pt
     /// </summary>
-    public class Rules
+    public class ProductsRules
     {
         #region ProductsMethods
 
@@ -66,7 +59,7 @@ namespace ECRules
                 throw new Exception("\nFailed to insert a new product!" + "-" + E.Message);
             }
         }
-        
+
         /// <summary>
         /// 
         /// </summary>

@@ -9,12 +9,10 @@
  * */
 
 using System;
-using System.Collections.Generic;
 
 //External
-using ProductCatalog;
-using ECRules;
-using IOData;
+using ProductCatalogR;
+using ProductCatalogsM;
 
 namespace ECommerce
 {
@@ -29,204 +27,22 @@ namespace ECommerce
     /// <example></example>
     internal class Program
     {
-        public static void Red() { Console.ForegroundColor = ConsoleColor.Red; }
+        //public static void Red() { Console.ForegroundColor = ConsoleColor.Red; }
 
-        public static void Green() { Console.ForegroundColor = ConsoleColor.Green; }
+        //public static void Green() { Console.ForegroundColor = ConsoleColor.Green; }
 
-        public static void Yellow() { Console.ForegroundColor = ConsoleColor.Yellow; }
+        //public static void Yellow() { Console.ForegroundColor = ConsoleColor.Yellow; }
 
-        public static void Blue() { Console.ForegroundColor = ConsoleColor.Blue; }
+        //public static void Blue() { Console.ForegroundColor = ConsoleColor.Blue; }
 
-        public static void Reset() { Console.ResetColor(); }
-
-        public static void Clear() { Console.Clear(); }
-
-        public static void Flushtdin() { while (Console.In.Peek() != -1 && Console.In.ReadLine() != null) { } }
-
-        public static void Pause()
-        {
-            Flushtdin();
-            Console.WriteLine("\n\nPress ");
-            Red();
-            Console.WriteLine("any key ");
-            Reset();
-            Console.WriteLine("to continue...");
-            Console.ReadKey(true);
-        }
-
-        public static void Menu(string fileName)
-        {
-            int op = 1, field = 0, productID = 0;
-            bool result = false;
-
-            try
-            {
-                while (true)
-                {
-                    do
-                    {
-                        Clear();
-                        Reset();
-                        //Red();
-                        Console.WriteLine("  --------- Welcome to ECommerce Application ---------\n");
-                        Reset();
-                        if (op < 1 || op > 7)
-                        {
-                            //Red();
-                            Console.WriteLine("\n  Invalid Option! [1-7]\n");
-                        }
-                        //Yellow();
-                        Console.WriteLine("\n  +-------------------------------------------+");
-                        Console.WriteLine("  |  1. List the existing products.           |");
-                        Console.WriteLine("  |  2. Insert a new product.                 |");
-                        Console.WriteLine("  |  3. Update product information.           |");
-                        Console.WriteLine("  |  4. Remove a product.                     |");
-                        Console.WriteLine("  |  5. Save Data in a File.                  |");
-                        Console.WriteLine("  |  6. Load Data from a File.                |");
-                        Console.WriteLine("  |  7. Exit Application!                     |");
-                        Console.WriteLine("  +-------------------------------------------+\n");
-                        //Red();
-                        Console.WriteLine("\n\n Option: ");
-                        op = int.Parse(Console.ReadLine());
-                        Reset();
-                    } while (op < 1 || op > 7);
-                    Clear();
-                    switch (op)
-                    {
-                        case 1:
-                            List<Product> listingProdutcs = new List<Product>();
-                            //Red();
-                            Console.WriteLine("\nTable containing the information of the existing products.\n");
-                            // Table Construction
-                            //Yellow();
-                            Console.WriteLine("\n+-----------------------------------------------------------------------------------------------------+");
-                            Console.WriteLine("|  CODE  |  NAME  |  DESCRIPTION  |  PRICE  |  LAUNCH DATE  |  WARRANTY DURARION  |  AMOUNT IN STOCK  |");
-                            Console.WriteLine("+-----------------------------------------------------------------------------------------------------+");
-                            Reset();
-                            listingProdutcs = Rules.ReturnProductsList();
-                            IO.ListProductsInformation(listingProdutcs);
-                            Console.WriteLine("+-----------------------------------------------------------------------------------------------------+");
-                            Console.WriteLine($"\n\nTotal sum of accessible records: {Rules.ReturnAmountListRecords()}");
-                            Pause();
-                            break;
-                        case 2:
-                            Console.WriteLine("\nLets Insert new Product!");
-
-                            Product product = new Product();
-                            product = IO.GetNewProductInformation(product);
-
-                            result = Rules.InsertProduct(product);
-
-                            if (result == true)
-                                Console.WriteLine("\nNew product inserted successfully!");
-                            else
-                            {
-                                //~product();
-                                Console.WriteLine("\nUnable to add new product!"); 
-                            }
-
-                            Rules.SaveProductsDataBin(fileName);
-
-                            Pause();
-                            break;
-                        case 3:
-                            Console.WriteLine("\nLets Update a Product!");
-
-                            productID = IO.GetProductID();
-
-                            if (Rules.IsProductIDAvailable(productID) == false)
-                            {
-                                Console.WriteLine("\nProduct does not exist! ... Please enter an ID of an existing product.");
-                                Pause();
-                                Menu(fileName);
-                            }
-
-                            Clear();
-
-                            //
-                            Console.WriteLine("\nChoose which field you want to change:");
-
-                            Console.WriteLine("\n  +-------------------------------------------+");
-                            Console.WriteLine("  |  1. Update product Name.                  |");
-                            Console.WriteLine("  |  2. Update product Description.           |");
-                            Console.WriteLine("  |  3. Update product Price.                 |");
-                            Console.WriteLine("  |  4. Update product Launch Date.           |");
-                            Console.WriteLine("  |  5. Update product Warranty Duration.     |");
-                            Console.WriteLine("  |  6. Update product Amount In Stock.       |");
-                            Console.WriteLine("  |  7. Go back to Menu!                      |");
-                            Console.WriteLine("  +-------------------------------------------+\n");
-                            //Red();
-                            Console.WriteLine("\n\n Option: ");
-                            field = int.Parse(Console.ReadLine());
-
-                            if (field == 7) { Menu(fileName); }
-
-                            Clear();
-
-                            string attribut = IO.GetAttributeToUpdate(field);
-
-                            result = Rules.UpdateProduct(field, attribut, productID);
-                            if (result == true)
-                                Console.WriteLine("\nProduct was successfully updated!");
-                            else
-                                Console.WriteLine("\nUnable to update the product!");
-
-                            Rules.SaveProductsDataBin(fileName);
-
-                            Pause();
-                            break;
-                        case 4:
-                            Console.WriteLine("\nLets Remove a Product!");
-
-                            productID = IO.GetProductID();
-
-                            result = Rules.DeleteProduct(productID);
-                            if (result == true)
-                                Console.WriteLine("\nProduct was successfully removed!");
-                            else
-                                Console.WriteLine("\nUnable to remove the product!");
-
-                            Rules.SaveProductsDataBin(fileName);
-
-                            Pause();
-                            break;
-                        case 5:
-                            Clear();
-                            Console.WriteLine("\nDoesn't work anymore!");
-                            Pause();
-                            break;
-                        case 6:
-                            Clear();
-                            Console.WriteLine("\nDoesn't work anymore!");
-                            Pause();
-                            break;
-                        case 7:
-                            Environment.Exit(0);
-                            break;
-                    }
-                }
-            }
-            catch (FormatException E)
-            {
-                Console.WriteLine(E.Message);
-                Pause();
-            }
-            catch (Exception E)
-            {
-                Console.WriteLine(E.Message);
-                Pause();
-            }
-            finally
-            {
-                Menu(fileName);
-            }
-        }
+        //public static void Reset() { Console.ResetColor(); }
 
         static void Main()
         {
-            string fileName = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\Bin\\ProductsList.bin";
-            Rules.LoadProductsDataBin(fileName);
-            Menu(fileName);
+            //string fileName = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\Bin\\ProductsList.bin";
+            string fileName = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\Bin\\ProductsList.bin";
+            ProductsRules.LoadProductsDataBin(fileName);
+            ProductsMenu.Menu(fileName);
         }
     }
 }
