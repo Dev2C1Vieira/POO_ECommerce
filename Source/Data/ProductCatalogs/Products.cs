@@ -143,39 +143,6 @@ namespace ProductCatalogs
         }
 
         /// <summary>
-        /// This function inserts a product passed as a List parameter.
-        /// </summary>
-        /// <param name="product"></param>
-        /// <returns></returns>
-        public static bool InsertProduct(Product product)
-        {
-            if (ExistProduct(product) == true)
-                throw new ProductException("\nUnable to insert new product ... Product is already inserted!");
-
-            ProductsList.Add(product);
-            return true;
-        }
-
-        /// <summary>
-        /// Method that returns an auxiliary list that contains the elements present in the product list.
-        /// </summary>
-        /// <returns></returns>
-        /// <exception cref="ProductException"></exception>
-        public static List<Product> ReturnProductsList()
-        {
-            List<Product> listaAux = new List<Product>();
-
-            if (IsProductsListEmpty() == true)
-                throw new ProductException("\nThe product list is empty!");
-
-            foreach (Product product in ProductsList)
-            {
-                listaAux.Add(product);
-            }
-            return listaAux;
-        }
-
-        /// <summary>
         /// Method that returns the number of elements present in the product list.
         /// </summary>
         /// <returns></returns>
@@ -185,6 +152,22 @@ namespace ProductCatalogs
             foreach (Product product in ProductsList)
             {
                 count++;
+            }
+            return count;
+        }
+
+        /// <summary>
+        /// Method that returns the number of elements present in the products historic.
+        /// </summary>
+        /// <returns></returns>
+        public static int ReturnAmountHistoricRecords()
+        {
+            int count = 0;
+            foreach (Product product in ProductsList)
+            {
+                if (product.VisibilityStatus == false)
+                    count++;
+                else continue;
             }
             return count;
         }
@@ -223,25 +206,59 @@ namespace ProductCatalogs
         }
 
         /// <summary>
-        /// This function deletes a product by passing its ID as a parameter.
+        /// This function inserts a product passed as a List parameter.
         /// </summary>
         /// <param name="product"></param>
         /// <returns></returns>
-        public static bool DeleteProduct(int productID)
+        public static bool InsertProduct(Product product)
         {
-            if (ExistProduct(ReturnProductFromID(productID)) == false)
-                throw new ProductException("\nUnable to delete product ... Product does not exist!");
+            if (ExistProduct(product) == true)
+                throw new ProductException("\nUnable to insert new product ... Product is already inserted!");
+
+            ProductsList.Add(product);
+            return true;
+        }
+
+        /// <summary>
+        /// Method that returns an auxiliary list that contains the elements present in the product list.
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="ProductException"></exception>
+        public static List<Product> ReturnProductsList()
+        {
+            List<Product> listaAux = new List<Product>();
+
+            if (IsProductsListEmpty() == true)
+                throw new ProductException("\nThe product list is empty!");
 
             foreach (Product product in ProductsList)
             {
-                if (product.Equals(ReturnProductFromID(productID)))
-                {
-                    ProductsList.Remove(product);
-                    return true;
-                }
+                if (product.VisibilityStatus == true)
+                    listaAux.Add(product);
                 else continue;
             }
-            return false;
+            return listaAux;
+        }
+
+        /// <summary>
+        /// Method that returns an auxiliary list that contains the unavailable elements of the products list.
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="ProductException"></exception>
+        public static List<Product> ReturnHistoric()
+        {
+            List<Product> listaAux = new List<Product>();
+
+            if (IsProductsListEmpty() == true)
+                throw new ProductException("\nThe product list is empty!");
+
+            foreach (Product product in ProductsList)
+            {
+                if (product.VisibilityStatus == false)
+                    listaAux.Add(product);
+                else continue;
+            }
+            return listaAux;
         }
 
         /// <summary>
@@ -275,7 +292,8 @@ namespace ProductCatalogs
                     }
                     else if (fieldToUpdate == 3)
                     {
-                        product.Price = float.Parse(atribute);
+                        float price = float.Parse(atribute);
+                        product.Price = (float)Math.Round(price, 2);
                         return true;
                     }
                     else if (fieldToUpdate == 4)
@@ -293,6 +311,82 @@ namespace ProductCatalogs
                         product.AmountInStock = int.Parse(atribute);
                         return true;
                     }
+                }
+                else continue;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// This function removes a product by passing its ID as a parameter, putting it in a kind of historic.
+        /// </summary>
+        /// <param name="productID"></param>
+        /// <returns></returns>
+        public static bool RemoveProduct(int productID)
+        {
+            if (ExistProduct(ReturnProductFromID(productID)) == false)
+                throw new ProductException("\nUnable to remove product ... Product does not exist!");
+
+            foreach (Product product in ProductsList)
+            {
+                if (product.Equals(ReturnProductFromID(productID)))
+                {
+                    product.VisibilityStatus = false;
+                    return true;
+                }
+                else continue;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// This function recovers a product by passing its ID as a parameter, putting it back as an available product.
+        /// </summary>
+        /// <param name="productID"></param>
+        /// <returns></returns>
+        public static bool RecoverProduct(int productID)
+        {
+            if (ExistProduct(ReturnProductFromID(productID)) == false)
+                throw new ProductException("\nUnable to recover product ... Product does not exist!");
+
+            foreach (Product product in ProductsList)
+            {
+                if (product.Equals(ReturnProductFromID(productID)))
+                {
+                    if (product.VisibilityStatus == false)
+                    {
+                        product.VisibilityStatus = true;
+                        return true;
+                    }
+                    else
+                        throw new ProductException("\nUnable to recover product ... Product hasn't been removed!");
+                }
+                else continue;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// This function deletes a product by passing its ID as a parameter.
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
+        public static bool DeleteProduct(int productID)
+        {
+            if (ExistProduct(ReturnProductFromID(productID)) == false)
+                throw new ProductException("\nUnable to delete product ... Product does not exist!");
+
+            foreach (Product product in ProductsList)
+            {
+                if (product.Equals(ReturnProductFromID(productID)))
+                {
+                    if (product.VisibilityStatus == false)
+                    {
+                        ProductsList.Remove(product);
+                        return true;
+                    }
+                    else
+                        throw new ProductException("\nUnable to delete product ... Product hasn't been removed!");
                 }
                 else continue;
             }

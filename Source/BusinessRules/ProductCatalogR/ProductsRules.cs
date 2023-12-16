@@ -31,6 +31,55 @@ namespace ProductCatalogR
         #region ProductsMethods
 
         /// <summary>
+        /// Method that returns the number of elements present in the product list.
+        /// </summary>
+        /// <returns></returns>
+        public static bool IsProductIDAvailable(int productID)
+        {
+            try
+            {
+                return Products.IsProductIDAvailable(productID);
+            }
+            catch (Exception E)
+            {
+                throw new Exception("\nFailed to verify if the indicated product ID is available!" + "-" + E.Message);
+            }
+        }
+
+        /// <summary>
+        /// Method that returns the number of elements present in the product list.
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public static int ReturnAmountListRecords()
+        {
+            try
+            {
+                return Products.ReturnAmountListRecords();
+            }
+            catch (Exception E)
+            {
+                throw new Exception("\nFailed to return the amount of products present in the list!" + "-" + E.Message);
+            }
+        }
+
+        /// <summary>
+        /// Method that returns the number of elements present in the products historic.
+        /// </summary>
+        /// <returns></returns>
+        public static int ReturnAmountHistoricRecords()
+        {
+            try
+            {
+                return Products.ReturnAmountHistoricRecords();
+            }
+            catch (Exception E)
+            {
+                throw new Exception("\nFailed to return the amount of products present in the historic!" + "-" + E.Message);
+            }
+        }
+
+        /// <summary>
         /// Method that checks, before inserting the product, whether it respects business rules.
         /// </summary>
         /// <param name="produto"></param>
@@ -61,7 +110,7 @@ namespace ProductCatalogR
         }
 
         /// <summary>
-        /// 
+        /// Method that returns an auxiliary list that contains the elements present in the product list.
         /// </summary>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
@@ -82,40 +131,29 @@ namespace ProductCatalogR
         }
 
         /// <summary>
-        /// 
+        /// Method that returns an auxiliary list that contains the unavailable elements of the products list.
         /// </summary>
         /// <returns></returns>
-        /// <exception cref="Exception"></exception>
-        public static int ReturnAmountListRecords()
+        /// <exception cref="ProductException"></exception>
+        public static List<Product> ReturnHistoric()
         {
             try
             {
-                return Products.ReturnAmountListRecords();
+                return Products.ReturnHistoric();
+            }
+            catch (ProductException PE)
+            {
+                throw new Exception(PE.Message);
             }
             catch (Exception E)
             {
-                throw new Exception("\nFailed to return the amount of products present in the list!" + "-" + E.Message);
+                throw new Exception("\nFailed to show the products historic!" + "-" + E.Message);
             }
         }
 
         /// <summary>
-        /// Method that returns the number of elements present in the product list.
-        /// </summary>
-        /// <returns></returns>
-        public static bool IsProductIDAvailable(int productID)
-        {
-            try
-            {
-                return Products.IsProductIDAvailable(productID);
-            }
-            catch (Exception E)
-            {
-                throw new Exception("\nFailed to verify if the indicated product ID is available!" + "-" + E.Message);
-            }
-        }
-
-        /// <summary>
-        /// 
+        /// Method that, depending on the field indicated to be changed, receives a 
+        /// string and converts it to the data type that the attribute to be changed is.
         /// </summary>
         /// <param name="fieldToUpdate"></param>
         /// <param name="atribute"></param>
@@ -155,7 +193,51 @@ namespace ProductCatalogR
         }
 
         /// <summary>
-        /// 
+        /// This function removes a product by passing its ID as a parameter, putting it in a kind of historic.
+        /// </summary>
+        /// <param name="productID"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public static bool RemoveProduct(int productID)
+        {
+            try
+            {
+                return Products.RemoveProduct(productID);
+            }
+            catch (ProductException PE)
+            {
+                throw new Exception(PE.Message);
+            }
+            catch (Exception E)
+            {
+                throw new Exception("\nFailed to remove the indicated product!" + "-" + E.Message);
+            }
+        }
+
+        /// <summary>
+        /// This function recovers a product by passing its ID as a parameter, putting it back as an available product.
+        /// </summary>
+        /// <param name="productID"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public static bool RecoverProduct(int productID)
+        {
+            try
+            {
+                return Products.RecoverProduct(productID);
+            }
+            catch (ProductException PE)
+            {
+                throw new Exception(PE.Message);
+            }
+            catch (Exception E)
+            {
+                throw new Exception("\nFailed to recover the indicated product!" + "-" + E.Message);
+            }
+        }
+
+        /// <summary>
+        /// This function deletes a product by passing its ID as a parameter.
         /// </summary>
         /// <param name="productID"></param>
         /// <returns></returns>
@@ -172,7 +254,7 @@ namespace ProductCatalogR
             }
             catch (Exception E)
             {
-                throw new Exception("\nFailed to remove the indicated product!" + "-" + E.Message);
+                throw new Exception("\nFailed to delete the indicated product!" + "-" + E.Message);
             }
         }
 

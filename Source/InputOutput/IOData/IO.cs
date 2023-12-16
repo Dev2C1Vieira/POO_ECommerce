@@ -14,6 +14,7 @@ using System.Globalization;
 
 // External
 using ProductCatalog;
+using IOData;
 
 namespace IOData
 {
@@ -66,10 +67,10 @@ namespace IOData
 
             product.LauchDate = launchDate;
 
-            Console.Write("\nEnter product Warranty Duration:");
+            Console.Write("\nEnter product Warranty Duration: ");
             product.WarrantyDuration = int.Parse(Console.ReadLine());
 
-            Console.Write("\nEnter product Amount in Stock:");
+            Console.Write("\nEnter product Amount in Stock: ");
             product.AmountInStock = int.Parse(Console.ReadLine());
 
             product.VisibilityStatus = true;
@@ -86,18 +87,34 @@ namespace IOData
         {
             if (productsList.Count == 0)
             {
-                Console.WriteLine("\n|     The product list is empty!   |");
+                Console.WriteLine("|     The product list is empty!     |");
                 return false;
             }
             foreach (Product po in productsList)
             {
-                if (po.VisibilityStatus == true)
-                    Console.WriteLine($"|  {po.ProductID}  |  {po.ProductName}  |  {po.ProductDescription}  |  {po.Price.ToString("F2")}  |  {po.LauchDate.ToShortDateString()}  |  {po.WarrantyDuration}  |  {po.AmountInStock}  |");
-                else continue;
+                Console.WriteLine($"|  {po.ProductID}  |  {po.ProductName}  |  {po.ProductDescription}  |  {po.Price.ToString("F2")}  |  {po.LauchDate.ToShortDateString()}  |  {po.WarrantyDuration}  |  {po.AmountInStock}  |");
             }
             return true;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="productsList"></param>
+        /// <returns></returns>
+        public static bool ListHistoric(List<Product> productsList)
+        {
+            if (productsList.Count == 0)
+            {
+                Console.WriteLine("|     The historic is empty!     |");
+                return false;
+            }
+            foreach (Product po in productsList)
+            {
+                Console.WriteLine($"|  {po.ProductID}  |  {po.ProductName}  |  {po.ProductDescription}  |  {po.Price.ToString("F2")}  |  {po.LauchDate.ToShortDateString()}  |  {po.WarrantyDuration}  |  {po.AmountInStock}  |");
+            }
+            return true;
+        }
 
         /// <summary>
         /// 
@@ -105,7 +122,7 @@ namespace IOData
         /// <returns></returns>
         public static int GetProductID()
         {
-            Console.WriteLine("\nEnter Product ID:");
+            Console.Write("\nEnter Product ID: ");
             int productID = int.Parse(Console.ReadLine());
 
             return productID;
@@ -121,32 +138,32 @@ namespace IOData
             string newAttribute = string.Empty;
             if (fieldToUpdate == 1)
             {
-                Console.WriteLine("\nEnter product new Name:");
+                Console.Write("\nEnter product new Name: ");
                 newAttribute = Console.ReadLine();
             }
             else if (fieldToUpdate == 2)
             {
-                Console.WriteLine("\nEnter product new Description:");
+                Console.Write("\nEnter product new Description: ");
                 newAttribute = Console.ReadLine();
             }
             else if (fieldToUpdate == 3)
             {
-                Console.WriteLine("\nEnter product new Price:");
+                Console.Write("\nEnter product new Price: ");
                 newAttribute = Console.ReadLine();
             }
             else if (fieldToUpdate == 4)
             {
-                Console.WriteLine("\nEnter product new Launch Date (dd-MM-yyyy):");
+                Console.Write("\nEnter product new Launch Date (dd-MM-yyyy): ");
                 newAttribute = Console.ReadLine();
             }
             else if (fieldToUpdate == 5)
             {
-                Console.WriteLine("\nEnter product new Warranty Duration:");
+                Console.Write("\nEnter product new Warranty Duration: ");
                 newAttribute = Console.ReadLine();
             }
             else if (fieldToUpdate == 6)
             {
-                Console.WriteLine("\nEnter product new Amount in Stock:");
+                Console.Write("\nEnter product new Amount in Stock: ");
                 newAttribute = Console.ReadLine();
             }
 

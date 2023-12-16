@@ -27,16 +27,6 @@ namespace ECommerce
     /// <example></example>
     internal class Program
     {
-        //public static void Red() { Console.ForegroundColor = ConsoleColor.Red; }
-
-        //public static void Green() { Console.ForegroundColor = ConsoleColor.Green; }
-
-        //public static void Yellow() { Console.ForegroundColor = ConsoleColor.Yellow; }
-
-        //public static void Blue() { Console.ForegroundColor = ConsoleColor.Blue; }
-
-        //public static void Reset() { Console.ResetColor(); }
-
         static void Main()
         {
             //string fileName = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\Bin\\ProductsList.bin";

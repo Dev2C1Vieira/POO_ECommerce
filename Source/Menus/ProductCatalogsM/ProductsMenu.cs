@@ -26,25 +26,125 @@ namespace ProductCatalogsM
     /// </summary>
     public class ProductsMenu
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public static void Clear() { Console.Clear(); }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static void Flushtdin() { while (Console.In.Peek() != -1 && Console.In.ReadLine() != null) { } }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static void Pause()
         {
             Flushtdin();
             Console.WriteLine("\n\nPress ");
-            //Red();
             Console.WriteLine("any key ");
-            //Reset();
             Console.WriteLine("to continue...");
             Console.ReadKey(true);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fileName"></param>
+        public static void DisplayHistocicMenu(string fileName)
+        {
+            List<Product> listingProdutcs = new List<Product>();
+            Console.WriteLine("\nTable containing the information of the existing products.\n");
+            // Table Construction
+            Console.WriteLine("\n+-----------------------------------------------------------------------------------------------------+");
+            Console.WriteLine("|  CODE  |  NAME  |  DESCRIPTION  |  PRICE  |  LAUNCH DATE  |  WARRANTY DURARION  |  AMOUNT IN STOCK  |");
+            Console.WriteLine("+-----------------------------------------------------------------------------------------------------+");
+            listingProdutcs = ProductsRules.ReturnHistoric();
+            IO.ListHistoric(listingProdutcs);
+            Console.WriteLine("+-----------------------------------------------------------------------------------------------------+");
+            Console.WriteLine($"\n\nTotal sum of accessible records: {ProductsRules.ReturnAmountHistoricRecords()}");
+            Console.WriteLine("\n+-----------------------------------------------------------------------------------------------------+");
+            Console.WriteLine("|         1. Delete a Record!         2. Recover a Record!         3. Return to Products Menu.        |");
+            Console.WriteLine("+-----------------------------------------------------------------------------------------------------+");
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fileName"></param>
+        public static void LoopDisplayHistocicMenu(string fileName)
+        {
+            int productID, op;
+            bool result;
+
+            while (true)
+            {
+                Clear();
+                DisplayHistocicMenu(fileName);
+                do
+                {
+                    Console.Write("\nChoose an Option: ");
+                    op = int.Parse(Console.ReadLine());
+                    if (op == 3)
+                    {
+                        Menu(fileName);
+                    }
+
+                    if (op < 1 || op > 3)
+                    {
+                        Clear();
+                        DisplayHistocicMenu(fileName);
+                        Console.WriteLine("\n\n\tInvalid Option! [1/3]\n");
+                    }
+                    else
+                    {
+                        if (op == 1)
+                        {
+                            Console.WriteLine("\nLets Delete a Product!");
+
+                            productID = IO.GetProductID();
+
+                            result = ProductsRules.DeleteProduct(productID);
+                            if (result == true)
+                                Console.WriteLine("\nProduct was successfully deleted!");
+                            else
+                                Console.WriteLine("\nUnable to delete the product!");
+
+                            ProductsRules.SaveProductsDataBin(fileName);
+
+                            Pause();
+                        }
+                        else
+                        {
+                            Console.WriteLine("\nLets Recover a Product!");
+
+                            productID = IO.GetProductID();
+
+                            result = ProductsRules.RecoverProduct(productID);
+                            if (result == true)
+                                Console.WriteLine("\nProduct was successfully recovered!");
+                            else
+                                Console.WriteLine("\nUnable to recover the product!");
+
+                            ProductsRules.SaveProductsDataBin(fileName);
+
+                            Pause();
+                        }
+                    }
+                } while ((!(op == 1)) && (!(op == 2)));
+
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fileName"></param>
         public static void Menu(string fileName)
         {
-            int op = 1, field = 0, productID = 0;
-            bool result = false;
+            int op = 1, field, productID;
+            bool result;
 
             try
             {
@@ -63,9 +163,10 @@ namespace ProductCatalogsM
                         Console.WriteLine("  |  2. Insert a new product.                 |");
                         Console.WriteLine("  |  3. Update product information.           |");
                         Console.WriteLine("  |  4. Remove a product.                     |");
-                        Console.WriteLine("  |  5. Exit Application!                     |");
-                        Console.WriteLine("  +-------------------------------------------+\n");
-                        Console.WriteLine("\n\n Option: ");
+                        Console.WriteLine("  |  5. Show products historic.               |");
+                        Console.WriteLine("  |  6. Exit Application!                     |");
+                        Console.WriteLine("  +-------------------------------------------+");
+                        Console.Write("\nOption: ");
                         op = int.Parse(Console.ReadLine());
                     } while (op < 1 || op > 7);
                     Clear();
@@ -128,8 +229,8 @@ namespace ProductCatalogsM
                             Console.WriteLine("  |  5. Update product Warranty Duration.     |");
                             Console.WriteLine("  |  6. Update product Amount In Stock.       |");
                             Console.WriteLine("  |  7. Go back to Menu!                      |");
-                            Console.WriteLine("  +-------------------------------------------+\n");
-                            Console.WriteLine("\n\n Option: ");
+                            Console.WriteLine("  +-------------------------------------------+");
+                            Console.Write("\nOption: ");
                             field = int.Parse(Console.ReadLine());
 
                             if (field == 7) { Menu(fileName); }
@@ -153,7 +254,7 @@ namespace ProductCatalogsM
 
                             productID = IO.GetProductID();
 
-                            result = ProductsRules.DeleteProduct(productID);
+                            result = ProductsRules.RemoveProduct(productID);
                             if (result == true)
                                 Console.WriteLine("\nProduct was successfully removed!");
                             else
@@ -164,6 +265,9 @@ namespace ProductCatalogsM
                             Pause();
                             break;
                         case 5:
+                            LoopDisplayHistocicMenu(fileName);
+                            break;
+                        case 6:
                             Environment.Exit(0);
                             break;
                     }
