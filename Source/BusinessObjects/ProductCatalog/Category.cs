@@ -20,7 +20,9 @@ namespace ProductCatalog
     /// </summary>
     /// <remarks></remarks>
     /// <example></example>
-    public class Category
+
+    [Serializable]
+    public class Category : IComparable<Category>
     {
         #region Attributes
 
@@ -29,15 +31,10 @@ namespace ProductCatalog
         /// </summary>
         private int categoryID; // 
         private string categoryName; // 
-        //private string categoryDescription; // A brief description that provides more information about the content or purpose of the category.
-        //Category categoryParent; // If the category system has a hierarchy, i can therefore include a reference to the 'Parent' category. Allowing the creation of subordinate categories.
-        //Product[] productsList; // A list of products that belong to this category.
-        private bool visibilityStatus; // An indicator of whether the category is visible to users.
+        private string categoryDescription; // A brief description that provides more information about the content or purpose of the category.
         private DateTime creationDate; // The date the category was created.
-        //private DateTime latestUpdate; // The date the category was last updated.
-        private int displayOrder; // A number that determines the order in which categories are displayed to the user.
-
-        private static int qtdCategories = 1; //
+        private int brandID; // 
+        private bool visibilityStatus; // An indicator of whether the category is visible to users.
 
         #endregion
 
@@ -50,29 +47,27 @@ namespace ProductCatalog
         /// </summary>
         public Category()
         {
-            categoryID = qtdCategories;
-            qtdCategories++;
+            categoryID = 0;
             categoryName = string.Empty;
-            visibilityStatus = false;
+            categoryDescription = string.Empty;
             creationDate = DateTime.Now;
-            displayOrder = -1;
+            visibilityStatus = false;
         }
 
         /// <summary>
         /// Constructor passed by parameters
         /// </summary>
         /// <param name="categoryName"></param>
-        /// <param name="visibilityStatus"></param>
+        /// <param name="categoryDescription"></param>
         /// <param name="creationDate"></param>
-        /// <param name="displayOrder"></param>
-        public Category(string categoryName, bool visibilityStatus, DateTime creationDate, int displayOrder)
+        /// <param name="visibilityStatus"></param>
+        public Category(string categoryName, string categoryDescription, DateTime creationDate, bool visibilityStatus)
         {
-            categoryID = qtdCategories;
-            qtdCategories++;
+            categoryID = 0;
             this.categoryName = categoryName;
-            this.visibilityStatus = visibilityStatus;
+            this.categoryDescription = categoryDescription;
             this.creationDate = creationDate;
-            this.displayOrder = displayOrder;
+            this.visibilityStatus = visibilityStatus;
         }
 
         #endregion
@@ -80,7 +75,7 @@ namespace ProductCatalog
         #region Properties
 
         /// <summary>
-        /// Property related to the categoryID attribute
+        /// Property related to the 'categoryID' attribute
         /// </summary>
         public int CategoryID
         {
@@ -89,7 +84,7 @@ namespace ProductCatalog
         }
 
         /// <summary>
-        /// Property related to the categoryName attribute
+        /// Property related to the 'categoryName' attribute
         /// </summary>
         public string CategoryName
         {
@@ -98,16 +93,16 @@ namespace ProductCatalog
         }
 
         /// <summary>
-        /// Property related to the visibilityStatus attribute
+        /// Property related to the 'categoryDescription' attribute
         /// </summary>
-        public bool VisibilityStatus
+        public string CategoryDescription
         {
-            get { return visibilityStatus; }
-            set { visibilityStatus = value; }
+            get { return categoryDescription; }
+            set { categoryDescription = value; }
         }
 
         /// <summary>
-        /// Property related to the creationDate attribute
+        /// Property related to the 'creationDate' attribute
         /// </summary>
         public DateTime CreationDate
         {
@@ -116,12 +111,12 @@ namespace ProductCatalog
         }
 
         /// <summary>
-        /// Property related to the displayOrder attribute
+        /// Property related to the 'visibilityStatus' attribute
         /// </summary>
-        public int DisplayOrder
+        public bool VisibilityStatus
         {
-            get { return displayOrder; }
-            set { displayOrder = value; }
+            get { return visibilityStatus; }
+            set { visibilityStatus = value; }
         }
 
         #endregion
@@ -137,8 +132,8 @@ namespace ProductCatalog
         public static bool operator ==(Category left, Category right)
         {
             if ((left.CategoryID == right.CategoryID) && (left.CategoryName == right.CategoryName)
-                && (left.VisibilityStatus == right.VisibilityStatus) && (left.CreationDate == right.CreationDate)
-                && (left.DisplayOrder == right.DisplayOrder))
+                && (left.CategoryDescription == right.CategoryDescription) && (left.CreationDate == right.CreationDate) 
+                && (left.VisibilityStatus == right.VisibilityStatus))
                 return (true);
             return (false);
         }
@@ -165,8 +160,8 @@ namespace ProductCatalog
         /// <returns></returns>
         public override string ToString()
         {
-            return (String.Format("Category ID: {0} - Category Name: {1} - Visibility Status: {2} - Creation Date: {3} - Display Order: {4}", 
-                CategoryID.ToString(), CategoryName, VisibilityStatus.ToString(), CreationDate.ToString(), DisplayOrder.ToString()));
+            return (String.Format("Category ID: {0} - Category Name: {1} - Category Description: {2} - Creation Date: {3}", 
+                CategoryID.ToString(), CategoryName, CategoryDescription, CreationDate.ToString()));
         }
 
         /// <summary>
@@ -197,13 +192,31 @@ namespace ProductCatalog
         #endregion
 
         #region OtherMethods
+
+        /// <summary>
+        /// Method that orders based on the cost of the product.
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
+        public int CompareTo(Category category)
+        {
+            return this.CategoryDescription.CompareTo(category.CategoryDescription);
+        }
+
         #endregion
 
         #region Destructor
-        #endregion
+
+        /// <summary>
+        /// Destructor that removes the object from the memory!
+        /// </summary>
+        ~Category()
+        {
+            GC.SuppressFinalize(this);
+        }
 
         #endregion
 
-        //Still in progress...
+        #endregion
     }
 }

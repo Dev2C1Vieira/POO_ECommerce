@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6E801DCB-55DF-4E96-89AF-DB4A9B8FF2C0}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>ECommerce</RootNamespace>
-    <AssemblyName>ECommerce</AssemblyName>
+    <ProjectGuid>{DFAEF28E-2D1D-4DC9-9763-3204CACD9F16}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ECMenus</RootNamespace>
+    <AssemblyName>ECMenus</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,38 +31,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ECMenus">
-      <HintPath>..\Menus\ECMenus\bin\Debug\ECMenus.dll</HintPath>
+    <Reference Include="ProductCatalogsM">
+      <HintPath>..\ProductCatalogsM\bin\Debug\ProductCatalogsM.dll</HintPath>
     </Reference>
-    <Reference Include="InputConsoleOutput">
-      <HintPath>..\InputOutput\IOData\bin\Debug\InputConsoleOutput.dll</HintPath>
-    </Reference>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="ProductCatalog">
-      <HintPath>..\BusinessObjects\ProductCatalog\bin\Debug\ProductCatalog.dll</HintPath>
-    </Reference>
-    <Reference Include="ProductCatalogR">
-      <HintPath>..\BusinessRules\ProductCatalogR\bin\Debug\ProductCatalogR.dll</HintPath>
+    <Reference Include="StaffMenu">
+      <HintPath>..\StaffMenu\bin\Debug\StaffMenu.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="MainMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

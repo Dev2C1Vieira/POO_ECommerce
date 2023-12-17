@@ -12,7 +12,7 @@ using System;
 
 //External
 using ProductCatalogR;
-using ProductCatalogsM;
+using ECMenus;
 
 namespace ECommerce
 {
@@ -29,10 +29,9 @@ namespace ECommerce
     {
         static void Main()
         {
-            //string fileName = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\Bin\\ProductsList.bin";
-            string fileName = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\Bin\\ProductsList.bin";
-            ProductsRules.LoadProductsDataBin(fileName);
-            ProductsMenu.Menu(fileName);
+            ProductsRules.LoadProductsDataBin();
+            CategoriesRules.LoadCategoriesDataBin();
+            MainMenu.Menu();
         }
     }
 }

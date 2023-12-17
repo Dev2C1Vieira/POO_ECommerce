@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{08D94A08-D31A-49F8-AD02-E1206EBE6B96}</ProjectGuid>
+    <ProjectGuid>{0D9884E6-3364-4E3B-8C9F-948ED3481BBA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>InputConsoleOutput</RootNamespace>
-    <AssemblyName>InputConsoleOutput</AssemblyName>
+    <RootNamespace>ProductCatalogIO</RootNamespace>
+    <AssemblyName>ProductCatalogIO</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -34,21 +34,6 @@
     <Reference Include="ProductCatalog">
       <HintPath>..\..\BusinessObjects\ProductCatalog\bin\Debug\ProductCatalog.dll</HintPath>
     </Reference>
-    <Reference Include="ProductCatalogs">
-      <HintPath>..\..\Data\ProductCatalogs\bin\Debug\ProductCatalogs.dll</HintPath>
-    </Reference>
-    <Reference Include="RevenueEngine">
-      <HintPath>..\..\BusinessObjects\RevenueEngine\bin\Debug\RevenueEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="RevenueEngines">
-      <HintPath>..\..\Data\RevenueEngines\bin\Debug\RevenueEngines.dll</HintPath>
-    </Reference>
-    <Reference Include="StaffClientSystem">
-      <HintPath>..\..\BusinessObjects\StaffClientSystem\bin\Debug\StaffClientSystem.dll</HintPath>
-    </Reference>
-    <Reference Include="StaffClientSystems">
-      <HintPath>..\..\Data\StaffClientSystems\bin\Debug\StaffClientSystems.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -59,7 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IO.cs" />
+    <Compile Include="CategoriesIO.cs" />
+    <Compile Include="ProductsIO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

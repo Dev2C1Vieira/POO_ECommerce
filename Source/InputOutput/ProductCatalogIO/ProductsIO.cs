@@ -1,10 +1,10 @@
 ﻿/*
- * <copyright file = "Aula_1___Turno_2.cs" company = "IPCA">
+ * <copyright file = "ProductsIO.cs" company = "IPCA">
  * Copyright (c) 2023 All Rights Reserved
  * </copyright>
  * <author> Pedro Vieira </author>
- * <date> 11/8/2023 7:07:33 PM </date>
- * <description> [Write the description of the project!] </description>
+ * <date> 12/17/2023 4:45:35 PM </date>
+ * <description></description>
  * 
  * */
 
@@ -14,34 +14,20 @@ using System.Globalization;
 
 // External
 using ProductCatalog;
-using IOData;
 
-namespace IOData
+namespace ProductCatalogIO
 {
     /// <summary>
     /// Purpose: [Write the purpose of the class!]
     /// Created By: Pedro Vieira
-    /// Created On: 11/8/2023 7:07:33 PM
+    /// Created On: 12/11/2023 10:38:57 PM
     /// Email: a25626@alunos.ipca.pt
     /// </summary>
-    public class IO
+    /// <remarks></remarks>
+    /// <example></example>
+    public class ProductsIO
     {
         #region Methods
-
-        #region Constructors
-
-        /// <summary>
-        /// The default Constructor
-        /// </summary>
-        public IO() { }
-
-        #endregion
-
-        #region OtherMethods
-
-        #region ProductCatalogMethods
-
-        #region ProductsMethods
 
         /// <summary>
         /// Method that assigns the values ​​entered by the user to their respective attributes.
@@ -87,7 +73,7 @@ namespace IOData
         {
             if (productsList.Count == 0)
             {
-                Console.WriteLine("|     The product list is empty!     |");
+                Console.WriteLine("|     The products list is empty!     |");
                 return false;
             }
             foreach (Product po in productsList)
@@ -169,15 +155,6 @@ namespace IOData
 
             return newAttribute;
         }
-
-        #endregion
-
-        #endregion
-
-        #endregion
-
-        #region Destructor
-        #endregion
 
         #endregion
     }

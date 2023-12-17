@@ -31,14 +31,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="InputConsoleOutput">
-      <HintPath>..\..\InputOutput\IOData\bin\Debug\InputConsoleOutput.dll</HintPath>
-    </Reference>
-    <Reference Include="ProductCatalog">
+    <Reference Include="ProductCatalog, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\BusinessObjects\ProductCatalog\bin\Debug\ProductCatalog.dll</HintPath>
+    </Reference>
+    <Reference Include="ProductCatalogIO">
+      <HintPath>..\..\InputOutput\ProductCatalogIO\bin\Debug\ProductCatalogIO.dll</HintPath>
     </Reference>
     <Reference Include="ProductCatalogR">
       <HintPath>..\..\BusinessRules\ProductCatalogR\bin\Debug\ProductCatalogR.dll</HintPath>
+    </Reference>
+    <Reference Include="StaffMenu">
+      <HintPath>..\StaffMenu\bin\Debug\StaffMenu.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -50,6 +54,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoriesMenu.cs" />
+    <Compile Include="PCMenu.cs" />
     <Compile Include="ProductsMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

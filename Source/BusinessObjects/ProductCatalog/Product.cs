@@ -36,6 +36,8 @@ namespace ProductCatalog
         private DateTime launchDate; //
         private int warrantyDuration; // 
         private int amountInStock; //
+        private int categoryID; //
+        private int brandID; //
         private bool visibilityStatus; // An indicator of whether the product is visible to users.
 
         #endregion
@@ -56,6 +58,8 @@ namespace ProductCatalog
             launchDate = DateTime.Now;
             warrantyDuration = 0;
             amountInStock = 0;
+            categoryID = 0;
+            brandID = 0;
             visibilityStatus = false;
         }
 
@@ -68,9 +72,11 @@ namespace ProductCatalog
         /// <param name="launchDate"></param>
         /// <param name="warrantyDuration"></param>
         /// <param name="amountInStock"></param>
+        /// <param name="categoryID"></param>
+        /// <param name="brandID"></param>
         /// <param name="visibilityStatus"></param>
         public Product(string productName, string productDescription, double price, DateTime launchDate,
-            int warrantyDuration, int amountInStock, bool visibilityStatus)
+            int warrantyDuration, int amountInStock, int categoryID, int brandID, bool visibilityStatus)
         {
             productID = 0;
             this.productName = productName;
@@ -79,6 +85,8 @@ namespace ProductCatalog
             this.launchDate = launchDate;
             this.warrantyDuration = warrantyDuration;
             this.amountInStock = amountInStock;
+            this.categoryID = categoryID;
+            this.brandID = brandID;
             this.visibilityStatus = visibilityStatus;
         }
 
@@ -150,6 +158,24 @@ namespace ProductCatalog
         }
 
         /// <summary>
+        /// Property related to the 'categoryID' attribute
+        /// </summary>
+        public int CategoryID
+        {
+            get { return categoryID; }
+            set { categoryID = value; }
+        }
+
+        /// <summary>
+        /// Property related to the 'brandID' attribute
+        /// </summary>
+        public int BrandID
+        {
+            get { return brandID; }
+            set { brandID = value; }
+        }
+
+        /// <summary>
         /// Property related to the 'visibilityStatus' attribute
         /// </summary>
         public bool VisibilityStatus
@@ -173,7 +199,8 @@ namespace ProductCatalog
             if ((left.ProductID == right.ProductID) && (left.ProductName == right.ProductName)
                 && (left.ProductDescription == right.ProductDescription) && (left.Price == right.Price)
                 && (left.LauchDate == right.LauchDate) && (left.WarrantyDuration == right.WarrantyDuration)
-                && (left.AmountInStock == right.AmountInStock) && (left.visibilityStatus == right.VisibilityStatus)) 
+                && (left.AmountInStock == right.AmountInStock) && (left.CategoryID == right.CategoryID)
+                && (left.BrandID == right.BrandID) && (left.visibilityStatus == right.VisibilityStatus)) 
                 return (true);
             return (false);
         }
@@ -201,9 +228,11 @@ namespace ProductCatalog
         public override string ToString()
         {
             return (String.Format("Product ID: {0} - Product Name: {1} - Product Description: {2} " +
-                "- Price: {3} - Launch Date: {4} - Warranty Duration: {5} - Amount in Stock: {6}", 
+                "- Price: {3} - Launch Date: {4} - Warranty Duration: {5}" +
+                " - Amount in Stock: {6} - Category ID: {7} - Brand ID: {8}", 
                 ProductID.ToString(), ProductName, ProductDescription, Price.ToString(), 
-                LauchDate.ToString(), WarrantyDuration.ToString(), AmountInStock.ToString()));
+                LauchDate.ToString(), WarrantyDuration.ToString(), AmountInStock.ToString(),
+                CategoryID.ToString(), BrandID.ToString()));
         }
 
         /// <summary>
@@ -250,7 +279,7 @@ namespace ProductCatalog
         #region Destructor
 
         /// <summary>
-        /// 
+        /// Destructor that removes the object from the memory!
         /// </summary>
         ~Product()
         {
@@ -260,7 +289,5 @@ namespace ProductCatalog
         #endregion
 
         #endregion
-
-        //Still in progress...
     }
 }

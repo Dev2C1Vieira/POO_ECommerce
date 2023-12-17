@@ -122,7 +122,7 @@ namespace ProductCatalogR
             }
             catch (ProductException PE)
             {
-                throw new Exception(PE.Message);
+                throw new ProductException(PE.Message);
             }
             catch (Exception E)
             {
@@ -266,11 +266,11 @@ namespace ProductCatalogR
         /// <param name="fileName"></param>
         /// <returns></returns>
         /// <exception cref="SerializationException"></exception>
-        public static bool LoadProductsDataBin(string fileName)
+        public static bool LoadProductsDataBin()
         {
             try
             {
-                return Products.LoadProductsDataBin(fileName);
+                return Products.LoadProductsDataBin();
             }
             catch (SerializationException SE)
             {
@@ -278,11 +278,11 @@ namespace ProductCatalogR
             }
             catch (IOException IOE)
             {
-                throw new SerializationException("\nIO error when trying to save product data!" + IOE.Message);
+                throw new IOException("\nIO error when trying to save product data!" + IOE.Message);
             }
             catch (Exception E)
             {
-                throw new SerializationException("\nUnable to load products data from file!" + E.Message);
+                throw new Exception("\nUnable to load products data from file!" + E.Message);
             }
         }
 
@@ -291,11 +291,11 @@ namespace ProductCatalogR
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        public static bool SaveProductsDataBin(string fileName)
+        public static bool SaveProductsDataBin()
         {
             try
             {
-                return Products.SaveProductsDataBin(fileName);
+                return Products.SaveProductsDataBin();
             }
             catch (SerializationException SE)
             {
@@ -303,11 +303,11 @@ namespace ProductCatalogR
             }
             catch (IOException IOE)
             {
-                throw new SerializationException("\nIO error when trying to save product data!" + IOE.Message);
+                throw new IOException("\nIO error when trying to save product data!" + IOE.Message);
             }
             catch (Exception E)
             {
-                throw new SerializationException("\nUnable to save the data in the file!" + E.Message);
+                throw new Exception("\nUnable to save the data in the file!" + E.Message);
             }
         }
 

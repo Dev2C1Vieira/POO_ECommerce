@@ -59,7 +59,7 @@ namespace ProductCatalogs
         #region Properties
 
         /// <summary>
-        /// 
+        /// Property related to the 'name' attribute
         /// </summary>
         public static string Name
         {
@@ -68,7 +68,7 @@ namespace ProductCatalogs
         }
 
         /// <summary>
-        /// 
+        /// Property related to the 'productsList' attribute
         /// </summary>
         public static List<Product> ProductsList
         {
@@ -89,7 +89,7 @@ namespace ProductCatalogs
         /// <returns></returns>
         public static bool ExistProduct(Product product)
         {
-            if (productsList.Contains(product))
+            if (ProductsList.Contains(product))
                 return true;
             return false;
         }
@@ -106,7 +106,7 @@ namespace ProductCatalogs
         }
 
         /// <summary>
-        /// This method lists in the console the result of the comparison between two Product, indicated by parameter.
+        /// This method lists in the console the result of the comparison between two products, indicated by parameter.
         /// </summary>
         /// <param name="product1"></param>
         /// <param name="product2"></param>
@@ -151,7 +151,9 @@ namespace ProductCatalogs
             int count = 0;
             foreach (Product product in ProductsList)
             {
-                count++;
+                if (product.VisibilityStatus == true)
+                    count++;
+                else continue;
             }
             return count;
         }
@@ -404,13 +406,15 @@ namespace ProductCatalogs
         // Read data from a binary file
 
         /// <summary>
-        /// 
+        /// Method that loads the products data from a file into the products list.
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public static bool LoadProductsDataBin(string fileName)
+        public static bool LoadProductsDataBin()
         {
+            //string fileName = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\Bin\\ProductsList.bin";
+            string fileName = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\Bin\\ProductsList.bin";
             if (File.Exists(fileName))
             {
                 using (FileStream fileStream = new FileStream(fileName, FileMode.Open))
@@ -436,11 +440,13 @@ namespace ProductCatalogs
         // Save data in a binary file
 
         /// <summary>
-        /// 
+        /// Method that saves the products data from the products list into a file.
         /// </summary>
         /// <param name="products"></param>
-        public static bool SaveProductsDataBin(string fileName)
+        public static bool SaveProductsDataBin()
         {
+            //string fileName = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\Bin\\ProductsList.bin";
+            string fileName = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\Bin\\ProductsList.bin";
             if (IsProductsListEmpty() == true)
                 throw new ProductException("\nThe product list is empty!");
 
@@ -461,7 +467,5 @@ namespace ProductCatalogs
         #endregion
 
         #endregion
-
-        //Still in progress...
     }
 }

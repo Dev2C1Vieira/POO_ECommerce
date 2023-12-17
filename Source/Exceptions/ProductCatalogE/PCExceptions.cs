@@ -36,4 +36,36 @@ namespace ProductCatalogE
         /// <param name="message">Mensagem de erro ou informação relacionada à exceção.</param>
         public ProductException(string message) : base(message) { }
     }
+
+    public class CategoryException : Exception
+    {
+        /// <summary>
+        /// Construtor padrão sem parâmetros.
+        /// Cria uma instância de ProductException sem uma mensagem específica.
+        /// </summary>
+        public CategoryException() { }
+
+        /// <summary>
+        /// Construtor que aceita uma mensagem como parâmetro.
+        /// Cria uma instância de ProductException com uma mensagem específica.
+        /// </summary>
+        /// <param name="message">Mensagem de erro ou informação relacionada à exceção.</param>
+        public CategoryException(string message) : base(message) { }
+    }
+
+    public class BrandException : Exception
+    {
+        /// <summary>
+        /// Construtor padrão sem parâmetros.
+        /// Cria uma instância de ProductException sem uma mensagem específica.
+        /// </summary>
+        public BrandException() { }
+
+        /// <summary>
+        /// Construtor que aceita uma mensagem como parâmetro.
+        /// Cria uma instância de ProductException com uma mensagem específica.
+        /// </summary>
+        /// <param name="message">Mensagem de erro ou informação relacionada à exceção.</param>
+        public BrandException(string message) : base(message) { }
+    }
 }
