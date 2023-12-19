@@ -28,7 +28,7 @@ namespace ProductCatalogR
     /// </summary>
     public class ProductsRules
     {
-        #region ProductsMethods
+        #region Methods
 
         /// <summary>
         /// Method that returns the number of elements present in the product list.

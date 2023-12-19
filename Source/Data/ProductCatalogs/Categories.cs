@@ -1,4 +1,4 @@
-﻿/*
+﻿    /*
  * <copyright file = "Aula_1___Turno_2.cs" company = "IPCA">
  * Copyright (c) 2023 All Rights Reserved
  * </copyright>
@@ -390,8 +390,8 @@ namespace ProductCatalogs
         /// <exception cref="Exception"></exception>
         public static bool LoadCategoriesDataBin()
         {
-            //string fileName = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\Bin\\CategoriesList.bin";
-            string fileName = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\Bin\\CategoriesList.bin";
+            string fileName = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\CategoriesList.bin";
+            //string fileName = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\CategoriesList.bin";
             if (File.Exists(fileName))
             {
                 using (FileStream fileStream = new FileStream(fileName, FileMode.Open))
@@ -418,8 +418,8 @@ namespace ProductCatalogs
         /// <exception cref="ProductException"></exception>
         public static bool SaveCategoriesDataBin()
         {
-            //string fileName = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\Bin\\CategoriesList.bin";
-            string fileName = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\Bin\\CategoriesList.bin";
+            string fileName = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\CategoriesList.bin";
+            //string fileName = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\CategoriesList.bin";
             if (IsCategoriesListEmpty() == true)
                 throw new ProductException("\nThe product list is empty!");
 

@@ -212,6 +212,7 @@ namespace ProductCatalogs
         /// </summary>
         /// <param name="product"></param>
         /// <returns></returns>
+        /// <exception cref="ProductException"></exception>
         public static bool InsertProduct(Product product)
         {
             if (ExistProduct(product) == true)
@@ -231,7 +232,7 @@ namespace ProductCatalogs
             List<Product> listaAux = new List<Product>();
 
             if (IsProductsListEmpty() == true)
-                throw new ProductException("\nThe product list is empty!");
+                throw new ProductException("\nThe products list is empty!");
 
             foreach (Product product in ProductsList)
             {
@@ -252,7 +253,7 @@ namespace ProductCatalogs
             List<Product> listaAux = new List<Product>();
 
             if (IsProductsListEmpty() == true)
-                throw new ProductException("\nThe product list is empty!");
+                throw new ProductException("\nThe products list is empty!");
 
             foreach (Product product in ProductsList)
             {
@@ -324,6 +325,7 @@ namespace ProductCatalogs
         /// </summary>
         /// <param name="productID"></param>
         /// <returns></returns>
+        /// <exception cref="ProductException"></exception>
         public static bool RemoveProduct(int productID)
         {
             if (ExistProduct(ReturnProductFromID(productID)) == false)
@@ -351,6 +353,7 @@ namespace ProductCatalogs
         /// </summary>
         /// <param name="productID"></param>
         /// <returns></returns>
+        /// <exception cref="ProductException"></exception>
         public static bool RecoverProduct(int productID)
         {
             if (ExistProduct(ReturnProductFromID(productID)) == false)
@@ -376,8 +379,9 @@ namespace ProductCatalogs
         /// <summary>
         /// This function deletes a product by passing its ID as a parameter.
         /// </summary>
-        /// <param name="product"></param>
+        /// <param name="productID"></param>
         /// <returns></returns>
+        /// <exception cref="ProductException"></exception>
         public static bool DeleteProduct(int productID)
         {
             if (ExistProduct(ReturnProductFromID(productID)) == false)
@@ -412,8 +416,8 @@ namespace ProductCatalogs
         /// <exception cref="Exception"></exception>
         public static bool LoadProductsDataBin()
         {
-            //string fileName = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\Bin\\ProductsList.bin";
-            string fileName = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\Bin\\ProductsList.bin";
+            string fileName = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\ProductsList.bin";
+            //string fileName = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\ProductsList.bin";
             if (File.Exists(fileName))
             {
                 using (FileStream fileStream = new FileStream(fileName, FileMode.Open))
@@ -438,8 +442,8 @@ namespace ProductCatalogs
         /// <param name="products"></param>
         public static bool SaveProductsDataBin()
         {
-            //string fileName = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\Bin\\ProductsList.bin";
-            string fileName = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\Bin\\ProductsList.bin";
+            string fileName = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\ProductsList.bin";
+            //string fileName = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\ProductsList.bin";
             if (IsProductsListEmpty() == true)
                 throw new ProductException("\nThe product list is empty!");
 

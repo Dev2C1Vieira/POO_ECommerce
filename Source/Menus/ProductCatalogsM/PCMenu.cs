@@ -8,8 +8,10 @@
  * 
  * */
 
-using StaffMenu;
 using System;
+
+// External
+using StaffMenu;
 
 namespace ProductCatalogsM
 {

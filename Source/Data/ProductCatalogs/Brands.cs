@@ -393,8 +393,8 @@ namespace ProductCatalogs
         /// <exception cref="Exception"></exception>
         public static bool LoadBrandsDataBin()
         {
-            //string fileName = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\Bin\\BrandsList.bin";
-            string fileName = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\Bin\\BrandsList.bin";
+            string fileName = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\BrandsList.bin";
+            //string fileName = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\BrandsList.bin";
             if (File.Exists(fileName))
             {
                 using (FileStream fileStream = new FileStream(fileName, FileMode.Open))
@@ -420,8 +420,8 @@ namespace ProductCatalogs
         /// <exception cref="BrandException"></exception>
         public static bool SaveBrandsDataBin()
         {
-            //string fileName = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\Bin\\BrandsList.bin";
-            string fileName = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\Bin\\BrandsList.bin";
+            string fileName = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\BrandsList.bin";
+            //string fileName = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\BrandsList.bin";
             if (IsBrandsListEmpty() == true)
                 throw new BrandException("\nThe brands list is empty!");
 

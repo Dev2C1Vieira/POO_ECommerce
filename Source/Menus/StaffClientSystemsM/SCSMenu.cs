@@ -1,21 +1,20 @@
 ﻿/*
- * <copyright file = "EmployeeMenu.cs" company = "IPCA">
+ * <copyright file = "SCSMenu.cs" company = "IPCA">
  * Copyright (c) 2023 All Rights Reserved
  * </copyright>
  * <author> Pedro Vieira </author>
- * <date> 12/17/2023 5:20:13 PM </date>
+ * <date> 12/19/2023 2:53:14 PM </date>
  * <description></description>
  * 
  * */
 
 using System;
+using StaffClientSystem.Employees;
 
 // External
-using ECMenus;
-using ProductCatalogsM;
-using StaffClientSystemsM;
+using StaffMenu;
 
-namespace StaffMenu
+namespace StaffClientSystemsM
 {
     /// <summary>
     /// Purpose: [Write the purpose of the class!]
@@ -25,7 +24,7 @@ namespace StaffMenu
     /// </summary>
     /// <remarks></remarks>
     /// <example></example>
-    public class EmployeeMenu
+    public class SCSMenu
     {
         #region Methods
 
@@ -62,35 +61,31 @@ namespace StaffMenu
                     do
                     {
                         Clear();
-                        Console.WriteLine("  --------- Welcome to Employee Menu ---------\n");
-                        if (op < 1 || op > 4)
+                        Console.WriteLine("  --------- Welcome to Product Catalog Menu ---------\n");
+                        if (op < 1 || op > 3)
                         {
-                            Console.WriteLine("\n  Invalid Option! [1-4]\n");
+                            Console.WriteLine("\n  Invalid Option! [1-3]\n");
                         }
                         Console.WriteLine("\nHere you need to choose one of the options!");
                         Console.WriteLine("\n  +-------------------------------------------+");
-                        Console.WriteLine("  |  1. Manage Product Catalog.               |");
-                        Console.WriteLine("  |  2. Manage Staff Client Systems.          |");
-                        Console.WriteLine("  |  3. Manage Revenue Engines.               |");
-                        Console.WriteLine("  |  4. Return Main Menu.                     |");
+                        Console.WriteLine("  |  1. Manage Clients.                       |");
+                        Console.WriteLine("  |  2. Manage my information!                |");
+                        Console.WriteLine("  |  4. Back!                                 |");
                         Console.WriteLine("  +-------------------------------------------+");
                         Console.Write("\nOption: ");
                         op = int.Parse(Console.ReadLine());
-                    } while (op < 1 || op > 4);
+                    } while (op < 1 || op > 3);
                     Clear();
                     switch (op)
                     {
                         case 1:
-                            PCMenu.Menu();
+                            ClientsMenu.Menu();
                             break;
                         case 2:
-                            SCSMenu.Menu();
+                            // Code Here!
                             break;
                         case 3:
-                            // Menu
-                            break;
-                        case 4:
-                            MainMenu.Menu();
+                            EmployeeMenu.Menu();
                             break;
                     }
                 }

@@ -21,6 +21,8 @@ namespace StaffClientSystem
     /// </summary>
     /// <remarks></remarks>
     /// <example></example>
+
+    [Serializable]
     public class Client : Person, IComparable<Client>/*, IClient*/
     {
         #region Attributes
@@ -46,7 +48,7 @@ namespace StaffClientSystem
         {
             clientID = 0;
             Name = string.Empty;
-            Gender = true;
+            Gender = string.Empty;
             DateOfBirth = DateTime.Now;
             PostalCode = string.Empty;
             Address = string.Empty;
@@ -67,7 +69,8 @@ namespace StaffClientSystem
         /// <param name="phone_number"></param>
         /// <param name="email"></param>
         /// <param name="visibilityStatus"></param>
-        public Client(int clientID, string name, bool gender, DateTime birthdate, string postalCode, string address, int phone_number, string email, bool visibilityStatus)
+        public Client(int clientID, string name, string gender, DateTime birthdate, 
+            string postalCode, string address, int phone_number, string email, bool visibilityStatus)
         {
             this.clientID = clientID;
             Name = name;

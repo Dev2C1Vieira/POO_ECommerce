@@ -41,7 +41,8 @@
     <Reference Include="ProductCatalogR">
       <HintPath>..\..\BusinessRules\ProductCatalogR\bin\Debug\ProductCatalogR.dll</HintPath>
     </Reference>
-    <Reference Include="StaffMenu">
+    <Reference Include="StaffMenu, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\StaffMenu\bin\Debug\StaffMenu.dll</HintPath>
     </Reference>
     <Reference Include="System" />

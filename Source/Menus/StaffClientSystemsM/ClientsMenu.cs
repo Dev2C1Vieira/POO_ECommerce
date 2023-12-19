@@ -1,30 +1,32 @@
 ﻿/*
- * <copyright file = "ProductsMenu.cs" company="IPCA">
+ * <copyright file = "ClientsMenu.cs" company = "IPCA">
  * Copyright (c) 2023 All Rights Reserved
  * </copyright>
  * <author> Pedro Vieira </author>
- * <date> 12/16/2023 8:42:47 PM </date>
- * <description> [Write the description of the project!] </description>
+ * <date> 12/19/2023 2:53:32 PM </date>
+ * <description></description>
  * 
  * */
 
 using System;
 using System.Collections.Generic;
 
-// External
-using ProductCatalog;
-using ProductCatalogR;
-using ProductCatalogIO;
+//
+using StaffClientSystem;
+using StaffClientSystemR;
+using StaffClientSystemIO;
 
-namespace ProductCatalogsM
+namespace StaffClientSystemsM
 {
     /// <summary>
     /// Purpose: [Write the purpose of the class!]
     /// Created By: Pedro Vieira
-    /// Created On: 12/16/2023 8:42:47 PM
+    /// Created On: 12/11/2023 10:38:57 PM
     /// Email: a25626@alunos.ipca.pt
     /// </summary>
-    public class ProductsMenu
+    /// <remarks></remarks>
+    /// <example></example>
+    public class ClientsMenu
     {
         #region Methods
 
@@ -56,16 +58,16 @@ namespace ProductCatalogsM
         /// <param name="fileName"></param>
         public static void DisplayHistocicMenu()
         {
-            List<Product> listingProdutcs = new List<Product>();
-            Console.WriteLine("\nTable containing the information of the products historic.\n");
+            List<Client> listingClients = new List<Client>();
+            Console.WriteLine("\nTable containing the information of the clients historic.\n");
             // Table Construction
             Console.WriteLine("\n+-----------------------------------------------------------------------------------------------------+");
-            Console.WriteLine("|  CODE  |  NAME  |  DESCRIPTION  |  PRICE  |  LAUNCH DATE  |  WARRANTY DURARION  |  AMOUNT IN STOCK  |");
+            Console.WriteLine("|  CODE  |  NAME  |  GENDER  |  DATE OF BIRTH  |  POSTAL CODE  |  ADDRESS  |  PHONE NUMBER  |  EMAIL  |");
             Console.WriteLine("+-----------------------------------------------------------------------------------------------------+");
-            listingProdutcs = ProductsRules.ReturnHistoric();
-            ProductsIO.ListHistoric(listingProdutcs);
+            listingClients = ClientsRules.ReturnHistoric();
+            ClientsIO.ListHistoric(listingClients);
             Console.WriteLine("+-----------------------------------------------------------------------------------------------------+");
-            Console.WriteLine($"\n\nTotal sum of accessible records: {ProductsRules.ReturnAmountHistoricRecords()}");
+            Console.WriteLine($"\n\nTotal sum of accessible records: {ClientsRules.ReturnAmountHistoricRecords()}");
             Console.WriteLine("\n+-----------------------------------------------------------------------------------------------------+");
             Console.WriteLine("|         1. Delete a Record!         2. Recover a Record!         3. Return to Products Menu.        |");
             Console.WriteLine("+-----------------------------------------------------------------------------------------------------+");
@@ -77,7 +79,7 @@ namespace ProductCatalogsM
         /// <param name="fileName"></param>
         public static void LoopDisplayHistocicMenu()
         {
-            int productID, op;
+            int clientID, op;
             bool result;
 
             while (true)
@@ -103,33 +105,33 @@ namespace ProductCatalogsM
                     {
                         if (op == 1)
                         {
-                            Console.WriteLine("\nLets Delete a Product!");
+                            Console.WriteLine("\nLets Delete a Client!");
 
-                            productID = ProductsIO.GetProductID();
+                            clientID = ClientsIO.GetClientID();
 
-                            result = ProductsRules.DeleteProduct(productID);
+                            result = ClientsRules.DeleteClient(clientID);
                             if (result == true)
-                                Console.WriteLine("\nProduct was successfully deleted!");
+                                Console.WriteLine("\nClient was successfully deleted!");
                             else
-                                Console.WriteLine("\nUnable to delete the product!");
+                                Console.WriteLine("\nUnable to delete the client!");
 
-                            ProductsRules.SaveProductsDataBin();
+                            ClientsRules.SaveClientsDataBin();
 
                             Pause();
                         }
                         else
                         {
-                            Console.WriteLine("\nLets Recover a Product!");
+                            Console.WriteLine("\nLets Recover a Client!");
 
-                            productID = ProductsIO.GetProductID();
+                            clientID = ClientsIO.GetClientID();
 
-                            result = ProductsRules.RecoverProduct(productID);
+                            result = ClientsRules.RecoverClient(clientID);
                             if (result == true)
-                                Console.WriteLine("\nProduct was successfully recovered!");
+                                Console.WriteLine("\nClient was successfully recovered!");
                             else
-                                Console.WriteLine("\nUnable to recover the product!");
+                                Console.WriteLine("\nUnable to recover the client!");
 
-                            ProductsRules.SaveProductsDataBin();
+                            ClientsRules.SaveClientsDataBin();
 
                             Pause();
                         }
@@ -145,7 +147,7 @@ namespace ProductCatalogsM
         /// <param name="fileName"></param>
         public static void Menu()
         {
-            int op = 1, field, productID;
+            int op = 1, field, clientID;
             bool result;
 
             try
@@ -161,11 +163,11 @@ namespace ProductCatalogsM
                             Console.WriteLine("\n  Invalid Option! [1-6]\n");
                         }
                         Console.WriteLine("\n  +-------------------------------------------+");
-                        Console.WriteLine("  |  1. List the existing products.           |");
-                        Console.WriteLine("  |  2. Insert a new product.                 |");
-                        Console.WriteLine("  |  3. Update product information.           |");
-                        Console.WriteLine("  |  4. Remove a product.                     |");
-                        Console.WriteLine("  |  5. Show products historic.               |");
+                        Console.WriteLine("  |  1. List the existing clients.            |");
+                        Console.WriteLine("  |  2. Insert a new client.                  |");
+                        Console.WriteLine("  |  3. Update client information.            |");
+                        Console.WriteLine("  |  4. Remove a client.                      |");
+                        Console.WriteLine("  |  5. Show clients historic.                |");
                         Console.WriteLine("  |  6. Back!                                 |");
                         Console.WriteLine("  +-------------------------------------------+");
                         Console.Write("\nOption: ");
@@ -175,45 +177,45 @@ namespace ProductCatalogsM
                     switch (op)
                     {
                         case 1:
-                            List<Product> listingProdutcs = new List<Product>();
-                            Console.WriteLine("\nTable containing the information of the existing products.\n");
+                            List<Client> listingClients = new List<Client>();
+                            Console.WriteLine("\nTable containing the information of the existing clients.\n");
                             // Table Construction
                             Console.WriteLine("\n+-----------------------------------------------------------------------------------------------------+");
-                            Console.WriteLine("|  CODE  |  NAME  |  DESCRIPTION  |  PRICE  |  LAUNCH DATE  |  WARRANTY DURARION  |  AMOUNT IN STOCK  |");
+                            Console.WriteLine("|  CODE  |  NAME  |  GENDER  |  DATE OF BIRTH  |  POSTAL CODE  |  ADDRESS  |  PHONE NUMBER  |  EMAIL  |");
                             Console.WriteLine("+-----------------------------------------------------------------------------------------------------+");
-                            listingProdutcs = ProductsRules.ReturnProductsList();
-                            ProductsIO.ListProductsInformation(listingProdutcs);
+                            listingClients = ClientsRules.ReturnClientsList();
+                            ClientsIO.ListClientsInformation(listingClients);
                             Console.WriteLine("+-----------------------------------------------------------------------------------------------------+");
-                            Console.WriteLine($"\n\nTotal sum of accessible records: {ProductsRules.ReturnAmountListRecords()}");
+                            Console.WriteLine($"\n\nTotal sum of accessible records: {ClientsRules.ReturnAmountListRecords()}");
                             Pause();
                             break;
                         case 2:
-                            Console.WriteLine("\nLets Insert new Product!");
+                            Console.WriteLine("\nLets Insert new Client!");
 
-                            Product product = new Product();
-                            product = ProductsIO.GetNewProductInformation(product);
+                            Client client = new Client();
+                            client = ClientsIO.GetNewClientInformation(client);
 
-                            result = ProductsRules.InsertProduct(product);
+                            result = ClientsRules.InsertClient(client);
 
                             if (result == true)
-                                Console.WriteLine("\nNew product inserted successfully!");
+                                Console.WriteLine("\nNew client inserted successfully!");
                             else
                             {
-                                Console.WriteLine("\nUnable to add new product!");
+                                Console.WriteLine("\nUnable to add new client!");
                             }
 
-                            ProductsRules.SaveProductsDataBin();
+                            ClientsRules.SaveClientsDataBin();
 
                             Pause();
                             break;
                         case 3:
-                            Console.WriteLine("\nLets Update a Product!");
+                            Console.WriteLine("\nLets Update a Client!");
 
-                            productID = ProductsIO.GetProductID();
+                            clientID = ClientsIO.GetClientID();
 
-                            if (ProductsRules.IsProductIDAvailable(productID) == false)
+                            if (ClientsRules.IsClientIDAvailable(clientID) == false)
                             {
-                                Console.WriteLine("\nProduct does not exist! ... Please enter an ID of an existing product.");
+                                Console.WriteLine("\nClient does not exist! ... Please enter an ID of an existing client.");
                                 Pause();
                                 Menu();
                             }
@@ -239,30 +241,30 @@ namespace ProductCatalogsM
 
                             Clear();
 
-                            string attribute = ProductsIO.GetAttributeToUpdate(field);
+                            string attribute = ClientsIO.GetAttributeToUpdate(field);
 
-                            result = ProductsRules.UpdateProduct(field, attribute, productID);
+                            result = ClientsRules.UpdateClient(field, attribute, clientID);
                             if (result == true)
-                                Console.WriteLine("\nProduct was successfully updated!");
+                                Console.WriteLine("\nClient was successfully updated!");
                             else
-                                Console.WriteLine("\nUnable to update the product!");
+                                Console.WriteLine("\nUnable to update the client!");
 
-                            ProductsRules.SaveProductsDataBin();
+                            ClientsRules.SaveClientsDataBin();
 
                             Pause();
                             break;
                         case 4:
-                            Console.WriteLine("\nLets Remove a Product!");
+                            Console.WriteLine("\nLets Remove a Client!");
 
-                            productID = ProductsIO.GetProductID();
+                            clientID = ClientsIO.GetClientID();
 
-                            result = ProductsRules.RemoveProduct(productID);
+                            result = ClientsRules.RemoveClient(clientID);
                             if (result == true)
-                                Console.WriteLine("\nProduct was successfully removed!");
+                                Console.WriteLine("\nClient was successfully removed!");
                             else
-                                Console.WriteLine("\nUnable to remove the product!");
+                                Console.WriteLine("\nUnable to remove the client!");
 
-                            ProductsRules.SaveProductsDataBin();
+                            ClientsRules.SaveClientsDataBin();
 
                             Pause();
                             break;
@@ -270,7 +272,7 @@ namespace ProductCatalogsM
                             LoopDisplayHistocicMenu();
                             break;
                         case 6:
-                            PCMenu.Menu();
+                            SCSMenu.Menu();
                             break;
                     }
                 }

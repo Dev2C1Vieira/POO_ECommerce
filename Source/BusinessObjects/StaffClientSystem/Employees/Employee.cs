@@ -44,7 +44,7 @@ namespace StaffClientSystem.Employees
         {
             employeeID = 0;
             Name = string.Empty;
-            Gender = true;
+            Gender = string.Empty;
             DateOfBirth = DateTime.Now;
             PostalCode = string.Empty;
             Address = string.Empty;
@@ -69,7 +69,7 @@ namespace StaffClientSystem.Employees
         /// <param name="workEmail"></param>
         /// <param name="password"></param>
         /// <param name="visibilityStatus"></param>
-        public Employee(int employeeID, string name, bool gender, DateTime birthdate, 
+        public Employee(int employeeID, string name, string gender, DateTime birthdate, 
             string postalCode, string address, int phone_number, string jobTitle, 
             string workEmail, string password, bool visibilityStatus)
         {

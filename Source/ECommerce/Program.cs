@@ -11,8 +11,9 @@
 using System;
 
 //External
-using ProductCatalogR;
 using ECMenus;
+using ProductCatalogR;
+using StaffClientSystemR;
 
 namespace ECommerce
 {
@@ -29,9 +30,20 @@ namespace ECommerce
     {
         static void Main()
         {
+            #region LoadDataProductCatalog
+            
             ProductsRules.LoadProductsDataBin();
             CategoriesRules.LoadCategoriesDataBin();
             BrandsRules.LoadBrandsDataBin();
+
+            #endregion
+
+            #region LoadDataStaffClientSystem
+
+            ClientsRules.LoadClientsDataBin();
+
+            #endregion
+
             MainMenu.Menu();
         }
     }

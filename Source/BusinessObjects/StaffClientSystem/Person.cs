@@ -20,12 +20,14 @@ namespace StaffClientSystem
     /// </summary>
     /// <remarks></remarks>
     /// <example></example>
+
+    [Serializable]
     public class Person
     {
         #region Attributes
 
         private string name;
-        private bool gender; //
+        private string gender; //
         private DateTime dateOfBirth;
         private string postalCode;
         private string address;
@@ -43,7 +45,7 @@ namespace StaffClientSystem
         public Person()
         {
             name = string.Empty;
-            gender = false;
+            gender = string.Empty;
             dateOfBirth = DateTime.Now;
             postalCode = string.Empty;
             address = string.Empty;
@@ -59,7 +61,7 @@ namespace StaffClientSystem
         /// <param name="postalCode"></param>
         /// <param name="address"></param>
         /// <param name="phoneNumber"></param>
-        public Person(string name, bool gender, DateTime dateOfBirth, string postalCode, string address, int phoneNumber)
+        public Person(string name, string gender, DateTime dateOfBirth, string postalCode, string address, int phoneNumber)
         {
             this.name = name;
             this.gender = gender;
@@ -86,7 +88,7 @@ namespace StaffClientSystem
         /// <summary>
         /// Property related to the 'gender' attribute
         /// </summary>
-        public bool Gender
+        public string Gender
         {
             get { return gender; }
             set { gender = value; }
