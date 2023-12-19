@@ -8,9 +8,10 @@
  * 
  * */
 
-using ECMenus;
 using System;
-using System.Diagnostics;
+
+// External
+using ECMenus;
 
 namespace StaffMenu
 {
@@ -24,6 +25,8 @@ namespace StaffMenu
     /// <example></example>
     public class ManagerMenu
     {
+        #region Methods
+
         /// <summary>
         /// 
         /// </summary>
@@ -50,7 +53,7 @@ namespace StaffMenu
         /// 
         /// </summary>
         /// <param name="fileName"></param>
-        public static void Menu(string fileName)
+        public static void Menu(string productsFN, string categoriesFN, string brandsFN, string clientsFN)
         {
             int op = 1;
 
@@ -86,7 +89,7 @@ namespace StaffMenu
                         case 3:
                             break;
                         case 4:
-                            MainMenu.Menu();
+                            MainMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN);
                             break;
                     }
                 }
@@ -103,8 +106,10 @@ namespace StaffMenu
             }
             finally
             {
-                Menu(fileName);
+                Menu(productsFN, categoriesFN, brandsFN, clientsFN);
             }
         }
+
+        #endregion
     }
 }

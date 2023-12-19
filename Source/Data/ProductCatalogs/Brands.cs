@@ -29,7 +29,7 @@ namespace ProductCatalogs
     /// </summary>
     /// <remarks></remarks>
     /// <example></example>
-    public class Brands /*: IBrand*/
+    public class Brands
     {
         #region Attributes
 
@@ -389,12 +389,11 @@ namespace ProductCatalogs
         /// <summary>
         /// Method that loads the brands data from a file into the brands list.
         /// </summary>
+        /// <param name="fileName"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public static bool LoadBrandsDataBin()
+        public static bool LoadBrandsDataBin(string fileName)
         {
-            string fileName = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\BrandsList.bin";
-            //string fileName = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\BrandsList.bin";
             if (File.Exists(fileName))
             {
                 using (FileStream fileStream = new FileStream(fileName, FileMode.Open))
@@ -416,12 +415,11 @@ namespace ProductCatalogs
         /// <summary>
         /// Method that saves the brands data from the brands list into a file.
         /// </summary>
+        /// <param name="fileName"></param>
         /// <returns></returns>
         /// <exception cref="BrandException"></exception>
-        public static bool SaveBrandsDataBin()
+        public static bool SaveBrandsDataBin(string fileName)
         {
-            string fileName = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\BrandsList.bin";
-            //string fileName = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\BrandsList.bin";
             if (IsBrandsListEmpty() == true)
                 throw new BrandException("\nThe brands list is empty!");
 

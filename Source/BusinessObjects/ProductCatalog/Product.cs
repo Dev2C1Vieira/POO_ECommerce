@@ -27,7 +27,7 @@ namespace ProductCatalog
         #region Attributes
 
         /// <summary>
-        /// Creation of the Prroducts class atributes
+        /// Creation of the Product class atributes
         /// </summary>
         private int productID; //
         private string productName; //

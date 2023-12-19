@@ -252,11 +252,11 @@ namespace ProductCatalogR
         /// <exception cref="SerializationException"></exception>
         /// <exception cref="IOException"></exception>
         /// <exception cref="Exception"></exception>
-        public static bool LoadBrandsDataBin()
+        public static bool LoadBrandsDataBin(string fileName)
         {
             try
             {
-                return Brands.LoadBrandsDataBin();
+                return Brands.LoadBrandsDataBin(fileName);
             }
             catch (SerializationException SE)
             {
@@ -279,11 +279,11 @@ namespace ProductCatalogR
         /// <exception cref="SerializationException"></exception>
         /// <exception cref="IOException"></exception>
         /// <exception cref="Exception"></exception>
-        public static bool SaveBrandsDataBin()
+        public static bool SaveBrandsDataBin(string fileName)
         {
             try
             {
-                return Brands.SaveBrandsDataBin();
+                return Brands.SaveBrandsDataBin(fileName);
             }
             catch (SerializationException SE)
             {

@@ -73,7 +73,7 @@ namespace ProductCatalogsM
         /// <summary>
         /// 
         /// </summary>
-        public static void LoopDisplayHistocicMenu()
+        public static void LoopDisplayHistocicMenu(string productsFN, string categoriesFN, string brandsFN, string clientsFN)
         {
             int categoryID, op;
             bool result;
@@ -88,7 +88,7 @@ namespace ProductCatalogsM
                     op = int.Parse(Console.ReadLine());
                     if (op == 3)
                     {
-                        Menu();
+                        Menu(productsFN, categoriesFN, brandsFN, clientsFN);
                     }
 
                     if (op < 1 || op > 3)
@@ -111,7 +111,7 @@ namespace ProductCatalogsM
                             else
                                 Console.WriteLine("\nUnable to delete the category!");
 
-                            CategoriesRules.SaveCategoriesDataBin();
+                            CategoriesRules.SaveCategoriesDataBin(categoriesFN);
 
                             Pause();
                         }
@@ -127,7 +127,7 @@ namespace ProductCatalogsM
                             else
                                 Console.WriteLine("\nUnable to recover the category!");
 
-                            CategoriesRules.SaveCategoriesDataBin();
+                            CategoriesRules.SaveCategoriesDataBin(categoriesFN);
 
                             Pause();
                         }
@@ -140,7 +140,7 @@ namespace ProductCatalogsM
         /// <summary>
         /// 
         /// </summary>
-        public static void Menu()
+        public static void Menu(string productsFN, string categoriesFN, string brandsFN, string clientsFN)
         {
             int op = 1, field, categoryID;
             bool result;
@@ -199,7 +199,7 @@ namespace ProductCatalogsM
                                 Console.WriteLine("\nUnable to add new category!");
                             }
 
-                            CategoriesRules.SaveCategoriesDataBin();
+                            CategoriesRules.SaveCategoriesDataBin(categoriesFN);
 
                             Pause();
                             break;
@@ -212,7 +212,7 @@ namespace ProductCatalogsM
                             {
                                 Console.WriteLine("\nCategory does not exist! ... Please enter an ID of an existing category.");
                                 Pause();
-                                Menu();
+                                Menu(productsFN, categoriesFN, brandsFN, clientsFN);
                             }
 
                             Clear();
@@ -229,7 +229,7 @@ namespace ProductCatalogsM
                             Console.Write("\nOption: ");
                             field = int.Parse(Console.ReadLine());
 
-                            if (field == 7) { Menu(); }
+                            if (field == 7) { Menu(productsFN, categoriesFN, brandsFN, clientsFN); }
 
                             Clear();
 
@@ -241,7 +241,7 @@ namespace ProductCatalogsM
                             else
                                 Console.WriteLine("\nUnable to update the category!");
 
-                            CategoriesRules.SaveCategoriesDataBin();
+                            CategoriesRules.SaveCategoriesDataBin(categoriesFN);
 
                             Pause();
                             break;
@@ -256,15 +256,15 @@ namespace ProductCatalogsM
                             else
                                 Console.WriteLine("\nUnable to remove the category!");
 
-                            CategoriesRules.SaveCategoriesDataBin();
+                            CategoriesRules.SaveCategoriesDataBin(categoriesFN);
 
                             Pause();
                             break;
                         case 5:
-                            LoopDisplayHistocicMenu();
+                            LoopDisplayHistocicMenu(productsFN, categoriesFN, brandsFN, clientsFN);
                             break;
                         case 6:
-                            PCMenu.Menu();
+                            PCMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN);
                             break;
                     }
                 }
@@ -281,7 +281,7 @@ namespace ProductCatalogsM
             }
             finally
             {
-                Menu();
+                Menu(productsFN, categoriesFN, brandsFN, clientsFN);
             }
         }
 

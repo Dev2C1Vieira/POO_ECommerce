@@ -255,11 +255,11 @@ namespace StaffClientSystemR
         /// <exception cref="SerializationException"></exception>
         /// <exception cref="IOException"></exception>
         /// <exception cref="Exception"></exception>
-        public static bool LoadClientsDataBin()
+        public static bool LoadClientsDataBin(string fileName)
         {
             try
             {
-                return Clients.LoadClientsDataBin();
+                return Clients.LoadClientsDataBin(fileName);
             }
             catch (SerializationException SE)
             {
@@ -282,11 +282,11 @@ namespace StaffClientSystemR
         /// <exception cref="SerializationException"></exception>
         /// <exception cref="IOException"></exception>
         /// <exception cref="Exception"></exception>
-        public static bool SaveClientsDataBin()
+        public static bool SaveClientsDataBin(string fileName)
         {
             try
             {
-                return Clients.SaveClientsDataBin();
+                return Clients.SaveClientsDataBin(fileName);
             }
             catch (SerializationException SE)
             {

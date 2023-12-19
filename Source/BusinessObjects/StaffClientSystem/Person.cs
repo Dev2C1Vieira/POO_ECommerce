@@ -8,6 +8,7 @@
  * 
  * */
 
+using StaffClientSystem.Interfaces;
 using System;
 
 namespace StaffClientSystem
@@ -22,7 +23,7 @@ namespace StaffClientSystem
     /// <example></example>
 
     [Serializable]
-    public class Person
+    public class Person: IPerson
     {
         #region Attributes
 
@@ -136,10 +137,17 @@ namespace StaffClientSystem
         #endregion
 
         #region Destructor
-        #endregion
+
+        /// <summary>
+        /// Destructor that removes the object from the memory!
+        /// </summary>
+        ~Person()
+        {
+            GC.SuppressFinalize(this);
+        }
 
         #endregion
 
-        //Still in progress...
+        #endregion
     }
 }

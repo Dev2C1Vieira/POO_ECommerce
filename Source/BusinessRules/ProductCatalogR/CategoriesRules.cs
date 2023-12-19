@@ -256,11 +256,11 @@ namespace ProductCatalogR
         /// <exception cref="SerializationException"></exception>
         /// <exception cref="IOException"></exception>
         /// <exception cref="Exception"></exception>
-        public static bool LoadCategoriesDataBin()
+        public static bool LoadCategoriesDataBin(string fileName)
         {
             try
             {
-                return Categories.LoadCategoriesDataBin();
+                return Categories.LoadCategoriesDataBin(fileName);
             }
             catch (SerializationException SE)
             {
@@ -284,11 +284,11 @@ namespace ProductCatalogR
         /// <exception cref="SerializationException"></exception>
         /// <exception cref="IOException"></exception>
         /// <exception cref="Exception"></exception>
-        public static bool SaveCategoriesDataBin()
+        public static bool SaveCategoriesDataBin(string fileName)
         {
             try
             {
-                return Categories.SaveCategoriesDataBin();
+                return Categories.SaveCategoriesDataBin(fileName);
             }
             catch (SerializationException SE)
             {

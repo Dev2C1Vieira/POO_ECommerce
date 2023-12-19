@@ -400,14 +400,13 @@ namespace StaffClientSystems
         #region FileManagement
 
         /// <summary>
-        /// Method that loads the products data from a file into the clients list.
+        /// Method that loads the clients data from a file into the clients list.
         /// </summary>
+        /// <param name="fileName"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public static bool LoadClientsDataBin()
+        public static bool LoadClientsDataBin(string fileName)
         {
-            string fileName = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\StaffClientSystem\\ClientsList.bin";
-            //string fileName = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\StaffClientSystem\\ClientsList.bin";
             if (File.Exists(fileName))
             {
                 using (FileStream fileStream = new FileStream(fileName, FileMode.Open))
@@ -427,14 +426,13 @@ namespace StaffClientSystems
         }
 
         /// <summary>
-        /// Method that saves the products data from the products list into a file.
+        /// Method that saves the clients data from the clients list into a file.
         /// </summary>
+        /// <param name="fileName"></param>
         /// <returns></returns>
         /// <exception cref="ClientException"></exception>
-        public static bool SaveClientsDataBin()
+        public static bool SaveClientsDataBin(string fileName)
         {
-            string fileName = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\StaffClientSystem\\ClientsList.bin";
-            //string fileName = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\StaffClientSystem\\ClientsList.bin";
             if (IsClientsListEmpty() == true)
                 throw new ClientException("\nThe clients list is empty!");
 

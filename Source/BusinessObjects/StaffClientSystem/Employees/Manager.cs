@@ -20,7 +20,7 @@ namespace StaffClientSystem.Employees
     /// </summary>
     /// <remarks></remarks>
     /// <example></example>
-    public class Manager : Employee, IComparable<Manager>
+    public class Manager : Person, IComparable<Manager>
     {
         #region Attributes
 
@@ -28,7 +28,10 @@ namespace StaffClientSystem.Employees
         /// 
         /// </summary>
         private int managerID;
-        // Other Atributtes
+        private string jobTitle;
+        private string workEmail;
+        private string password;
+        private bool visibilityStatus; // An indicator of whether the manager is visible to users.
 
         #endregion
 
@@ -48,10 +51,10 @@ namespace StaffClientSystem.Employees
             PostalCode = string.Empty;
             Address = string.Empty;
             PhoneNumber = 0;
-            JobTitle = string.Empty;
-            WorkEmail = string.Empty;
-            Password = string.Empty;
-            VisibilityStatus = false;
+            jobTitle = string.Empty;
+            workEmail = string.Empty;
+            password = string.Empty;
+            visibilityStatus = false;
         }
 
         /// <summary>
@@ -79,10 +82,10 @@ namespace StaffClientSystem.Employees
             PostalCode = postalCode;
             Address = address;
             PhoneNumber = phone_number;
-            JobTitle = jobTitle;
-            WorkEmail = workEmail;
-            Password = password;
-            VisibilityStatus = visibilityStatus;
+            this.jobTitle = jobTitle;
+            this.workEmail = workEmail;
+            this.password = password;
+            this.visibilityStatus = visibilityStatus;
         }
 
         #endregion
@@ -96,6 +99,42 @@ namespace StaffClientSystem.Employees
         {
             get { return managerID; }
             set { managerID = value; }
+        }
+
+        /// <summary>
+        /// Property related to the 'jobTitle' attribute
+        /// </summary>
+        public string JobTitle
+        {
+            get { return jobTitle; }
+            set { jobTitle = value; }
+        }
+
+        /// <summary>
+        /// Property related to the 'workEmail' attribute
+        /// </summary>
+        public string WorkEmail
+        {
+            get { return workEmail; }
+            set { workEmail = value; }
+        }
+
+        /// <summary>
+        /// Property related to the 'password' attribute
+        /// </summary>
+        public string Password
+        {
+            get { return password; }
+            set { password = value; }
+        }
+
+        /// <summary>
+        /// Property related to the 'visibilityStatus' attribute
+        /// </summary>
+        public bool VisibilityStatus
+        {
+            get { return visibilityStatus; }
+            set { visibilityStatus = value; }
         }
 
         #endregion
@@ -153,10 +192,10 @@ namespace StaffClientSystem.Employees
         /// <returns></returns>
         public override bool Equals(object obj)
         {
-            if (obj is Employee)
+            if (obj is Manager)
             {
-                Employee employee = (Employee)obj;
-                if (this == employee)
+                Manager manager = (Manager)obj;
+                if (this == manager)
                     return (true);
             }
             return (false);

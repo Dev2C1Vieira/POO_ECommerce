@@ -23,7 +23,7 @@ namespace StaffClientSystem
     /// <example></example>
 
     [Serializable]
-    public class Client : Person, IComparable<Client>/*, IClient*/
+    public class Client : Person, IComparable<Client>
     {
         #region Attributes
 

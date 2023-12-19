@@ -55,6 +55,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StaffClientSystemIO", "Sour
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StaffClientSystemsM", "Source\Menus\StaffClientSystemsM\StaffClientSystemsM.csproj", "{ED2F34EF-6DC1-4C7B-B961-F8900F2007C7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevenueEngineE", "Source\Exceptions\RevenueEngineE\RevenueEngineE.csproj", "{76423119-F1B6-4804-96BA-5F37E891B620}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -133,6 +135,10 @@ Global
 		{ED2F34EF-6DC1-4C7B-B961-F8900F2007C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED2F34EF-6DC1-4C7B-B961-F8900F2007C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED2F34EF-6DC1-4C7B-B961-F8900F2007C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76423119-F1B6-4804-96BA-5F37E891B620}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76423119-F1B6-4804-96BA-5F37E891B620}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76423119-F1B6-4804-96BA-5F37E891B620}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76423119-F1B6-4804-96BA-5F37E891B620}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -163,6 +169,7 @@ Global
 		{88A4D659-EA34-4CF1-B926-0D5E79CE247A} = {5F7A3C66-DC5A-4F64-8FA3-9A4D2C19D791}
 		{F2FEA23C-2533-4A6C-B3AA-588FEAD4E16B} = {C18105C9-DD42-4975-A5E6-348E60BD09CB}
 		{ED2F34EF-6DC1-4C7B-B961-F8900F2007C7} = {BE8114DB-73E7-4851-8B61-299CDEA66F07}
+		{76423119-F1B6-4804-96BA-5F37E891B620} = {D44954D1-90B2-45AB-B552-A0E8B8C74C9D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D8E77007-63C3-4DCC-BC36-7642747AFB50}

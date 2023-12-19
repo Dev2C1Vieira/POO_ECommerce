@@ -30,21 +30,52 @@ namespace ECommerce
     {
         static void Main()
         {
+            #region FilePaths
+
+            #region ProductCatalog
+
+            //string productsFN = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\ProductsList.bin";
+            string productsFN = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\ProductsList.bin";
+
+            //string categoriesFN = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\CategoriesList.bin";
+            string categoriesFN = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\CategoriesList.bin";
+
+            //string brandsFN = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\BrandsList.bin";
+            string brandsFN = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\BrandsList.bin";
+
+            #endregion
+
+            #region StaffClientSystem
+
+            //string clientsFN = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\StaffClientSystem\\ClientsList.bin";
+            string clientsFN = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\StaffClientSystem\\ClientsList.bin";
+
+            #endregion
+
+            #region RevenueEngines
+            #endregion
+
+            #endregion
+
+            #region LoadData
+
             #region LoadDataProductCatalog
-            
-            ProductsRules.LoadProductsDataBin();
-            CategoriesRules.LoadCategoriesDataBin();
-            BrandsRules.LoadBrandsDataBin();
+
+            ProductsRules.LoadProductsDataBin(productsFN);
+            CategoriesRules.LoadCategoriesDataBin(categoriesFN);
+            BrandsRules.LoadBrandsDataBin(brandsFN);
 
             #endregion
 
             #region LoadDataStaffClientSystem
 
-            ClientsRules.LoadClientsDataBin();
+            ClientsRules.LoadClientsDataBin(clientsFN);
 
             #endregion
 
-            MainMenu.Menu();
+            #endregion
+
+            MainMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN);
         }
     }
 }

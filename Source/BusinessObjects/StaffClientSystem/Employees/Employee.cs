@@ -28,7 +28,6 @@ namespace StaffClientSystem.Employees
         private string jobTitle;
         private string workEmail;
         private string password;
-        //private bool isManager; // An indicator of whether the employee is a manager.
         private bool visibilityStatus; // An indicator of whether the employee is visible to users.
 
         #endregion

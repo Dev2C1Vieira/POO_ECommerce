@@ -51,7 +51,14 @@ namespace StaffMenu
             Console.ReadKey(true);
         }
 
-        public static void Menu()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="productsFN"></param>
+        /// <param name="categoriesFN"></param>
+        /// <param name="brandsFN"></param>
+        /// <param name="clientsFN"></param>
+        public static void Menu(string productsFN, string categoriesFN, string brandsFN, string clientsFN)
         {
             int op = 1;
 
@@ -81,16 +88,16 @@ namespace StaffMenu
                     switch (op)
                     {
                         case 1:
-                            PCMenu.Menu();
+                            PCMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN);
                             break;
                         case 2:
-                            SCSMenu.Menu();
+                            SCSMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN);
                             break;
                         case 3:
                             // Menu
                             break;
                         case 4:
-                            MainMenu.Menu();
+                            MainMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN);
                             break;
                     }
                 }
@@ -107,7 +114,7 @@ namespace StaffMenu
             }
             finally
             {
-                Menu();
+                Menu(productsFN, categoriesFN, brandsFN, clientsFN);
             }
         }
 

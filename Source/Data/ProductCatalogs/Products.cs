@@ -29,7 +29,7 @@ namespace ProductCatalogs
     /// </summary>
     /// <remarks></remarks>
     /// <example></example>
-    public class Products //: IProduct
+    public class Products
     {
         #region Attributes
 
@@ -414,10 +414,9 @@ namespace ProductCatalogs
         /// <param name="fileName"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public static bool LoadProductsDataBin()
+        public static bool LoadProductsDataBin(string fileName)
         {
-            string fileName = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\ProductsList.bin";
-            //string fileName = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\ProductsList.bin";
+            
             if (File.Exists(fileName))
             {
                 using (FileStream fileStream = new FileStream(fileName, FileMode.Open))
@@ -439,11 +438,11 @@ namespace ProductCatalogs
         /// <summary>
         /// Method that saves the products data from the products list into a file.
         /// </summary>
-        /// <param name="products"></param>
-        public static bool SaveProductsDataBin()
+        /// <param name="fileName"></param>
+        /// <returns></returns>
+        /// <exception cref="ProductException"></exception>
+        public static bool SaveProductsDataBin(string fileName)
         {
-            string fileName = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\ProductsList.bin";
-            //string fileName = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\ProductsList.bin";
             if (IsProductsListEmpty() == true)
                 throw new ProductException("\nThe product list is empty!");
 

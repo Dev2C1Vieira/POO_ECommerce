@@ -9,7 +9,6 @@
  * */
 
 using System;
-using StaffClientSystem.Employees;
 
 // External
 using StaffMenu;
@@ -50,7 +49,7 @@ namespace StaffClientSystemsM
             Console.ReadKey(true);
         }
 
-        public static void Menu()
+        public static void Menu(string productsFN, string categoriesFN, string brandsFN, string clientsFN)
         {
             int op = 1;
 
@@ -70,7 +69,7 @@ namespace StaffClientSystemsM
                         Console.WriteLine("\n  +-------------------------------------------+");
                         Console.WriteLine("  |  1. Manage Clients.                       |");
                         Console.WriteLine("  |  2. Manage my information!                |");
-                        Console.WriteLine("  |  4. Back!                                 |");
+                        Console.WriteLine("  |  3. Back!                                 |");
                         Console.WriteLine("  +-------------------------------------------+");
                         Console.Write("\nOption: ");
                         op = int.Parse(Console.ReadLine());
@@ -79,13 +78,14 @@ namespace StaffClientSystemsM
                     switch (op)
                     {
                         case 1:
-                            ClientsMenu.Menu();
+                            ClientsMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN);
                             break;
                         case 2:
-                            // Code Here!
+                            Console.WriteLine("Not working yet!");
+                            Pause();
                             break;
                         case 3:
-                            EmployeeMenu.Menu();
+                            EmployeeMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN);
                             break;
                     }
                 }
@@ -102,7 +102,7 @@ namespace StaffClientSystemsM
             }
             finally
             {
-                Menu();
+                Menu(productsFN, categoriesFN, brandsFN, clientsFN);
             }
         }
 

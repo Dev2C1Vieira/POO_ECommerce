@@ -77,7 +77,7 @@ namespace StaffClientSystemsM
         /// 
         /// </summary>
         /// <param name="fileName"></param>
-        public static void LoopDisplayHistocicMenu()
+        public static void LoopDisplayHistocicMenu(string productsFN, string categoriesFN, string brandsFN, string clientsFN)
         {
             int clientID, op;
             bool result;
@@ -92,7 +92,7 @@ namespace StaffClientSystemsM
                     op = int.Parse(Console.ReadLine());
                     if (op == 3)
                     {
-                        Menu();
+                        Menu(productsFN, categoriesFN, brandsFN, clientsFN);
                     }
 
                     if (op < 1 || op > 3)
@@ -115,7 +115,7 @@ namespace StaffClientSystemsM
                             else
                                 Console.WriteLine("\nUnable to delete the client!");
 
-                            ClientsRules.SaveClientsDataBin();
+                            ClientsRules.SaveClientsDataBin(clientsFN);
 
                             Pause();
                         }
@@ -131,7 +131,7 @@ namespace StaffClientSystemsM
                             else
                                 Console.WriteLine("\nUnable to recover the client!");
 
-                            ClientsRules.SaveClientsDataBin();
+                            ClientsRules.SaveClientsDataBin(clientsFN);
 
                             Pause();
                         }
@@ -145,7 +145,7 @@ namespace StaffClientSystemsM
         /// 
         /// </summary>
         /// <param name="fileName"></param>
-        public static void Menu()
+        public static void Menu(string productsFN, string categoriesFN, string brandsFN, string clientsFN)
         {
             int op = 1, field, clientID;
             bool result;
@@ -204,7 +204,7 @@ namespace StaffClientSystemsM
                                 Console.WriteLine("\nUnable to add new client!");
                             }
 
-                            ClientsRules.SaveClientsDataBin();
+                            ClientsRules.SaveClientsDataBin(clientsFN);
 
                             Pause();
                             break;
@@ -217,7 +217,7 @@ namespace StaffClientSystemsM
                             {
                                 Console.WriteLine("\nClient does not exist! ... Please enter an ID of an existing client.");
                                 Pause();
-                                Menu();
+                                Menu(productsFN, categoriesFN, brandsFN, clientsFN);
                             }
 
                             Clear();
@@ -237,7 +237,7 @@ namespace StaffClientSystemsM
                             Console.Write("\nOption: ");
                             field = int.Parse(Console.ReadLine());
 
-                            if (field == 7) { Menu(); }
+                            if (field == 7) { Menu(productsFN, categoriesFN, brandsFN, clientsFN); }
 
                             Clear();
 
@@ -249,7 +249,7 @@ namespace StaffClientSystemsM
                             else
                                 Console.WriteLine("\nUnable to update the client!");
 
-                            ClientsRules.SaveClientsDataBin();
+                            ClientsRules.SaveClientsDataBin(clientsFN);
 
                             Pause();
                             break;
@@ -264,15 +264,15 @@ namespace StaffClientSystemsM
                             else
                                 Console.WriteLine("\nUnable to remove the client!");
 
-                            ClientsRules.SaveClientsDataBin();
+                            ClientsRules.SaveClientsDataBin(clientsFN);
 
                             Pause();
                             break;
                         case 5:
-                            LoopDisplayHistocicMenu();
+                            LoopDisplayHistocicMenu(productsFN, categoriesFN, brandsFN, clientsFN);
                             break;
                         case 6:
-                            SCSMenu.Menu();
+                            SCSMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN);
                             break;
                     }
                 }
@@ -289,7 +289,7 @@ namespace StaffClientSystemsM
             }
             finally
             {
-                Menu();
+                Menu(productsFN, categoriesFN, brandsFN, clientsFN);
             }
         }
 

@@ -47,7 +47,7 @@ namespace ProductCatalogsM
             Console.ReadKey(true);
         }
 
-        public static void Menu()
+        public static void Menu(string productsFN, string categoriesFN, string brandsFN, string clientsFN)
         {
             int op = 1;
 
@@ -77,16 +77,16 @@ namespace ProductCatalogsM
                     switch (op)
                     {
                         case 1:
-                            ProductsMenu.Menu();
+                            ProductsMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN);
                             break;
                         case 2:
-                            CategoriesMenu.Menu();
+                            CategoriesMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN);
                             break;
                         case 3:
-                            BrandsMenu.Menu();
+                            BrandsMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN);
                             break;
                         case 4:
-                            EmployeeMenu.Menu();
+                            EmployeeMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN);
                             break;
                     }
                 }
@@ -103,7 +103,7 @@ namespace ProductCatalogsM
             }
             finally
             {
-                Menu();
+                Menu(productsFN, categoriesFN, brandsFN, clientsFN);
             }
         }
 

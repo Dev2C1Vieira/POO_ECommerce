@@ -50,7 +50,7 @@ namespace ECMenus
         /// 
         /// </summary>
         /// <param name="fileName"></param>
-        public static void Menu()
+        public static void Menu(string productsFN, string categoriesFN, string brandsFN, string clientsFN)
         {
             int op = 1;
 
@@ -79,7 +79,7 @@ namespace ECMenus
                     switch (op)
                     {
                         case 1:
-                            EmployeeMenu.Menu();
+                            EmployeeMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN);
                             break;
                         case 2:
                             break;
@@ -101,7 +101,7 @@ namespace ECMenus
             }
             finally
             {
-                Menu();
+                Menu(productsFN, categoriesFN, brandsFN, clientsFN);
             }
         }
     }
