@@ -31,7 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ProductCatalog">
+    <Reference Include="ProductCatalog, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\BusinessObjects\ProductCatalog\bin\Debug\ProductCatalog.dll</HintPath>
     </Reference>
     <Reference Include="ProductCatalogE">
@@ -50,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BrandsRules.cs" />
     <Compile Include="CategoriesRules.cs" />
     <Compile Include="ProductsRules.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

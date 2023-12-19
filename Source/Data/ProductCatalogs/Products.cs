@@ -9,15 +9,15 @@
  * */
 
 using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
+using System.Linq;
+using System.Globalization;
+using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 
 //External
 using ProductCatalog;
 using ProductCatalogE;
-using System.Linq;
 
 namespace ProductCatalogs
 {
@@ -333,8 +333,13 @@ namespace ProductCatalogs
             {
                 if (product.Equals(ReturnProductFromID(productID)))
                 {
-                    product.VisibilityStatus = false;
-                    return true;
+                    if (product.VisibilityStatus == true)
+                    {
+                        product.VisibilityStatus = false;
+                        return true;
+                    }
+                    else
+                        throw new ProductException("\nUnable to remove product ... Product has already been removed!");
                 }
                 else continue;
             }
@@ -399,12 +404,6 @@ namespace ProductCatalogs
 
         #region FileManagement
 
-        // Read data from a text file
-
-        // Code here ...
-
-        // Read data from a binary file
-
         /// <summary>
         /// Method that loads the products data from a file into the products list.
         /// </summary>
@@ -432,12 +431,6 @@ namespace ProductCatalogs
             else
                 throw new Exception("\nFile doesn't exist!");
         }
-
-        // Save data in a text file
-
-        // Code here ...
-
-        // Save data in a binary file
 
         /// <summary>
         /// Method that saves the products data from the products list into a file.

@@ -9,8 +9,8 @@
  * */
 
 using System;
-using System.Collections.Generic;
 using System.IO;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 // External
@@ -206,7 +206,7 @@ namespace ProductCatalogR
             }
             catch (ProductException PE)
             {
-                throw new Exception(PE.Message);
+                throw new ProductException(PE.Message);
             }
             catch (Exception E)
             {
@@ -228,7 +228,7 @@ namespace ProductCatalogR
             }
             catch (ProductException PE)
             {
-                throw new Exception(PE.Message);
+                throw new ProductException(PE.Message);
             }
             catch (Exception E)
             {
@@ -250,7 +250,7 @@ namespace ProductCatalogR
             }
             catch (ProductException PE)
             {
-                throw new Exception(PE.Message);
+                throw new ProductException(PE.Message);
             }
             catch (Exception E)
             {
@@ -261,11 +261,12 @@ namespace ProductCatalogR
         #region File Management
 
         /// <summary>
-        /// 
+        /// Method that loads the products data from a file into the products list.
         /// </summary>
-        /// <param name="fileName"></param>
         /// <returns></returns>
         /// <exception cref="SerializationException"></exception>
+        /// <exception cref="IOException"></exception>
+        /// <exception cref="Exception"></exception>
         public static bool LoadProductsDataBin()
         {
             try
@@ -287,10 +288,12 @@ namespace ProductCatalogR
         }
 
         /// <summary>
-        /// 
+        /// Method that saves the products data from the products list into a file.
         /// </summary>
-        /// <param name="fileName"></param>
         /// <returns></returns>
+        /// <exception cref="SerializationException"></exception>
+        /// <exception cref="IOException"></exception>
+        /// <exception cref="Exception"></exception>
         public static bool SaveProductsDataBin()
         {
             try

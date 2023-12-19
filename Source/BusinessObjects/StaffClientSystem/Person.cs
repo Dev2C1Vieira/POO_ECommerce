@@ -24,20 +24,110 @@ namespace StaffClientSystem
     {
         #region Attributes
 
-        public string name;
-        //private DateTime birthdate;
+        private string name;
+        private bool gender; //
+        private DateTime dateOfBirth;
+        private string postalCode;
+        private string address;
+        private int phoneNumber;
 
         #endregion
 
         #region Methods
 
         #region Constructors
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public Person()
+        {
+            name = string.Empty;
+            gender = false;
+            dateOfBirth = DateTime.Now;
+            postalCode = string.Empty;
+            address = string.Empty;
+            phoneNumber = 0;
+        }
+
+        /// <summary>
+        /// Constructor passed by parameters
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="gender"></param>
+        /// <param name="dateOfBirth"></param>
+        /// <param name="postalCode"></param>
+        /// <param name="address"></param>
+        /// <param name="phoneNumber"></param>
+        public Person(string name, bool gender, DateTime dateOfBirth, string postalCode, string address, int phoneNumber)
+        {
+            this.name = name;
+            this.gender = gender;
+            this.dateOfBirth = dateOfBirth;
+            this.postalCode = postalCode;
+            this.address = address;
+            this.phoneNumber = phoneNumber;
+        }
+
+
         #endregion
 
         #region Properties
-        #endregion
 
-        #region Overrides
+        /// <summary>
+        /// Property related to the 'name' attribute
+        /// </summary>
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        /// <summary>
+        /// Property related to the 'gender' attribute
+        /// </summary>
+        public bool Gender
+        {
+            get { return gender; }
+            set { gender = value; }
+        }
+
+        /// <summary>
+        /// Property related to the 'dateOfBirth' attribute
+        /// </summary>
+        public DateTime DateOfBirth
+        {
+            get { return dateOfBirth; }
+            set { dateOfBirth = value; }
+        }
+
+        /// <summary>
+        /// Property related to the 'postalCode' attribute
+        /// </summary>
+        public string PostalCode
+        {
+            get { return postalCode; }
+            set { postalCode = value; }
+        }
+
+        /// <summary>
+        /// Property related to the 'address' attribute
+        /// </summary>
+        public string Address
+        {
+            get { return address; }
+            set { address = value; }
+        }
+
+        /// <summary>
+        /// Property related to the 'phoneNumber' attribute
+        /// </summary>
+        public int PhoneNumber
+        {
+            get { return phoneNumber; }
+            set { phoneNumber = value; }
+        }
+
         #endregion
 
         #region OtherMethods

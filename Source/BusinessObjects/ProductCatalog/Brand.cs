@@ -20,7 +20,9 @@ namespace ProductCatalog
     /// </summary>
     /// <remarks></remarks>
     /// <example></example>
-    public class Brand
+
+    [Serializable]
+    public class Brand : IComparable<Brand>
     {
         #region Attributes
 
@@ -29,14 +31,10 @@ namespace ProductCatalog
         /// </summary>
         private int brandID; //
         private string brandName; //
-        //private string brandDescription; //
-        //Category[] categoriesList; //
+        private string brandDescription; //
         private string originCountry; //
         private DateTime fundationDate; //
         private bool visibilityStatus; // An indicator of whether the brand is visible to users.
-        private DateTime creationDate; //
-
-        private static int qtdBrands = 1; //
 
         #endregion
 
@@ -49,32 +47,30 @@ namespace ProductCatalog
         /// </summary>
         public Brand()
         {
-            brandID = qtdBrands;
-            qtdBrands++;
+            brandID = 0;
             brandName = string.Empty;
+            brandDescription = string.Empty;
             originCountry = string.Empty;
             fundationDate = DateTime.Now;
             visibilityStatus = false;
-            creationDate = DateTime.Now;
         }
 
         /// <summary>
         /// Constructor passed by parameters
         /// </summary>
         /// <param name="brandName"></param>
+        /// <param name="brandDescription"></param>
         /// <param name="originCountry"></param>
         /// <param name="fundationDate"></param>
         /// <param name="visibilityStatus"></param>
-        /// <param name="creationDate"></param>
-        public Brand(string brandName, string originCountry, DateTime fundationDate, bool visibilityStatus, DateTime creationDate)
+        public Brand(string brandName, string brandDescription, string originCountry, DateTime fundationDate, bool visibilityStatus)
         {
-            brandID = qtdBrands;
-            qtdBrands++;
+            brandID = 0;
             this.brandName = brandName;
+            this.brandDescription = brandDescription;
             this.originCountry = originCountry;
             this.fundationDate = fundationDate;
             this.visibilityStatus = visibilityStatus;
-            this.creationDate = creationDate;
         }
 
         #endregion
@@ -82,7 +78,7 @@ namespace ProductCatalog
         #region Properties
 
         /// <summary>
-        /// Property related to the brandID attribute
+        /// Property related to the 'brandID' attribute
         /// </summary>
         public int BrandID
         {
@@ -91,7 +87,7 @@ namespace ProductCatalog
         }
 
         /// <summary>
-        /// Property related to the brandName attribute
+        /// Property related to the 'brandName' attribute
         /// </summary>
         public string BrandName
         {
@@ -100,7 +96,16 @@ namespace ProductCatalog
         }
 
         /// <summary>
-        /// Property related to the originCountry attribute
+        /// Property related to the 'brandDescription' attribute
+        /// </summary>
+        public string BrandDescription
+        {
+            get { return brandDescription; }
+            set { brandDescription = value; }
+        }
+
+        /// <summary>
+        /// Property related to the 'originCountry' attribute
         /// </summary>
         public string OriginCountry
         {
@@ -109,7 +114,7 @@ namespace ProductCatalog
         }
 
         /// <summary>
-        /// Property related to the fundationDate attribute
+        /// Property related to the 'fundationDate' attribute
         /// </summary>
         public DateTime FundationDate
         {
@@ -118,21 +123,12 @@ namespace ProductCatalog
         }
 
         /// <summary>
-        /// Property related to the visibilityStatus attribute
+        /// Property related to the 'visibilityStatus' attribute
         /// </summary>
         public bool VisibilityStatus
         { 
             get { return visibilityStatus; }
             set { visibilityStatus = value; } 
-        }
-
-        /// <summary>
-        /// Property related to the creationDate attribute
-        /// </summary>
-        public DateTime CreationDate 
-        { 
-            get { return creationDate; } 
-            set { creationDate = value; } 
         }
 
         #endregion
@@ -147,9 +143,9 @@ namespace ProductCatalog
         /// <returns></returns>
         public static bool operator ==(Brand left, Brand right)
         {
-            if ((left.BrandID == right.BrandID) && (left.BrandName == right.BrandName) && 
-                (left.OriginCountry == right.OriginCountry) && (left.FundationDate == right.FundationDate) && 
-                (left.VisibilityStatus == right.VisibilityStatus) && (left.CreationDate == right.CreationDate))
+            if ((left.BrandID == right.BrandID) && (left.BrandName == right.BrandName) 
+                && (left.brandDescription == right.BrandDescription) && (left.OriginCountry == right.OriginCountry)
+                && (left.FundationDate == right.FundationDate) && (left.VisibilityStatus == right.VisibilityStatus))
                 return (true);
             return (false);
         }
@@ -176,9 +172,9 @@ namespace ProductCatalog
         /// <returns></returns>
         public override string ToString()
         {
-            return (String.Format("Brand ID: {0} - Brand Name: {1} - Origin Country: {2} - Fundation Date: {3} - " +
-                "Visibility Status: {4} - Creation Date: {5}", BrandID.ToString(), BrandName, OriginCountry.ToString(), 
-                FundationDate.ToString(), VisibilityStatus.ToString(), CreationDate.ToString()));
+            return (String.Format("Brand ID: {0} - Brand Name: {1} - Brand Description: {2} - Origin Country: {3}" +
+                " - Fundation Date: {4} - Creation Date: {5}", 
+                BrandID.ToString(), BrandName, BrandDescription, OriginCountry.ToString(), FundationDate.ToString()));
         }
 
         /// <summary>
@@ -209,6 +205,17 @@ namespace ProductCatalog
         #endregion
 
         #region OtherMethods
+
+        /// <summary>
+        /// Method that orders based on the cost of the product.
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
+        public int CompareTo(Brand brand)
+        {
+            return this.FundationDate.CompareTo(brand.FundationDate);
+        }
+
         #endregion
 
         #region Destructor

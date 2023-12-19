@@ -26,6 +26,8 @@ namespace StaffMenu
     /// <example></example>
     public class EmployeeMenu
     {
+        #region Methods
+
         /// <summary>
         /// 
         /// </summary>
@@ -107,5 +109,7 @@ namespace StaffMenu
                 Menu();
             }
         }
+
+        #endregion
     }
 }

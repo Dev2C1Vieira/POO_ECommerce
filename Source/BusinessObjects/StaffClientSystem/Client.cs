@@ -9,6 +9,7 @@
  * */
 
 using System;
+using System.Collections.Generic;
 
 namespace StaffClientSystem
 {
@@ -20,21 +21,17 @@ namespace StaffClientSystem
     /// </summary>
     /// <remarks></remarks>
     /// <example></example>
-    public class Client : Person/*, IClient*/
+    public class Client : Person, IComparable<Client>/*, IClient*/
     {
         #region Attributes
 
         /// <summary>
         /// Creation of the Clients class atributes
         /// </summary>
-        private int id; //
-        private bool gender; //
-        private DateTime birthdate; //
-        private string address; //
-        private int phone_number; //
-        private string email_address; //
-
-        private static int qtdClients = 1; //
+        private int clientID;
+        //List<Sale> salesList;
+        private string email;
+        private bool visibilityStatus; // An indicator of whether the client is visible to users.
 
         #endregion
 
@@ -47,36 +44,40 @@ namespace StaffClientSystem
         /// </summary>
         public Client()
         {
-            id = qtdClients;// a way to create an auto increment field
-            qtdClients++;
-            name = string.Empty;
-            gender = true;
-            birthdate = DateTime.Now;
-            address = string.Empty;
-            phone_number = -1;
-            email_address = string.Empty;
+            clientID = 0;
+            Name = string.Empty;
+            Gender = true;
+            DateOfBirth = DateTime.Now;
+            PostalCode = string.Empty;
+            Address = string.Empty;
+            PhoneNumber = 0;
+            email = string.Empty;
+            visibilityStatus = false;
         }
 
         /// <summary>
         /// Constructor passed by parameters
         /// </summary>
+        /// <param name="clientID"></param>
         /// <param name="name"></param>
         /// <param name="gender"></param>
         /// <param name="birthdate"></param>
+        /// <param name="postalCode"></param>
         /// <param name="address"></param>
         /// <param name="phone_number"></param>
-        /// <param name="email_address"></param>
-        public Client(string name, bool gender, DateTime birthdate,
-            string address, int phone_number, string email_address)
+        /// <param name="email"></param>
+        /// <param name="visibilityStatus"></param>
+        public Client(int clientID, string name, bool gender, DateTime birthdate, string postalCode, string address, int phone_number, string email, bool visibilityStatus)
         {
-            id = qtdClients;
-            qtdClients++;
-            this.name = name;
-            this.gender = gender;
-            this.birthdate = birthdate;
-            this.address = address;
-            this.phone_number = phone_number;
-            this.email_address = email_address;
+            this.clientID = clientID;
+            Name = name;
+            Gender = gender;
+            DateOfBirth = birthdate;
+            PostalCode = postalCode;
+            Address = address;
+            PhoneNumber = phone_number;
+            this.email = email;
+            this.visibilityStatus = visibilityStatus;
         }
 
         #endregion
@@ -84,77 +85,31 @@ namespace StaffClientSystem
         #region Properties
 
         /// <summary>
-        /// Property related to the id attribute
+        /// Property related to the 'clientID' attribute
         /// </summary>
-        public int ID
+        public int ClientID
         {
-            get { return id; }
-            set { id = value; }
+            get { return clientID; }
+            set { clientID = value; }
         }
 
         /// <summary>
-        /// Property related to the name attribute
+        /// Property related to the 'visibilityStatus' attribute
         /// </summary>
-        public string Name
+        public bool VisibilityStatus
         {
-            get { return name; }
-            set { name = value; }
+            get { return visibilityStatus; }
+            set { visibilityStatus = value; }
         }
 
         /// <summary>
-        /// Property related to the gender attribute
+        /// Property related to the 'email' attribute
         /// </summary>
-        public bool Gender
+        public string Email
         {
-            get { return gender; }
-            set { gender = value; }
+            get { return email; }
+            set { email = value; }
         }
-
-        /// <summary>
-        /// Property related to the birthdate attribute
-        /// </summary>
-        public DateTime BirthDate
-        {
-            get { return birthdate; }
-            set { birthdate = value; }
-        }
-
-        /// <summary>
-        /// Property related to the address attribute
-        /// </summary>
-        public string Address
-        {
-            get { return address; }
-            set { address = value; }
-        }
-
-        /// <summary>
-        /// Property related to the phone_number attribute
-        /// </summary>
-        public int PhoneNumber
-        {
-            get { return phone_number; }
-            set { phone_number = value; }
-        }
-
-        /// <summary>
-        /// Property related to the email_address attribute
-        /// </summary>
-        public string EmailAddress
-        {
-            get { return email_address; }
-            set { email_address = value; }
-        }
-
-        /// <summary>
-        /// Property related to the qtdClients attribute
-        /// </summary>
-        public int QtdClients
-        {
-            get { return qtdClients; }
-            set { qtdClients = value; }
-        }
-
 
         #endregion
 
@@ -168,9 +123,9 @@ namespace StaffClientSystem
         /// <returns></returns>
         public static bool operator ==(Client left, Client right)
         {
-            if ((left.ID == right.ID) && (left.Name == right.Name) && (left.Gender == right.Gender) &&
-                (left.BirthDate.Date == right.BirthDate.Date) && (left.Address == right.Address) &&
-                (left.PhoneNumber == right.PhoneNumber) && (left.EmailAddress == right.EmailAddress))
+            if ((left.ClientID == right.ClientID) && (left.Name == right.Name) && (left.Gender == right.Gender)
+                && (left.DateOfBirth == right.DateOfBirth) && (left.PostalCode == right.PostalCode) && (left.Address == right.Address)
+                && (left.PhoneNumber == right.PhoneNumber) && (left.Email == right.Email) && (left.VisibilityStatus == right.VisibilityStatus))
                 return (true);
             return (false);
         }
@@ -197,9 +152,10 @@ namespace StaffClientSystem
         /// <returns></returns>
         public override string ToString()
         {
-            return (String.Format("ID: {0} - Name: {1} - Gender: {2} - Birth Date: {3} - " +
-                "Address: {4} - Phone Number: {5} - Email Address: {6}", ID.ToString(), Name,
-                Gender.ToString(), BirthDate.ToString(), Address, PhoneNumber.ToString(), EmailAddress));
+            return (String.Format("Client ID: {0} - Name: {1} - Gender: {2} - Date of Birth: {3}" +
+                " - Postal Code: {4} - Address: {5} - Phone Number: {6} - Email: {7}",
+                ClientID.ToString(), Name, Gender.ToString(), DateOfBirth.ToString(), 
+                PostalCode, Address, PhoneNumber.ToString(), Email));
         }
 
         /// <summary>
@@ -231,18 +187,30 @@ namespace StaffClientSystem
 
         #region OtherMethods
 
-        public void InsertClient(Client client)
+        /// <summary>
+        /// Method that orders based on the cost of the client.
+        /// </summary>
+        /// <param name="client"></param>
+        /// <returns></returns>
+        public int CompareTo(Client client)
         {
-            //Still in progress...
+            return this.PhoneNumber.CompareTo(client.PhoneNumber);
         }
 
         #endregion
 
         #region Destructor
-        #endregion
+
+        /// <summary>
+        /// Destructor that removes the object from the memory!
+        /// </summary>
+        ~Client()
+        {
+            GC.SuppressFinalize(this);
+        }
 
         #endregion
 
-        //Still in progress...
+        #endregion
     }
 }

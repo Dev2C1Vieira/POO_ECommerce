@@ -309,8 +309,13 @@ namespace ProductCatalogs
             {
                 if (category.Equals(ReturnCategoryFromID(categoryID)))
                 {
-                    category.VisibilityStatus = false;
-                    return true;
+                    if (category.VisibilityStatus == true)
+                    {
+                        category.VisibilityStatus = false;
+                        return true;
+                    }
+                    else
+                        throw new CategoryException("\nUnable to remove category ... Category has already been removed!");
                 }
                 else continue;
             }
@@ -377,12 +382,6 @@ namespace ProductCatalogs
 
         #region FileManagement
 
-        // Read data from a text file
-
-        // Code here ...
-
-        // Read data from a binary file
-
         /// <summary>
         /// 
         /// </summary>
@@ -410,12 +409,6 @@ namespace ProductCatalogs
             else
                 throw new Exception("\nFile doesn't exist!");
         }
-
-        // Save data in a text file
-
-        // Code here ...
-
-        // Save data in a binary file
 
         /// <summary>
         /// Method that saves the categories data from the categories list into a file.

@@ -1,9 +1,9 @@
 ﻿/*
- * <copyright file = "CategoriesMenu.cs" company="IPCA">
+ * <copyright file = "BrandsMenu.cs" company="IPCA">
  * Copyright (c) 2023 All Rights Reserved
  * </copyright>
  * <author> Pedro Vieira </author>
- * <date> 12/17/2023 9:28:56 PM </date>
+ * <date> 12/18/2023 8:18:24 PM </date>
  * <description> [Write the description of the project!] </description>
  * 
  * */
@@ -13,18 +13,18 @@ using System.Collections.Generic;
 
 // External
 using ProductCatalog;
-using ProductCatalogR;
 using ProductCatalogIO;
+using ProductCatalogR;
 
 namespace ProductCatalogsM
 {
     /// <summary>
     /// Purpose: [Write the purpose of the class!]
     /// Created By: Pedro Vieira
-    /// Created On: 12/17/2023 9:28:56 PM
+    /// Created On: 12/18/2023 8:18:24 PM
     /// Email: a25626@alunos.ipca.pt
     /// </summary>
-    public class CategoriesMenu
+    public class BrandsMenu
     {
         #region Methods
 
@@ -55,16 +55,16 @@ namespace ProductCatalogsM
         /// </summary>
         public static void DisplayHistocicMenu()
         {
-            List<Category> listingCategories = new List<Category>();
-            Console.WriteLine("\nTable containing the information of the existing categories.\n");
+            List<Brand> listingBrands = new List<Brand>();
+            Console.WriteLine("\nTable containing the information of the existing brands.\n");
             // Table Construction
-            Console.WriteLine("\n+---------------------------------------------------+");
-            Console.WriteLine("|  CODE  |  NAME  |  DESCRIPTION  |  CREATION DATE  |");
-            Console.WriteLine("+---------------------------------------------------+");
-            listingCategories = CategoriesRules.ReturnHistoric();
-            CategoriesIO.ListHistoric(listingCategories);
-            Console.WriteLine("+---------------------------------------------------+");
-            Console.WriteLine($"\n\nTotal sum of accessible records: {CategoriesRules.ReturnAmountHistoricRecords()}");
+            Console.WriteLine("\n+---------------------------------------------------------------------+");
+            Console.WriteLine("|  CODE  |  NAME  |  DESCRIPTION  |  ORIGIN COUNTRY  |  FUNDATION DATE  |");
+            Console.WriteLine("+-----------------------------------------------------------------------+");
+            listingBrands = BrandsRules.ReturnHistoric();
+            BrandsIO.ListHistoric(listingBrands);
+            Console.WriteLine("+-----------------------------------------------------------------------+");
+            Console.WriteLine($"\n\nTotal sum of accessible records: {BrandsRules.ReturnAmountHistoricRecords()}");
             Console.WriteLine("\n+-----------------------------------------------------------------------------------------------------+");
             Console.WriteLine("|         1. Delete a Record!         2. Recover a Record!         3. Return to Products Menu.        |");
             Console.WriteLine("+-----------------------------------------------------------------------------------------------------+");
@@ -75,7 +75,7 @@ namespace ProductCatalogsM
         /// </summary>
         public static void LoopDisplayHistocicMenu()
         {
-            int categoryID, op;
+            int brandID, op;
             bool result;
 
             while (true)
@@ -101,33 +101,33 @@ namespace ProductCatalogsM
                     {
                         if (op == 1)
                         {
-                            Console.WriteLine("\nLets Delete a Category!");
+                            Console.WriteLine("\nLets Delete a Brand!");
 
-                            categoryID = CategoriesIO.GetCategoryID();
+                            brandID = BrandsIO.GetBrandID();
 
-                            result = CategoriesRules.DeleteCategory(categoryID);
+                            result = BrandsRules.DeleteBrand(brandID);
                             if (result == true)
-                                Console.WriteLine("\nCategory was successfully deleted!");
+                                Console.WriteLine("\nBrand was successfully deleted!");
                             else
-                                Console.WriteLine("\nUnable to delete the category!");
+                                Console.WriteLine("\nUnable to delete the brand!");
 
-                            CategoriesRules.SaveCategoriesDataBin();
+                            BrandsRules.SaveBrandsDataBin();
 
                             Pause();
                         }
                         else
                         {
-                            Console.WriteLine("\nLets Recover a Category!");
+                            Console.WriteLine("\nLets Recover a Brand!");
 
-                            categoryID = CategoriesIO.GetCategoryID();
+                            brandID = BrandsIO.GetBrandID();
 
-                            result = CategoriesRules.RecoverCategory(categoryID);
+                            result = BrandsRules.RecoverBrand(brandID);
                             if (result == true)
-                                Console.WriteLine("\nCategory was successfully recovered!");
+                                Console.WriteLine("\nBrand was successfully recovered!");
                             else
-                                Console.WriteLine("\nUnable to recover the category!");
+                                Console.WriteLine("\nUnable to recover the brand!");
 
-                            CategoriesRules.SaveCategoriesDataBin();
+                            BrandsRules.SaveBrandsDataBin();
 
                             Pause();
                         }
@@ -142,7 +142,7 @@ namespace ProductCatalogsM
         /// </summary>
         public static void Menu()
         {
-            int op = 1, field, categoryID;
+            int op = 1, field, brandID;
             bool result;
 
             try
@@ -152,17 +152,17 @@ namespace ProductCatalogsM
                     do
                     {
                         Clear();
-                        Console.WriteLine("  --------- Welcome to Categories Managment Menu ---------\n");
+                        Console.WriteLine("  --------- Welcome to Brands Managment Menu ---------\n");
                         if (op < 1 || op > 6)
                         {
                             Console.WriteLine("\n  Invalid Option! [1-6]\n");
                         }
                         Console.WriteLine("\n  +-------------------------------------------+");
-                        Console.WriteLine("  |  1. List the existing categories.         |");
-                        Console.WriteLine("  |  2. Insert a new category.                |");
-                        Console.WriteLine("  |  3. Update category information.          |");
-                        Console.WriteLine("  |  4. Remove a category.                    |");
-                        Console.WriteLine("  |  5. Show categories historic.             |");
+                        Console.WriteLine("  |  1. List the existing brands.             |");
+                        Console.WriteLine("  |  2. Insert a new brand.                   |");
+                        Console.WriteLine("  |  3. Update brand information.             |");
+                        Console.WriteLine("  |  4. Remove a brand.                       |");
+                        Console.WriteLine("  |  5. Show brands historic.                 |");
                         Console.WriteLine("  |  6. Back!                                 |");
                         Console.WriteLine("  +-------------------------------------------+");
                         Console.Write("\nOption: ");
@@ -172,45 +172,45 @@ namespace ProductCatalogsM
                     switch (op)
                     {
                         case 1:
-                            List<Category> listingCategories = new List<Category>();
-                            Console.WriteLine("\nTable containing the information of the existing categories.\n");
+                            List<Brand> listingBrands = new List<Brand>();
+                            Console.WriteLine("\nTable containing the information of the existing brands.\n");
                             // Table Construction
-                            Console.WriteLine("\n+---------------------------------------------------+");
-                            Console.WriteLine("|  CODE  |  NAME  |  DESCRIPTION  |  CREATION DATE  |");
-                            Console.WriteLine("+---------------------------------------------------+");
-                            listingCategories = CategoriesRules.ReturnCategoriesList();
-                            CategoriesIO.ListCategoriesInformation(listingCategories);
-                            Console.WriteLine("+---------------------------------------------------+");
-                            Console.WriteLine($"\n\nTotal sum of accessible records: {CategoriesRules.ReturnAmountListRecords()}");
+                            Console.WriteLine("\n+---------------------------------------------------------------------+");
+                            Console.WriteLine("|  CODE  |  NAME  |  DESCRIPTION  |  ORIGIN COUNTRY  |  FUNDATION DATE  |");
+                            Console.WriteLine("+-----------------------------------------------------------------------+");
+                            listingBrands = BrandsRules.ReturnBrandsList();
+                            BrandsIO.ListHistoric(listingBrands);
+                            Console.WriteLine("+-----------------------------------------------------------------------+");
+                            Console.WriteLine($"\n\nTotal sum of accessible records: {BrandsRules.ReturnAmountListRecords()}");
                             Pause();
                             break;
                         case 2:
-                            Console.WriteLine("\nLets Insert new Category!");
+                            Console.WriteLine("\nLets Insert new Brand!");
 
-                            Category category = new Category();
-                            category = CategoriesIO.GetNewCategoryInformation(category);
+                            Brand brand = new Brand();
+                            brand = BrandsIO.GetNewBrandInformation(brand);
 
-                            result = CategoriesRules.InsertCategory(category);
+                            result = BrandsRules.InsertBrand(brand);
 
                             if (result == true)
-                                Console.WriteLine("\nNew category inserted successfully!");
+                                Console.WriteLine("\nNew brand inserted successfully!");
                             else
                             {
-                                Console.WriteLine("\nUnable to add new category!");
+                                Console.WriteLine("\nUnable to add new brand!");
                             }
 
-                            CategoriesRules.SaveCategoriesDataBin();
+                            BrandsRules.SaveBrandsDataBin();
 
                             Pause();
                             break;
                         case 3:
-                            Console.WriteLine("\nLets Update a Category!");
+                            Console.WriteLine("\nLets Update a Brand!");
 
-                            categoryID = CategoriesIO.GetCategoryID();
+                            brandID = BrandsIO.GetBrandID();
 
-                            if (CategoriesRules.IsCategoryIDAvailable(categoryID) == false)
+                            if (BrandsRules.IsBrandIDAvailable(brandID) == false)
                             {
-                                Console.WriteLine("\nCategory does not exist! ... Please enter an ID of an existing category.");
+                                Console.WriteLine("\nBrand does not exist! ... Please enter an ID of an existing brand.");
                                 Pause();
                                 Menu();
                             }
@@ -221,10 +221,11 @@ namespace ProductCatalogsM
                             Console.WriteLine("\nChoose which field you want to change:");
 
                             Console.WriteLine("\n  +-------------------------------------------+");
-                            Console.WriteLine("  |  1. Update category Name.                 |");
-                            Console.WriteLine("  |  2. Update category Description.          |");
-                            Console.WriteLine("  |  3. Update category Creation Date.        |");
-                            Console.WriteLine("  |  4. Back!                                 |");
+                            Console.WriteLine("  |  1. Update product Name.                  |");
+                            Console.WriteLine("  |  2. Update product Description.           |");
+                            Console.WriteLine("  |  3. Update product Origin Country.        |");
+                            Console.WriteLine("  |  4. Update product Launch Date.           |");
+                            Console.WriteLine("  |  5. Back!                                 |");
                             Console.WriteLine("  +-------------------------------------------+");
                             Console.Write("\nOption: ");
                             field = int.Parse(Console.ReadLine());
@@ -233,30 +234,30 @@ namespace ProductCatalogsM
 
                             Clear();
 
-                            string attribute = ProductsIO.GetAttributeToUpdate(field);
+                            string attribute = BrandsIO.GetAttributeToUpdate(field);
 
-                            result = CategoriesRules.UpdateCategory(field, attribute, categoryID);
+                            result = BrandsRules.UpdateBrand(field, attribute, brandID);
                             if (result == true)
-                                Console.WriteLine("\nCategory was successfully updated!");
+                                Console.WriteLine("\nBrand was successfully updated!");
                             else
-                                Console.WriteLine("\nUnable to update the category!");
+                                Console.WriteLine("\nUnable to update the brand!");
 
-                            CategoriesRules.SaveCategoriesDataBin();
+                            BrandsRules.SaveBrandsDataBin();
 
                             Pause();
                             break;
                         case 4:
-                            Console.WriteLine("\nLets Remove a Category!");
+                            Console.WriteLine("\nLets Remove a Brand!");
 
-                            categoryID = CategoriesIO.GetCategoryID();
+                            brandID = BrandsIO.GetBrandID();
 
-                            result = CategoriesRules.RemoveCategory(categoryID);
+                            result = BrandsRules.RemoveBrand(brandID);
                             if (result == true)
-                                Console.WriteLine("\nCategory was successfully removed!");
+                                Console.WriteLine("\nBrand was successfully removed!");
                             else
-                                Console.WriteLine("\nUnable to remove the category!");
+                                Console.WriteLine("\nUnable to remove the brand!");
 
-                            CategoriesRules.SaveCategoriesDataBin();
+                            BrandsRules.SaveBrandsDataBin();
 
                             Pause();
                             break;

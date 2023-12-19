@@ -21,6 +21,8 @@ namespace ProductCatalogsM
     /// </summary>
     public class PCMenu
     {
+        #region Methods
+
         /// <summary>
         /// 
         /// </summary>
@@ -79,7 +81,7 @@ namespace ProductCatalogsM
                             CategoriesMenu.Menu();
                             break;
                         case 3:
-                            // BrandsMenu.Menu();
+                            BrandsMenu.Menu();
                             break;
                         case 4:
                             EmployeeMenu.Menu();
@@ -102,5 +104,7 @@ namespace ProductCatalogsM
                 Menu();
             }
         }
+
+        #endregion
     }
 }

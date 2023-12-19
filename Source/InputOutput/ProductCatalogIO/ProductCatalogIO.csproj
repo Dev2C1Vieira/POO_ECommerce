@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BrandsIO.cs" />
     <Compile Include="CategoriesIO.cs" />
     <Compile Include="ProductsIO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

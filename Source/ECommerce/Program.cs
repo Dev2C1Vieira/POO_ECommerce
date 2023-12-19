@@ -31,6 +31,7 @@ namespace ECommerce
         {
             ProductsRules.LoadProductsDataBin();
             CategoriesRules.LoadCategoriesDataBin();
+            BrandsRules.LoadBrandsDataBin();
             MainMenu.Menu();
         }
     }

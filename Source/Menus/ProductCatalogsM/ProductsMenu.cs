@@ -11,7 +11,7 @@
 using System;
 using System.Collections.Generic;
 
-//  External
+// External
 using ProductCatalog;
 using ProductCatalogR;
 using ProductCatalogIO;
@@ -26,6 +26,8 @@ namespace ProductCatalogsM
     /// </summary>
     public class ProductsMenu
     {
+        #region Methods
+
         /// <summary>
         /// 
         /// </summary>
@@ -288,5 +290,7 @@ namespace ProductCatalogsM
                 Menu();
             }
         }
+
+        #endregion
     }
 }
