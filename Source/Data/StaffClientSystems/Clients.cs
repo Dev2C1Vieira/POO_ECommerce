@@ -32,7 +32,7 @@ namespace StaffClientSystems
         #region Attributes
 
         /// <summary>
-        /// Atributes creation
+        /// Creation of the Clients class atributes
         /// </summary>
         private static List<Client> clientsList;
 
@@ -436,7 +436,7 @@ namespace StaffClientSystems
             if (IsClientsListEmpty() == true)
                 throw new ClientException("\nThe clients list is empty!");
 
-            // Cria um FileStream para gravar os dados dos clientes no arquivo
+            //Creates a FileStream to write clients data to the file
             using (FileStream fileStream = new FileStream(fileName, FileMode.Create))
             {
                 BinaryFormatter formatter = new BinaryFormatter();

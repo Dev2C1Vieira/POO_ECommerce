@@ -9,7 +9,7 @@
  * */
 
 using System;
-using System.Collections.Generic;
+using StaffClientSystem.Interfaces;
 
 namespace StaffClientSystem
 {
@@ -23,15 +23,14 @@ namespace StaffClientSystem
     /// <example></example>
 
     [Serializable]
-    public class Client : Person, IComparable<Client>
+    public class Client : Person, IClient, IComparable<Client>
     {
         #region Attributes
 
         /// <summary>
-        /// Creation of the Clients class atributes
+        /// Creation of the Client class atributes
         /// </summary>
         private int clientID;
-        //List<Sale> salesList;
         private string email;
         private bool visibilityStatus; // An indicator of whether the client is visible to users.
 
@@ -97,21 +96,21 @@ namespace StaffClientSystem
         }
 
         /// <summary>
-        /// Property related to the 'visibilityStatus' attribute
-        /// </summary>
-        public bool VisibilityStatus
-        {
-            get { return visibilityStatus; }
-            set { visibilityStatus = value; }
-        }
-
-        /// <summary>
         /// Property related to the 'email' attribute
         /// </summary>
         public string Email
         {
             get { return email; }
             set { email = value; }
+        }
+
+        /// <summary>
+        /// Property related to the 'visibilityStatus' attribute
+        /// </summary>
+        public bool VisibilityStatus
+        {
+            get { return visibilityStatus; }
+            set { visibilityStatus = value; }
         }
 
         #endregion

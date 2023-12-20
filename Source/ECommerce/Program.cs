@@ -34,21 +34,27 @@ namespace ECommerce
 
             #region ProductCatalog
 
-            //string productsFN = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\ProductsList.bin";
-            string productsFN = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\ProductsList.bin";
+            string productsFN = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\ProductsList.bin";
+            //string productsFN = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\ProductsList.bin";
 
-            //string categoriesFN = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\CategoriesList.bin";
-            string categoriesFN = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\CategoriesList.bin";
+            string categoriesFN = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\CategoriesList.bin";
+            //string categoriesFN = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\CategoriesList.bin";
 
-            //string brandsFN = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\BrandsList.bin";
-            string brandsFN = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\BrandsList.bin";
+            string brandsFN = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\BrandsList.bin";
+            //string brandsFN = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\ProductCatalog\\BrandsList.bin";
 
             #endregion
 
             #region StaffClientSystem
 
-            //string clientsFN = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\StaffClientSystem\\ClientsList.bin";
-            string clientsFN = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\StaffClientSystem\\ClientsList.bin";
+            string clientsFN = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\StaffClientSystem\\ClientsList.bin";
+            //string clientsFN = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\StaffClientSystem\\ClientsList.bin";
+
+            string employeesFN = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\StaffClientSystem\\EmployeesList.bin";
+            //string clientsFN = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\StaffClientSystem\\EmployeesList.bin";
+
+            string managersFN = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\StaffClientSystem\\ManagersList.bin";
+            //string clientsFN = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\StaffClientSystem\\ManagersList.bin";
 
             #endregion
 

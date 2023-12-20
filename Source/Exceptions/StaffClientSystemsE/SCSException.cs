@@ -52,4 +52,20 @@ namespace StaffClientSystemsE
         /// <param name="message">Mensagem de erro ou informação relacionada à exceção.</param>
         public EmployeeException(string message) : base(message) { }
     }
+
+    public class ManagerException : Exception
+    {
+        /// <summary>
+        /// Construtor padrão sem parâmetros.
+        /// Cria uma instância de ManagerException sem uma mensagem específica.
+        /// </summary>
+        public ManagerException() { }
+
+        /// <summary>
+        /// Construtor que aceita uma mensagem como parâmetro.
+        /// Cria uma instância de ManagerException com uma mensagem específica.
+        /// </summary>
+        /// <param name="message">Mensagem de erro ou informação relacionada à exceção.</param>
+        public ManagerException(string message) : base(message) { }
+    }
 }

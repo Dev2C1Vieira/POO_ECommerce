@@ -1,12 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StaffClientSystem.Interfaces
 {
-    internal interface IClient
+    public interface IClient
     {
+        /// <summary>
+        /// Creation of Properties
+        /// </summary>
+        int ClientID { get; set; }
+
+        string Email { get; set; }
+
+        bool VisibilityStatus { get; set; }
+
+        /// <summary>
+        /// Method that orders based on the cost of the client.
+        /// </summary>
+        /// <param name="client"></param>
+        /// <returns></returns>
+        int CompareTo(Client client);
     }
 }

@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Clients.cs" />
     <Compile Include="Employees.cs" />
+    <Compile Include="Managers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

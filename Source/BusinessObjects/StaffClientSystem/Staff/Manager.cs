@@ -3,32 +3,36 @@
  * Copyright (c) 2023 All Rights Reserved
  * </copyright>
  * <author> Pedro Vieira </author>
- * <date> 11/14/2023 9:49:39 PM </date>
+ * <date> 11/14/2023 10:42:16 PM </date>
  * <description></description>
  * 
  * */
 
+using StaffClientSystem.Interfaces;
 using System;
 
-namespace StaffClientSystem.Employees
+namespace StaffClientSystem.Staff
 {
     /// <summary>
     /// Purpose: [Write the purpose of the class!]
     /// Created By: Pedro Vieira
-    /// Created On: 11/14/2023 9:49:39 PM
+    /// Created On: 11/14/2023 10:42:16 PM
     /// Email: a25626@alunos.ipca.pt
     /// </summary>
     /// <remarks></remarks>
     /// <example></example>
-    public class Employee : Person, IComparable<Employee>/*, IEmployee*/
+    public class Manager : Person, IManager, IComparable<Manager>
     {
         #region Attributes
 
-        private int employeeID;
+        /// <summary>
+        /// Creation of the Manager class atributes
+        /// </summary>
+        private int managerID;
         private string jobTitle;
         private string workEmail;
         private string password;
-        private bool visibilityStatus; // An indicator of whether the employee is visible to users.
+        private bool visibilityStatus; // An indicator of whether the manager is visible to users.
 
         #endregion
 
@@ -39,9 +43,9 @@ namespace StaffClientSystem.Employees
         /// <summary>
         /// Default constructor
         /// </summary>
-        public Employee()
+        public Manager()
         {
-            employeeID = 0;
+            managerID = 0;
             Name = string.Empty;
             Gender = string.Empty;
             DateOfBirth = DateTime.Now;
@@ -57,7 +61,7 @@ namespace StaffClientSystem.Employees
         /// <summary>
         /// Constructor passed by parameters
         /// </summary>
-        /// <param name="employeeID"></param>
+        /// <param name="managerID"></param>
         /// <param name="name"></param>
         /// <param name="gender"></param>
         /// <param name="birthdate"></param>
@@ -68,11 +72,11 @@ namespace StaffClientSystem.Employees
         /// <param name="workEmail"></param>
         /// <param name="password"></param>
         /// <param name="visibilityStatus"></param>
-        public Employee(int employeeID, string name, string gender, DateTime birthdate, 
-            string postalCode, string address, int phone_number, string jobTitle, 
+        public Manager(int managerID, string name, string gender, DateTime birthdate,
+            string postalCode, string address, int phone_number, string jobTitle,
             string workEmail, string password, bool visibilityStatus)
         {
-            this.employeeID = employeeID;
+            this.managerID = managerID;
             Name = name;
             Gender = gender;
             DateOfBirth = birthdate;
@@ -90,12 +94,12 @@ namespace StaffClientSystem.Employees
         #region Properties
 
         /// <summary>
-        /// Property related to the 'employeeID' attribute
+        /// Property related to the 'managerID' attribute
         /// </summary>
-        public int EmployeeID
+        public int ManagerID
         {
-            get { return employeeID; }
-            set { employeeID = value; }
+            get { return managerID; }
+            set { managerID = value; }
         }
 
         /// <summary>
@@ -139,14 +143,14 @@ namespace StaffClientSystem.Employees
         #region Operators
 
         /// <summary>
-        /// Creating/Rewriting this method, to be able to check whether two indicated Employees are the same.
+        /// Creating/Rewriting this method, to be able to check whether two indicated Managers are the same.
         /// </summary>
         /// <param name="left"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public static bool operator ==(Employee left, Employee right)
+        public static bool operator ==(Manager left, Manager right)
         {
-            if ((left.EmployeeID == right.EmployeeID) && (left.Name == right.Name) && (left.Gender == right.Gender)
+            if ((left.ManagerID == right.ManagerID) && (left.Name == right.Name) && (left.Gender == right.Gender)
                 && (left.DateOfBirth == right.DateOfBirth) && (left.PostalCode == right.PostalCode) && (left.Address == right.Address)
                 && (left.PhoneNumber == right.PhoneNumber) && (left.JobTitle == right.JobTitle) && (left.WorkEmail == right.WorkEmail)
                 && (left.Password == right.Password) && (left.VisibilityStatus == right.VisibilityStatus))
@@ -155,12 +159,12 @@ namespace StaffClientSystem.Employees
         }
 
         /// <summary>
-        /// Creating/Rewriting this method, to be able to check whether two indicated Employees are different.
+        /// Creating/Rewriting this method, to be able to check whether two indicated Managers are different.
         /// </summary>
         /// <param name="left"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public static bool operator !=(Employee left, Employee right)
+        public static bool operator !=(Manager left, Manager right)
         {
             if (!(left == right)) return (true);
             return (false);
@@ -176,9 +180,9 @@ namespace StaffClientSystem.Employees
         /// <returns></returns>
         public override string ToString()
         {
-            return (String.Format("Employee ID: {0} - Name: {1} - Gender: {2} - Date of Birth: {3}" +
+            return (String.Format("Manager ID: {0} - Name: {1} - Gender: {2} - Date of Birth: {3}" +
                 " - Postal Code: {4} - Address: {5} - Phone Number: {6} - Job Title: {7} - Work Email: {8} - Password: {9}",
-                EmployeeID.ToString(), Name, Gender.ToString(), DateOfBirth.ToString(),
+                ManagerID.ToString(), Name, Gender.ToString(), DateOfBirth.ToString(),
                 PostalCode, Address, PhoneNumber.ToString(), JobTitle, WorkEmail, Password));
         }
 
@@ -189,10 +193,10 @@ namespace StaffClientSystem.Employees
         /// <returns></returns>
         public override bool Equals(object obj)
         {
-            if (obj is Employee)
+            if (obj is Manager)
             {
-                Employee employee = (Employee)obj;
-                if (this == employee)
+                Manager manager = (Manager)obj;
+                if (this == manager)
                     return (true);
             }
             return (false);
@@ -212,13 +216,13 @@ namespace StaffClientSystem.Employees
         #region OtherMethods
 
         /// <summary>
-        /// Method that orders based on the cost of the employee.
+        /// Method that orders based on the jobTitle of the manager.
         /// </summary>
-        /// <param name="client"></param>
+        /// <param name="manager"></param>
         /// <returns></returns>
-        public int CompareTo(Employee employee)
+        public int CompareTo(Manager manager)
         {
-            return this.JobTitle.CompareTo(employee.JobTitle);
+            return this.JobTitle.CompareTo(manager.JobTitle);
         }
 
         #endregion
@@ -228,7 +232,7 @@ namespace StaffClientSystem.Employees
         /// <summary>
         /// Destructor that removes the object from the memory!
         /// </summary>
-        ~Employee()
+        ~Manager()
         {
             GC.SuppressFinalize(this);
         }

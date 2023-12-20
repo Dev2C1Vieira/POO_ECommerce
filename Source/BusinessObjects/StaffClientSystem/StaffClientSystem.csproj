@@ -42,9 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.cs" />
-    <Compile Include="Employees\Employee.cs" />
-    <Compile Include="Employees\Manager.cs" />
+    <Compile Include="Staff\Employee.cs" />
+    <Compile Include="Staff\Manager.cs" />
     <Compile Include="Interfaces\IClient.cs" />
+    <Compile Include="Interfaces\IEmployee.cs" />
+    <Compile Include="Interfaces\IManager.cs" />
     <Compile Include="Interfaces\IPerson.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
