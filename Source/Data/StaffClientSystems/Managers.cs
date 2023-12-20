@@ -329,7 +329,7 @@ namespace StaffClientSystems
         /// <param name="managerID"></param>
         /// <returns></returns>
         /// <exception cref="ManagerException"></exception>
-        public static bool RemoveEmployee(int managerID)
+        public static bool RemoveManager(int managerID)
         {
             if (ExistManager(ReturnManagerFromID(managerID)) == false)
                 throw new ManagerException("\nUnable to remove manager ... Manager does not exist!");

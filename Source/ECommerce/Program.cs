@@ -76,12 +76,13 @@ namespace ECommerce
             #region LoadDataStaffClientSystem
 
             ClientsRules.LoadClientsDataBin(clientsFN);
+            EmployeesRules.LoadEmployeesDataBin(employeesFN);
 
             #endregion
 
             #endregion
 
-            MainMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN);
+            MainMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
         }
     }
 }

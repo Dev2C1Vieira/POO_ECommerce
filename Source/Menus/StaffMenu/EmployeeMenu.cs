@@ -58,7 +58,7 @@ namespace StaffMenu
         /// <param name="categoriesFN"></param>
         /// <param name="brandsFN"></param>
         /// <param name="clientsFN"></param>
-        public static void Menu(string productsFN, string categoriesFN, string brandsFN, string clientsFN)
+        public static void Menu(string productsFN, string categoriesFN, string brandsFN, string clientsFN, string employeesFN, string managersFN)
         {
             int op = 1;
 
@@ -88,16 +88,16 @@ namespace StaffMenu
                     switch (op)
                     {
                         case 1:
-                            PCMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN);
+                            PCMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
                             break;
                         case 2:
-                            SCSMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN);
+                            SCSMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
                             break;
                         case 3:
                             // Menu
                             break;
                         case 4:
-                            MainMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN);
+                            MainMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
                             break;
                     }
                 }
@@ -114,7 +114,7 @@ namespace StaffMenu
             }
             finally
             {
-                Menu(productsFN, categoriesFN, brandsFN, clientsFN);
+                Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
             }
         }
 

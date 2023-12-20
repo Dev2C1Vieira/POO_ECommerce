@@ -68,16 +68,16 @@ namespace StaffClientSystemsM
             ClientsIO.ListHistoric(listingClients);
             Console.WriteLine("+-----------------------------------------------------------------------------------------------------+");
             Console.WriteLine($"\n\nTotal sum of accessible records: {ClientsRules.ReturnAmountHistoricRecords()}");
-            Console.WriteLine("\n+-----------------------------------------------------------------------------------------------------+");
-            Console.WriteLine("|         1. Delete a Record!         2. Recover a Record!         3. Return to Products Menu.        |");
-            Console.WriteLine("+-----------------------------------------------------------------------------------------------------+");
+            Console.WriteLine("\n+----------------------------------------------------------------------------------------------------+");
+            Console.WriteLine("|         1. Delete a Record!         2. Recover a Record!         3. Return to Clients Menu.        |");
+            Console.WriteLine("+----------------------------------------------------------------------------------------------------+");
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="fileName"></param>
-        public static void LoopDisplayHistocicMenu(string productsFN, string categoriesFN, string brandsFN, string clientsFN)
+        public static void LoopDisplayHistocicMenu(string productsFN, string categoriesFN, string brandsFN, string clientsFN, string employeesFN, string managersFN)
         {
             int clientID, op;
             bool result;
@@ -92,7 +92,7 @@ namespace StaffClientSystemsM
                     op = int.Parse(Console.ReadLine());
                     if (op == 3)
                     {
-                        Menu(productsFN, categoriesFN, brandsFN, clientsFN);
+                        Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
                     }
 
                     if (op < 1 || op > 3)
@@ -145,7 +145,7 @@ namespace StaffClientSystemsM
         /// 
         /// </summary>
         /// <param name="fileName"></param>
-        public static void Menu(string productsFN, string categoriesFN, string brandsFN, string clientsFN)
+        public static void Menu(string productsFN, string categoriesFN, string brandsFN, string clientsFN, string employeesFN, string managersFN)
         {
             int op = 1, field, clientID;
             bool result;
@@ -157,7 +157,7 @@ namespace StaffClientSystemsM
                     do
                     {
                         Clear();
-                        Console.WriteLine("  --------- Welcome to Products Managment Menu ---------\n");
+                        Console.WriteLine("  --------- Welcome to Clients Managment Menu ---------\n");
                         if (op < 1 || op > 6)
                         {
                             Console.WriteLine("\n  Invalid Option! [1-6]\n");
@@ -217,7 +217,7 @@ namespace StaffClientSystemsM
                             {
                                 Console.WriteLine("\nClient does not exist! ... Please enter an ID of an existing client.");
                                 Pause();
-                                Menu(productsFN, categoriesFN, brandsFN, clientsFN);
+                                Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
                             }
 
                             Clear();
@@ -226,18 +226,19 @@ namespace StaffClientSystemsM
                             Console.WriteLine("\nChoose which field you want to change:");
 
                             Console.WriteLine("\n  +-------------------------------------------+");
-                            Console.WriteLine("  |  1. Update product Name.                  |");
-                            Console.WriteLine("  |  2. Update product Description.           |");
-                            Console.WriteLine("  |  3. Update product Price.                 |");
-                            Console.WriteLine("  |  4. Update product Launch Date.           |");
-                            Console.WriteLine("  |  5. Update product Warranty Duration.     |");
-                            Console.WriteLine("  |  6. Update product Amount In Stock.       |");
-                            Console.WriteLine("  |  7. Back!                                 |");
+                            Console.WriteLine("  |  1. Update client Name.                   |");
+                            Console.WriteLine("  |  2. Update client Gender.                 |");
+                            Console.WriteLine("  |  3. Update client Date of Birth.          |");
+                            Console.WriteLine("  |  4. Update client Postal Code.            |");
+                            Console.WriteLine("  |  5. Update client Address.                |");
+                            Console.WriteLine("  |  6. Update client Phone Number.           |");
+                            Console.WriteLine("  |  7. Update client Email.                  |");
+                            Console.WriteLine("  |  8. Back!                                |");
                             Console.WriteLine("  +-------------------------------------------+");
                             Console.Write("\nOption: ");
                             field = int.Parse(Console.ReadLine());
 
-                            if (field == 7) { Menu(productsFN, categoriesFN, brandsFN, clientsFN); }
+                            if (field == 8) { Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN); }
 
                             Clear();
 
@@ -269,10 +270,10 @@ namespace StaffClientSystemsM
                             Pause();
                             break;
                         case 5:
-                            LoopDisplayHistocicMenu(productsFN, categoriesFN, brandsFN, clientsFN);
+                            LoopDisplayHistocicMenu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
                             break;
                         case 6:
-                            SCSMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN);
+                            SCSMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
                             break;
                     }
                 }
@@ -289,7 +290,7 @@ namespace StaffClientSystemsM
             }
             finally
             {
-                Menu(productsFN, categoriesFN, brandsFN, clientsFN);
+                Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
             }
         }
 

@@ -12,6 +12,8 @@ using System;
 
 // External
 using ECMenus;
+using ProductCatalogsM;
+using StaffClientSystemsM;
 
 namespace StaffMenu
 {
@@ -53,7 +55,7 @@ namespace StaffMenu
         /// 
         /// </summary>
         /// <param name="fileName"></param>
-        public static void Menu(string productsFN, string categoriesFN, string brandsFN, string clientsFN)
+        public static void Menu(string productsFN, string categoriesFN, string brandsFN, string clientsFN, string employeesFN, string managersFN)
         {
             int op = 1;
 
@@ -64,17 +66,17 @@ namespace StaffMenu
                     do
                     {
                         Clear();
-                        Console.WriteLine("  --------- Welcome to ECommerce Application ---------\n");
+                        Console.WriteLine("  --------- Welcome to Manager Menu ---------\n");
                         if (op < 1 || op > 4)
                         {
                             Console.WriteLine("\n  Invalid Option! [1-4]\n");
                         }
-                        Console.WriteLine("\nHere you need to login to your account!");
+                        Console.WriteLine("\nHere you need to choose one of the options!");
                         Console.WriteLine("\n  +-------------------------------------------+");
-                        Console.WriteLine("  |  1. Manage Product Catalog.                 |");
-                        Console.WriteLine("  |  2. Manage Staff Client Systems.            |");
-                        Console.WriteLine("  |  3. Manage Revenue Engines.                 |");
-                        Console.WriteLine("  |  4. Return to Main Menu.                    |");
+                        Console.WriteLine("  |  1. Manage Product Catalog.               |");
+                        Console.WriteLine("  |  2. Manage Staff Client Systems.          |");
+                        Console.WriteLine("  |  3. Manage Revenue Engines.               |");
+                        Console.WriteLine("  |  4. Return to Main Menu.                  |");
                         Console.WriteLine("  +-------------------------------------------+");
                         Console.Write("\nOption: ");
                         op = int.Parse(Console.ReadLine());
@@ -83,13 +85,15 @@ namespace StaffMenu
                     switch (op)
                     {
                         case 1:
+                            PCMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
                             break;
                         case 2:
+                            SCSMMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
                             break;
                         case 3:
                             break;
                         case 4:
-                            MainMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN);
+                            MainMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
                             break;
                     }
                 }
@@ -106,7 +110,7 @@ namespace StaffMenu
             }
             finally
             {
-                Menu(productsFN, categoriesFN, brandsFN, clientsFN);
+                Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
             }
         }
 

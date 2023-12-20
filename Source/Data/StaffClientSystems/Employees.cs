@@ -441,7 +441,7 @@ namespace StaffClientSystems
         /// <param name="fileName"></param>
         /// <returns></returns>
         /// <exception cref="EmployeeException"></exception>
-        public static bool SaveClientsDataBin(string fileName)
+        public static bool SaveEmployeesDataBin(string fileName)
         {
             if (IsEmployeesListEmpty() == true)
                 throw new EmployeeException("\nThe employees list is empty!");

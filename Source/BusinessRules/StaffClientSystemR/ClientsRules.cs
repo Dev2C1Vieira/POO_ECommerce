@@ -267,7 +267,7 @@ namespace StaffClientSystemR
             }
             catch (IOException IOE)
             {
-                throw new IOException("\nIO error when trying to save client data!" + IOE.Message);
+                throw new IOException("\nIO error when trying to load client data!" + IOE.Message);
             }
             catch (Exception E)
             {
@@ -276,7 +276,7 @@ namespace StaffClientSystemR
         }
 
         /// <summary>
-        /// Method that saves the clients data from the products list into a file.
+        /// Method that saves the clients data from the clients list into a file.
         /// </summary>
         /// <returns></returns>
         /// <exception cref="SerializationException"></exception>

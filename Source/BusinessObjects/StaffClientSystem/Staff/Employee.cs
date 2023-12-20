@@ -21,6 +21,7 @@ namespace StaffClientSystem.Staff
     /// </summary>
     /// <remarks></remarks>
     /// <example></example>
+    [Serializable]
     public class Employee : Person, IEmployee, IComparable<Employee>
     {
         #region Attributes

@@ -1,17 +1,16 @@
 ﻿/*
- * <copyright file = "SCSMenu.cs" company = "IPCA">
+ * <copyright file = "SCSMMenu.cs" company = "IPCA">
  * Copyright (c) 2023 All Rights Reserved
  * </copyright>
  * <author> Pedro Vieira </author>
- * <date> 12/19/2023 2:53:14 PM </date>
+ * <date> 12/20/2023 8:16:33 PM </date>
  * <description></description>
  * 
  * */
 
-using System;
-
-// External
 using StaffMenu;
+using System;
+using System.Diagnostics;
 
 namespace StaffClientSystemsM
 {
@@ -23,7 +22,7 @@ namespace StaffClientSystemsM
     /// </summary>
     /// <remarks></remarks>
     /// <example></example>
-    public class SCSMenu
+    public class SCSMMenu
     {
         #region Methods
 
@@ -61,19 +60,20 @@ namespace StaffClientSystemsM
                     {
                         Clear();
                         Console.WriteLine("  --------- Welcome to Staff Client System Menu ---------\n");
-                        if (op < 1 || op > 3)
+                        if (op < 1 || op > 4)
                         {
-                            Console.WriteLine("\n  Invalid Option! [1-3]\n");
+                            Console.WriteLine("\n  Invalid Option! [1-4]\n");
                         }
                         Console.WriteLine("\nHere you need to choose one of the options!");
                         Console.WriteLine("\n  +-------------------------------------------+");
                         Console.WriteLine("  |  1. Manage Clients.                       |");
-                        Console.WriteLine("  |  2. Manage my information!                |");
-                        Console.WriteLine("  |  3. Back!                                 |");
+                        Console.WriteLine("  |  2. Manage Employees.                     |");
+                        Console.WriteLine("  |  3. Manage my information!                |");
+                        Console.WriteLine("  |  4. Back!                                 |");
                         Console.WriteLine("  +-------------------------------------------+");
                         Console.Write("\nOption: ");
                         op = int.Parse(Console.ReadLine());
-                    } while (op < 1 || op > 3);
+                    } while (op < 1 || op > 4);
                     Clear();
                     switch (op)
                     {
@@ -81,10 +81,14 @@ namespace StaffClientSystemsM
                             ClientsMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
                             break;
                         case 2:
-                            Console.WriteLine("Not working yet!");
+                            EmployeesMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
                             Pause();
                             break;
                         case 3:
+                            Console.WriteLine("Not working yet!");
+                            Pause();
+                            break;
+                        case 4:
                             EmployeeMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
                             break;
                     }
