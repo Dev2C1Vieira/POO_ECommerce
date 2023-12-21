@@ -65,7 +65,7 @@ namespace StaffClientSystemsM
             Console.WriteLine("+-------------------------------------------------------------------------------------------------------------------------------------+");
             listingEmployees = EmployeesRules.ReturnHistoric();
             EmployeesIO.ListHistoric(listingEmployees);
-            Console.WriteLine("+-----------------------------------------------------------------------------------------------------+");
+            Console.WriteLine("+-------------------------------------------------------------------------------------------------------------------------------------+");
             Console.WriteLine($"\n\nTotal sum of accessible records: {EmployeesRules.ReturnAmountHistoricRecords()}");
             Console.WriteLine("\n+------------------------------------------------------------------------------------------------------+");
             Console.WriteLine("|         1. Delete a Record!         2. Recover a Record!         3. Return to Employees Menu.        |");
@@ -264,7 +264,7 @@ namespace StaffClientSystemsM
 
                             employeeID = EmployeesIO.GetEmployeeID();
 
-                            result = EmployeesRules.RecoverEmployee(employeeID);
+                            result = EmployeesRules.RemoveEmployee(employeeID);
                             if (result == true)
                                 Console.WriteLine("\nEmployee was successfully removed!");
                             else
@@ -278,7 +278,7 @@ namespace StaffClientSystemsM
                             LoopDisplayHistocicMenu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
                             break;
                         case 6:
-                            SCSMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                            SCSMMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
                             break;
                     }
                 }

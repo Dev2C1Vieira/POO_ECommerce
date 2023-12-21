@@ -47,6 +47,10 @@
     <Reference Include="ProductCatalogR">
       <HintPath>..\BusinessRules\ProductCatalogR\bin\Debug\ProductCatalogR.dll</HintPath>
     </Reference>
+    <Reference Include="StaffClientSystem, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\BusinessObjects\StaffClientSystem\bin\Debug\StaffClientSystem.dll</HintPath>
+    </Reference>
     <Reference Include="StaffClientSystemR, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\BusinessRules\StaffClientSystemR\bin\Debug\StaffClientSystemR.dll</HintPath>

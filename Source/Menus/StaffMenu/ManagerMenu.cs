@@ -14,6 +14,7 @@ using System;
 using ECMenus;
 using ProductCatalogsM;
 using StaffClientSystemsM;
+using StaffClientSystemR;
 
 namespace StaffMenu
 {
@@ -49,6 +50,66 @@ namespace StaffMenu
             Console.WriteLine("any key ");
             Console.WriteLine("to continue...");
             Console.ReadKey(true);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="productsFN"></param>
+        /// <param name="categoriesFN"></param>
+        /// <param name="brandsFN"></param>
+        /// <param name="clientsFN"></param>
+        /// <param name="employeesFN"></param>
+        /// <param name="managersFN"></param>
+        public static void LoginMenu(string productsFN, string categoriesFN, string brandsFN, string clientsFN, string employeesFN, string managersFN)
+        {
+            char op;
+            string workEmail, password, name;
+
+            while (true)
+            {
+                Clear();
+                Console.WriteLine("Enter the needed information!\n\n");
+
+                Console.Write("Enter your Work Email: ");
+                workEmail = Console.ReadLine();
+
+                Console.Write("Enter your Password: ");
+                password = Console.ReadLine();
+
+                if (!ManagersRules.LoginManager(workEmail, password, out name))
+                {
+                    Console.WriteLine("\nYour information is incorrect!");
+                    Console.WriteLine("\n\nPlease try again...");
+
+                    // Keep trying loop or exit login loop
+                    do
+                    {
+                        Console.WriteLine("\n\n  Try Again (y/n): ");
+                        op = char.Parse(Console.ReadLine());
+                        if ((!(op == 'y')) && (!(op == 'n')))
+                        {
+                            Clear();
+                            Console.WriteLine("\nInvalid Option! [y/n]\n");
+                        }
+                        else
+                        {
+                            if (op == 'y')
+                            { // Compare first character of op with 'y'
+                                LoginMenu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                            }
+                            else
+                            {
+                                MainMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                            }
+                        }
+                    } while ((!(op == 'y')) && (!(op == 'n')));
+                }
+                else
+                {
+                    Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                }
+            }
         }
 
         /// <summary>

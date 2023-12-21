@@ -405,6 +405,32 @@ namespace StaffClientSystems
             return false;
         }
 
+        /// <summary>
+        /// Method that allows the employee to login to its account!
+        /// </summary>
+        /// <param name="workEmail"></param>
+        /// <param name="password"></param>
+        /// <param name="employeeName"></param>
+        /// <returns></returns>
+        /// <exception cref="EmployeeException"></exception>
+        public static bool LoginEmployee(string workEmail, string password, out string employeeName)
+        {
+            if (IsEmployeesListEmpty() == true)
+                throw new EmployeeException("\nThere isn't any employee with that credentials. ... Employees list is empty!");
+
+            foreach (Employee employee in EmployeesList)
+            {
+                if ((employee.WorkEmail == workEmail) && (employee.Password == password) && (employee.VisibilityStatus == true))
+                {
+                    employeeName = employee.Name;
+                    return true;
+                }
+                else continue;
+            }
+            employeeName = string.Empty;
+            return false;
+        }
+
         #endregion
 
         #region FileManagement

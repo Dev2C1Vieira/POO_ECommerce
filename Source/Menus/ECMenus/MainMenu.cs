@@ -79,10 +79,10 @@ namespace ECMenus
                     switch (op)
                     {
                         case 1:
-                            EmployeeMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                            EmployeeMenu.LoginMenu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
                             break;
                         case 2:
-                            ManagerMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                            ManagerMenu.LoginMenu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
                             break;
                         case 3:
                             Environment.Exit(0);

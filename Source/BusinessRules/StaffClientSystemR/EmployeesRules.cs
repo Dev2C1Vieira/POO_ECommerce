@@ -247,6 +247,31 @@ namespace StaffClientSystemR
             }
         }
 
+        /// <summary>
+        /// Method that allows the employee to login to its account!
+        /// </summary>
+        /// <param name="workEmail"></param>
+        /// <param name="password"></param>
+        /// <param name="employeeName"></param>
+        /// <returns></returns>
+        /// <exception cref="EmployeeException"></exception>
+        /// <exception cref="Exception"></exception>
+        public static bool LoginEmployee(string workEmail, string password, out string employeeName)
+        {
+            try
+            {
+                return Employees.LoginEmployee(workEmail, password, out employeeName);
+            }
+            catch (EmployeeException EE)
+            {
+                throw new EmployeeException(EE.Message);
+            }
+            catch (Exception E)
+            {
+                throw new Exception("\nFailed to login to employee account!" + "-" + E.Message);
+            }
+        }
+
         #region File Management
 
         /// <summary>

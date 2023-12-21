@@ -407,6 +407,32 @@ namespace StaffClientSystems
             return false;
         }
 
+        /// <summary>
+        /// Method that allows the employee to login to its account!
+        /// </summary>
+        /// <param name="workEmail"></param>
+        /// <param name="password"></param>
+        /// <param name="managerName"></param>
+        /// <returns></returns>
+        /// <exception cref="ManagerException"></exception>
+        public static bool LoginManager(string workEmail, string password, out string managerName)
+        {
+            if (IsManagersListEmpty() == true)
+                throw new ManagerException("\nThere isn't any manager with that credentials. ... Managers list is empty!");
+
+            foreach (Manager manager in ManagersList)
+            {
+                if ((manager.WorkEmail == workEmail) && (manager.Password == password) && (manager.VisibilityStatus == true))
+                {
+                    managerName = manager.Name;
+                    return true;
+                }
+                else continue;
+            }
+            managerName = string.Empty;
+            return false;
+        }
+
         #endregion
 
         #region FileManagement

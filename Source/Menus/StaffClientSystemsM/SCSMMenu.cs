@@ -82,7 +82,6 @@ namespace StaffClientSystemsM
                             break;
                         case 2:
                             EmployeesMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
-                            Pause();
                             break;
                         case 3:
                             Console.WriteLine("Not working yet!");

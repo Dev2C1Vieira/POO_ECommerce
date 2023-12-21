@@ -14,6 +14,7 @@ using System;
 using ECMenus;
 using ProductCatalogR;
 using StaffClientSystemR;
+using StaffClientSystem.Staff;
 
 namespace ECommerce
 {
@@ -77,6 +78,7 @@ namespace ECommerce
 
             ClientsRules.LoadClientsDataBin(clientsFN);
             EmployeesRules.LoadEmployeesDataBin(employeesFN);
+            ManagersRules.LoadManagersDataBin(managersFN);
 
             #endregion
 

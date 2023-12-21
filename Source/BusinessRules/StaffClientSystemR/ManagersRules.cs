@@ -246,6 +246,31 @@ namespace StaffClientSystemR
             }
         }
 
+        /// <summary>
+        /// Method that allows the employee to login to its account!
+        /// </summary>
+        /// <param name="workEmail"></param>
+        /// <param name="password"></param>
+        /// <param name="managerName"></param>
+        /// <returns></returns>
+        /// <exception cref="ManagerException"></exception>
+        /// <exception cref="Exception"></exception>
+        public static bool LoginManager(string workEmail, string password, out string managerName)
+        {
+            try
+            {
+                return Managers.LoginManager(workEmail, password, out managerName);
+            }
+            catch (ManagerException ME)
+            {
+                throw new ManagerException(ME.Message);
+            }
+            catch (Exception E)
+            {
+                throw new Exception("\nFailed to login to manager account!" + "-" + E.Message);
+            }
+        }
+
         #region File Management
 
         /// <summary>
