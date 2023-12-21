@@ -8,6 +8,7 @@
  * 
  * */
 
+using ProductCatalog.Interfaces;
 using System;
 
 namespace ProductCatalog
@@ -22,7 +23,7 @@ namespace ProductCatalog
     /// <example></example>
 
     [Serializable]
-    public class Brand : IComparable<Brand>
+    public class Brand : IBrand, IComparable<Brand>
     {
         #region Attributes
 
@@ -207,9 +208,9 @@ namespace ProductCatalog
         #region OtherMethods
 
         /// <summary>
-        /// Method that orders based on the cost of the product.
+        /// Method that orders based on the fundation date of the brand.
         /// </summary>
-        /// <param name="product"></param>
+        /// <param name="brand"></param>
         /// <returns></returns>
         public int CompareTo(Brand brand)
         {
@@ -222,7 +223,5 @@ namespace ProductCatalog
         #endregion
 
         #endregion
-
-        //Still in progress...
     }
 }

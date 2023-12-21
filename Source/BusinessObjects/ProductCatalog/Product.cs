@@ -8,6 +8,7 @@
  * 
  * */
 
+using ProductCatalog.Interfaces;
 using System;
 
 namespace ProductCatalog
@@ -22,7 +23,7 @@ namespace ProductCatalog
     /// <example></example>
 
     [Serializable]
-    public class Product : IComparable<Product>
+    public class Product : IProduct, IComparable<Product>
     {
         #region Attributes
 

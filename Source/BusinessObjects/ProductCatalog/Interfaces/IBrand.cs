@@ -1,12 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProductCatalog.Interfaces
 {
-    internal interface IBrand
+    public interface IBrand
     {
+        /// <summary>
+        /// Creation of the properties
+        /// </summary>
+        int BrandID { get; set; }
+
+        string BrandName { get; set; }
+
+        string BrandDescription { get; set; }
+
+        string OriginCountry { get; set; }
+
+        DateTime FundationDate { get; set; }
+
+        bool VisibilityStatus { get; set; }
+
+        /// <summary>
+        /// Method that orders based on the fundation date of the brand.
+        /// </summary>
+        /// <param name="brand"></param>
+        /// <returns></returns>
+        int CompareTo(Brand brand);
     }
 }

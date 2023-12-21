@@ -1,12 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProductCatalog.Interfaces
 {
-    internal interface ICategory
+    public interface ICategory
     {
+        /// <summary>
+        /// Creation of the properties
+        /// </summary>
+        int CategoryID { get; set; }
+
+        string CategoryName { get; set; }
+
+        string CategoryDescription { get; set; }
+
+        DateTime CreationDate { get; set; }
+
+        int BrandID { get; set; }
+
+        bool VisibilityStatus { get; set; }
+
+        /// <summary>
+        /// Method that orders based on the description of the category.
+        /// </summary>
+        /// <param name="category"></param>
+        /// <returns></returns>
+        int CompareTo(Category category);
     }
 }

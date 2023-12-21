@@ -8,6 +8,7 @@
  * 
  * */
 
+using ProductCatalog.Interfaces;
 using System;
 
 namespace ProductCatalog
@@ -22,7 +23,7 @@ namespace ProductCatalog
     /// <example></example>
 
     [Serializable]
-    public class Category : IComparable<Category>
+    public class Category : ICategory, IComparable<Category>
     {
         #region Attributes
 
@@ -111,6 +112,15 @@ namespace ProductCatalog
         }
 
         /// <summary>
+        /// Property related to the 'brandID' attribute
+        /// </summary>
+        public int BrandID
+        {
+            get { return brandID; }
+            set { brandID = value; }
+        }
+
+        /// <summary>
         /// Property related to the 'visibilityStatus' attribute
         /// </summary>
         public bool VisibilityStatus
@@ -194,9 +204,9 @@ namespace ProductCatalog
         #region OtherMethods
 
         /// <summary>
-        /// Method that orders based on the cost of the product.
+        /// Method that orders based on the description of the category.
         /// </summary>
-        /// <param name="product"></param>
+        /// <param name="category"></param>
         /// <returns></returns>
         public int CompareTo(Category category)
         {
