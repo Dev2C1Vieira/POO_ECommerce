@@ -1,9 +1,9 @@
 ﻿/*
- * <copyright file = "SCSMenu.cs" company = "IPCA">
+ * <copyright file = "REMenu.cs" company = "IPCA">
  * Copyright (c) 2023 All Rights Reserved
  * </copyright>
  * <author> Pedro Vieira </author>
- * <date> 12/19/2023 2:53:14 PM </date>
+ * <date> 12/23/2023 8:31:33 PM </date>
  * <description></description>
  * 
  * */
@@ -13,7 +13,7 @@ using System;
 // External
 using StaffMenu;
 
-namespace StaffClientSystemsM
+namespace RevenueEnginesM
 {
     /// <summary>
     /// Purpose: [Write the purpose of the class!]
@@ -23,7 +23,7 @@ namespace StaffClientSystemsM
     /// </summary>
     /// <remarks></remarks>
     /// <example></example>
-    public class SCSMenu
+    public class REMenu
     {
         #region Methods
 
@@ -49,15 +49,6 @@ namespace StaffClientSystemsM
             Console.ReadKey(true);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="productsFN"></param>
-        /// <param name="categoriesFN"></param>
-        /// <param name="brandsFN"></param>
-        /// <param name="clientsFN"></param>
-        /// <param name="employeesFN"></param>
-        /// <param name="managersFN"></param>
         public static void Menu(string productsFN, string categoriesFN, string brandsFN, string clientsFN, string employeesFN, string managersFN)
         {
             int op = 1;
@@ -76,8 +67,8 @@ namespace StaffClientSystemsM
                         }
                         Console.WriteLine("\nHere you need to choose one of the options!");
                         Console.WriteLine("\n  +-------------------------------------------+");
-                        Console.WriteLine("  |  1. Manage Clients.                       |");
-                        Console.WriteLine("  |  2. Manage my information!                |");
+                        Console.WriteLine("  |  1. Manage Stock.                         |");
+                        Console.WriteLine("  |  2. Manage Sales!                         |");
                         Console.WriteLine("  |  3. Back!                                 |");
                         Console.WriteLine("  +-------------------------------------------+");
                         Console.Write("\nOption: ");
@@ -87,7 +78,7 @@ namespace StaffClientSystemsM
                     switch (op)
                     {
                         case 1:
-                            ClientsMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                            StocksMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
                             break;
                         case 2:
                             Console.WriteLine("Not working yet!");

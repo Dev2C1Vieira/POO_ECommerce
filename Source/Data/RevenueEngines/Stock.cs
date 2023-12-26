@@ -15,7 +15,7 @@ using System.Collections.Generic;
 using ProductCatalog;
 using RevenueEngineE;
 
-namespace RevenueEngine
+namespace RevenueEngines
 {
     /// <summary>
     /// Purpose: [Write the purpose of the class!]
@@ -172,7 +172,24 @@ namespace RevenueEngine
             return true;
         }
 
-        // Still in progress
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="StockException"></exception>
+        public static Dictionary<Product, int> ReturnProductsInStock()
+        {
+            if (IsProductsInStockEmpty() == true)
+                throw new StockException("Unable to return the products in stock ... Stock is empty!");
+
+            Dictionary<Product, int> dictionaryAux = new Dictionary<Product, int>();
+
+            foreach (var item in ProductsInStock)
+            {
+                dictionaryAux.Add(item.Key, item.Value);
+            }
+            return dictionaryAux;
+        }
 
         #endregion
 

@@ -1,4 +1,4 @@
-﻿/*
+﻿    /*
  * <copyright file = "Aula_1___Turno_2.cs" company = "IPCA">
  * Copyright (c) 2023 All Rights Reserved
  * </copyright>
@@ -9,12 +9,12 @@
  * */
 
 using ProductCatalog;
-using RevenueEngine.Interfaces;
+using RevenueEngines.Interfaces;
 using System;
 using System.Collections.Generic;
 
 
-namespace RevenueEngine
+namespace RevenueEngines
 {
     /// <summary>
     /// Purpose: [Write the purpose of the class!]
