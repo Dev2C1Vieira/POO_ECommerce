@@ -14,7 +14,7 @@ using System;
 using ECMenus;
 using ProductCatalogR;
 using StaffClientSystemR;
-using StaffClientSystem.Staff;
+using RevenueEngineR;
 
 namespace ECommerce
 {
@@ -59,7 +59,14 @@ namespace ECommerce
 
             #endregion
 
-            #region RevenueEngines
+            #region RevenueEngine
+
+            string stockFN = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\RevenueEngine\\StockList.bin";
+            //string clientsFN = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\RevenueEngine\\StockList.bin";
+
+            string salesFN = "C:\\Users\\pedro\\OneDrive\\Ambiente de Trabalho\\Projeto_POO_25626\\Source\\Files\\RevenueEngine\\SalesList.bin";
+            //string clientsFN = "C:\\Users\\pedro\\Desktop\\Projeto_POO_25626\\Source\\Files\\RevenueEngine\\SalesList.bin";
+
             #endregion
 
             #endregion
@@ -82,12 +89,16 @@ namespace ECommerce
 
             #endregion
 
+            #region LoadDataRevenueEngine
+
+            StockRules.LoadStockDataBin(stockFN);
+            //SalesRules.LoadSalesDataBin(salesFN);
+
             #endregion
 
-            MainMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+            #endregion
 
-
-
+            MainMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
         }
     }
 }

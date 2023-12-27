@@ -9,13 +9,15 @@
  * */
 
 using System;
+using System.IO;
 using System.Diagnostics;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 // External
 using ProductCatalog;
 using RevenueEngines;
 using RevenueEngineE;
-using System.Collections.Generic;
 
 namespace RevenueEngineR
 {
@@ -30,6 +32,8 @@ namespace RevenueEngineR
     public class StockRules
     {
         #region Methods
+
+        #region ManagingStockMethods
 
         /// <summary>
         /// 
@@ -181,6 +185,78 @@ namespace RevenueEngineR
                 throw new Exception("\nFailed to return products in stock!" + "-" + E.Message);
             }
         }
+
+        public static int ReturnAmountProductsInStock()
+        {
+            try
+            {
+                return Stock.ReturnAmountProductsInStock();
+            }
+            catch (Exception E)
+            {
+                throw new Exception("\nFailed to return products in stock!" + "-" + E.Message);
+            }
+        }
+
+        #endregion
+
+        #region File Management
+
+        /// <summary>
+        /// Method that loads the stock data from a file into the stock.
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="SerializationException"></exception>
+        /// <exception cref="IOException"></exception>
+        /// <exception cref="Exception"></exception>
+        public static bool LoadStockDataBin(string fileName)
+        {
+            try
+            {
+                return Stock.LoadStockDataBin(fileName);
+            }
+            catch (SerializationException SE)
+            {
+                throw new SerializationException("\nError serializing stock data!" + SE.Message);
+            }
+            catch (IOException IOE)
+            {
+                throw new IOException("\nIO error when trying to save stock data!" + IOE.Message);
+            }
+            catch (Exception E)
+            {
+                throw new Exception("\nUnable to load stock data from file!" + E.Message);
+            }
+        }
+
+        /// <summary>
+        /// Method that saves the stock data from stock into a file.
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="SerializationException"></exception>
+        /// <exception cref="IOException"></exception>
+        /// <exception cref="Exception"></exception>
+        public static bool SaveStockDataBin(string fileName)
+        {
+            try
+            {
+                return Stock.SaveStockDataBin(fileName);
+            }
+            catch (SerializationException SE)
+            {
+                throw new SerializationException("\nError serializing stock data!" + SE.Message);
+            }
+            catch (IOException IOE)
+            {
+                throw new IOException("\nIO error when trying to save stock data!" + IOE.Message);
+            }
+            catch (Exception E)
+            {
+                throw new Exception("\nUnable to save the data in the file!" + E.Message);
+            }
+        }
+
+        #endregion
 
         #endregion
     }

@@ -61,7 +61,8 @@ namespace StaffMenu
         /// <param name="clientsFN"></param>
         /// <param name="employeesFN"></param>
         /// <param name="managersFN"></param>
-        public static void LoginMenu(string productsFN, string categoriesFN, string brandsFN, string clientsFN, string employeesFN, string managersFN)
+        public static void LoginMenu(string productsFN, string categoriesFN, string brandsFN, string clientsFN,
+            string employeesFN, string managersFN, string stockFN, string salesFN)
         {
             char op;
             string workEmail, password, name;
@@ -96,18 +97,18 @@ namespace StaffMenu
                         {
                             if (op == 'y')
                             { // Compare first character of op with 'y'
-                                LoginMenu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                                LoginMenu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
                             }
                             else
                             {
-                                MainMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                                MainMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
                             }
                         }
                     } while ((!(op == 'y')) && (!(op == 'n')));
                 }
                 else
                 {
-                    Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                    Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
                 }
             }
         }
@@ -122,7 +123,8 @@ namespace StaffMenu
         /// <param name="clientsFN"></param>
         /// <param name="employeesFN"></param>
         /// <param name="managersFN"></param>
-        public static void Menu(string productsFN, string categoriesFN, string brandsFN, string clientsFN, string employeesFN, string managersFN)
+        public static void Menu(string productsFN, string categoriesFN, string brandsFN, string clientsFN,
+            string employeesFN, string managersFN, string stockFN, string salesFN)
         {
             int op = 1;
 
@@ -152,16 +154,16 @@ namespace StaffMenu
                     switch (op)
                     {
                         case 1:
-                            PCMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                            PCMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
                             break;
                         case 2:
-                            SCSMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                            SCSMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
                             break;
                         case 3:
                             // Menu
                             break;
                         case 4:
-                            MainMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                            MainMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
                             break;
                     }
                 }
@@ -178,7 +180,7 @@ namespace StaffMenu
             }
             finally
             {
-                Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
             }
         }
 

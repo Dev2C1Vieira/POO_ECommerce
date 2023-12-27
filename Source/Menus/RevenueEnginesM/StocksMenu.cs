@@ -14,6 +14,7 @@ using System.Collections.Generic;
 // External
 using ProductCatalog;
 using RevenueEngineR;
+using RevenueEngineIO;
 using ProductCatalogR;
 
 namespace RevenueEnginesM
@@ -56,9 +57,10 @@ namespace RevenueEnginesM
         /// 
         /// </summary>
         /// <param name="fileName"></param>
-        public static void Menu(string productsFN, string categoriesFN, string brandsFN, string clientsFN, string employeesFN, string managersFN)
+        public static void Menu(string productsFN, string categoriesFN, string brandsFN, string clientsFN, 
+            string employeesFN, string managersFN, string stockFN, string salesFN)
         {
-            int op = 1, field, clientID;
+            int op = 1, productID, quantity;
             bool result;
 
             try
@@ -95,96 +97,80 @@ namespace RevenueEnginesM
                             Console.WriteLine("|  CODE  |  NAME  |  GENDER  |  DATE OF BIRTH  |  POSTAL CODE  |  ADDRESS  |  PHONE NUMBER  |  EMAIL  |");
                             Console.WriteLine("+-----------------------------------------------------------------------------------------------------+");
                             listingStock = StockRules.ReturnProductsInStock();
-                            ClientsIO.ListClientsInformation(listingClients);
+                            StockIO.ListProductsInStockInformation(listingStock);
                             Console.WriteLine("+-----------------------------------------------------------------------------------------------------+");
-                            Console.WriteLine($"\n\nTotal sum of accessible records: {ClientsRules.ReturnAmountListRecords()}");
+                            Console.WriteLine($"\n\nTotal sum of accessible records: {StockRules.ReturnAmountProductsInStock()}");
                             Pause();
                             break;
                         case 2:
-                            Console.WriteLine("\nLets Insert new Client!");
+                            Console.WriteLine("\nLets add new product to Stock!");
 
-                            Client client = new Client();
-                            client = ClientsIO.GetNewClientInformation(client);
+                            productID = StockIO.GetNewStockInformation(out quantity);
 
-                            result = ClientsRules.InsertClient(client);
+                            result = StockRules.AddProductToStock(ProductsRules.ReturnProductFromID(productID), quantity);
 
                             if (result == true)
-                                Console.WriteLine("\nNew client inserted successfully!");
+                                Console.WriteLine("\nNew product added to stock successfully!");
                             else
                             {
-                                Console.WriteLine("\nUnable to add new client!");
+                                Console.WriteLine("\nUnable to add new product to stock!");
                             }
 
-                            ClientsRules.SaveClientsDataBin(clientsFN);
+                            StockRules.SaveStockDataBin(stockFN);
 
                             Pause();
                             break;
                         case 3:
-                            Console.WriteLine("\nLets Update a Client!");
+                            Console.WriteLine("\nLets Remove product from Stock!");
 
-                            clientID = ClientsIO.GetClientID();
+                            productID = StockIO.GetProductID();
 
-                            if (ClientsRules.IsClientIDAvailable(clientID) == false)
-                            {
-                                Console.WriteLine("\nClient does not exist! ... Please enter an ID of an existing client.");
-                                Pause();
-                                Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
-                            }
-
-                            Clear();
-
-                            //
-                            Console.WriteLine("\nChoose which field you want to change:");
-
-                            Console.WriteLine("\n  +-------------------------------------------+");
-                            Console.WriteLine("  |  1. Update client Name.                   |");
-                            Console.WriteLine("  |  2. Update client Gender.                 |");
-                            Console.WriteLine("  |  3. Update client Date of Birth.          |");
-                            Console.WriteLine("  |  4. Update client Postal Code.            |");
-                            Console.WriteLine("  |  5. Update client Address.                |");
-                            Console.WriteLine("  |  6. Update client Phone Number.           |");
-                            Console.WriteLine("  |  7. Update client Email.                  |");
-                            Console.WriteLine("  |  8. Back!                                |");
-                            Console.WriteLine("  +-------------------------------------------+");
-                            Console.Write("\nOption: ");
-                            field = int.Parse(Console.ReadLine());
-
-                            if (field == 8) { Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN); }
-
-                            Clear();
-
-                            string attribute = ClientsIO.GetAttributeToUpdate(field);
-
-                            result = ClientsRules.UpdateClient(field, attribute, clientID);
+                            result = StockRules.RemoveProductFromStock(ProductsRules.ReturnProductFromID(productID));
                             if (result == true)
-                                Console.WriteLine("\nClient was successfully updated!");
+                                Console.WriteLine("\nProduct was successfully removed from Stock!");
                             else
-                                Console.WriteLine("\nUnable to update the client!");
+                                Console.WriteLine("\nUnable to remove the product from Stock!");
 
-                            ClientsRules.SaveClientsDataBin(clientsFN);
+                            StockRules.SaveStockDataBin(stockFN);
 
                             Pause();
                             break;
                         case 4:
-                            Console.WriteLine("\nLets Remove a Client!");
+                            Console.WriteLine("\nLets add stock to product!");
 
-                            clientID = ClientsIO.GetClientID();
+                            productID = StockIO.GetNewStockInformation(out quantity);
 
-                            result = ClientsRules.RemoveClient(clientID);
+                            result = StockRules.AddStockToProduct(ProductsRules.ReturnProductFromID(productID), quantity);
+
                             if (result == true)
-                                Console.WriteLine("\nClient was successfully removed!");
+                                Console.WriteLine("\nStock added successfully to product!");
                             else
-                                Console.WriteLine("\nUnable to remove the client!");
+                            {
+                                Console.WriteLine("\nUnable to add stock to product!");
+                            }
 
-                            ClientsRules.SaveClientsDataBin(clientsFN);
+                            StockRules.SaveStockDataBin(stockFN);
 
                             Pause();
                             break;
                         case 5:
-                            LoopDisplayHistocicMenu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                            Console.WriteLine("\nLets stock from product!");
+
+                             productID = StockIO.GetNewStockInformation(out quantity);
+
+                            result = StockRules.RemoveStockFromProduct(ProductsRules.ReturnProductFromID(productID), quantity);
+
+                            if (result == true)
+                                Console.WriteLine("\nStock was successfully removed from the product!");
+                            else
+                                Console.WriteLine("\nUnable to remove stock from product!");
+
+                            StockRules.SaveStockDataBin(stockFN);
+
+                            Pause();
                             break;
                         case 6:
-                            REMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                            REMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
                             break;
                     }
                 }
@@ -201,7 +187,7 @@ namespace RevenueEnginesM
             }
             finally
             {
-                Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
             }
         }
 

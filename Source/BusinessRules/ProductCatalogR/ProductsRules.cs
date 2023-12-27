@@ -80,6 +80,29 @@ namespace ProductCatalogR
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="productID"></param>
+        /// <returns></returns>
+        /// <exception cref="ProductException"></exception>
+        /// <exception cref="Exception"></exception>
+        public static Product ReturnProductFromID(int productID)
+        {
+            try
+            {
+                return Products.ReturnProductFromID(productID);
+            }
+            catch (ProductException PE)
+            {
+                throw new ProductException("\nFailure of Business Rules!" + "-" + PE.Message);
+            }
+            catch (Exception E)
+            {
+                throw new Exception("\nUnable to return product from ID!" + "-" + E.Message);
+            }
+        }
+
+        /// <summary>
         /// Method that checks, before inserting the product, whether it respects business rules.
         /// </summary>
         /// <param name="produto"></param>

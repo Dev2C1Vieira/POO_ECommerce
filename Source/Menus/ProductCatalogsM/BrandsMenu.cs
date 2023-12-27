@@ -73,7 +73,8 @@ namespace ProductCatalogsM
         /// <summary>
         /// 
         /// </summary>
-        public static void LoopDisplayHistocicMenu(string productsFN, string categoriesFN, string brandsFN, string clientsFN, string employeesFN, string managersFN)
+        public static void LoopDisplayHistocicMenu(string productsFN, string categoriesFN, string brandsFN, string clientsFN,
+            string employeesFN, string managersFN, string stockFN, string salesFN)
         {
             int brandID, op;
             bool result;
@@ -88,7 +89,7 @@ namespace ProductCatalogsM
                     op = int.Parse(Console.ReadLine());
                     if (op == 3)
                     {
-                        Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                        Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
                     }
 
                     if (op < 1 || op > 3)
@@ -140,7 +141,8 @@ namespace ProductCatalogsM
         /// <summary>
         /// 
         /// </summary>
-        public static void Menu(string productsFN, string categoriesFN, string brandsFN, string clientsFN, string employeesFN, string managersFN)
+        public static void Menu(string productsFN, string categoriesFN, string brandsFN, string clientsFN,
+            string employeesFN, string managersFN, string stockFN, string salesFN)
         {
             int op = 1, field, brandID;
             bool result;
@@ -212,7 +214,7 @@ namespace ProductCatalogsM
                             {
                                 Console.WriteLine("\nBrand does not exist! ... Please enter an ID of an existing brand.");
                                 Pause();
-                                Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                                Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
                             }
 
                             Clear();
@@ -230,7 +232,7 @@ namespace ProductCatalogsM
                             Console.Write("\nOption: ");
                             field = int.Parse(Console.ReadLine());
 
-                            if (field == 7) { Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN); }
+                            if (field == 7) { Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN); }
 
                             Clear();
 
@@ -262,10 +264,10 @@ namespace ProductCatalogsM
                             Pause();
                             break;
                         case 5:
-                            LoopDisplayHistocicMenu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                            LoopDisplayHistocicMenu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
                             break;
                         case 6:
-                            PCMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                            PCMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
                             break;
                     }
                 }
@@ -282,7 +284,7 @@ namespace ProductCatalogsM
             }
             finally
             {
-                Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
             }
         }
 

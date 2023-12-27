@@ -80,7 +80,8 @@ namespace StaffClientSystemsM
         /// <param name="brandsFN"></param>
         /// <param name="clientsFN"></param>
         /// <param name="employeesFN"></param>
-        public static void LoopDisplayHistocicMenu(string productsFN, string categoriesFN, string brandsFN, string clientsFN, string employeesFN, string managersFN)
+        public static void LoopDisplayHistocicMenu(string productsFN, string categoriesFN, string brandsFN, string clientsFN,
+            string employeesFN, string managersFN, string stockFN, string salesFN)
         {
             int employeeID, op;
             bool result;
@@ -95,7 +96,7 @@ namespace StaffClientSystemsM
                     op = int.Parse(Console.ReadLine());
                     if (op == 3)
                     {
-                        Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                        Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
                     }
 
                     if (op < 1 || op > 3)
@@ -148,7 +149,8 @@ namespace StaffClientSystemsM
         /// 
         /// </summary>
         /// <param name="fileName"></param>
-        public static void Menu(string productsFN, string categoriesFN, string brandsFN, string clientsFN, string employeesFN, string managersFN)
+        public static void Menu(string productsFN, string categoriesFN, string brandsFN, string clientsFN,
+            string employeesFN, string managersFN, string stockFN, string salesFN)
         {
             int op = 1, field, employeeID;
             bool result;
@@ -220,7 +222,7 @@ namespace StaffClientSystemsM
                             {
                                 Console.WriteLine("\nEmployee does not exist! ... Please enter an ID of an existing employee.");
                                 Pause();
-                                Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                                Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
                             }
 
                             Clear();
@@ -243,7 +245,7 @@ namespace StaffClientSystemsM
                             Console.Write("\nOption: ");
                             field = int.Parse(Console.ReadLine());
 
-                            if (field == 10) { Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN); }
+                            if (field == 10) { Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN); }
 
                             Clear();
 
@@ -275,10 +277,10 @@ namespace StaffClientSystemsM
                             Pause();
                             break;
                         case 5:
-                            LoopDisplayHistocicMenu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                            LoopDisplayHistocicMenu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
                             break;
                         case 6:
-                            SCSMMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                            SCSMMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
                             break;
                     }
                 }
@@ -295,7 +297,7 @@ namespace StaffClientSystemsM
             }
             finally
             {
-                Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
             }
         }
 

@@ -48,7 +48,8 @@ namespace StaffClientSystemsM
             Console.ReadKey(true);
         }
 
-        public static void Menu(string productsFN, string categoriesFN, string brandsFN, string clientsFN, string employeesFN, string managersFN)
+        public static void Menu(string productsFN, string categoriesFN, string brandsFN, string clientsFN,
+            string employeesFN, string managersFN, string stockFN, string salesFN)
         {
             int op = 1;
 
@@ -78,17 +79,17 @@ namespace StaffClientSystemsM
                     switch (op)
                     {
                         case 1:
-                            ClientsMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                            ClientsMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
                             break;
                         case 2:
-                            EmployeesMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                            EmployeesMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
                             break;
                         case 3:
                             Console.WriteLine("Not working yet!");
                             Pause();
                             break;
                         case 4:
-                            EmployeeMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                            EmployeeMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
                             break;
                     }
                 }
@@ -105,7 +106,7 @@ namespace StaffClientSystemsM
             }
             finally
             {
-                Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
             }
         }
 

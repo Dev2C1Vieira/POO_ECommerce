@@ -49,7 +49,7 @@ namespace RevenueEnginesM
             Console.ReadKey(true);
         }
 
-        public static void Menu(string productsFN, string categoriesFN, string brandsFN, string clientsFN, string employeesFN, string managersFN)
+        public static void Menu(string productsFN, string categoriesFN, string brandsFN, string clientsFN, string employeesFN, string managersFN, string stockFN, string salesFN)
         {
             int op = 1;
 
@@ -78,14 +78,14 @@ namespace RevenueEnginesM
                     switch (op)
                     {
                         case 1:
-                            StocksMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                            StocksMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
                             break;
                         case 2:
                             Console.WriteLine("Not working yet!");
                             Pause();
                             break;
                         case 3:
-                            EmployeeMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                            EmployeeMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
                             break;
                     }
                 }
@@ -102,7 +102,7 @@ namespace RevenueEnginesM
             }
             finally
             {
-                Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN);
+                Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
             }
         }
 

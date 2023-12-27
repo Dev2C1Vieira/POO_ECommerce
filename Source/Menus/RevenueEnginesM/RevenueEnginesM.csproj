@@ -40,6 +40,9 @@
     <Reference Include="RevenueEngine">
       <HintPath>..\..\BusinessObjects\RevenueEngine\bin\Debug\RevenueEngine.dll</HintPath>
     </Reference>
+    <Reference Include="RevenueEngineIO">
+      <HintPath>..\..\InputOutput\RevenueEngineIO\bin\Debug\RevenueEngineIO.dll</HintPath>
+    </Reference>
     <Reference Include="RevenueEngineR">
       <HintPath>..\..\BusinessRules\RevenueEngineR\bin\Debug\RevenueEngineR.dll</HintPath>
     </Reference>

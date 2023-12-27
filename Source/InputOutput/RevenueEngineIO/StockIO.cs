@@ -38,10 +38,9 @@ namespace RevenueEngineIO
         {
             Dictionary<Product, int> newStockInfo = new Dictionary<Product, int>();
 
-            Console.Write("\nEnter product Name: ");
-            int productID = int.Parse(Console.ReadLine());
+            int productID = GetProductID();
 
-            Console.Write("\nEnter product Description: ");
+            Console.Write("\nEnter Quantiry in stock: ");
             quantity = int.Parse(Console.ReadLine());
 
             return productID;
@@ -52,35 +51,17 @@ namespace RevenueEngineIO
         /// </summary>
         /// <param name="productsList"></param>
         /// <returns></returns>
-        public static bool ListProductsInformation(List<Product> productsList)
+        public static bool ListProductsInStockInformation(Dictionary<Product, int> productsInStock)
         {
-            if (productsList.Count == 0)
+            if (productsInStock.Count == 0)
             {
                 Console.WriteLine("|     The products list is empty!     |");
                 return false;
             }
-            foreach (Product po in productsList)
+            foreach (var item in productsInStock)
             {
-                Console.WriteLine($"|  {po.ProductID}  |  {po.ProductName}  |  {po.ProductDescription}  |  {po.Price.ToString("F2")}  |  {po.LauchDate.ToShortDateString()}  |  {po.WarrantyDuration}  |  {po.AmountInStock}  |");
-            }
-            return true;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="productsList"></param>
-        /// <returns></returns>
-        public static bool ListHistoric(List<Product> productsList)
-        {
-            if (productsList.Count == 0)
-            {
-                Console.WriteLine("|     The historic is empty!     |");
-                return false;
-            }
-            foreach (Product po in productsList)
-            {
-                Console.WriteLine($"|  {po.ProductID}  |  {po.ProductName}  |  {po.ProductDescription}  |  {po.Price.ToString("F2")}  |  {po.LauchDate.ToShortDateString()}  |  {po.WarrantyDuration}  |  {po.AmountInStock}  |");
+                Console.WriteLine($"|  {item.Key.ProductID}  |  {item.Key.ProductName}  |  {item.Key.ProductDescription}  |" +
+                    $"  {item.Key.Price.ToString("F2")}  |  {item.Value}  |");
             }
             return true;
         }
@@ -95,48 +76,6 @@ namespace RevenueEngineIO
             int productID = int.Parse(Console.ReadLine());
 
             return productID;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="fieldToUpdate"></param>
-        /// <returns></returns>
-        public static string GetAttributeToUpdate(int fieldToUpdate)
-        {
-            string newAttribute = string.Empty;
-            if (fieldToUpdate == 1)
-            {
-                Console.Write("\nEnter product new Name: ");
-                newAttribute = Console.ReadLine();
-            }
-            else if (fieldToUpdate == 2)
-            {
-                Console.Write("\nEnter product new Description: ");
-                newAttribute = Console.ReadLine();
-            }
-            else if (fieldToUpdate == 3)
-            {
-                Console.Write("\nEnter product new Price: ");
-                newAttribute = Console.ReadLine();
-            }
-            else if (fieldToUpdate == 4)
-            {
-                Console.Write("\nEnter product new Launch Date (dd-MM-yyyy): ");
-                newAttribute = Console.ReadLine();
-            }
-            else if (fieldToUpdate == 5)
-            {
-                Console.Write("\nEnter product new Warranty Duration: ");
-                newAttribute = Console.ReadLine();
-            }
-            else if (fieldToUpdate == 6)
-            {
-                Console.Write("\nEnter product new Amount in Stock: ");
-                newAttribute = Console.ReadLine();
-            }
-
-            return newAttribute;
         }
 
         #endregion

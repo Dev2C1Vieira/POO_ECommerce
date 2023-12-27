@@ -10,6 +10,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
+
+using System.Runtime.Serialization.Formatters.Binary;
+
 
 // External
 using ProductCatalog;
@@ -62,6 +66,8 @@ namespace RevenueEngines
         #endregion
 
         #region OtherMethods
+
+        #region ManagingStockMethods
 
         /// <summary>
         /// 
@@ -130,6 +136,22 @@ namespace RevenueEngines
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="product"></param>
+        /// <param name="quantity"></param>
+        /// <returns></returns>
+        /// <exception cref="StockException"></exception>
+        public static bool AddStockToProduct(Product product, int quantity)
+        {
+            if (IsProductInStock(product) == true)
+                throw new StockException("Product is not in stock at the moment!");
+
+            ProductsInStock[product] += quantity;
+            return true;
+        }
+
         //public static bool AddStockAll(int quantity)
         //{
         //    if (IsProductsInStockEmpty() == true)
@@ -141,16 +163,6 @@ namespace RevenueEngines
         //    }
         //    return true;
         //}
-
-        public static bool AddStockToProduct(Product product, int quantity)
-        {
-            if (IsProductInStock(product) == true)
-                throw new StockException("Product is not in stock at the moment!");
-
-            ProductsInStock[product] += quantity;
-            return true;
-        }
-
         //public static bool RemoveStockAll(int quantity)
         //{
         //    if (IsProductsInStockEmpty() == true)
@@ -163,13 +175,28 @@ namespace RevenueEngines
         //    return true;
         //}
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="product"></param>
+        /// <param name="quantity"></param>
+        /// <returns></returns>
+        /// <exception cref="StockException"></exception>
         public static bool RemoveStockFromProduct(Product product, int quantity)
         {
-            if (IsProductInStock(product) == true)
+            if (IsProductInStock(product) == false)
                 throw new StockException("Product is not in stock at the moment!");
 
-            ProductsInStock[product] -= quantity;
-            return true;
+            int aux = ProductsInStock[product] - quantity;
+
+            if (aux <= 0)
+                RemoveProductFromStock(product);
+            else
+            {
+                ProductsInStock[product] = aux;
+                return true;
+            }
+            return false;
         }
 
         /// <summary>
@@ -190,6 +217,77 @@ namespace RevenueEngines
             }
             return dictionaryAux;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static int ReturnAmountProductsInStock()
+        {
+            int count = 0;
+
+            if (IsProductsInStockEmpty() == true)
+                return count;
+            else
+            {
+                foreach (var item in ProductsInStock)
+                    count++;
+            }
+            return count;
+        }
+
+        #endregion
+
+        #region FileManagement
+
+        /// <summary>
+        /// Method that loads the stock data from a file into the stock.
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public static bool LoadStockDataBin(string fileName)
+        {
+
+            if (File.Exists(fileName))
+            {
+                using (FileStream fileStream = new FileStream(fileName, FileMode.Open))
+                {
+                    BinaryFormatter formatter = new BinaryFormatter();
+                    Dictionary<Product, int> loadedStock = (Dictionary<Product, int>)formatter.Deserialize(fileStream);
+
+                    foreach (var item in loadedStock)
+                    {
+                        AddProductToStock(item.Key, item.Value);
+                    }
+                    return true;
+                }
+            }
+            else
+                throw new Exception("\nFile doesn't exist!");
+        }
+
+        /// <summary>
+        /// Method that saves the stock data from stock into a file.
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
+        /// <exception cref="StockException"></exception>
+        public static bool SaveStockDataBin(string fileName)
+        {
+            if (IsProductsInStockEmpty() == true)
+                throw new StockException("\nStock is empty!");
+
+            // Cria um FileStream para gravar os dados dos produtos no arquivo
+            using (FileStream fileStream = new FileStream(fileName, FileMode.Create))
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(fileStream, ProductsInStock);
+            }
+            return true;
+        }
+
+        #endregion
 
         #endregion
 
