@@ -77,7 +77,7 @@ namespace ProductCatalog
         /// <param name="brandID"></param>
         /// <param name="visibilityStatus"></param>
         public Product(string productName, string productDescription, double price, DateTime launchDate,
-            int warrantyDuration, int amountInStock, int categoryID, int brandID, bool visibilityStatus)
+            int warrantyDuration, int amountInStock /*, int categoryID, int brandID*/, bool visibilityStatus)
         {
             productID = 0;
             this.productName = productName;

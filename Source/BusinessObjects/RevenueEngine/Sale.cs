@@ -36,11 +36,11 @@ namespace RevenueEngines
         private DateTime dateSale;
         private int productID;
         private int clientID;
-        private int quantidade;
+        private int quantity;
         private bool visibilityStatus;
 
         [NonSerialized]
-        private float totalPrice;
+        private double totalPrice;
 
         //private List<Dictionary<Product, int>>
         // talvez uma implementacao, que me permita efetuar uma venda,
@@ -61,7 +61,9 @@ namespace RevenueEngines
             dateSale = DateTime.Now;
             productID = 0;
             clientID = 0;
+            quantity = 0;
             visibilityStatus = false;
+            totalPrice = 0;
         }
 
         /// <summary>
@@ -70,14 +72,17 @@ namespace RevenueEngines
         /// <param name="dateSale"></param>
         /// <param name="productID"></param>
         /// <param name="clientID"></param>
+        /// <param name="quantity"></param>
         /// <param name="visibilityStatus"></param>
-        public Sale(DateTime dateSale, int productID, int clientID, bool visibilityStatus)
+        public Sale(DateTime dateSale, int productID, int clientID, int quantity, bool visibilityStatus)
         {
             saleID = 0;
             this.dateSale = dateSale;
             this.productID = productID;
             this.clientID = clientID;
+            this.quantity = quantity;
             this.visibilityStatus = visibilityStatus;
+            totalPrice = 0;
         }
 
         #endregion
@@ -121,12 +126,12 @@ namespace RevenueEngines
         }
 
         /// <summary>
-        /// Property related to the 'quantidade' attribute
+        /// Property related to the 'quantity' attribute
         /// </summary>
-        public int Quantidade
+        public int Quantity
         {
-            get { return quantidade; }
-            set { quantidade = value; }
+            get { return quantity; }
+            set { quantity = value; }
         }
 
         /// <summary>
@@ -136,6 +141,15 @@ namespace RevenueEngines
         {
             get { return visibilityStatus; }
             set { visibilityStatus = value; }
+        }
+
+        /// <summary>
+        /// Property related to the 'totalPrice' attribute
+        /// </summary>
+        public double TotalPrice
+        {
+            get { return totalPrice; }
+            set { totalPrice = value; }
         }
 
         #endregion
@@ -152,7 +166,8 @@ namespace RevenueEngines
         {
             if ((left.SaleID == right.SaleID) && (left.DateSale == right.DateSale) 
                 && (left.ProductID == right.ProductID) && (left.ClientID == right.ClientID) 
-                && (left.Quantidade == right.Quantidade) && (left.VisibilityStatus == right.VisibilityStatus))
+                && (left.Quantity == right.Quantity) && (left.VisibilityStatus == right.VisibilityStatus) 
+                && (left.TotalPrice == right.TotalPrice))
                 return (true);
             return (false);
         }
@@ -180,8 +195,8 @@ namespace RevenueEngines
         public override string ToString()
         {
             return (String.Format("Sale ID: {0} - Date Sale: {1} - Product ID: {2} " +
-                "- Client ID: {3} - Quantidade: {4}", SaleID.ToString(), DateSale.ToShortDateString(), 
-                ProductID.ToString(), ClientID. ToString(), Quantidade.ToString()));
+                "- Client ID: {3} - Quantidade: {4} - Total Price: {5}", SaleID.ToString(), DateSale.ToShortDateString(), 
+                ProductID.ToString(), ClientID. ToString(), Quantity.ToString(), TotalPrice.ToString()));
         }
 
         /// <summary>

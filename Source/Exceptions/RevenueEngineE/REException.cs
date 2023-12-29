@@ -33,4 +33,20 @@ namespace RevenueEngineE
         /// <param name="message">Mensagem de erro ou informação relacionada à exceção.</param>
         public StockException(string message) : base(message) { }
     }
+
+    public class SaleException : Exception
+    {
+        /// <summary>
+        /// Construtor padrão sem parâmetros.
+        /// Cria uma instância de SaleException sem uma mensagem específica.
+        /// </summary>
+        public SaleException() { }
+
+        /// <summary>
+        /// Construtor que aceita uma mensagem como parâmetro.
+        /// Cria uma instância de SaleException com uma mensagem específica.
+        /// </summary>
+        /// <param name="message">Mensagem de erro ou informação relacionada à exceção.</param>
+        public SaleException(string message) : base(message) { }
+    }
 }

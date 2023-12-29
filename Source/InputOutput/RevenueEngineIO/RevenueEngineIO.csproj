@@ -34,6 +34,9 @@
     <Reference Include="ProductCatalog">
       <HintPath>..\..\BusinessObjects\ProductCatalog\bin\Debug\ProductCatalog.dll</HintPath>
     </Reference>
+    <Reference Include="RevenueEngine">
+      <HintPath>..\..\BusinessObjects\RevenueEngine\bin\Debug\RevenueEngine.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SalesIO.cs" />
     <Compile Include="StockIO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

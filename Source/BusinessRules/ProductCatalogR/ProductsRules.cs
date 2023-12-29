@@ -42,7 +42,7 @@ namespace ProductCatalogR
             }
             catch (Exception E)
             {
-                throw new Exception("\nFailed to verify if the indicated product ID is available!" + "-" + E.Message);
+                throw new Exception("\nFailed to verify if the indicated product is available!" + "-" + E.Message);
             }
         }
 
@@ -119,7 +119,7 @@ namespace ProductCatalogR
         }
 
         /// <summary>
-        /// 
+        /// Method that returns an object of type Product, using its ID.
         /// </summary>
         /// <param name="productID"></param>
         /// <returns></returns>
@@ -146,6 +146,7 @@ namespace ProductCatalogR
         /// </summary>
         /// <param name="produto"></param>
         /// <returns></returns>
+        /// <exception cref="ProductException"></exception>
         /// <exception cref="Exception"></exception>
         public static bool InsertProduct(Product produto)
         {
@@ -197,6 +198,7 @@ namespace ProductCatalogR
         /// </summary>
         /// <returns></returns>
         /// <exception cref="ProductException"></exception>
+        /// <exception cref="Exception"></exception>
         public static List<Product> ReturnHistoric()
         {
             try
@@ -259,6 +261,7 @@ namespace ProductCatalogR
         /// </summary>
         /// <param name="productID"></param>
         /// <returns></returns>
+        /// <exception cref="ProductException"></exception>
         /// <exception cref="Exception"></exception>
         public static bool RemoveProduct(int productID)
         {
@@ -281,6 +284,7 @@ namespace ProductCatalogR
         /// </summary>
         /// <param name="productID"></param>
         /// <returns></returns>
+        /// <exception cref="ProductException"></exception>
         /// <exception cref="Exception"></exception>
         public static bool RecoverProduct(int productID)
         {
@@ -303,6 +307,7 @@ namespace ProductCatalogR
         /// </summary>
         /// <param name="productID"></param>
         /// <returns></returns>
+        /// <exception cref="ProductException"></exception>
         /// <exception cref="Exception"></exception>
         public static bool DeleteProduct(int productID)
         {

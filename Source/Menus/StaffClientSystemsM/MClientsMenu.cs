@@ -56,14 +56,12 @@ namespace StaffClientSystemsM
         /// </summary>
         public static void DisplayHistocicMenu()
         {
-            List<Client> listingClients = new List<Client>();
             Console.WriteLine("\nTable containing the information of the clients historic.\n");
             // Table Construction
             Console.WriteLine("\n+-----------------------------------------------------------------------------------------------------+");
             Console.WriteLine("|  CODE  |  NAME  |  GENDER  |  DATE OF BIRTH  |  POSTAL CODE  |  ADDRESS  |  PHONE NUMBER  |  EMAIL  |");
             Console.WriteLine("+-----------------------------------------------------------------------------------------------------+");
-            listingClients = ClientsRules.ReturnHistoric();
-            ClientsIO.ListHistoric(listingClients);
+            ClientsIO.ListHistoric(ClientsRules.ReturnHistoric());
             Console.WriteLine("+-----------------------------------------------------------------------------------------------------+");
             Console.WriteLine($"\n\nTotal sum of accessible records: {ClientsRules.ReturnAmountHistoricRecords()}");
             Console.WriteLine("\n+----------------------------------------------------------------------------------------------------+");
@@ -191,14 +189,12 @@ namespace StaffClientSystemsM
                     switch (op)
                     {
                         case 1:
-                            List<Client> listingClients = new List<Client>();
                             Console.WriteLine("\nTable containing the information of the existing clients.\n");
                             // Table Construction
                             Console.WriteLine("\n+-----------------------------------------------------------------------------------------------------+");
                             Console.WriteLine("|  CODE  |  NAME  |  GENDER  |  DATE OF BIRTH  |  POSTAL CODE  |  ADDRESS  |  PHONE NUMBER  |  EMAIL  |");
                             Console.WriteLine("+-----------------------------------------------------------------------------------------------------+");
-                            listingClients = ClientsRules.ReturnClientsList();
-                            ClientsIO.ListClientsInformation(listingClients);
+                            ClientsIO.ListClientsInformation(ClientsRules.ReturnClientsList());
                             Console.WriteLine("+-----------------------------------------------------------------------------------------------------+");
                             Console.WriteLine($"\n\nTotal sum of accessible records: {ClientsRules.ReturnAmountListRecords()}");
                             Pause();

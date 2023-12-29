@@ -34,6 +34,12 @@
     <Reference Include="ProductCatalog">
       <HintPath>..\..\BusinessObjects\ProductCatalog\bin\Debug\ProductCatalog.dll</HintPath>
     </Reference>
+    <Reference Include="ProductCatalogs">
+      <HintPath>..\ProductCatalogs\bin\Debug\ProductCatalogs.dll</HintPath>
+    </Reference>
+    <Reference Include="RevenueEngine">
+      <HintPath>..\..\BusinessObjects\RevenueEngine\bin\Debug\RevenueEngine.dll</HintPath>
+    </Reference>
     <Reference Include="RevenueEngineE">
       <HintPath>..\..\Exceptions\RevenueEngineE\bin\Debug\RevenueEngineE.dll</HintPath>
     </Reference>

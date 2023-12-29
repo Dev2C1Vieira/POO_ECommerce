@@ -65,7 +65,7 @@ namespace ProductCatalogIO
         }
 
         /// <summary>
-        /// 
+        /// Method that lists the products records on the console.
         /// </summary>
         /// <param name="productsList"></param>
         /// <returns></returns>
@@ -84,7 +84,7 @@ namespace ProductCatalogIO
         }
 
         /// <summary>
-        /// 
+        /// Method that lists the products historic records on the console.
         /// </summary>
         /// <param name="productsList"></param>
         /// <returns></returns>
@@ -103,7 +103,7 @@ namespace ProductCatalogIO
         }
 
         /// <summary>
-        /// 
+        /// Method that read from the console the Product ID.
         /// </summary>
         /// <returns></returns>
         public static int GetProductID()

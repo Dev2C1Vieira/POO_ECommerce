@@ -51,9 +51,8 @@ namespace ProductCatalogsM
         }
 
         /// <summary>
-        /// 
+        /// Menu that list the products present in the products historic
         /// </summary>
-        /// <param name="fileName"></param>
         public static void DisplayHistocicMenu()
         {
             Console.WriteLine("\nTable containing the information of the products historic.\n");
