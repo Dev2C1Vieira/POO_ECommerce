@@ -31,7 +31,23 @@ namespace ProductCatalogR
         #region Methods
 
         /// <summary>
-        /// Method that returns the number of elements present in the product list.
+        /// This method verifies if the visibility status of the given product is visible or not.
+        /// </summary>
+        /// <returns></returns>
+        public static bool IsProductAvailable(Product product)
+        {
+            try
+            {
+                return Products.IsProductAvailable(product);
+            }
+            catch (Exception E)
+            {
+                throw new Exception("\nFailed to verify if the indicated product ID is available!" + "-" + E.Message);
+            }
+        }
+
+        /// <summary>
+        /// Method that checks if there is a product that has the id indicated by the user.
         /// </summary>
         /// <returns></returns>
         public static bool IsProductIDAvailable(int productID)
@@ -76,6 +92,29 @@ namespace ProductCatalogR
             catch (Exception E)
             {
                 throw new Exception("\nFailed to return the amount of products present in the historic!" + "-" + E.Message);
+            }
+        }
+
+        /// <summary>
+        /// Verifies if the product exists.
+        /// </summary>
+        /// <param name="productID"></param>
+        /// <returns></returns>
+        /// <exception cref="ProductException"></exception>
+        /// <exception cref="Exception"></exception>
+        public static bool ExistProduct(int productID)
+        {
+            try
+            {
+                return Products.ExistProduct(ReturnProductFromID(productID));
+            }
+            catch (ProductException PE)
+            {
+                throw new ProductException("\nFailure of Business Rules!" + "-" + PE.Message);
+            }
+            catch (Exception E)
+            {
+                throw new Exception("\nUnable to return product from ID!" + "-" + E.Message);
             }
         }
 

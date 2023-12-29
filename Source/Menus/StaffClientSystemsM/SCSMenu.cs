@@ -95,7 +95,7 @@ namespace StaffClientSystemsM
                             Pause();
                             break;
                         case 3:
-                            EmployeeMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
+                            //EmployeeMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
                             break;
                     }
                 }

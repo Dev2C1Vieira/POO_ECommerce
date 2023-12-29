@@ -55,14 +55,12 @@ namespace ProductCatalogsM
         /// </summary>
         public static void DisplayHistocicMenu()
         {
-            List<Category> listingCategories = new List<Category>();
             Console.WriteLine("\nTable containing the information of the existing categories.\n");
             // Table Construction
             Console.WriteLine("\n+---------------------------------------------------+");
             Console.WriteLine("|  CODE  |  NAME  |  DESCRIPTION  |  CREATION DATE  |");
             Console.WriteLine("+---------------------------------------------------+");
-            listingCategories = CategoriesRules.ReturnHistoric();
-            CategoriesIO.ListHistoric(listingCategories);
+            CategoriesIO.ListHistoric(CategoriesRules.ReturnHistoric());
             Console.WriteLine("+---------------------------------------------------+");
             Console.WriteLine($"\n\nTotal sum of accessible records: {CategoriesRules.ReturnAmountHistoricRecords()}");
             Console.WriteLine("\n+-----------------------------------------------------------------------------------------------------+");

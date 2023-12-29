@@ -50,6 +50,10 @@
     <Reference Include="RevenueEngineR">
       <HintPath>..\BusinessRules\RevenueEngineR\bin\Debug\RevenueEngineR.dll</HintPath>
     </Reference>
+    <Reference Include="RevenueEnginesM, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Menus\RevenueEnginesM\bin\Debug\RevenueEnginesM.dll</HintPath>
+    </Reference>
     <Reference Include="StaffClientSystem, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\BusinessObjects\StaffClientSystem\bin\Debug\StaffClientSystem.dll</HintPath>

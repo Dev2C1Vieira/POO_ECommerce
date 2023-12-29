@@ -55,7 +55,6 @@ namespace StaffClientSystemsM
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="fileName"></param>
         public static void DisplayHistocicMenu()
         {
             List<Client> listingClients = new List<Client>();
@@ -76,7 +75,14 @@ namespace StaffClientSystemsM
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="fileName"></param>
+        /// <param name="productsFN"></param>
+        /// <param name="categoriesFN"></param>
+        /// <param name="brandsFN"></param>
+        /// <param name="clientsFN"></param>
+        /// <param name="employeesFN"></param>
+        /// <param name="managersFN"></param>
+        /// <param name="stockFN"></param>
+        /// <param name="salesFN"></param>
         public static void LoopDisplayHistocicMenu(string productsFN, string categoriesFN, string brandsFN, string clientsFN,
             string employeesFN, string managersFN, string stockFN, string salesFN)
         {
@@ -145,7 +151,14 @@ namespace StaffClientSystemsM
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="fileName"></param>
+        /// <param name="productsFN"></param>
+        /// <param name="categoriesFN"></param>
+        /// <param name="brandsFN"></param>
+        /// <param name="clientsFN"></param>
+        /// <param name="employeesFN"></param>
+        /// <param name="managersFN"></param>
+        /// <param name="stockFN"></param>
+        /// <param name="salesFN"></param>
         public static void Menu(string productsFN, string categoriesFN, string brandsFN, string clientsFN,
             string employeesFN, string managersFN, string stockFN, string salesFN)
         {

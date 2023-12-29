@@ -49,7 +49,7 @@ namespace RevenueEngineIO
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="productsList"></param>
+        /// <param name="productsInStock"></param>
         /// <returns></returns>
         public static bool ListProductsInStockInformation(Dictionary<Product, int> productsInStock)
         {

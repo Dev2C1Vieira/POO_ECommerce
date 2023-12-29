@@ -15,7 +15,7 @@ namespace ProductCatalog.Interfaces
 
         DateTime CreationDate { get; set; }
 
-        int BrandID { get; set; }
+        //int BrandID { get; set; }
 
         bool VisibilityStatus { get; set; }
 

@@ -19,9 +19,9 @@ namespace ProductCatalog.Interfaces
 
         int WarrantyDuration { get; set; }
 
-        int CategoryID { get; set; }
+        //int CategoryID { get; set; }
 
-        int BrandID { get; set; }
+        //int BrandID { get; set; }
 
         bool VisibilityStatus { get; set; }
 

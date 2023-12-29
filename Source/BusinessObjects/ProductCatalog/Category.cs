@@ -34,7 +34,7 @@ namespace ProductCatalog
         private string categoryName; // 
         private string categoryDescription; // A brief description that provides more information about the content or purpose of the category.
         private DateTime creationDate; // The date the category was created.
-        private int brandID; // 
+        //private int brandID; // 
         private bool visibilityStatus; // An indicator of whether the category is visible to users.
 
         #endregion
@@ -111,14 +111,14 @@ namespace ProductCatalog
             set { creationDate = value; }
         }
 
-        /// <summary>
-        /// Property related to the 'brandID' attribute
-        /// </summary>
-        public int BrandID
-        {
-            get { return brandID; }
-            set { brandID = value; }
-        }
+        ///// <summary>
+        ///// Property related to the 'brandID' attribute
+        ///// </summary>
+        //public int BrandID
+        //{
+        //    get { return brandID; }
+        //    set { brandID = value; }
+        //}
 
         /// <summary>
         /// Property related to the 'visibilityStatus' attribute

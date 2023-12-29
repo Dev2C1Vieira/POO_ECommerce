@@ -85,7 +85,7 @@ namespace RevenueEngineR
             }
             catch (StockException SE)
             {
-                throw new StockException("\nFailure of Business Rules!" + "-" + SE.Message);
+                throw new StockException(SE.Message);
             }
             catch (Exception E)
             {
@@ -108,7 +108,7 @@ namespace RevenueEngineR
             }
             catch (StockException SE)
             {
-                throw new StockException("\nFailure of Business Rules!" + "-" + SE.Message);
+                throw new StockException(SE.Message);
             }
             catch (Exception E)
             {
@@ -132,7 +132,7 @@ namespace RevenueEngineR
             }
             catch (StockException SE)
             {
-                throw new StockException("\nFailure of Business Rules!" + "-" + SE.Message);
+                throw new StockException(SE.Message);
             }
             catch (Exception E)
             {
@@ -156,7 +156,7 @@ namespace RevenueEngineR
             }
             catch (StockException SE)
             {
-                throw new StockException("\nFailure of Business Rules!" + "-" + SE.Message);
+                throw new StockException(SE.Message);
             }
             catch (Exception E)
             {

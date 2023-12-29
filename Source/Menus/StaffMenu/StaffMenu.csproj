@@ -34,8 +34,12 @@
     <Reference Include="ECMenus">
       <HintPath>..\ECMenus\bin\Debug\ECMenus.dll</HintPath>
     </Reference>
-    <Reference Include="ProductCatalogsM">
+    <Reference Include="ProductCatalogsM, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ProductCatalogsM\bin\Debug\ProductCatalogsM.dll</HintPath>
+    </Reference>
+    <Reference Include="RevenueEnginesM">
+      <HintPath>..\RevenueEnginesM\bin\Debug\RevenueEnginesM.dll</HintPath>
     </Reference>
     <Reference Include="StaffClientSystemR, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

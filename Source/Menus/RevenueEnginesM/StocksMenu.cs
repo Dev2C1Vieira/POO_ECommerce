@@ -56,7 +56,14 @@ namespace RevenueEnginesM
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="fileName"></param>
+        /// <param name="productsFN"></param>
+        /// <param name="categoriesFN"></param>
+        /// <param name="brandsFN"></param>
+        /// <param name="clientsFN"></param>
+        /// <param name="employeesFN"></param>
+        /// <param name="managersFN"></param>
+        /// <param name="stockFN"></param>
+        /// <param name="salesFN"></param>
         public static void Menu(string productsFN, string categoriesFN, string brandsFN, string clientsFN, 
             string employeesFN, string managersFN, string stockFN, string salesFN)
         {
@@ -90,83 +97,121 @@ namespace RevenueEnginesM
                     switch (op)
                     {
                         case 1:
-                            Dictionary<Product, int> listingStock = new Dictionary<Product, int>();
                             Console.WriteLine("\nTable containing the information of the existing clients.\n");
                             // Table Construction
-                            Console.WriteLine("\n+-----------------------------------------------------------------------------------------------------+");
-                            Console.WriteLine("|  CODE  |  NAME  |  GENDER  |  DATE OF BIRTH  |  POSTAL CODE  |  ADDRESS  |  PHONE NUMBER  |  EMAIL  |");
-                            Console.WriteLine("+-----------------------------------------------------------------------------------------------------+");
-                            listingStock = StockRules.ReturnProductsInStock();
-                            StockIO.ListProductsInStockInformation(listingStock);
-                            Console.WriteLine("+-----------------------------------------------------------------------------------------------------+");
+                            Console.WriteLine("\n+----------------------------------------------------------------------------------------------+");
+                            Console.WriteLine("|  PRODUCT CODE  |  PRODUCT NAME  |  PRODUCT DESCRIPTION  |  UNIT PRICE  |  QUANTITY IN STOCK  |");
+                            Console.WriteLine("+----------------------------------------------------------------------------------------------+");
+                            StockIO.ListProductsInStockInformation(StockRules.ReturnProductsInStock());
+                            Console.WriteLine("+----------------------------------------------------------------------------------------------+");
                             Console.WriteLine($"\n\nTotal sum of accessible records: {StockRules.ReturnAmountProductsInStock()}");
                             Pause();
                             break;
                         case 2:
                             Console.WriteLine("\nLets add new product to Stock!");
 
+                            Product product1 = new Product();
+
                             productID = StockIO.GetNewStockInformation(out quantity);
 
-                            result = StockRules.AddProductToStock(ProductsRules.ReturnProductFromID(productID), quantity);
+                            product1 = ProductsRules.ReturnProductFromID(productID);
 
-                            if (result == true)
-                                Console.WriteLine("\nNew product added to stock successfully!");
-                            else
+                            if (ProductsRules.ExistProduct(productID) == true)
                             {
-                                Console.WriteLine("\nUnable to add new product to stock!");
+                                if (ProductsRules.IsProductAvailable(product1) == true)
+                                {
+                                    result = StockRules.AddProductToStock(product1, quantity);
+
+                                    StockRules.SaveStockDataBin(stockFN);
+
+                                    if (result == true)
+                                        Console.WriteLine("\nNew product added to stock successfully!");
+                                    else
+                                    {
+                                        Console.WriteLine("\nUnable to add new product to stock!");
+                                    }
+                                }
+                                else
+                                    Console.WriteLine("\nProduct does not exist ... Choose an available product!");
                             }
+                            else
+                                Console.WriteLine("\nProduct does not exist ... Choose an available product!");
 
-                            StockRules.SaveStockDataBin(stockFN);
-
+                            GC.SuppressFinalize(product1);
                             Pause();
                             break;
                         case 3:
                             Console.WriteLine("\nLets Remove product from Stock!");
 
+                            Product product2 = new Product();
+
                             productID = StockIO.GetProductID();
 
-                            result = StockRules.RemoveProductFromStock(ProductsRules.ReturnProductFromID(productID));
-                            if (result == true)
-                                Console.WriteLine("\nProduct was successfully removed from Stock!");
-                            else
-                                Console.WriteLine("\nUnable to remove the product from Stock!");
+                            product2 = ProductsRules.ReturnProductFromID(productID);
 
-                            StockRules.SaveStockDataBin(stockFN);
+                            if (ProductsRules.ExistProduct(productID) == true)
+                            {
+                                result = StockRules.RemoveProductFromStock(product2);
 
+                                StockRules.SaveStockDataBin(stockFN);
+
+                                if (result == true)
+                                    Console.WriteLine("\nProduct was successfully removed from Stock!");
+                                else
+                                    Console.WriteLine("\nUnable to remove the product from Stock!");
+                            }
+
+                            GC.SuppressFinalize(product2);
                             Pause();
                             break;
                         case 4:
                             Console.WriteLine("\nLets add stock to product!");
 
+                            Product product3 = new Product();
+
                             productID = StockIO.GetNewStockInformation(out quantity);
 
-                            result = StockRules.AddStockToProduct(ProductsRules.ReturnProductFromID(productID), quantity);
+                            product3 = ProductsRules.ReturnProductFromID(productID);
 
-                            if (result == true)
-                                Console.WriteLine("\nStock added successfully to product!");
-                            else
+                            if (ProductsRules.ExistProduct(productID) == true)
                             {
-                                Console.WriteLine("\nUnable to add stock to product!");
+                                result = StockRules.AddStockToProduct(product3, quantity);
+
+                                StockRules.SaveStockDataBin(stockFN);
+
+                                if (result == true)
+                                    Console.WriteLine("\nStock added successfully to product!");
+                                else
+                                {
+                                    Console.WriteLine("\nUnable to add stock to product!");
+                                }
                             }
 
-                            StockRules.SaveStockDataBin(stockFN);
-
+                            GC.SuppressFinalize(product3);
                             Pause();
                             break;
                         case 5:
                             Console.WriteLine("\nLets stock from product!");
 
-                             productID = StockIO.GetNewStockInformation(out quantity);
+                            Product product4 = new Product();
 
-                            result = StockRules.RemoveStockFromProduct(ProductsRules.ReturnProductFromID(productID), quantity);
+                            productID = StockIO.GetNewStockInformation(out quantity);
 
-                            if (result == true)
-                                Console.WriteLine("\nStock was successfully removed from the product!");
-                            else
-                                Console.WriteLine("\nUnable to remove stock from product!");
+                            product4 = ProductsRules.ReturnProductFromID(productID);
 
-                            StockRules.SaveStockDataBin(stockFN);
+                            if (ProductsRules.ExistProduct(productID) == true)
+                            {
+                                result = StockRules.RemoveStockFromProduct(product4, quantity);
 
+                                StockRules.SaveStockDataBin(stockFN);
+
+                                if (result == true)
+                                    Console.WriteLine("\nStock was successfully removed from the product!");
+                                else
+                                    Console.WriteLine("\nUnable to remove stock from product!");
+                            }
+
+                            GC.SuppressFinalize(product4);
                             Pause();
                             break;
                         case 6:

@@ -88,13 +88,8 @@ namespace RevenueEngines
         /// <exception cref="StockException"></exception>
         public static bool IsProductInStock(Product product)
         {
-            if (IsProductsInStockEmpty() == true)
-                throw new StockException("Product is not in stock at the moment!");
-            else
-            {
-                if (ProductsInStock.ContainsKey(product))
-                    return true;
-            }
+            if (ProductsInStock.ContainsKey(product))
+                return true;
             return false;
         }
 
@@ -109,11 +104,9 @@ namespace RevenueEngines
         {
             if (IsProductInStock(product) == true)
                 throw new StockException("Product is already in stock!");
-            else
-            {
-                ProductsInStock.Add(product, quantity);
-                return true;
-            }
+
+            ProductsInStock.Add(product, quantity);
+            return true;
         }
 
         /// <summary>
@@ -124,9 +117,6 @@ namespace RevenueEngines
         /// <exception cref="StockException"></exception>
         public static bool RemoveProductFromStock(Product product)
         {
-            if (IsProductsInStockEmpty() == true)
-                throw new StockException("There aren't any products in stock at the moment!");
-
             if (IsProductInStock(product) == false)
                 throw new StockException("Product is already out of stock!");
             else
@@ -148,7 +138,15 @@ namespace RevenueEngines
             if (IsProductInStock(product) == true)
                 throw new StockException("Product is not in stock at the moment!");
 
-            ProductsInStock[product] += quantity;
+            //ProductsInStock[product] += quantity;
+
+            foreach (var item in ProductsInStock)
+            {
+                if (item.Key.Equals(product))
+                {
+                    item.Value += quantity;
+                }
+            }
             return true;
         }
 
@@ -207,7 +205,7 @@ namespace RevenueEngines
         public static Dictionary<Product, int> ReturnProductsInStock()
         {
             if (IsProductsInStockEmpty() == true)
-                throw new StockException("Unable to return the products in stock ... Stock is empty!");
+                throw new StockException("Stock is empty!");
 
             Dictionary<Product, int> dictionaryAux = new Dictionary<Product, int>();
 

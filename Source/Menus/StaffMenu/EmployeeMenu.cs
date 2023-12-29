@@ -12,6 +12,7 @@ using System;
 
 // External
 using ECMenus;
+using RevenueEnginesM;
 using ProductCatalogsM;
 using StaffClientSystemR;
 using StaffClientSystemsM;
@@ -65,7 +66,7 @@ namespace StaffMenu
             string employeesFN, string managersFN, string stockFN, string salesFN)
         {
             char op;
-            string workEmail, password, name;
+            string workEmail, password;
 
             while (true)
             {
@@ -78,7 +79,7 @@ namespace StaffMenu
                 Console.Write("Enter your Password: ");
                 password = Console.ReadLine();
 
-                if (!EmployeesRules.LoginEmployee(workEmail, password, out name))
+                if (!EmployeesRules.LoginEmployee(workEmail, password, out string name))
                 {
                     Console.WriteLine("\nYour information is incorrect!");
                     Console.WriteLine("\n\nPlease try again...");
@@ -108,6 +109,9 @@ namespace StaffMenu
                 }
                 else
                 {
+                    Clear();
+                    Console.WriteLine($"\nWelcome {name}!\n");
+                    Pause();
                     Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
                 }
             }
@@ -160,7 +164,7 @@ namespace StaffMenu
                             SCSMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
                             break;
                         case 3:
-                            // Menu
+                            REMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
                             break;
                         case 4:
                             MainMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);

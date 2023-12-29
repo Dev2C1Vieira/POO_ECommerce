@@ -12,9 +12,10 @@ using System;
 
 // External
 using ECMenus;
+using RevenueEnginesM;
 using ProductCatalogsM;
-using StaffClientSystemsM;
 using StaffClientSystemR;
+using StaffClientSystemsM;
 
 namespace StaffMenu
 {
@@ -65,7 +66,7 @@ namespace StaffMenu
             string employeesFN, string managersFN, string stockFN, string salesFN)
         {
             char op;
-            string workEmail, password, name;
+            string workEmail, password;
 
             while (true)
             {
@@ -78,7 +79,7 @@ namespace StaffMenu
                 Console.Write("Enter your Password: ");
                 password = Console.ReadLine();
 
-                if (!ManagersRules.LoginManager(workEmail, password, out name))
+                if (!ManagersRules.LoginManager(workEmail, password, out string name))
                 {
                     Console.WriteLine("\nYour information is incorrect!");
                     Console.WriteLine("\n\nPlease try again...");
@@ -96,7 +97,7 @@ namespace StaffMenu
                         else
                         {
                             if (op == 'y')
-                            { // Compare first character of op with 'y'
+                            {   // Compare first character of op with 'y'
                                 LoginMenu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
                             }
                             else
@@ -108,6 +109,9 @@ namespace StaffMenu
                 }
                 else
                 {
+                    Clear();
+                    Console.WriteLine($"\nWelcome {name}!\n");
+                    Pause();
                     Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
                 }
             }
@@ -154,6 +158,7 @@ namespace StaffMenu
                             SCSMMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
                             break;
                         case 3:
+                            REMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
                             break;
                         case 4:
                             MainMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);

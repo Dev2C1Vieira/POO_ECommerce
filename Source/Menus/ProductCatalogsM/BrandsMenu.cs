@@ -55,14 +55,12 @@ namespace ProductCatalogsM
         /// </summary>
         public static void DisplayHistocicMenu()
         {
-            List<Brand> listingBrands = new List<Brand>();
             Console.WriteLine("\nTable containing the information of the existing brands.\n");
             // Table Construction
             Console.WriteLine("\n+---------------------------------------------------------------------+");
             Console.WriteLine("|  CODE  |  NAME  |  DESCRIPTION  |  ORIGIN COUNTRY  |  FUNDATION DATE  |");
             Console.WriteLine("+-----------------------------------------------------------------------+");
-            listingBrands = BrandsRules.ReturnHistoric();
-            BrandsIO.ListHistoric(listingBrands);
+            BrandsIO.ListHistoric(BrandsRules.ReturnHistoric());
             Console.WriteLine("+-----------------------------------------------------------------------+");
             Console.WriteLine($"\n\nTotal sum of accessible records: {BrandsRules.ReturnAmountHistoricRecords()}");
             Console.WriteLine("\n+-----------------------------------------------------------------------------------------------------+");

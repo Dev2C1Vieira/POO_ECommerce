@@ -12,9 +12,10 @@ using System;
 
 //External
 using ECMenus;
+using RevenueEngineR;
+using RevenueEnginesM;
 using ProductCatalogR;
 using StaffClientSystemR;
-using RevenueEngineR;
 
 namespace ECommerce
 {
@@ -98,7 +99,9 @@ namespace ECommerce
 
             #endregion
 
-            MainMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
+            //MainMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
+
+            StocksMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
         }
     }
 }

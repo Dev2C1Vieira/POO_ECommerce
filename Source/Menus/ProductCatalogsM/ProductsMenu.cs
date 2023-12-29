@@ -56,14 +56,12 @@ namespace ProductCatalogsM
         /// <param name="fileName"></param>
         public static void DisplayHistocicMenu()
         {
-            List<Product> listingProdutcs = new List<Product>();
             Console.WriteLine("\nTable containing the information of the products historic.\n");
             // Table Construction
             Console.WriteLine("\n+-----------------------------------------------------------------------------------------------------+");
             Console.WriteLine("|  CODE  |  NAME  |  DESCRIPTION  |  PRICE  |  LAUNCH DATE  |  WARRANTY DURARION  |  AMOUNT IN STOCK  |");
             Console.WriteLine("+-----------------------------------------------------------------------------------------------------+");
-            listingProdutcs = ProductsRules.ReturnHistoric();
-            ProductsIO.ListHistoric(listingProdutcs);
+            ProductsIO.ListHistoric(ProductsRules.ReturnHistoric());
             Console.WriteLine("+-----------------------------------------------------------------------------------------------------+");
             Console.WriteLine($"\n\nTotal sum of accessible records: {ProductsRules.ReturnAmountHistoricRecords()}");
             Console.WriteLine("\n+-----------------------------------------------------------------------------------------------------+");
