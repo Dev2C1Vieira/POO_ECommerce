@@ -9,11 +9,9 @@
  * */
 
 using System;
-using System.Collections.Generic;
 using System.IO;
-
+using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
-
 
 // External
 using ProductCatalog;
@@ -103,10 +101,12 @@ namespace RevenueEngines
         public static bool AddProductToStock(Product product, int quantity)
         {
             if (IsProductInStock(product) == true)
-                throw new StockException("Product is already in stock!");
-
-            ProductsInStock.Add(product, quantity);
-            return true;
+            { throw new StockException("\nProduct is already in stock!"); }
+            else
+            {
+                ProductsInStock.Add(product, quantity);
+                return true;
+            }
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace RevenueEngines
         public static bool RemoveProductFromStock(Product product)
         {
             if (IsProductInStock(product) == false)
-                throw new StockException("Product is already out of stock!");
+            { throw new StockException("\nProduct is already out of stock!"); }
             else
             {
                 ProductsInStock.Remove(product);
@@ -135,21 +135,39 @@ namespace RevenueEngines
         /// <exception cref="StockException"></exception>
         public static bool AddStockToProduct(Product product, int quantity)
         {
-            if (IsProductInStock(product) == true)
-                throw new StockException("Product is not in stock at the moment!");
-
-            //ProductsInStock[product] += quantity;
-
-            foreach (var item in ProductsInStock)
+            if (IsProductInStock(product) == false)
+            { throw new StockException("\nProduct is not in stock at the moment!"); }
+            else
             {
-                if (item.Key.Equals(product))
-                {
-                    item.Value += quantity;
-                }
+                ProductsInStock[product] += quantity;
+                return true;
             }
-            return true;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="product"></param>
+        /// <param name="quantity"></param>
+        /// <returns></returns>
+        /// <exception cref="StockException"></exception>
+        public static bool RemoveStockFromProduct(Product product, int quantity)
+        {
+            if (IsProductInStock(product) == false)
+                throw new StockException("\nProduct is not in stock at the moment!");
+
+            int aux = ProductsInStock[product] - quantity;
+
+            if (aux <= 0)
+                RemoveProductFromStock(product);
+            else
+            {
+                ProductsInStock[product] = aux;
+                return true;
+            }
+            return false;
+        }
+        
         //public static bool AddStockAll(int quantity)
         //{
         //    if (IsProductsInStockEmpty() == true)
@@ -172,30 +190,6 @@ namespace RevenueEngines
         //    }
         //    return true;
         //}
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="product"></param>
-        /// <param name="quantity"></param>
-        /// <returns></returns>
-        /// <exception cref="StockException"></exception>
-        public static bool RemoveStockFromProduct(Product product, int quantity)
-        {
-            if (IsProductInStock(product) == false)
-                throw new StockException("Product is not in stock at the moment!");
-
-            int aux = ProductsInStock[product] - quantity;
-
-            if (aux <= 0)
-                RemoveProductFromStock(product);
-            else
-            {
-                ProductsInStock[product] = aux;
-                return true;
-            }
-            return false;
-        }
 
         /// <summary>
         /// 
@@ -246,7 +240,6 @@ namespace RevenueEngines
         /// <exception cref="Exception"></exception>
         public static bool LoadStockDataBin(string fileName)
         {
-
             if (File.Exists(fileName))
             {
                 using (FileStream fileStream = new FileStream(fileName, FileMode.Open))
@@ -256,7 +249,7 @@ namespace RevenueEngines
 
                     foreach (var item in loadedStock)
                     {
-                        AddProductToStock(item.Key, item.Value);
+                        ProductsInStock.Add(item.Key, item.Value);
                     }
                     return true;
                 }
@@ -286,18 +279,6 @@ namespace RevenueEngines
         }
 
         #endregion
-
-        #endregion
-
-        #region Destructor
-
-        /// <summary>
-        /// Destructor that removes the object from the memory!
-        /// </summary>
-        ~Stock()
-        {
-            GC.SuppressFinalize(this);
-        }
 
         #endregion
 

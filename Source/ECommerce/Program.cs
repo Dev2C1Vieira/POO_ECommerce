@@ -92,16 +92,14 @@ namespace ECommerce
 
             #region LoadDataRevenueEngine
 
-            StockRules.LoadStockDataBin(stockFN);
+            //StockRules.LoadStockDataBin(stockFN);
             //SalesRules.LoadSalesDataBin(salesFN);
 
             #endregion
 
             #endregion
 
-            //MainMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
-
-            StocksMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
+            MainMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
         }
     }
 }

@@ -137,7 +137,6 @@ namespace RevenueEnginesM
                             else
                                 Console.WriteLine("\nProduct does not exist ... Choose an available product!");
 
-                            GC.SuppressFinalize(product1);
                             Pause();
                             break;
                         case 3:
@@ -161,7 +160,6 @@ namespace RevenueEnginesM
                                     Console.WriteLine("\nUnable to remove the product from Stock!");
                             }
 
-                            GC.SuppressFinalize(product2);
                             Pause();
                             break;
                         case 4:
@@ -187,7 +185,6 @@ namespace RevenueEnginesM
                                 }
                             }
 
-                            GC.SuppressFinalize(product3);
                             Pause();
                             break;
                         case 5:
@@ -211,7 +208,6 @@ namespace RevenueEnginesM
                                     Console.WriteLine("\nUnable to remove stock from product!");
                             }
 
-                            GC.SuppressFinalize(product4);
                             Pause();
                             break;
                         case 6:

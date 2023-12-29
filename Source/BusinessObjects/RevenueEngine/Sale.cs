@@ -8,11 +8,10 @@
  * 
  * */
 
-using ProductCatalog;
-using RevenueEngines.Interfaces;
 using System;
-using System.Collections.Generic;
 
+// External
+using RevenueEngines.Interfaces;
 
 namespace RevenueEngines
 {
@@ -24,6 +23,8 @@ namespace RevenueEngines
     /// </summary>
     /// <remarks></remarks>
     /// <example></example>
+
+    [Serializable]
     public class Sale : IComparable<Sale>, ISale
     {
         #region Attributes
@@ -35,7 +36,11 @@ namespace RevenueEngines
         private DateTime dateSale;
         private int productID;
         private int clientID;
+        private int quantidade;
         private bool visibilityStatus;
+
+        [NonSerialized]
+        private float totalPrice;
 
         //private List<Dictionary<Product, int>>
         // talvez uma implementacao, que me permita efetuar uma venda,
@@ -116,6 +121,15 @@ namespace RevenueEngines
         }
 
         /// <summary>
+        /// Property related to the 'quantidade' attribute
+        /// </summary>
+        public int Quantidade
+        {
+            get { return quantidade; }
+            set { quantidade = value; }
+        }
+
+        /// <summary>
         /// Property related to the 'visibilityStatus' attribute
         /// </summary>
         public bool VisibilityStatus
@@ -127,9 +141,74 @@ namespace RevenueEngines
         #endregion
 
         #region Operators
+
+        /// <summary>
+        /// Creating/Rewriting this method, to be able to check whether two indicated Sale are the same.
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
+        public static bool operator ==(Sale left, Sale right)
+        {
+            if ((left.SaleID == right.SaleID) && (left.DateSale == right.DateSale) 
+                && (left.ProductID == right.ProductID) && (left.ClientID == right.ClientID) 
+                && (left.Quantidade == right.Quantidade) && (left.VisibilityStatus == right.VisibilityStatus))
+                return (true);
+            return (false);
+        }
+
+        /// <summary>
+        /// Creating/Rewriting this method, to be able to check whether two indicated Sale are different.
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
+        public static bool operator !=(Sale left, Sale right)
+        {
+            if (!(left == right)) return (true);
+            return (false);
+        }
+
         #endregion
 
         #region Overrides
+
+        /// <summary>
+        /// Rewriting the ToString method, to be able to write on the console.
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return (String.Format("Sale ID: {0} - Date Sale: {1} - Product ID: {2} " +
+                "- Client ID: {3} - Quantidade: {4}", SaleID.ToString(), DateSale.ToShortDateString(), 
+                ProductID.ToString(), ClientID. ToString(), Quantidade.ToString()));
+        }
+
+        /// <summary>
+        /// Rewriting the Equals method, to be able to compare 2 different objects.
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            if (obj is Sale)
+            {
+                Sale sale = (Sale)obj;
+                if (this == sale)
+                    return (true);
+            }
+            return (false);
+        }
+
+        /// <summary>
+        /// Rewriting the GetHashCode method, to ensure efficient access to elements.
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
         #endregion
 
         #region OtherMethods
@@ -159,7 +238,5 @@ namespace RevenueEngines
         #endregion
 
         #endregion
-
-        //Still in progress...
     }
 }

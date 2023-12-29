@@ -79,7 +79,7 @@ namespace StaffClientSystemsM
                     switch (op)
                     {
                         case 1:
-                            ClientsMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
+                            MClientsMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
                             break;
                         case 2:
                             EmployeesMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
@@ -89,7 +89,7 @@ namespace StaffClientSystemsM
                             Pause();
                             break;
                         case 4:
-                            //EmployeeMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
+                            ManagerMenu.Menu(productsFN, categoriesFN, brandsFN, clientsFN, employeesFN, managersFN, stockFN, salesFN);
                             break;
                     }
                 }
