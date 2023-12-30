@@ -9,6 +9,8 @@
  * */
 
 using System;
+
+// External
 using StaffClientSystem.Interfaces;
 
 namespace StaffClientSystem.Staff
@@ -194,9 +196,8 @@ namespace StaffClientSystem.Staff
         /// <returns></returns>
         public override bool Equals(object obj)
         {
-            if (obj is Employee)
+            if (obj is Employee employee)
             {
-                Employee employee = (Employee)obj;
                 if (this == employee)
                     return (true);
             }

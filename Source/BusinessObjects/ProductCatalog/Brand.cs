@@ -8,8 +8,10 @@
  * 
  * */
 
-using ProductCatalog.Interfaces;
 using System;
+
+// External
+using ProductCatalog.Interfaces;
 
 namespace ProductCatalog
 {
@@ -185,9 +187,8 @@ namespace ProductCatalog
         /// <returns></returns>
         public override bool Equals(object obj)
         {
-            if (obj is Brand)
+            if (obj is Brand brand)
             {
-                Brand brand = (Brand)obj;
                 if (this == brand)
                     return (true);
             }

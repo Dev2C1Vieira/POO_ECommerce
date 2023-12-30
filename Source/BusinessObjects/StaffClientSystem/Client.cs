@@ -167,9 +167,8 @@ namespace StaffClientSystem
         /// <returns></returns>
         public override bool Equals(object obj)
         {
-            if (obj is Client)
+            if (obj is Client client)
             {
-                Client client = (Client)obj;
                 if (this == client)
                     return (true);
             }

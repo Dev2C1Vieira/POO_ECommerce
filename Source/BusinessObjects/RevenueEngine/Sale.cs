@@ -1,4 +1,4 @@
-﻿    /*
+﻿/*
  * <copyright file = "Aula_1___Turno_2.cs" company = "IPCA">
  * Copyright (c) 2023 All Rights Reserved
  * </copyright>
@@ -204,13 +204,12 @@ namespace RevenueEngines
         /// <returns></returns>
         public override bool Equals(object obj)
         {
-            if (obj is Sale)
+            if (obj is Sale sale)
             {
-                Sale sale = (Sale)obj;
                 if (this == sale)
                     return (true);
             }
-            return (false);
+            return false;
         }
 
         /// <summary>
