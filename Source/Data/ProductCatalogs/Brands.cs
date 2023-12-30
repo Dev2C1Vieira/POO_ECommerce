@@ -420,10 +420,7 @@ namespace ProductCatalogs
         /// <exception cref="BrandException"></exception>
         public static bool SaveBrandsDataBin(string fileName)
         {
-            if (IsBrandsListEmpty() == true)
-                throw new BrandException("\nThe brands list is empty!");
-
-            // Cria um FileStream para gravar os dados dos produtos no arquivo
+            // Creates a FileStream to write brand data to the file.
             using (FileStream fileStream = new FileStream(fileName, FileMode.Create))
             {
                 BinaryFormatter formatter = new BinaryFormatter();
@@ -440,7 +437,5 @@ namespace ProductCatalogs
         #endregion
 
         #endregion
-
-        //Still in progress...
     }
 }

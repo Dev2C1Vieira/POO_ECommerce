@@ -37,6 +37,9 @@
     <Reference Include="RevenueEngine">
       <HintPath>..\..\BusinessObjects\RevenueEngine\bin\Debug\RevenueEngine.dll</HintPath>
     </Reference>
+    <Reference Include="RevenueEngineR">
+      <HintPath>..\..\BusinessRules\RevenueEngineR\bin\Debug\RevenueEngineR.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />

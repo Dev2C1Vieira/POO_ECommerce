@@ -8,12 +8,13 @@
  * 
  * */
 
-using ProductCatalog;
-using RevenueEngines;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Globalization;
+using System.Collections.Generic;
+
+// External
+using RevenueEngines;
+using RevenueEngineR;
 
 namespace RevenueEngineIO
 {
@@ -73,7 +74,8 @@ namespace RevenueEngineIO
             foreach (Sale sal in salesList)
             {
                 Console.WriteLine($"|  {sal.SaleID}  |  {sal.DateSale.ToShortDateString()}  " +
-                    $"|  {sal.ProductID}  |  {sal.ClientID}  |  {sal.Quantity}  |  {sal.TotalPrice.ToString("F2")}  |");
+                    $"|  {SalesRules.ReturnProductName(sal.ProductID)}  |  {SalesRules.ReturnClientName(sal.ClientID)}  |" +
+                    $"  {sal.Quantity}  |  {sal.TotalPrice.ToString("F2")}  |");
             }
             return true;
         }
@@ -93,7 +95,8 @@ namespace RevenueEngineIO
             foreach (Sale sal in salesList)
             {
                 Console.WriteLine($"|  {sal.SaleID}  |  {sal.DateSale.ToShortDateString()}  " +
-                    $"|  {sal.ProductID}  |  {sal.ClientID}  |  {sal.Quantity}  |  {sal.TotalPrice.ToString("F2")}  |");
+                    $"|  {SalesRules.ReturnProductName(sal.ProductID)}  |  {SalesRules.ReturnClientName(sal.ClientID)}  |" +
+                    $"  {sal.Quantity}  |  {sal.TotalPrice.ToString("F2")}  |");
             }
             return true;
         }

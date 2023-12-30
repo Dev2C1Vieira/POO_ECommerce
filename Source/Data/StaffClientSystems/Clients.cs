@@ -433,10 +433,7 @@ namespace StaffClientSystems
         /// <exception cref="ClientException"></exception>
         public static bool SaveClientsDataBin(string fileName)
         {
-            if (IsClientsListEmpty() == true)
-                throw new ClientException("\nThe clients list is empty!");
-
-            //Creates a FileStream to write clients data to the file
+            // Creates a FileStream to write client data to the file.
             using (FileStream fileStream = new FileStream(fileName, FileMode.Create))
             {
                 BinaryFormatter formatter = new BinaryFormatter();

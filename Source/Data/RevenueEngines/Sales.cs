@@ -18,6 +18,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 using RevenueEngineE;
 using ProductCatalogs;
 using ProductCatalog;
+using StaffClientSystems;
+using StaffClientSystem;
 
 namespace RevenueEngines
 {
@@ -204,10 +206,10 @@ namespace RevenueEngines
         public static bool EnoughQuantityToBuy(Product product, int quantity)
         {
             if (Stock.IsProductsInStockEmpty() == true)
-                throw new SaleException("There aren't any products in stock at the moment!");
+                throw new SaleException("\nThere aren't any products in stock at the moment!");
 
             if (Stock.IsProductInStock(product) == false)
-                throw new SaleException("Product is not in stock at the moment!");
+                throw new SaleException("\nProduct is not in stock at the moment!");
 
             foreach (var item in Stock.ProductsInStock)
             {
@@ -238,26 +240,66 @@ namespace RevenueEngines
         /// <param name="sale"></param>
         /// <returns></returns>
         /// <exception cref="SaleException"></exception>
-        public static bool InsertSale(Sale sale)
+        public static bool InsertSale(Sale sale, string fileName)
         {
             if (ExistSale(sale) == true)
                 throw new SaleException("\nUnable to insert new sale ... Sale is already inserted!");
 
-            if (Products.ExistProduct(Products.ReturnProductFromID(sale.ProductID)) == true)
+            if ((Products.ExistProduct(Products.ReturnProductFromID(sale.ProductID)) == true)
+                && (Products.IsProductAvailable(Products.ReturnProductFromID(sale.ProductID)) == true))
             {
-                if (EnoughQuantityToBuy(Products.ReturnProductFromID(sale.ProductID), sale.Quantity) == true)
+                if ((Clients.ExistClient(Clients.ReturnClientFromID(sale.ClientID)) == true)
+                    && (Clients.IsClientAvailable(Clients.ReturnClientFromID(sale.ClientID)) == true))
                 {
-                    Stock.RemoveStockFromProduct(Products.ReturnProductFromID(sale.ProductID), sale.Quantity);
-                    sale.TotalPrice = CalculateTotalPurchaseValue(sale);
-                    SalesList.Add(sale);
-                    return true;
+                    if (EnoughQuantityToBuy(Products.ReturnProductFromID(sale.ProductID), sale.Quantity) == true)
+                    {
+                        Stock.RemoveStockFromProduct(Products.ReturnProductFromID(sale.ProductID), sale.Quantity);
+                        sale.TotalPrice = CalculateTotalPurchaseValue(sale);
+                        Stock.SaveStockDataBin(fileName); // continua
+                        SalesList.Add(sale);
+                        return true;
+                    }
+                    else
+                        throw new SaleException("\nUnable to insert new sale ... " +
+                            "Product does not have sufficient quantity in stock to make the purchase\r\n!");
                 }
                 else
-                    throw new SaleException("\nUnable to insert new sale ... " +
-                        "Product does not have sufficient quantity in stock to make the purchase\r\n!");
+                    throw new SaleException("\nUnable to insert new sale ... Client does not exist!");
             }
             else
                 throw new SaleException("\nUnable to insert new sale ... Product does not exist!");
+        }
+
+        /// <summary>
+        /// Method that returns the indicated product name.
+        /// </summary>
+        /// <param name="productID"></param>
+        /// <returns></returns>
+        public static string ReturnProductName(int productID)
+        {
+            string productName = string.Empty;
+            foreach (Product item in Products.ProductsList)
+            {
+                if (item.ProductID == productID)
+                    productName = item.ProductName;
+            }
+            return productName;
+        }
+
+        /// <summary>
+        /// Method that returns the indicated client name.
+        /// </summary>
+        /// <param name="clientID"></param>
+        /// <returns></returns>
+        public static string ReturnClientName(int clientID)
+        {
+            string clientName = string.Empty;
+            foreach (Client item in Clients.ClientsList)
+            {
+                if (item.ClientID == clientID)
+                    clientName = item.Name;
+            }
+            return clientName;
         }
 
         /// <summary>
@@ -425,9 +467,6 @@ namespace RevenueEngines
         /// <exception cref="SaleException"></exception>
         public static bool SaveSalesDataBin(string fileName)
         {
-            if (IsSalesListEmpty() == true)
-                throw new SaleException("\nThe sales list is empty!");
-
             // Cria um FileStream para gravar os dados dos produtos no arquivo
             using (FileStream fileStream = new FileStream(fileName, FileMode.Create))
             {

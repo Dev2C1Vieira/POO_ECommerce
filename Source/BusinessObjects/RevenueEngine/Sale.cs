@@ -38,8 +38,6 @@ namespace RevenueEngines
         private int clientID;
         private int quantity;
         private bool visibilityStatus;
-
-        [NonSerialized]
         private double totalPrice;
 
         //private List<Dictionary<Product, int>>

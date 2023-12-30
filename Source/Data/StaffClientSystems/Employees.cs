@@ -469,10 +469,7 @@ namespace StaffClientSystems
         /// <exception cref="EmployeeException"></exception>
         public static bool SaveEmployeesDataBin(string fileName)
         {
-            if (IsEmployeesListEmpty() == true)
-                throw new EmployeeException("\nThe employees list is empty!");
-
-            // Creates a FileStream to write employee data to the file
+            // Creates a FileStream to write employee data to the file.
             using (FileStream fileStream = new FileStream(fileName, FileMode.Create))
             {
                 BinaryFormatter formatter = new BinaryFormatter();

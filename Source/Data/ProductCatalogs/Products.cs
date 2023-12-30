@@ -443,10 +443,7 @@ namespace ProductCatalogs
         /// <exception cref="ProductException"></exception>
         public static bool SaveProductsDataBin(string fileName)
         {
-            if (IsProductsListEmpty() == true)
-                throw new ProductException("\nThe product list is empty!");
-
-            // Cria um FileStream para gravar os dados dos produtos no arquivo
+            // Creates a FileStream to write product data to the file.
             using (FileStream fileStream = new FileStream(fileName, FileMode.Create))
             {
                 BinaryFormatter formatter = new BinaryFormatter();

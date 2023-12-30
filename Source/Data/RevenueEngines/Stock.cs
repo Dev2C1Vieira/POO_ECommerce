@@ -117,13 +117,14 @@ namespace RevenueEngines
         /// <exception cref="StockException"></exception>
         public static bool RemoveProductFromStock(Product product)
         {
-            if (IsProductInStock(product) == false)
-            { throw new StockException("\nProduct is already out of stock!"); }
-            else
+            int quantityInStock;
+            if (ProductsInStock.TryGetValue(product, out quantityInStock))
             {
                 ProductsInStock.Remove(product);
                 return true;
             }
+            else
+                throw new StockException("\nProduct is already out of stock!");
         }
 
         /// <summary>
@@ -240,6 +241,7 @@ namespace RevenueEngines
         /// <exception cref="Exception"></exception>
         public static bool LoadStockDataBin(string fileName)
         {
+            Dictionary<Product, int> auxStock = new Dictionary<Product, int>();
             if (File.Exists(fileName))
             {
                 using (FileStream fileStream = new FileStream(fileName, FileMode.Open))
@@ -249,8 +251,9 @@ namespace RevenueEngines
 
                     foreach (var item in loadedStock)
                     {
-                        ProductsInStock.Add(item.Key, item.Value);
+                        auxStock.Add(item.Key, item.Value);
                     }
+                    ProductsInStock = auxStock;
                     return true;
                 }
             }
@@ -266,10 +269,7 @@ namespace RevenueEngines
         /// <exception cref="StockException"></exception>
         public static bool SaveStockDataBin(string fileName)
         {
-            if (IsProductsInStockEmpty() == true)
-                throw new StockException("\nStock is empty!");
-
-            // Cria um FileStream para gravar os dados dos produtos no arquivo
+            // Creates a FileStream to write stock data to the file.
             using (FileStream fileStream = new FileStream(fileName, FileMode.Create))
             {
                 BinaryFormatter formatter = new BinaryFormatter();

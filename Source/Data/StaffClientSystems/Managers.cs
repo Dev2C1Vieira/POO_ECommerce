@@ -471,10 +471,7 @@ namespace StaffClientSystems
         /// <exception cref="EmployeeException"></exception>
         public static bool SaveManagersDataBin(string fileName)
         {
-            if (IsManagersListEmpty() == true)
-                throw new ManagerException("\nThe managers list is empty!");
-
-            // Creates a FileStream to write employee data to the file
+            // Creates a FileStream to write manager data to the file.
             using (FileStream fileStream = new FileStream(fileName, FileMode.Create))
             {
                 BinaryFormatter formatter = new BinaryFormatter();

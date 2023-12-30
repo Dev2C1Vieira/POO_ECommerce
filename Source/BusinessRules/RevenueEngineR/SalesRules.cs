@@ -17,6 +17,7 @@ using System.Runtime.Serialization;
 using ProductCatalog;
 using RevenueEngineE;
 using RevenueEngines;
+using RevenueEngines.Interfaces;
 
 namespace RevenueEngineR
 {
@@ -197,21 +198,57 @@ namespace RevenueEngineR
         /// <returns></returns>
         /// <exception cref="SaleException"></exception>
         /// <exception cref="Exception"></exception>
-        public static bool InsertSale(Sale sale)
+        public static bool InsertSale(Sale sale, string fileName)
         {
             try
             {
                 sale.SaleID = Sales.ReturnIDNewSale();
-                Sales.InsertSale(sale);
+                Sales.InsertSale(sale, fileName);
                 return true;
             }
             catch (SaleException SE)
             {
-                throw new SaleException("\nFailure of Business Rules!" + "-" + SE.Message);
+                throw new SaleException(SE.Message);
             }
             catch (Exception E)
             {
                 throw new Exception("\nFailed to insert a new sale!" + "-" + E.Message);
+            }
+        }
+
+        /// <summary>
+        /// Method that returns the indicated product name.
+        /// </summary>
+        /// <param name="productID"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public static string ReturnProductName(int productID)
+        {
+            try
+            {
+                return Sales.ReturnProductName(productID);
+            }
+            catch (Exception E)
+            {
+                throw new Exception("\nFailed to return product Name!" + "-" + E.Message);
+            }
+        }
+
+        /// <summary>
+        /// Method that returns the indicated client name.
+        /// </summary>
+        /// <param name="clientID"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public static string ReturnClientName(int clientID)
+        {
+            try
+            {
+                return Sales.ReturnClientName(clientID);
+            }
+            catch (Exception E)
+            {
+                throw new Exception("\nFailed to return client Name!" + "-" + E.Message);
             }
         }
 

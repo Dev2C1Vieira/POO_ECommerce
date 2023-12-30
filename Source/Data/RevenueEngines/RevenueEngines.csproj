@@ -43,6 +43,9 @@
     <Reference Include="RevenueEngineE">
       <HintPath>..\..\Exceptions\RevenueEngineE\bin\Debug\RevenueEngineE.dll</HintPath>
     </Reference>
+    <Reference Include="StaffClientSystems">
+      <HintPath>..\StaffClientSystems\bin\Debug\StaffClientSystems.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -56,6 +59,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sales.cs" />
     <Compile Include="Stock.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\BusinessObjects\StaffClientSystem\StaffClientSystem.csproj">
+      <Project>{0FA2D599-537D-4FAE-9D85-485FAB8D1184}</Project>
+      <Name>StaffClientSystem</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

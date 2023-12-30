@@ -56,7 +56,7 @@ namespace RevenueEnginesM
         /// <summary>
         /// Menu that list the sales present in the sales historic
         /// </summary>
-        public static void DisplayHistocicMenu()
+        public static void DisplayHistoricMenu()
         {
             Console.WriteLine("\nTable containing the information of the sales historic.\n");
             // Table Construction
@@ -91,7 +91,7 @@ namespace RevenueEnginesM
             while (true)
             {
                 Clear();
-                DisplayHistocicMenu();
+                DisplayHistoricMenu();
                 do
                 {
                     Console.Write("\nChoose an Option: ");
@@ -104,7 +104,7 @@ namespace RevenueEnginesM
                     if (op < 1 || op > 3)
                     {
                         Clear();
-                        DisplayHistocicMenu();
+                        DisplayHistoricMenu();
                         Console.WriteLine("\n\n\tInvalid Option! [1/3]\n");
                     }
                     else
@@ -172,25 +172,25 @@ namespace RevenueEnginesM
                     {
                         Clear();
                         Console.WriteLine("  --------- Welcome to Products Managment Menu ---------\n");
-                        if (op < 1 || op > 6)
+                        if (op < 1 || op > 5)
                         {
-                            Console.WriteLine("\n  Invalid Option! [1-6]\n");
+                            Console.WriteLine("\n  Invalid Option! [1-5]\n");
                         }
                         Console.WriteLine("\n  +-------------------------------------------+");
-                        Console.WriteLine("  |  1. List the existing products.           |");
-                        Console.WriteLine("  |  2. Insert a new product.                 |");
-                        Console.WriteLine("  |  3. Remove a product.                     |");
-                        Console.WriteLine("  |  4. Show products historic.               |");
+                        Console.WriteLine("  |  1. List the existing sales.              |");
+                        Console.WriteLine("  |  2. Insert a new sale.                    |");
+                        Console.WriteLine("  |  3. Remove a sale.                        |");
+                        Console.WriteLine("  |  4. Show sales historic.                  |");
                         Console.WriteLine("  |  5. Back!                                 |");
                         Console.WriteLine("  +-------------------------------------------+");
                         Console.Write("\nOption: ");
                         op = int.Parse(Console.ReadLine());
-                    } while (op < 1 || op > 6);
+                    } while (op < 1 || op > 5);
                     Clear();
                     switch (op)
                     {
                         case 1:
-                            Console.WriteLine("\nTable containing the information of the existing products.\n");
+                            Console.WriteLine("\nTable containing the information of the existing sales.\n");
                             // Table Construction
                             Console.WriteLine("\n+--------------------------------------------------------------------------+");
                             Console.WriteLine("|  CODE  |  DATE SALE  |  PRODUCT  |  CLIENT  |  QUANTITY  |  TOTAL PRICE  |");
@@ -206,7 +206,7 @@ namespace RevenueEnginesM
                             Sale sale = new Sale();
                             sale = SalesIO.GetNewSaleInformation(sale);
 
-                            result = SalesRules.InsertSale(sale);
+                            result = SalesRules.InsertSale(sale, stockFN);
 
                             if (result == true)
                                 Console.WriteLine("\nNew sale inserted successfully!");
@@ -224,7 +224,7 @@ namespace RevenueEnginesM
 
                             saleID = SalesIO.GetSaleID();
 
-                            result = SalesRules.RecoverSale(saleID);
+                            result = SalesRules.RemoveSale(saleID);
                             if (result == true)
                                 Console.WriteLine("\nSale was successfully removed!");
                             else

@@ -1,4 +1,4 @@
-﻿    /*
+﻿/*
  * <copyright file = "Aula_1___Turno_2.cs" company = "IPCA">
  * Copyright (c) 2023 All Rights Reserved
  * </copyright>
@@ -416,10 +416,7 @@ namespace ProductCatalogs
         /// <exception cref="CategoryException"></exception>
         public static bool SaveCategoriesDataBin(string fileName)
         {
-            if (IsCategoriesListEmpty() == true)
-                throw new CategoryException("\nThe categories list is empty!");
-
-            // Cria um FileStream para gravar os dados dos produtos no arquivo
+            // Creates a FileStream to write category data to the file
             using (FileStream fileStream = new FileStream(fileName, FileMode.Create))
             {
                 BinaryFormatter formatter = new BinaryFormatter();
