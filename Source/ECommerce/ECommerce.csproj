@@ -47,6 +47,10 @@
     <Reference Include="ProductCatalogR">
       <HintPath>..\BusinessRules\ProductCatalogR\bin\Debug\ProductCatalogR.dll</HintPath>
     </Reference>
+    <Reference Include="RevenueEngine, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\BusinessObjects\RevenueEngine\bin\Debug\RevenueEngine.dll</HintPath>
+    </Reference>
     <Reference Include="RevenueEngineR">
       <HintPath>..\BusinessRules\RevenueEngineR\bin\Debug\RevenueEngineR.dll</HintPath>
     </Reference>

@@ -117,14 +117,13 @@ namespace RevenueEngines
         /// <exception cref="StockException"></exception>
         public static bool RemoveProductFromStock(Product product)
         {
-            int quantityInStock;
-            if (ProductsInStock.TryGetValue(product, out quantityInStock))
+            if (IsProductInStock(product) == false)
+            { throw new StockException("\nProduct is already out of stock!"); }
+            else
             {
                 ProductsInStock.Remove(product);
                 return true;
             }
-            else
-                throw new StockException("\nProduct is already out of stock!");
         }
 
         /// <summary>

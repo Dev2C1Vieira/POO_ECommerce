@@ -1,66 +1,75 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="ProductCatalog.Brand" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Position X="0.5" Y="1.25" Width="1.5" />
     <TypeIdentifier />
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="ProductCatalog.Category" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="2.25" Y="0.5" Width="1.5" />
+    <Position X="2.25" Y="1.25" Width="1.5" />
     <TypeIdentifier />
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="ProductCatalog.Product" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="0.5" Y="1.5" Width="1.5" />
+    <Position X="0.5" Y="2.25" Width="1.5" />
     <TypeIdentifier />
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
+  <Class Name="RevenueEngines.Sale" Collapsed="true">
+    <Position X="8.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
   <Class Name="StaffClientSystem.Client" Collapsed="true">
-    <Position X="5" Y="1.75" Width="1.5" />
+    <Position X="0.5" Y="4.5" Width="1.5" />
     <TypeIdentifier />
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="StaffClientSystem.Person" Collapsed="true">
-    <Position X="7.25" Y="0.5" Width="1.5" />
+    <Position X="2.75" Y="3.25" Width="1.5" />
     <TypeIdentifier />
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="StaffClientSystem.Staff.Employee" Collapsed="true">
-    <Position X="7.25" Y="1.75" Width="1.5" />
+    <Position X="2.75" Y="4.5" Width="1.5" />
     <TypeIdentifier />
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="StaffClientSystem.Staff.Manager" Collapsed="true">
-    <Position X="9.5" Y="1.75" Width="1.5" />
+    <Position X="5" Y="4.5" Width="1.5" />
     <TypeIdentifier />
     <Lollipop Position="0.2" />
   </Class>
   <Interface Name="ProductCatalog.Interfaces.IBrand" Collapsed="true">
-    <Position X="0.5" Y="2.75" Width="1.5" />
+    <Position X="4.25" Y="1.25" Width="1.5" />
     <TypeIdentifier />
   </Interface>
   <Interface Name="ProductCatalog.Interfaces.ICategory" Collapsed="true">
-    <Position X="2.25" Y="2.75" Width="1.5" />
+    <Position X="6" Y="1.25" Width="1.5" />
     <TypeIdentifier />
   </Interface>
   <Interface Name="ProductCatalog.Interfaces.IProduct" Collapsed="true">
-    <Position X="0.5" Y="3.5" Width="1.5" />
+    <Position X="4.25" Y="2" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="RevenueEngines.Interfaces.ISale" Collapsed="true">
+    <Position X="8.5" Y="2.75" Width="1.5" />
     <TypeIdentifier />
   </Interface>
   <Interface Name="StaffClientSystem.Interfaces.IClient" Collapsed="true">
-    <Position X="4.75" Y="3" Width="1.5" />
+    <Position X="7.25" Y="4" Width="1.5" />
     <TypeIdentifier />
   </Interface>
   <Interface Name="StaffClientSystem.Interfaces.IEmployee" Collapsed="true">
-    <Position X="6.5" Y="3" Width="1.5" />
+    <Position X="9" Y="4" Width="1.5" />
     <TypeIdentifier />
   </Interface>
   <Interface Name="StaffClientSystem.Interfaces.IManager" Collapsed="true">
-    <Position X="8.25" Y="3" Width="1.5" />
+    <Position X="7.25" Y="4.75" Width="1.5" />
     <TypeIdentifier />
   </Interface>
   <Interface Name="StaffClientSystem.Interfaces.IPerson" Collapsed="true">
-    <Position X="10" Y="3" Width="1.5" />
+    <Position X="9" Y="4.75" Width="1.5" />
     <TypeIdentifier />
   </Interface>
   <Font Name="Segoe UI" Size="9" />
