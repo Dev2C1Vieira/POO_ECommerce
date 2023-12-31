@@ -30,7 +30,7 @@ namespace RevenueEngines
         #region Attributes
 
         /// <summary>
-        /// 
+        /// Atributes creation
         /// </summary>
         private static Dictionary<Product, int> productsInStock;
 

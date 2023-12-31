@@ -63,6 +63,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevenueEngineR", "Source\Bu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevenueEngineIO", "Source\InputOutput\RevenueEngineIO\RevenueEngineIO.csproj", "{66E62179-D450-4833-866E-43914573B781}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitaryTests", "Source\UnitaryTests\UnitaryTests.csproj", "{B06EDF20-4100-466F-9E57-845C1269F1E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -157,6 +159,10 @@ Global
 		{66E62179-D450-4833-866E-43914573B781}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66E62179-D450-4833-866E-43914573B781}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66E62179-D450-4833-866E-43914573B781}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B06EDF20-4100-466F-9E57-845C1269F1E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B06EDF20-4100-466F-9E57-845C1269F1E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B06EDF20-4100-466F-9E57-845C1269F1E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B06EDF20-4100-466F-9E57-845C1269F1E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -191,6 +197,7 @@ Global
 		{EE3E3DAD-817D-4E33-BBE8-92F592B84DFA} = {BE8114DB-73E7-4851-8B61-299CDEA66F07}
 		{2305F9BD-2E13-4EA8-AA2E-6B3D58ABE565} = {5F7A3C66-DC5A-4F64-8FA3-9A4D2C19D791}
 		{66E62179-D450-4833-866E-43914573B781} = {C18105C9-DD42-4975-A5E6-348E60BD09CB}
+		{B06EDF20-4100-466F-9E57-845C1269F1E4} = {4DCEC28B-85ED-4E1B-ACC2-2A875D6ADB46}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D8E77007-63C3-4DCC-BC36-7642747AFB50}
