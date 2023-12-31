@@ -8,12 +8,14 @@
  * 
  * */
 
-using StaffClientSystem;
-using StaffClientSystem.Staff;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Globalization;
+using System.Collections.Generic;
+
+// External
+using ECValidations;
+using StaffClientSystemsE;
+using StaffClientSystem.Staff;
 
 namespace StaffClientSystemIO
 {
@@ -36,12 +38,15 @@ namespace StaffClientSystemIO
         /// <returns></returns>
         public static Employee GetNewEmployeeInformation(Employee employee)
         {
+            // Name
             Console.Write("\nEnter employee Name: ");
             employee.Name = Console.ReadLine();
 
+            // Gender
             Console.Write("\nEnter employee Gender: ");
             employee.Gender = Console.ReadLine();
 
+            // Date of Birth
             Console.Write("\nEnter employee Date of Birth (dd-MM-yyyy): ");
             string launchDateInput = Console.ReadLine();
 
@@ -50,21 +55,39 @@ namespace StaffClientSystemIO
 
             employee.DateOfBirth = launchDate;
 
+            // Postal Code
             Console.Write("\nEnter employee Postal Code: ");
-            employee.PostalCode = Console.ReadLine();
+            string postalCode = Console.ReadLine();
+            if (ECValidate.IsPostalCode(postalCode) == true)
+                employee.PostalCode = postalCode;
+            else
+                throw new ClientException("\nPostal Code format is incorrect ... Please try again!!!");
 
+            // Address
             Console.Write("\nEnter employee Address: ");
             employee.Address = Console.ReadLine();
 
+            // Phone Number
             Console.Write("\nEnter employee Phone Number: ");
-            employee.PhoneNumber = int.Parse(Console.ReadLine());
+            string phoneNumber = Console.ReadLine();
+            if (ECValidate.IsPhoneNumber(phoneNumber) == true)
+                employee.PhoneNumber = int.Parse(Console.ReadLine());
+            else
+                throw new ClientException("\nPhone Number format is incorrect ... Please try again!!!");
 
+            // Job Title
             Console.Write("\nEnter employee Job Title: ");
             employee.JobTitle = Console.ReadLine();
 
+            // Work Email
             Console.Write("\nEnter employee Work Email: ");
-            employee.WorkEmail = Console.ReadLine();
+            string email = Console.ReadLine();
+            if (ECValidate.IsValidEmail(email) == true)
+                employee.WorkEmail = Console.ReadLine();
+            else
+                throw new ClientException("\nWork Email format is incorrect ... Please try again!!!");
 
+            // Password
             Console.Write("\nEnter employee Password: ");
             employee.Password = Console.ReadLine();
 
@@ -151,7 +174,11 @@ namespace StaffClientSystemIO
             else if (fieldToUpdate == 4)
             {
                 Console.Write("\nEnter employee new Postal Code: ");
-                newAttribute = Console.ReadLine();
+                string postalCode = Console.ReadLine();
+                if (ECValidate.IsPostalCode(postalCode) == true)
+                    newAttribute = postalCode;
+                else
+                    throw new ClientException("\nNew Postal Code format is incorrect ... Please try again!!!");
             }
             else if (fieldToUpdate == 5)
             {
@@ -161,7 +188,11 @@ namespace StaffClientSystemIO
             else if (fieldToUpdate == 6)
             {
                 Console.Write("\nEnter employee new Phone Number: ");
-                newAttribute = Console.ReadLine();
+                string phoneNumber = Console.ReadLine();
+                if (ECValidate.IsPhoneNumber(phoneNumber) == true)
+                    newAttribute = phoneNumber;
+                else
+                    throw new ClientException("\nNew Phone Number format is incorrect ... Please try again!!!");
             }
             else if (fieldToUpdate == 7)
             {
@@ -171,7 +202,11 @@ namespace StaffClientSystemIO
             else if (fieldToUpdate == 8)
             {
                 Console.Write("\nEnter employee new Work Email: ");
-                newAttribute = Console.ReadLine();
+                string email = Console.ReadLine();
+                if (ECValidate.IsValidEmail(email) == true)
+                    newAttribute = email;
+                else
+                    throw new ClientException("\nNew Work Email format is incorrect ... Please try again!!!");
             }
             else if (fieldToUpdate == 9)
             {

@@ -8,12 +8,13 @@
  * 
  * */
 
+using System;
+
+// External
 using StaffClientSystem;
 using StaffClientSystemIO;
 using StaffClientSystemR;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+using StaffClientSystemsE;
 
 namespace StaffClientSystemsM
 {
@@ -287,6 +288,11 @@ namespace StaffClientSystemsM
                             break;
                     }
                 }
+            }
+            catch (ClientException CE)
+            {
+                Console.WriteLine(CE.Message);
+                Pause();
             }
             catch (FormatException E)
             {

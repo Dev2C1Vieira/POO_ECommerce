@@ -11,9 +11,9 @@
 using System;
 
 // External
-using RevenueEngines.Interfaces;
+using RevenueEngine.Interfaces;
 
-namespace RevenueEngines
+namespace RevenueEngine
 {
     /// <summary>
     /// Purpose: [Write the purpose of the class!]
@@ -67,14 +67,15 @@ namespace RevenueEngines
         /// <summary>
         /// Constructor passed by parameters
         /// </summary>
+        /// <param name="saleID"></param>
         /// <param name="dateSale"></param>
         /// <param name="productID"></param>
         /// <param name="clientID"></param>
         /// <param name="quantity"></param>
         /// <param name="visibilityStatus"></param>
-        public Sale(DateTime dateSale, int productID, int clientID, int quantity, bool visibilityStatus)
+        public Sale(int saleID, DateTime dateSale, int productID, int clientID, int quantity, bool visibilityStatus)
         {
-            saleID = 0;
+            this.saleID = saleID;
             this.dateSale = dateSale;
             this.productID = productID;
             this.clientID = clientID;

@@ -13,7 +13,7 @@ using System.Globalization;
 using System.Collections.Generic;
 
 // External
-using RevenueEngines;
+using RevenueEngine;
 using RevenueEngineR;
 
 namespace RevenueEngineIO

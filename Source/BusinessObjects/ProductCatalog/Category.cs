@@ -60,13 +60,14 @@ namespace ProductCatalog
         /// <summary>
         /// Constructor passed by parameters
         /// </summary>
+        /// <param name="categoryID"></param>
         /// <param name="categoryName"></param>
         /// <param name="categoryDescription"></param>
         /// <param name="creationDate"></param>
         /// <param name="visibilityStatus"></param>
-        public Category(string categoryName, string categoryDescription, DateTime creationDate, bool visibilityStatus)
+        public Category(int categoryID, string categoryName, string categoryDescription, DateTime creationDate, bool visibilityStatus)
         {
-            categoryID = 0;
+            this.categoryID = categoryID;
             this.categoryName = categoryName;
             this.categoryDescription = categoryDescription;
             this.creationDate = creationDate;

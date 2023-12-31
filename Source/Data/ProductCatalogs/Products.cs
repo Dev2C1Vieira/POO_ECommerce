@@ -309,11 +309,6 @@ namespace ProductCatalogs
                         product.WarrantyDuration = int.Parse(atribute);
                         return true;
                     }
-                    else if (fieldToUpdate == 6)
-                    {
-                        product.AmountInStock = int.Parse(atribute);
-                        return true;
-                    }
                 }
                 else continue;
             }

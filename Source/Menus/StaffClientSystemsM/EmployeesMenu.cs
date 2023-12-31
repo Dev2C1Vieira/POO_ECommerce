@@ -8,13 +8,14 @@
  * 
  * */
 
-using StaffClientSystem;
-using StaffClientSystem.Staff;
-using StaffClientSystemIO;
-using StaffClientSystemR;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+
+// External
+using StaffClientSystemR;
+using StaffClientSystemsE;
+using StaffClientSystemIO;
+using StaffClientSystem.Staff;
 
 namespace StaffClientSystemsM
 {
@@ -284,6 +285,11 @@ namespace StaffClientSystemsM
                             break;
                     }
                 }
+            }
+            catch (EmployeeException EE)
+            {
+                Console.WriteLine(EE.Message);
+                Pause();
             }
             catch (FormatException E)
             {

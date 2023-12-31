@@ -13,7 +13,9 @@ using System.Globalization;
 using System.Collections.Generic;
 
 // External
+using ECValidations;
 using StaffClientSystem;
+using StaffClientSystemsE;
 
 namespace StaffClientSystemIO
 {
@@ -36,12 +38,15 @@ namespace StaffClientSystemIO
         /// <returns></returns>
         public static Client GetNewClientInformation(Client client)
         {
+            // Name
             Console.Write("\nEnter client Name: ");
             client.Name = Console.ReadLine();
 
+            // Gender
             Console.Write("\nEnter client Gender: ");
             client.Gender = Console.ReadLine();
 
+            // Date of Birth
             Console.Write("\nEnter client Date of Birth (dd-MM-yyyy): ");
             string launchDateInput = Console.ReadLine();
 
@@ -50,17 +55,33 @@ namespace StaffClientSystemIO
 
             client.DateOfBirth = launchDate;
 
+            // Potal Code
             Console.Write("\nEnter client Postal Code: ");
-            client.PostalCode = Console.ReadLine();
+            string postalCode = Console.ReadLine();
+            if (ECValidate.IsPostalCode(postalCode) == true)
+                client.PostalCode = postalCode;
+            else
+                throw new ClientException("\nPostal Code format is incorrect ... Please try again!!!");
 
+            // Address
             Console.Write("\nEnter client Address: ");
             client.Address = Console.ReadLine();
 
+            // Phone Number
             Console.Write("\nEnter client Phone Number: ");
-            client.PhoneNumber = int.Parse(Console.ReadLine());
+            string phoneNumber = Console.ReadLine();
+            if (ECValidate.IsPhoneNumber(phoneNumber) == true)
+                client.PhoneNumber = int.Parse(phoneNumber);
+            else
+                throw new ClientException("\nPhone Number format is incorrect ... Please try again!!!");
 
+            // Email
             Console.Write("\nEnter client Email: ");
-            client.Email = Console.ReadLine();
+            string email = Console.ReadLine();
+            if (ECValidate.IsValidEmail(email) == true)
+                client.Email = email;
+            else
+                throw new ClientException("\nEmail format is incorrect ... Please try again!!!");
 
             client.VisibilityStatus = true;
 
@@ -145,7 +166,11 @@ namespace StaffClientSystemIO
             else if (fieldToUpdate == 4)
             {
                 Console.Write("\nEnter client new Postal Code: ");
-                newAttribute = Console.ReadLine();
+                string postalCode = Console.ReadLine();
+                if (ECValidate.IsPostalCode(newAttribute) == true)
+                    newAttribute = postalCode;
+                else
+                    throw new ClientException("\nNew Postal Code format is incorrect ... Please try again!!!");
             }
             else if (fieldToUpdate == 5)
             {
@@ -155,12 +180,20 @@ namespace StaffClientSystemIO
             else if (fieldToUpdate == 6)
             {
                 Console.Write("\nEnter client new Phone Number: ");
-                newAttribute = Console.ReadLine();
+                string phoneNumber = Console.ReadLine();
+                if (ECValidate.IsPhoneNumber(phoneNumber) == true)
+                    newAttribute = phoneNumber;
+                else
+                    throw new ClientException("\nNew Phone Number format is incorrect ... Please try again!!!");
             }
             else if (fieldToUpdate == 7)
             {
                 Console.Write("\nEnter client new Email: ");
-                newAttribute = Console.ReadLine();
+                string email = Console.ReadLine();
+                if (ECValidate.IsValidEmail(email) == true)
+                    newAttribute = email;
+                else
+                    throw new ClientException("\nNew Email format is incorrect ... Please try again!!!");
             }
 
             return newAttribute;

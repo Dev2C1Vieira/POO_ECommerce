@@ -31,8 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ECValidations">
+      <HintPath>..\..\Validations\ECValidations\bin\Debug\ECValidations.dll</HintPath>
+    </Reference>
     <Reference Include="StaffClientSystem">
       <HintPath>..\..\BusinessObjects\StaffClientSystem\bin\Debug\StaffClientSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="StaffClientSystemsE">
+      <HintPath>..\..\Exceptions\StaffClientSystemsE\bin\Debug\StaffClientSystemsE.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

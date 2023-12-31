@@ -8,14 +8,12 @@
  * 
  * */
 
-using ProductCatalog;
-using ProductCatalogR;
-using RevenueEngineIO;
-using RevenueEngineR;
-using RevenueEngines;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+
+// External
+using RevenueEngine;
+using RevenueEngineR;
+using RevenueEngineIO;
 
 namespace RevenueEnginesM
 {

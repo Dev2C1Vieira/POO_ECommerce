@@ -61,14 +61,15 @@ namespace ProductCatalog
         /// <summary>
         /// Constructor passed by parameters
         /// </summary>
+        /// <param name="brandID"></param>
         /// <param name="brandName"></param>
         /// <param name="brandDescription"></param>
         /// <param name="originCountry"></param>
         /// <param name="fundationDate"></param>
         /// <param name="visibilityStatus"></param>
-        public Brand(string brandName, string brandDescription, string originCountry, DateTime fundationDate, bool visibilityStatus)
+        public Brand(int brandID, string brandName, string brandDescription, string originCountry, DateTime fundationDate, bool visibilityStatus)
         {
-            brandID = 0;
+            this.brandID = brandID;
             this.brandName = brandName;
             this.brandDescription = brandDescription;
             this.originCountry = originCountry;

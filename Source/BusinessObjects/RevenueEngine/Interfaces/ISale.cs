@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RevenueEngines.Interfaces
+namespace RevenueEngine.Interfaces
 {
     public interface ISale
     {

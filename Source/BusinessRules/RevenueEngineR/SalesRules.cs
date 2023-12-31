@@ -14,10 +14,10 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 // External
-using ProductCatalog;
-using RevenueEngineE;
+using RevenueEngine;
 using RevenueEngines;
-using RevenueEngines.Interfaces;
+using RevenueEngineE;
+using ProductCatalog;
 
 namespace RevenueEngineR
 {
@@ -294,8 +294,6 @@ namespace RevenueEngineR
                 throw new Exception("\nFailed to show the sales historic!" + "-" + E.Message);
             }
         }
-
-
 
         /// <summary>
         /// This function removes a sale by passing its ID as a parameter, putting it in a kind of historic.

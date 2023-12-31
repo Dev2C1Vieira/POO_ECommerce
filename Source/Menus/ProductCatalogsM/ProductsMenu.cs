@@ -57,11 +57,11 @@ namespace ProductCatalogsM
         {
             Console.WriteLine("\nTable containing the information of the products historic.\n");
             // Table Construction
-            Console.WriteLine("\n+-----------------------------------------------------------------------------------------------------+");
-            Console.WriteLine("|  CODE  |  NAME  |  DESCRIPTION  |  PRICE  |  LAUNCH DATE  |  WARRANTY DURARION  |  AMOUNT IN STOCK  |");
-            Console.WriteLine("+-----------------------------------------------------------------------------------------------------+");
+            Console.WriteLine("\n+---------------------------------------------------------------------------------+");
+            Console.WriteLine("|  CODE  |  NAME  |  DESCRIPTION  |  PRICE  |  LAUNCH DATE  |  WARRANTY DURARION  |");
+            Console.WriteLine("+---------------------------------------------------------------------------------+");
             ProductsIO.ListHistoric(ProductsRules.ReturnHistoric());
-            Console.WriteLine("+-----------------------------------------------------------------------------------------------------+");
+            Console.WriteLine("+---------------------------------------------------------------------------------+");
             Console.WriteLine($"\n\nTotal sum of accessible records: {ProductsRules.ReturnAmountHistoricRecords()}");
             Console.WriteLine("\n+-----------------------------------------------------------------------------------------------------+");
             Console.WriteLine("|         1. Delete a Record!         2. Recover a Record!         3. Return to Products Menu.        |");
@@ -71,7 +71,14 @@ namespace ProductCatalogsM
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="fileName"></param>
+        /// <param name="productsFN"></param>
+        /// <param name="categoriesFN"></param>
+        /// <param name="brandsFN"></param>
+        /// <param name="clientsFN"></param>
+        /// <param name="employeesFN"></param>
+        /// <param name="managersFN"></param>
+        /// <param name="stockFN"></param>
+        /// <param name="salesFN"></param>
         public static void LoopDisplayHistocicMenu(string productsFN, string categoriesFN, string brandsFN, string clientsFN,
             string employeesFN, string managersFN, string stockFN, string salesFN)
         {
@@ -140,7 +147,14 @@ namespace ProductCatalogsM
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="fileName"></param>
+        /// <param name="productsFN"></param>
+        /// <param name="categoriesFN"></param>
+        /// <param name="brandsFN"></param>
+        /// <param name="clientsFN"></param>
+        /// <param name="employeesFN"></param>
+        /// <param name="managersFN"></param>
+        /// <param name="stockFN"></param>
+        /// <param name="salesFN"></param>
         public static void Menu(string productsFN, string categoriesFN, string brandsFN, string clientsFN,
             string employeesFN, string managersFN, string stockFN, string salesFN)
         {
@@ -177,12 +191,12 @@ namespace ProductCatalogsM
                             List<Product> listingProdutcs = new List<Product>();
                             Console.WriteLine("\nTable containing the information of the existing products.\n");
                             // Table Construction
-                            Console.WriteLine("\n+-----------------------------------------------------------------------------------------------------+");
-                            Console.WriteLine("|  CODE  |  NAME  |  DESCRIPTION  |  PRICE  |  LAUNCH DATE  |  WARRANTY DURARION  |  AMOUNT IN STOCK  |");
-                            Console.WriteLine("+-----------------------------------------------------------------------------------------------------+");
+                            Console.WriteLine("\n+---------------------------------------------------------------------------------+");
+                            Console.WriteLine("|  CODE  |  NAME  |  DESCRIPTION  |  PRICE  |  LAUNCH DATE  |  WARRANTY DURARION  |");
+                            Console.WriteLine("+---------------------------------------------------------------------------------+");
                             listingProdutcs = ProductsRules.ReturnProductsList();
                             ProductsIO.ListProductsInformation(listingProdutcs);
-                            Console.WriteLine("+-----------------------------------------------------------------------------------------------------+");
+                            Console.WriteLine("+---------------------------------------------------------------------------------+");
                             Console.WriteLine($"\n\nTotal sum of accessible records: {ProductsRules.ReturnAmountListRecords()}");
                             Pause();
                             break;

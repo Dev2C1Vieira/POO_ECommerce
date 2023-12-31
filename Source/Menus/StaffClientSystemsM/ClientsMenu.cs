@@ -11,10 +11,11 @@
 using System;
 using System.Collections.Generic;
 
-//
+// External
 using StaffClientSystem;
 using StaffClientSystemR;
 using StaffClientSystemIO;
+using StaffClientSystemsE;
 
 namespace StaffClientSystemsM
 {
@@ -248,7 +249,7 @@ namespace StaffClientSystemsM
                             Console.WriteLine("  |  5. Update client Address.                |");
                             Console.WriteLine("  |  6. Update client Phone Number.           |");
                             Console.WriteLine("  |  7. Update client Email.                  |");
-                            Console.WriteLine("  |  8. Back!                                |");
+                            Console.WriteLine("  |  8. Back!                                 |");
                             Console.WriteLine("  +-------------------------------------------+");
                             Console.Write("\nOption: ");
                             field = int.Parse(Console.ReadLine());
@@ -292,6 +293,11 @@ namespace StaffClientSystemsM
                             break;
                     }
                 }
+            }
+            catch (ClientException CE)
+            {
+                Console.WriteLine(CE.Message);
+                Pause();
             }
             catch (FormatException E)
             {

@@ -9,8 +9,8 @@
  * */
 
 using System;
-using System.Collections.Generic;
 using System.Globalization;
+using System.Collections.Generic;
 
 // External
 using ProductCatalog;
@@ -56,9 +56,6 @@ namespace ProductCatalogIO
             Console.Write("\nEnter product Warranty Duration: ");
             product.WarrantyDuration = int.Parse(Console.ReadLine());
 
-            Console.Write("\nEnter product Amount in Stock: ");
-            product.AmountInStock = int.Parse(Console.ReadLine());
-
             product.VisibilityStatus = true;
 
             return product;
@@ -78,7 +75,8 @@ namespace ProductCatalogIO
             }
             foreach (Product po in productsList)
             {
-                Console.WriteLine($"|  {po.ProductID}  |  {po.ProductName}  |  {po.ProductDescription}  |  {po.Price.ToString("F2")}  |  {po.LauchDate.ToShortDateString()}  |  {po.WarrantyDuration}  |  {po.AmountInStock}  |");
+                Console.WriteLine($"|  {po.ProductID}  |  {po.ProductName}  |  {po.ProductDescription}  |" +
+                    $"  {po.Price.ToString("F2")}  |  {po.LauchDate.ToShortDateString()}  |  {po.WarrantyDuration}  |");
             }
             return true;
         }
@@ -97,7 +95,8 @@ namespace ProductCatalogIO
             }
             foreach (Product po in productsList)
             {
-                Console.WriteLine($"|  {po.ProductID}  |  {po.ProductName}  |  {po.ProductDescription}  |  {po.Price.ToString("F2")}  |  {po.LauchDate.ToShortDateString()}  |  {po.WarrantyDuration}  |  {po.AmountInStock}  |");
+                Console.WriteLine($"|  {po.ProductID}  |  {po.ProductName}  |  {po.ProductDescription}  |" +
+                    $"  {po.Price.ToString("F2")}  |  {po.LauchDate.ToShortDateString()}  |  {po.WarrantyDuration}  |");
             }
             return true;
         }
@@ -145,11 +144,6 @@ namespace ProductCatalogIO
             else if (fieldToUpdate == 5)
             {
                 Console.Write("\nEnter product new Warranty Duration: ");
-                newAttribute = Console.ReadLine();
-            }
-            else if (fieldToUpdate == 6)
-            {
-                Console.Write("\nEnter product new Amount in Stock: ");
                 newAttribute = Console.ReadLine();
             }
 

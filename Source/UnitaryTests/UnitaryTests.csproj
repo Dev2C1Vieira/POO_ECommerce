@@ -45,6 +45,24 @@
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MSTest.TestFramework.2.2.10\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="ProductCatalog">
+      <HintPath>..\BusinessObjects\ProductCatalog\bin\Debug\ProductCatalog.dll</HintPath>
+    </Reference>
+    <Reference Include="ProductCatalogs">
+      <HintPath>..\Data\ProductCatalogs\bin\Debug\ProductCatalogs.dll</HintPath>
+    </Reference>
+    <Reference Include="RevenueEngine">
+      <HintPath>..\BusinessObjects\RevenueEngine\bin\Debug\RevenueEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="RevenueEngines">
+      <HintPath>..\Data\RevenueEngines\bin\Debug\RevenueEngines.dll</HintPath>
+    </Reference>
+    <Reference Include="StaffClientSystem">
+      <HintPath>..\BusinessObjects\StaffClientSystem\bin\Debug\StaffClientSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="StaffClientSystems">
+      <HintPath>..\Data\StaffClientSystems\bin\Debug\StaffClientSystems.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>

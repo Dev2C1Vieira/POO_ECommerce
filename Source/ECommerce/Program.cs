@@ -12,7 +12,6 @@ using System;
 
 //External
 using ECMenus;
-using RevenueEngineR;
 using ProductCatalogR;
 using StaffClientSystemR;
 

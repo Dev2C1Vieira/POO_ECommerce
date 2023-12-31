@@ -40,6 +40,10 @@
     <Reference Include="StaffClientSystemR">
       <HintPath>..\..\BusinessRules\StaffClientSystemR\bin\Debug\StaffClientSystemR.dll</HintPath>
     </Reference>
+    <Reference Include="StaffClientSystemsE, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Exceptions\StaffClientSystemsE\bin\Debug\StaffClientSystemsE.dll</HintPath>
+    </Reference>
     <Reference Include="StaffMenu, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\StaffMenu\bin\Debug\StaffMenu.dll</HintPath>

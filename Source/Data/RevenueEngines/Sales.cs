@@ -15,11 +15,12 @@ using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 
 // External
+using RevenueEngine;
+using ProductCatalog;
 using RevenueEngineE;
 using ProductCatalogs;
-using ProductCatalog;
-using StaffClientSystems;
 using StaffClientSystem;
+using StaffClientSystems;
 
 namespace RevenueEngines
 {
