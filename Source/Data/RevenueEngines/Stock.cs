@@ -167,29 +167,6 @@ namespace RevenueEngines
             }
             return false;
         }
-        
-        //public static bool AddStockAll(int quantity)
-        //{
-        //    if (IsProductsInStockEmpty() == true)
-        //        throw new StockException("Product is not in stock at the moment!");
-
-        //    foreach (var product in ProductsInStock)
-        //    {
-        //        ProductsInStock[product] += quantity;
-        //    }
-        //    return true;
-        //}
-        //public static bool RemoveStockAll(int quantity)
-        //{
-        //    if (IsProductsInStockEmpty() == true)
-        //        throw new StockException("Product is not in stock at the moment!");
-
-        //    foreach (var product in ProductsInStock)
-        //    {
-        //        ProductsInStock[product] -= quantity;
-        //    }
-        //    return true;
-        //}
 
         /// <summary>
         /// 
